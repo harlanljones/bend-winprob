@@ -8,6 +8,9 @@
   h1 { font-size: 22px; margin: 0 0 4px; }
   #stats { margin: 0 0 12px; color: #444; }
   #stats b { color: #111; }
+  #freshness { font-size: 12px; margin: -6px 0 12px; color: #287a45; }
+  #freshness.stale { color: #a86b00; }
+  #freshness.dead { color: #b00020; }
   .bend { color: #2a6fdb; } .mlb { color: #e07a1f; }
   svg text { font-size: 12px; fill: #555; }
 </style>
@@ -15,6 +18,7 @@
 <body>
 <h1 id="title">Bend vs MLB</h1>
 <div id="stats">loading…</div>
+<div id="freshness">feed: waiting for first update</div>
 <svg id="chart" width="900" height="400" viewBox="0 0 900 400"></svg>
 <script>
 const pk = new URLSearchParams(location.search).get("pk") || "849805";
@@ -98,6 +102,22 @@ function fmt(v, signed) {
   return (signed && v >= 0 ? "+" : "") + v.toFixed(1) + (signed ? "" : "%");
 }
 
+// A successful CSV response is a heartbeat from the publisher, not just a
+// new play: a quiet game can still have a healthy feed.
+let lastFetchMs = null;
+function updateFreshness() {
+  const node = document.getElementById("freshness");
+  if (lastFetchMs === null) {
+    node.textContent = "feed: waiting for first update";
+    node.className = "dead";
+    return;
+  }
+  const seconds = Math.max(0, Math.floor((Date.now() - lastFetchMs) / 1000));
+  node.textContent = `feed: updated ${seconds}s ago`;
+  node.className = seconds < 30 ? "" : seconds < 90 ? "stale" : "dead";
+}
+setInterval(updateFreshness, 1000);
+
 // Team names: fetched until the first publish has them (a page opened early shows AWAY @ HOME).
 let metaLoaded = false;
 async function loadMeta() {
@@ -116,6 +136,8 @@ async function tick() {
     const res = await fetch(`/runs/${pk}.csv`, { cache: "no-store" });
     if (!res.ok) throw new Error(res.status);
     const rows = parseCsv(await res.text());
+    lastFetchMs = Date.now();
+    updateFreshness();
     const last = rows[rows.length - 1] || {};
     const stat = (label, value, className) => {
       const span = document.createElement("span");
@@ -137,10 +159,12 @@ async function tick() {
   } catch (e) {
     document.getElementById("stats").textContent = "waiting for runs/" + pk + ".csv";
   } finally {
+    updateFreshness();
     setTimeout(tick, 5000);
   }
 }
 
+updateFreshness();
 tick();
 </script>
 </body>
