@@ -12,3 +12,8 @@ law sims_all_counted:
   for +i: U32
   for +c: Sim.Ctx
   {Sim.total(Sim.tree(d, i, c)) == Sim.pow2(d) : Nat}
+
+# LAW: whatever the plays, the scorebook never shows three or more outs.
+law outs_below_three:
+  for ps: List<&2, Game.Play>
+  {Nat.is_lt(Game.outs(Game.replay(Game.start(), ps)), 3n) == True{} : Bool}

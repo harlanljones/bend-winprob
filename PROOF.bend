@@ -64,3 +64,71 @@ def Laws.sims_all_counted(d, i, c):
       %Laws.sims_all_counted(p, i, c) : {Nat.add(Sim.total(Sim.tree(p, i, c)), Sim.total(Sim.tree(p, U32.add(i, U32.from_nat(Sim.pow2(p))), c))) == Nat.add(_, Sim.pow2(p)) : Nat}
       %Laws.sims_all_counted(p, U32.add(i, U32.from_nat(Sim.pow2(p))), c) : {Nat.add(Sim.total(Sim.tree(p, i, c)), Sim.total(Sim.tree(p, U32.add(i, U32.from_nat(Sim.pow2(p))), c))) == Nat.add(Sim.total(Sim.tree(p, i, c)), _) : Nat}
       {==}
+
+# Outs
+# ----
+# A half closes at three outs and a play past three is refused, so the
+# outs a state shows are 0, 1, 2, or those it had.
+
+def outs_close(o: Nat, top: Bool, -inn: Nat, -so: Nat, -sb: Game.Bases, -away: Game.Line, -home: Game.Line, -rej: Nat, -bs: Game.Bases, -l: Game.Line, w: {Nat.is_lt(so, 3n) == True{} : Bool})
+  -> {Nat.is_lt(Game.outs(Game.close(o, Game.State{inn, top, so, sb, away, home, rej}, bs, l)), 3n) == True{} : Bool}:
+  match o:
+    case 0n:
+      match top:
+        case True{}:
+          {==}
+        case False{}:
+          {==}
+    case 1n+o1:
+      match o1:
+        case 0n:
+          match top:
+            case True{}:
+              {==}
+            case False{}:
+              {==}
+        case 1n+o2:
+          match o2:
+            case 0n:
+              match top:
+                case True{}:
+                  {==}
+                case False{}:
+                  {==}
+            case 1n+o3:
+              match o3:
+                case 0n:
+                  match top:
+                    case True{}:
+                      {==}
+                    case False{}:
+                      {==}
+                case 1n+o4:
+                  w
+
+def outs_after(m: Maybe<Game.Half>, top: Bool, -inn: Nat, -so: Nat, -sb: Game.Bases, -away: Game.Line, -home: Game.Line, -rej: Nat, w: {Nat.is_lt(so, 3n) == True{} : Bool})
+  -> {Nat.is_lt(Game.outs(Game.after(Game.State{inn, top, so, sb, away, home, rej}, m)), 3n) == True{} : Bool}:
+  match m:
+    case None{}:
+      w
+    case Some{h}:
+      match h:
+        case Game.Half{bs, l, o}:
+          outs_close(o, top, inn, so, sb, away, home, rej, bs, l, w)
+
+def outs_step(s: Game.State, p: Game.Play, w: {Nat.is_lt(Game.outs(s), 3n) == True{} : Bool})
+  -> {Nat.is_lt(Game.outs(Game.step(s, p)), 3n) == True{} : Bool}:
+  match s:
+    case Game.State{+inn, +top, +so, +sb, +away, +home, +rej}:
+      outs_after(Game.slots(p, Game.half_of(Game.State{inn, top, so, sb, away, home, rej})), top, inn, so, sb, away, home, rej, w)
+
+def outs_run(ps: List<&2, Game.Play>, +s: Game.State, w: {Nat.is_lt(Game.outs(s), 3n) == True{} : Bool})
+  -> {Nat.is_lt(Game.outs(Game.run(ps, s)), 3n) == True{} : Bool}:
+  match ps:
+    case Nil{}:
+      w
+    case Con{+p, rest}:
+      outs_run(rest, Game.step(s, p), outs_step(s, p, w))
+
+def Laws.outs_below_three(ps):
+  outs_run(ps, Game.start(), {==})

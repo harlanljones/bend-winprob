@@ -15,11 +15,6 @@ law runs_never_decrease_home:
   for p: Game.Play
   {Nat.is_le(Game.home_runs(s), Game.home_runs(Game.step(s, p))) == True{} : Bool}
 
-# LAW: whatever the plays, the scorebook never shows three or more outs.
-law outs_below_three:
-  for ps: List<&2, Game.Play>
-  {Nat.is_lt(Game.outs(Game.replay(Game.start(), ps)), 3n) == True{} : Bool}
-
 # LAW (OBR 9.03(c), "How to Prove a Box Score"): for each team, the batters
 # who completed a plate appearance equal its runs, plus the putouts by the
 # defense, plus runners left on base, plus runners still on base.

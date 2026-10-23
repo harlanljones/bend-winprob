@@ -29,7 +29,7 @@ URLS = {
     "abstractGameState,detailedState,teams,away,home,id,abbreviation",
     "plays": API + "/v1/game/{pk}/playByPlay?fields=allPlays,result,eventType,awayScore,"
     "homeScore,about,atBatIndex,inning,isTopInning,isComplete,count,outs,runners,movement,"
-    "originBase,end,isOut,matchup,postOnFirst,postOnSecond,postOnThird,id",
+    "originBase,start,end,isOut,details,runner,matchup,postOnFirst,postOnSecond,postOnThird,id",
     "wp": API + "/v1/game/{pk}/winProbability?fields=atBatIndex,homeTeamWinProbability",
     "box": API + "/v1/game/{pk}/boxscore?fields=teams,away,home,teamStats,batting,fielding,"
     "atBats,baseOnBalls,hitByPitch,sacBunts,sacFlies,catchersInterference,runs,putOuts",
@@ -91,30 +91,42 @@ class Source:
 # -----
 
 def encode_play(play):
-    """One completed play as slots r3 r2 r1 batter: - X R 1 2 3."""
+    """One completed play as slots r3 r2 r1 batter: - X R 1 2 3.
+
+    A runner's movements are grouped by runner id: `originBase` is per event,
+    so a runner who steals second and then scores on a single shows origins
+    1B and 2B. The runner's base at the start of the play is the head of the
+    chain (a start that is no other segment's end); the batter starts at None.
+    """
     i = play["about"]["atBatIndex"]
-    groups = {}
+    by_runner = {}
     for r in play.get("runners", []):
-        m = r["movement"]
-        origin = m.get("originBase")
+        rid = r.get("details", {}).get("runner", {}).get("id")
+        if rid is None:
+            raise ValueError(f"runner without id at atBatIndex {i}")
+        by_runner.setdefault(rid, []).append(r["movement"])
+    slots = {}
+    for rid, segs in by_runner.items():
+        starts = [s.get("start") for s in segs]
+        ends = [s.get("end") for s in segs if s.get("end") is not None]
+        heads = {s for s in starts if s is None or s not in ends}
+        if len(heads) != 1:
+            raise ValueError(f"runner {rid}: no single start {sorted(map(str, heads))} at atBatIndex {i}")
+        origin = heads.pop()
         if origin not in ("3B", "2B", "1B", None):
             raise ValueError(f"unknown origin {origin!r} at atBatIndex {i}")
-        groups.setdefault(origin, []).append(m)
-    code = []
-    for origin in ("3B", "2B", "1B", None):
-        segs = groups.get(origin)
-        if not segs:
-            code.append("-")
-        elif any(s.get("isOut") for s in segs):
-            code.append("X")
+        if origin in slots:
+            raise ValueError(f"two runners from {origin or 'the batter'} at atBatIndex {i}")
+        if any(s.get("isOut") for s in segs):
+            slots[origin] = "X"
         elif any(s.get("end") == "score" for s in segs):
-            code.append("R")
+            slots[origin] = "R"
         else:
-            end = segs[-1].get("end")
-            if end not in ("1B", "2B", "3B"):
-                raise ValueError(f"unknown end {end!r} at atBatIndex {i}")
-            code.append(end[0])
-    return "".join(code)
+            tails = {e for e in ends if e not in starts}
+            if len(tails) != 1 or not tails <= {"1B", "2B", "3B"}:
+                raise ValueError(f"runner {rid}: unknown end {sorted(tails)} at atBatIndex {i}")
+            slots[origin] = tails.pop()[0]
+    return "".join(slots.get(origin, "-") for origin in ("3B", "2B", "1B", None))
 
 
 def complete_plays(pbp):
