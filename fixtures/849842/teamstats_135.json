@@ -1,0 +1,139 @@
+{
+ "copyright": "Copyright 2026 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt",
+ "stats": [
+  {
+   "type": {
+    "displayName": "season"
+   },
+   "group": {
+    "displayName": "hitting"
+   },
+   "exemptions": [],
+   "splits": [
+    {
+     "season": "2026",
+     "stat": {
+      "gamesPlayed": 162,
+      "groundOuts": 1411,
+      "airOuts": 1416,
+      "runs": 722,
+      "doubles": 234,
+      "triples": 23,
+      "homeRuns": 183,
+      "strikeOuts": 1310,
+      "baseOnBalls": 554,
+      "intentionalWalks": 21,
+      "hits": 1314,
+      "hitByPitch": 62,
+      "avg": ".244",
+      "atBats": 5379,
+      "obp": ".319",
+      "slg": ".398",
+      "ops": ".717",
+      "caughtStealing": 42,
+      "stolenBases": 164,
+      "stolenBasePercentage": ".796",
+      "caughtStealingPercentage": ".204",
+      "groundIntoDoublePlay": 123,
+      "numberOfPitches": 23667,
+      "plateAppearances": 6070,
+      "totalBases": 2143,
+      "rbi": 696,
+      "leftOnBase": 1077,
+      "sacBunts": 25,
+      "sacFlies": 47,
+      "babip": ".288",
+      "groundOutsToAirouts": "1.00",
+      "catchersInterference": 3,
+      "atBatsPerHomeRun": "29.39"
+     },
+     "team": {
+      "id": 135,
+      "name": "San Diego Padres",
+      "link": "/api/v1/teams/135"
+     }
+    }
+   ]
+  },
+  {
+   "type": {
+    "displayName": "season"
+   },
+   "group": {
+    "displayName": "pitching"
+   },
+   "exemptions": [],
+   "splits": [
+    {
+     "season": "2026",
+     "stat": {
+      "gamesPlayed": 162,
+      "gamesStarted": 162,
+      "groundOuts": 1365,
+      "airOuts": 1463,
+      "runs": 681,
+      "doubles": 229,
+      "triples": 22,
+      "homeRuns": 180,
+      "strikeOuts": 1315,
+      "baseOnBalls": 554,
+      "intentionalWalks": 19,
+      "hits": 1304,
+      "hitByPitch": 67,
+      "avg": ".242",
+      "atBats": 5397,
+      "obp": ".318",
+      "slg": ".392",
+      "ops": ".710",
+      "caughtStealing": 51,
+      "stolenBases": 106,
+      "stolenBasePercentage": ".675",
+      "caughtStealingPercentage": ".325",
+      "groundIntoDoublePlay": 109,
+      "numberOfPitches": 23828,
+      "era": "3.99",
+      "inningsPitched": "1436.1",
+      "wins": 91,
+      "losses": 71,
+      "saves": 48,
+      "saveOpportunities": 68,
+      "holds": 107,
+      "blownSaves": 20,
+      "earnedRuns": 636,
+      "whip": "1.29",
+      "battersFaced": 6072,
+      "outs": 4309,
+      "gamesPitched": 162,
+      "completeGames": 0,
+      "shutouts": 11,
+      "strikes": 15122,
+      "strikePercentage": ".630",
+      "hitBatsmen": 67,
+      "balks": 7,
+      "wildPitches": 42,
+      "pickoffs": 10,
+      "totalBases": 2117,
+      "groundOutsToAirouts": "0.93",
+      "winPercentage": ".562",
+      "pitchesPerInning": "16.59",
+      "gamesFinished": 162,
+      "strikeoutWalkRatio": "2.37",
+      "strikeoutsPer9Inn": "8.24",
+      "walksPer9Inn": "3.47",
+      "hitsPer9Inn": "8.17",
+      "runsScoredPer9": "4.27",
+      "homeRunsPer9": "1.13",
+      "catchersInterference": 4,
+      "sacBunts": 17,
+      "sacFlies": 33
+     },
+     "team": {
+      "id": 135,
+      "name": "San Diego Padres",
+      "link": "/api/v1/teams/135"
+     }
+    }
+   ]
+  }
+ ]
+}

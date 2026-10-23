@@ -132,3 +132,350 @@ def outs_run(ps: List<&2, Game.Play>, +s: Game.State, w: {Nat.is_lt(Game.outs(s)
 
 def Laws.outs_below_three(ps):
   outs_run(ps, Game.start(), {==})
+
+# Box score (OBR 9.03(c))
+# -----------------------
+# HBal(e, h): the batting side's batters equal e runners in hand, plus the
+# runners on base, plus its runs, outs and left on base. A slot takes a
+# runner into the hand (from a base, or a new batter) and puts it down (on
+# a base, home, or out), so every slot keeps HBal(0n, ..).
+
+def sym(-A: Type, -a: A, -b: A, e: {a == b : A}) -> {b == a : A}:
+  %e : {_ == a : A}
+  {==}
+
+def HBal(e: Nat, h: Game.Half) -> Type:
+  match h:
+    case Game.Half{+bs, +l, o}:
+      {Game.line_bat(l) == Nat.add(e, Nat.add(Game.count(bs), Game.line_demand(l))) : Nat}
+
+def OkM(e: Nat, m: Maybe<Game.Half>) -> Type:
+  match m:
+    case None{}:
+      Unit
+    case Some{h}:
+      HBal(e, h)
+
+def count_b2(b1: Bool, -b3: Bool) -> {Game.count(Game.Bases{b1, True{}, b3}) == 1n+Game.count(Game.Bases{b1, False{}, b3}) : Nat}:
+  match b1:
+    case True{}:
+      {==}
+    case False{}:
+      {==}
+
+def count_b3(b1: Bool, b2: Bool) -> {Game.count(Game.Bases{b1, b2, True{}}) == 1n+Game.count(Game.Bases{b1, b2, False{}}) : Nat}:
+  match b1:
+    case True{}:
+      match b2:
+        case True{}:
+          {==}
+        case False{}:
+          {==}
+    case False{}:
+      match b2:
+        case True{}:
+          {==}
+        case False{}:
+          {==}
+
+def take1_bal(h: Game.Half, w: HBal(0n, h)) -> OkM(1n, Game.take1(h)):
+  match h:
+    case Game.Half{bs, l, o}:
+      match bs:
+        case Game.Bases{b1, b2, b3}:
+          match b1:
+            case True{}:
+              w
+            case False{}:
+              Unit{}
+
+def take2_bal(h: Game.Half, w: HBal(0n, h)) -> OkM(1n, Game.take2(h)):
+  match h:
+    case Game.Half{bs, +l, o}:
+      match bs:
+        case Game.Bases{+b1, b2, +b3}:
+          match b2:
+            case True{}:
+              %count_b2(b1, b3) : {Game.line_bat(l) == Nat.add(_, Game.line_demand(l)) : Nat}
+              w
+            case False{}:
+              Unit{}
+
+def take3_bal(h: Game.Half, w: HBal(0n, h)) -> OkM(1n, Game.take3(h)):
+  match h:
+    case Game.Half{bs, +l, o}:
+      match bs:
+        case Game.Bases{+b1, +b2, b3}:
+          match b3:
+            case True{}:
+              %count_b3(b1, b2) : {Game.line_bat(l) == Nat.add(_, Game.line_demand(l)) : Nat}
+              w
+            case False{}:
+              Unit{}
+
+def take_bat_bal(h: Game.Half, w: HBal(0n, h)) -> HBal(1n, Game.take_bat(h)):
+  match h:
+    case Game.Half{+bs, l, o}:
+      match l:
+        case Game.Line{+bat, +runs, +lo, +lob}:
+          %w : {1n+bat == 1n+_ : Nat}
+          {==}
+
+def put_bal(d: Game.Dest, h: Game.Half, w: HBal(1n, h)) -> OkM(0n, Game.put(d, h)):
+  match d:
+    case Game.Absent{}:
+      Unit{}
+    case Game.Out{}:
+      match h:
+        case Game.Half{+bs, l, o}:
+          match l:
+            case Game.Line{+bat, +runs, +lo, +lob}:
+              %add_succ(runs, Nat.add(lo, lob)) : {bat == Nat.add(Game.count(bs), _) : Nat}
+              %add_succ(Game.count(bs), Nat.add(runs, Nat.add(lo, lob))) : {bat == _ : Nat}
+              w
+    case Game.Run{}:
+      match h:
+        case Game.Half{+bs, l, o}:
+          match l:
+            case Game.Line{+bat, +runs, +lo, +lob}:
+              %add_succ(Game.count(bs), Nat.add(runs, Nat.add(lo, lob))) : {bat == _ : Nat}
+              w
+    case Game.To1{}:
+      match h:
+        case Game.Half{bs, l, o}:
+          match bs:
+            case Game.Bases{b1, b2, b3}:
+              match b1:
+                case True{}:
+                  Unit{}
+                case False{}:
+                  w
+    case Game.To2{}:
+      match h:
+        case Game.Half{bs, +l, o}:
+          match bs:
+            case Game.Bases{+b1, b2, +b3}:
+              match b2:
+                case True{}:
+                  Unit{}
+                case False{}:
+                  %sym(Nat, Game.count(Game.Bases{b1, True{}, b3}), 1n+Game.count(Game.Bases{b1, False{}, b3}), count_b2(b1, b3)) : {Game.line_bat(l) == Nat.add(_, Game.line_demand(l)) : Nat}
+                  w
+    case Game.To3{}:
+      match h:
+        case Game.Half{bs, +l, o}:
+          match bs:
+            case Game.Bases{+b1, +b2, b3}:
+              match b3:
+                case True{}:
+                  Unit{}
+                case False{}:
+                  %sym(Nat, Game.count(Game.Bases{b1, b2, True{}}), 1n+Game.count(Game.Bases{b1, b2, False{}}), count_b3(b1, b2)) : {Game.line_bat(l) == Nat.add(_, Game.line_demand(l)) : Nat}
+                  w
+
+def putm_bal(m: Maybe<Game.Half>, d: Game.Dest, w: OkM(1n, m)) -> OkM(0n, Game.put_m(d, m)):
+  match m:
+    case None{}:
+      Unit{}
+    case Some{h}:
+      put_bal(d, h, w)
+
+def slot3_bal(d: Game.Dest, +h: Game.Half, w: HBal(0n, h)) -> OkM(0n, Game.slot3(d, h)):
+  match d:
+    case Game.Absent{}:
+      w
+    case Game.Out{}:
+      putm_bal(Game.take3(h), Game.Out{}, take3_bal(h, w))
+    case Game.Run{}:
+      putm_bal(Game.take3(h), Game.Run{}, take3_bal(h, w))
+    case Game.To1{}:
+      putm_bal(Game.take3(h), Game.To1{}, take3_bal(h, w))
+    case Game.To2{}:
+      putm_bal(Game.take3(h), Game.To2{}, take3_bal(h, w))
+    case Game.To3{}:
+      putm_bal(Game.take3(h), Game.To3{}, take3_bal(h, w))
+
+def slot2_bal(d: Game.Dest, +h: Game.Half, w: HBal(0n, h)) -> OkM(0n, Game.slot2(d, h)):
+  match d:
+    case Game.Absent{}:
+      w
+    case Game.Out{}:
+      putm_bal(Game.take2(h), Game.Out{}, take2_bal(h, w))
+    case Game.Run{}:
+      putm_bal(Game.take2(h), Game.Run{}, take2_bal(h, w))
+    case Game.To1{}:
+      putm_bal(Game.take2(h), Game.To1{}, take2_bal(h, w))
+    case Game.To2{}:
+      putm_bal(Game.take2(h), Game.To2{}, take2_bal(h, w))
+    case Game.To3{}:
+      putm_bal(Game.take2(h), Game.To3{}, take2_bal(h, w))
+
+def slot1_bal(d: Game.Dest, +h: Game.Half, w: HBal(0n, h)) -> OkM(0n, Game.slot1(d, h)):
+  match d:
+    case Game.Absent{}:
+      w
+    case Game.Out{}:
+      putm_bal(Game.take1(h), Game.Out{}, take1_bal(h, w))
+    case Game.Run{}:
+      putm_bal(Game.take1(h), Game.Run{}, take1_bal(h, w))
+    case Game.To1{}:
+      putm_bal(Game.take1(h), Game.To1{}, take1_bal(h, w))
+    case Game.To2{}:
+      putm_bal(Game.take1(h), Game.To2{}, take1_bal(h, w))
+    case Game.To3{}:
+      putm_bal(Game.take1(h), Game.To3{}, take1_bal(h, w))
+
+def slotb_bal(d: Game.Dest, +h: Game.Half, w: HBal(0n, h)) -> OkM(0n, Game.slotb(d, h)):
+  match d:
+    case Game.Absent{}:
+      w
+    case Game.Out{}:
+      put_bal(Game.Out{}, Game.take_bat(h), take_bat_bal(h, w))
+    case Game.Run{}:
+      put_bal(Game.Run{}, Game.take_bat(h), take_bat_bal(h, w))
+    case Game.To1{}:
+      put_bal(Game.To1{}, Game.take_bat(h), take_bat_bal(h, w))
+    case Game.To2{}:
+      put_bal(Game.To2{}, Game.take_bat(h), take_bat_bal(h, w))
+    case Game.To3{}:
+      put_bal(Game.To3{}, Game.take_bat(h), take_bat_bal(h, w))
+
+def chainb_bal(m: Maybe<Game.Half>, bd: Game.Dest, w: OkM(0n, m)) -> OkM(0n, Game.chain_b(m, bd)):
+  match m:
+    case None{}:
+      Unit{}
+    case Some{h}:
+      slotb_bal(bd, h, w)
+
+def chain1_bal(m: Maybe<Game.Half>, +r1: Game.Dest, bd: Game.Dest, w: OkM(0n, m)) -> OkM(0n, Game.chain_1(m, r1, bd)):
+  match m:
+    case None{}:
+      Unit{}
+    case Some{+h}:
+      chainb_bal(Game.slot1(r1, h), bd, slot1_bal(r1, h, w))
+
+def chain2_bal(m: Maybe<Game.Half>, +r2: Game.Dest, r1: Game.Dest, bd: Game.Dest, w: OkM(0n, m)) -> OkM(0n, Game.chain_2(m, r2, r1, bd)):
+  match m:
+    case None{}:
+      Unit{}
+    case Some{+h}:
+      chain1_bal(Game.slot2(r2, h), r1, bd, slot2_bal(r2, h, w))
+
+def slots_bal(p: Game.Play, +h: Game.Half, w: HBal(0n, h)) -> OkM(0n, Game.slots(p, h)):
+  match p:
+    case Game.Play{+r3, r2, r1, bd}:
+      chain2_bal(Game.slot3(r3, h), r2, r1, bd, slot3_bal(r3, h, w))
+
+# The whole state: both teams balance (the side in the field has no one on base).
+def SBal(+s: Game.State) -> Type:
+  {Game.away_supply(s) == Game.away_demand(s) : Nat} & {Game.home_supply(s) == Game.home_demand(s) : Nat}
+
+# A half ends: its runners on base become left on base.
+def lob_move(+c: Nat, l: Game.Line, w: {Game.line_bat(l) == Nat.add(c, Game.line_demand(l)) : Nat})
+  -> {Game.line_bat(Game.add_lob(l, c)) == Game.line_demand(Game.add_lob(l, c)) : Nat}:
+  match l:
+    case Game.Line{+bat, +runs, +lo, +lob}:
+      %add_swap(c, lo, lob) : {bat == Nat.add(runs, _) : Nat}
+      %add_swap(c, runs, Nat.add(lo, lob)) : {bat == _ : Nat}
+      w
+
+def close_top(o: Nat, -inn: Nat, -so: Nat, -sb: Game.Bases, -away: Game.Line, -home: Game.Line, -rej: Nat, +bs: Game.Bases, +l: Game.Line,
+  wm: HBal(0n, Game.Half{bs, l, o}), wa: {Game.line_bat(away) == Nat.add(Game.count(sb), Game.line_demand(away)) : Nat}, wh: {Game.line_bat(home) == Game.line_demand(home) : Nat})
+  -> SBal(Game.close(o, Game.State{inn, True{}, so, sb, away, home, rej}, bs, l)):
+  match o:
+    case 0n:
+      (wm, wh)
+    case 1n+o1:
+      match o1:
+        case 0n:
+          (wm, wh)
+        case 1n+o2:
+          match o2:
+            case 0n:
+              (wm, wh)
+            case 1n+o3:
+              match o3:
+                case 0n:
+                  (lob_move(Game.count(bs), l, wm), wh)
+                case 1n+o4:
+                  (wa, wh)
+
+def close_bot(o: Nat, -inn: Nat, -so: Nat, -sb: Game.Bases, -away: Game.Line, -home: Game.Line, -rej: Nat, +bs: Game.Bases, +l: Game.Line,
+  wm: HBal(0n, Game.Half{bs, l, o}), wa: {Game.line_bat(away) == Game.line_demand(away) : Nat}, wh: {Game.line_bat(home) == Nat.add(Game.count(sb), Game.line_demand(home)) : Nat})
+  -> SBal(Game.close(o, Game.State{inn, False{}, so, sb, away, home, rej}, bs, l)):
+  match o:
+    case 0n:
+      (wa, wm)
+    case 1n+o1:
+      match o1:
+        case 0n:
+          (wa, wm)
+        case 1n+o2:
+          match o2:
+            case 0n:
+              (wa, wm)
+            case 1n+o3:
+              match o3:
+                case 0n:
+                  (wa, lob_move(Game.count(bs), l, wm))
+                case 1n+o4:
+                  (wa, wh)
+
+def after_top(m: Maybe<Game.Half>, -inn: Nat, -so: Nat, -sb: Game.Bases, -away: Game.Line, -home: Game.Line, -rej: Nat,
+  wm: OkM(0n, m), wa: {Game.line_bat(away) == Nat.add(Game.count(sb), Game.line_demand(away)) : Nat}, wh: {Game.line_bat(home) == Game.line_demand(home) : Nat})
+  -> SBal(Game.after(Game.State{inn, True{}, so, sb, away, home, rej}, m)):
+  match m:
+    case None{}:
+      (wa, wh)
+    case Some{h}:
+      match h:
+        case Game.Half{bs, l, o}:
+          close_top(o, inn, so, sb, away, home, rej, bs, l, wm, wa, wh)
+
+def after_bot(m: Maybe<Game.Half>, -inn: Nat, -so: Nat, -sb: Game.Bases, -away: Game.Line, -home: Game.Line, -rej: Nat,
+  wm: OkM(0n, m), wa: {Game.line_bat(away) == Game.line_demand(away) : Nat}, wh: {Game.line_bat(home) == Nat.add(Game.count(sb), Game.line_demand(home)) : Nat})
+  -> SBal(Game.after(Game.State{inn, False{}, so, sb, away, home, rej}, m)):
+  match m:
+    case None{}:
+      (wa, wh)
+    case Some{h}:
+      match h:
+        case Game.Half{bs, l, o}:
+          close_bot(o, inn, so, sb, away, home, rej, bs, l, wm, wa, wh)
+
+def step_bal(s: Game.State, +p: Game.Play, w: SBal(s)) -> SBal(Game.step(s, p)):
+  match s:
+    case Game.State{+inn, top, +so, +sb, +away, +home, +rej}:
+      match top:
+        case True{}:
+          (+wa, wh) = w
+          after_top(Game.slots(p, Game.Half{sb, away, so}), inn, so, sb, away, home, rej,
+            slots_bal(p, Game.Half{sb, away, so}, wa), wa, wh)
+        case False{}:
+          (wa, +wh) = w
+          after_bot(Game.slots(p, Game.Half{sb, home, so}), inn, so, sb, away, home, rej,
+            slots_bal(p, Game.Half{sb, home, so}, wh), wa, wh)
+
+def run_bal(ps: List<&2, Game.Play>, +s: Game.State, w: SBal(s)) -> SBal(Game.run(ps, s)):
+  match ps:
+    case Nil{}:
+      w
+    case Con{+p, rest}:
+      run_bal(rest, Game.step(s, p), step_bal(s, p, w))
+
+def start_bal() -> SBal(Game.start()):
+  ({==}, {==})
+
+def bal_away(-s: Game.State, w: SBal(s)) -> {Game.away_supply(s) == Game.away_demand(s) : Nat}:
+  (a, h) = w
+  a
+
+def bal_home(-s: Game.State, w: SBal(s)) -> {Game.home_supply(s) == Game.home_demand(s) : Nat}:
+  (a, h) = w
+  h
+
+def Laws.box_balances_away(ps):
+  bal_away(Game.run(ps, Game.start()), run_bal(ps, Game.start(), start_bal()))
+
+def Laws.box_balances_home(ps):
+  bal_home(Game.run(ps, Game.start()), run_bal(ps, Game.start(), start_bal()))

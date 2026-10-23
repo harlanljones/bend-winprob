@@ -17,3 +17,14 @@ law sims_all_counted:
 law outs_below_three:
   for ps: List<&2, Game.Play>
   {Nat.is_lt(Game.outs(Game.replay(Game.start(), ps)), 3n) == True{} : Bool}
+
+# LAW (OBR 9.03(c), "How to Prove a Box Score"): for each team, the batters
+# who completed a plate appearance equal its runs, plus the putouts by the
+# defense, plus runners left on base, plus runners still on base.
+law box_balances_away:
+  for +ps: List<&2, Game.Play>
+  {Game.away_supply(Game.replay(Game.start(), ps)) == Game.away_demand(Game.replay(Game.start(), ps)) : Nat}
+
+law box_balances_home:
+  for +ps: List<&2, Game.Play>
+  {Game.home_supply(Game.replay(Game.start(), ps)) == Game.home_demand(Game.replay(Game.start(), ps)) : Nat}

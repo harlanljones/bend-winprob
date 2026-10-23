@@ -9,12 +9,12 @@
   },
   "teams": {
    "away": {
-    "id": 114,
-    "abbreviation": "CLE"
+    "id": 112,
+    "abbreviation": "CHC"
    },
    "home": {
-    "id": 139,
-    "abbreviation": "TB"
+    "id": 135,
+    "abbreviation": "SD"
    }
   }
  }
