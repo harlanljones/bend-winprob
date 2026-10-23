@@ -1,0 +1,21 @@
+{
+ "metaData": {
+  "wait": 10
+ },
+ "gameData": {
+  "status": {
+   "abstractGameState": "Final",
+   "detailedState": "Final"
+  },
+  "teams": {
+   "away": {
+    "id": 119,
+    "abbreviation": "LAD"
+   },
+   "home": {
+    "id": 158,
+    "abbreviation": "MIL"
+   }
+  }
+ }
+}

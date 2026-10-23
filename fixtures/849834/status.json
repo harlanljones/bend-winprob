@@ -1,0 +1,21 @@
+{
+ "metaData": {
+  "wait": 10
+ },
+ "gameData": {
+  "status": {
+   "abstractGameState": "Final",
+   "detailedState": "Final"
+  },
+  "teams": {
+   "away": {
+    "id": 145,
+    "abbreviation": "CWS"
+   },
+   "home": {
+    "id": 114,
+    "abbreviation": "CLE"
+   }
+  }
+ }
+}

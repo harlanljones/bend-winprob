@@ -1,0 +1,139 @@
+{
+ "copyright": "Copyright 2026 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt",
+ "stats": [
+  {
+   "type": {
+    "displayName": "season"
+   },
+   "group": {
+    "displayName": "hitting"
+   },
+   "exemptions": [],
+   "splits": [
+    {
+     "season": "2026",
+     "stat": {
+      "gamesPlayed": 162,
+      "groundOuts": 1283,
+      "airOuts": 1566,
+      "runs": 801,
+      "doubles": 266,
+      "triples": 18,
+      "homeRuns": 204,
+      "strikeOuts": 1267,
+      "baseOnBalls": 628,
+      "intentionalWalks": 31,
+      "hits": 1399,
+      "hitByPitch": 68,
+      "avg": ".257",
+      "atBats": 5451,
+      "obp": ".338",
+      "slg": ".424",
+      "ops": ".762",
+      "caughtStealing": 21,
+      "stolenBases": 72,
+      "stolenBasePercentage": ".774",
+      "caughtStealingPercentage": ".226",
+      "groundIntoDoublePlay": 128,
+      "numberOfPitches": 24417,
+      "plateAppearances": 6214,
+      "totalBases": 2313,
+      "rbi": 756,
+      "leftOnBase": 1165,
+      "sacBunts": 15,
+      "sacFlies": 49,
+      "babip": ".297",
+      "groundOutsToAirouts": "0.82",
+      "catchersInterference": 3,
+      "atBatsPerHomeRun": "26.72"
+     },
+     "team": {
+      "id": 119,
+      "name": "Los Angeles Dodgers",
+      "link": "/api/v1/teams/119"
+     }
+    }
+   ]
+  },
+  {
+   "type": {
+    "displayName": "season"
+   },
+   "group": {
+    "displayName": "pitching"
+   },
+   "exemptions": [],
+   "splits": [
+    {
+     "season": "2026",
+     "stat": {
+      "gamesPlayed": 162,
+      "gamesStarted": 162,
+      "groundOuts": 1274,
+      "airOuts": 1419,
+      "runs": 600,
+      "doubles": 231,
+      "triples": 16,
+      "homeRuns": 172,
+      "strikeOuts": 1521,
+      "baseOnBalls": 480,
+      "intentionalWalks": 32,
+      "hits": 1159,
+      "hitByPitch": 68,
+      "avg": ".218",
+      "atBats": 5318,
+      "obp": ".289",
+      "slg": ".364",
+      "ops": ".653",
+      "caughtStealing": 27,
+      "stolenBases": 111,
+      "stolenBasePercentage": ".804",
+      "caughtStealingPercentage": ".196",
+      "groundIntoDoublePlay": 80,
+      "numberOfPitches": 23193,
+      "era": "3.55",
+      "inningsPitched": "1435.2",
+      "wins": 100,
+      "losses": 62,
+      "saves": 46,
+      "saveOpportunities": 69,
+      "holds": 102,
+      "blownSaves": 23,
+      "earnedRuns": 566,
+      "whip": "1.14",
+      "battersFaced": 5921,
+      "outs": 4307,
+      "gamesPitched": 162,
+      "completeGames": 1,
+      "shutouts": 14,
+      "strikes": 15126,
+      "strikePercentage": ".650",
+      "hitBatsmen": 68,
+      "balks": 7,
+      "wildPitches": 39,
+      "pickoffs": 8,
+      "totalBases": 1938,
+      "groundOutsToAirouts": "0.90",
+      "winPercentage": ".617",
+      "pitchesPerInning": "16.15",
+      "gamesFinished": 161,
+      "strikeoutWalkRatio": "3.17",
+      "strikeoutsPer9Inn": "9.53",
+      "walksPer9Inn": "3.01",
+      "hitsPer9Inn": "7.27",
+      "runsScoredPer9": "3.76",
+      "homeRunsPer9": "1.08",
+      "catchersInterference": 0,
+      "sacBunts": 24,
+      "sacFlies": 31
+     },
+     "team": {
+      "id": 119,
+      "name": "Los Angeles Dodgers",
+      "link": "/api/v1/teams/119"
+     }
+    }
+   ]
+  }
+ ]
+}

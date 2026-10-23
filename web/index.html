@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Bend vs MLB win probability</title>
+<style>
+  body { font: 15px/1.4 system-ui, sans-serif; margin: 24px; color: #222; background: #fff; }
+  h1 { font-size: 22px; margin: 0 0 4px; }
+  #stats { margin: 0 0 12px; color: #444; }
+  #stats b { color: #111; }
+  .bend { color: #2a6fdb; } .mlb { color: #e07a1f; }
+  svg text { font-size: 12px; fill: #555; }
+</style>
+</head>
+<body>
+<h1 id="title">Bend vs MLB</h1>
+<div id="stats">loading…</div>
+<svg id="chart" width="900" height="400" viewBox="0 0 900 400"></svg>
+<script>
+const pk = new URLSearchParams(location.search).get("pk") || "849805";
+const W = 900, H = 400, L = 48, R = 16, T = 16, B = 32;
+const NS = "http://www.w3.org/2000/svg";
+let meta = { away: "AWAY", home: "HOME" };
+
+function el(name, attrs, text) {
+  const e = document.createElementNS(NS, name);
+  for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+  if (text !== undefined) e.textContent = text;
+  return e;
+}
+
+function parseCsv(text) {
+  const lines = text.trim().split(/\r?\n/);
+  const head = lines.shift().split(",");
+  return lines.filter(l => l).map(l => {
+    const cells = l.split(",");
+    return Object.fromEntries(head.map((h, i) => [h, cells[i]]));
+  });
+}
+
+function num(v) { return v === "" || v === undefined ? null : Number(v); }
+
+function draw(rows) {
+  const svg = document.getElementById("chart");
+  svg.replaceChildren();
+  const n = Math.max(rows.length - 1, 1);
+  const x = i => L + (W - L - R) * i / n;
+  const y = p => T + (H - T - B) * (1 - p / 100);
+  for (const g of [0, 25, 50, 75, 100]) {
+    svg.append(el("line", { x1: L, x2: W - R, y1: y(g), y2: y(g),
+      stroke: g === 50 ? "#bbb" : "#e5e5e5", "stroke-width": 1 }));
+    svg.append(el("text", { x: L - 6, y: y(g) + 4, "text-anchor": "end" }, g + "%"));
+  }
+  svg.append(el("text", { x: L, y: H - 8 }, "pregame"));
+  svg.append(el("text", { x: W - R, y: H - 8, "text-anchor": "end" }, "latest play"));
+  svg.append(el("text", { x: L + 6, y: T + 12 }, meta.home + " win probability"));
+  const line = (key, color, dash) => {
+    let d = "", pen = false;
+    rows.forEach((r, i) => {
+      const v = num(r[key]);
+      if (v === null) { pen = false; return; }
+      d += (pen ? "L" : "M") + x(i).toFixed(1) + "," + y(v).toFixed(1);
+      pen = true;
+    });
+    if (d) svg.append(el("path", { d, fill: "none", stroke: color, "stroke-width": 2.5,
+      "stroke-dasharray": dash || "none" }));
+  };
+  line("mlb_home_wp", "#e07a1f", "6 4");
+  line("bend_home_wp", "#2a6fdb");
+}
+
+function latest(rows, key) {
+  for (let i = rows.length - 1; i >= 0; i--) if (num(rows[i][key]) !== null) return num(rows[i][key]);
+  return null;
+}
+
+function fmt(v, signed) {
+  if (v === null) return "--";
+  return (signed && v >= 0 ? "+" : "") + v.toFixed(1) + (signed ? "" : "%");
+}
+
+async function tick() {
+  try {
+    const res = await fetch(`/runs/${pk}.csv`, { cache: "no-store" });
+    if (!res.ok) throw new Error(res.status);
+    const rows = parseCsv(await res.text());
+    const last = rows[rows.length - 1] || {};
+    document.getElementById("stats").innerHTML =
+      `<span class="bend">Bend <b>${fmt(latest(rows, "bend_home_wp"))}</b></span> · ` +
+      `<span class="mlb">MLB <b>${fmt(latest(rows, "mlb_home_wp"))}</b></span> · ` +
+      `Δ <b>${fmt(latest(rows, "delta"), true)}</b> · ` +
+      `${last.half || ""}${last.inning || ""} ${last.outs || 0} out · ` +
+      `${meta.away} ${last.away_runs || 0} – ${meta.home} ${last.home_runs || 0} · ` +
+      `state ${last.state_check || "--"}`;
+    draw(rows);
+  } catch (e) {
+    document.getElementById("stats").textContent = "waiting for runs/" + pk + ".csv";
+  }
+}
+
+(async () => {
+  try {
+    meta = await (await fetch(`/runs/${pk}-meta.json`, { cache: "no-store" })).json();
+  } catch (e) {}
+  document.getElementById("title").textContent = `${meta.away} @ ${meta.home} — Bend vs MLB home win probability`;
+  await tick();
+  setInterval(tick, 5000);
+})();
+</script>
+</body>
+</html>

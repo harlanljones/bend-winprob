@@ -1,0 +1,139 @@
+{
+ "copyright": "Copyright 2026 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt",
+ "stats": [
+  {
+   "type": {
+    "displayName": "season"
+   },
+   "group": {
+    "displayName": "hitting"
+   },
+   "exemptions": [],
+   "splits": [
+    {
+     "season": "2026",
+     "stat": {
+      "gamesPlayed": 162,
+      "groundOuts": 1340,
+      "airOuts": 1581,
+      "runs": 678,
+      "doubles": 249,
+      "triples": 16,
+      "homeRuns": 162,
+      "strikeOuts": 1271,
+      "baseOnBalls": 574,
+      "intentionalWalks": 14,
+      "hits": 1291,
+      "hitByPitch": 58,
+      "avg": ".239",
+      "atBats": 5410,
+      "obp": ".316",
+      "slg": ".380",
+      "ops": ".696",
+      "caughtStealing": 31,
+      "stolenBases": 146,
+      "stolenBasePercentage": ".825",
+      "caughtStealingPercentage": ".175",
+      "groundIntoDoublePlay": 98,
+      "numberOfPitches": 24066,
+      "plateAppearances": 6117,
+      "totalBases": 2058,
+      "rbi": 650,
+      "leftOnBase": 1151,
+      "sacBunts": 28,
+      "sacFlies": 45,
+      "babip": ".281",
+      "groundOutsToAirouts": "0.85",
+      "catchersInterference": 2,
+      "atBatsPerHomeRun": "33.40"
+     },
+     "team": {
+      "id": 114,
+      "name": "Cleveland Guardians",
+      "link": "/api/v1/teams/114"
+     }
+    }
+   ]
+  },
+  {
+   "type": {
+    "displayName": "season"
+   },
+   "group": {
+    "displayName": "pitching"
+   },
+   "exemptions": [],
+   "splits": [
+    {
+     "season": "2026",
+     "stat": {
+      "gamesPlayed": 162,
+      "gamesStarted": 162,
+      "groundOuts": 1221,
+      "airOuts": 1441,
+      "runs": 667,
+      "doubles": 251,
+      "triples": 17,
+      "homeRuns": 175,
+      "strikeOuts": 1530,
+      "baseOnBalls": 530,
+      "intentionalWalks": 12,
+      "hits": 1288,
+      "hitByPitch": 74,
+      "avg": ".238",
+      "atBats": 5414,
+      "obp": ".312",
+      "slg": ".388",
+      "ops": ".700",
+      "caughtStealing": 22,
+      "stolenBases": 105,
+      "stolenBasePercentage": ".827",
+      "caughtStealingPercentage": ".173",
+      "groundIntoDoublePlay": 86,
+      "numberOfPitches": 24014,
+      "era": "3.77",
+      "inningsPitched": "1437.2",
+      "wins": 85,
+      "losses": 77,
+      "saves": 46,
+      "saveOpportunities": 64,
+      "holds": 117,
+      "blownSaves": 18,
+      "earnedRuns": 602,
+      "whip": "1.26",
+      "battersFaced": 6084,
+      "outs": 4313,
+      "gamesPitched": 162,
+      "completeGames": 0,
+      "shutouts": 6,
+      "strikes": 15358,
+      "strikePercentage": ".640",
+      "hitBatsmen": 74,
+      "balks": 2,
+      "wildPitches": 57,
+      "pickoffs": 14,
+      "totalBases": 2098,
+      "groundOutsToAirouts": "0.85",
+      "winPercentage": ".525",
+      "pitchesPerInning": "16.70",
+      "gamesFinished": 162,
+      "strikeoutWalkRatio": "2.89",
+      "strikeoutsPer9Inn": "9.58",
+      "walksPer9Inn": "3.32",
+      "hitsPer9Inn": "8.06",
+      "runsScoredPer9": "4.18",
+      "homeRunsPer9": "1.10",
+      "catchersInterference": 0,
+      "sacBunts": 22,
+      "sacFlies": 44
+     },
+     "team": {
+      "id": 114,
+      "name": "Cleveland Guardians",
+      "link": "/api/v1/teams/114"
+     }
+    }
+   ]
+  }
+ ]
+}

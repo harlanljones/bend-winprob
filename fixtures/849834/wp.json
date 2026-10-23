@@ -1,0 +1,286 @@
+[
+ {
+  "homeTeamWinProbability": 52.2,
+  "atBatIndex": 0
+ },
+ {
+  "homeTeamWinProbability": 53.800000000000004,
+  "atBatIndex": 1
+ },
+ {
+  "homeTeamWinProbability": 52.6,
+  "atBatIndex": 2
+ },
+ {
+  "homeTeamWinProbability": 54.800000000000004,
+  "atBatIndex": 3
+ },
+ {
+  "homeTeamWinProbability": 58.3,
+  "atBatIndex": 4
+ },
+ {
+  "homeTeamWinProbability": 63.6,
+  "atBatIndex": 5
+ },
+ {
+  "homeTeamWinProbability": 63.3,
+  "atBatIndex": 6
+ },
+ {
+  "homeTeamWinProbability": 64.5,
+  "atBatIndex": 7
+ },
+ {
+  "homeTeamWinProbability": 77.9,
+  "atBatIndex": 8
+ },
+ {
+  "homeTeamWinProbability": 73.2,
+  "atBatIndex": 9
+ },
+ {
+  "homeTeamWinProbability": 69.8,
+  "atBatIndex": 10
+ },
+ {
+  "homeTeamWinProbability": 72.1,
+  "atBatIndex": 11
+ },
+ {
+  "homeTeamWinProbability": 73.7,
+  "atBatIndex": 12
+ },
+ {
+  "homeTeamWinProbability": 74.7,
+  "atBatIndex": 13
+ },
+ {
+  "homeTeamWinProbability": 73.1,
+  "atBatIndex": 14
+ },
+ {
+  "homeTeamWinProbability": 72.0,
+  "atBatIndex": 15
+ },
+ {
+  "homeTeamWinProbability": 71.2,
+  "atBatIndex": 16
+ },
+ {
+  "homeTeamWinProbability": 73.6,
+  "atBatIndex": 17
+ },
+ {
+  "homeTeamWinProbability": 70.89999999999999,
+  "atBatIndex": 18
+ },
+ {
+  "homeTeamWinProbability": 76.4,
+  "atBatIndex": 19
+ },
+ {
+  "homeTeamWinProbability": 74.9,
+  "atBatIndex": 20
+ },
+ {
+  "homeTeamWinProbability": 76.6,
+  "atBatIndex": 21
+ },
+ {
+  "homeTeamWinProbability": 74.6,
+  "atBatIndex": 22
+ },
+ {
+  "homeTeamWinProbability": 72.89999999999999,
+  "atBatIndex": 23
+ },
+ {
+  "homeTeamWinProbability": 68.4,
+  "atBatIndex": 24
+ },
+ {
+  "homeTeamWinProbability": 61.5,
+  "atBatIndex": 25
+ },
+ {
+  "homeTeamWinProbability": 50.5,
+  "atBatIndex": 26
+ },
+ {
+  "homeTeamWinProbability": 56.99999999999999,
+  "atBatIndex": 27
+ },
+ {
+  "homeTeamWinProbability": 62.9,
+  "atBatIndex": 28
+ },
+ {
+  "homeTeamWinProbability": 68.5,
+  "atBatIndex": 29
+ },
+ {
+  "homeTeamWinProbability": 66.4,
+  "atBatIndex": 30
+ },
+ {
+  "homeTeamWinProbability": 68.7,
+  "atBatIndex": 31
+ },
+ {
+  "homeTeamWinProbability": 66.0,
+  "atBatIndex": 32
+ },
+ {
+  "homeTeamWinProbability": 63.800000000000004,
+  "atBatIndex": 33
+ },
+ {
+  "homeTeamWinProbability": 58.5,
+  "atBatIndex": 34
+ },
+ {
+  "homeTeamWinProbability": 63.4,
+  "atBatIndex": 35
+ },
+ {
+  "homeTeamWinProbability": 67.60000000000001,
+  "atBatIndex": 36
+ },
+ {
+  "homeTeamWinProbability": 70.8,
+  "atBatIndex": 37
+ },
+ {
+  "homeTeamWinProbability": 68.7,
+  "atBatIndex": 38
+ },
+ {
+  "homeTeamWinProbability": 67.10000000000001,
+  "atBatIndex": 39
+ },
+ {
+  "homeTeamWinProbability": 66.0,
+  "atBatIndex": 40
+ },
+ {
+  "homeTeamWinProbability": 60.0,
+  "atBatIndex": 41
+ },
+ {
+  "homeTeamWinProbability": 62.8,
+  "atBatIndex": 42
+ },
+ {
+  "homeTeamWinProbability": 59.3,
+  "atBatIndex": 43
+ },
+ {
+  "homeTeamWinProbability": 64.4,
+  "atBatIndex": 44
+ },
+ {
+  "homeTeamWinProbability": 35.699999999999996,
+  "atBatIndex": 45
+ },
+ {
+  "homeTeamWinProbability": 24.2,
+  "atBatIndex": 46
+ },
+ {
+  "homeTeamWinProbability": 26.0,
+  "atBatIndex": 47
+ },
+ {
+  "homeTeamWinProbability": 22.5,
+  "atBatIndex": 48
+ },
+ {
+  "homeTeamWinProbability": 20.0,
+  "atBatIndex": 49
+ },
+ {
+  "homeTeamWinProbability": 18.5,
+  "atBatIndex": 50
+ },
+ {
+  "homeTeamWinProbability": 20.1,
+  "atBatIndex": 51
+ },
+ {
+  "homeTeamWinProbability": 21.2,
+  "atBatIndex": 52
+ },
+ {
+  "homeTeamWinProbability": 22.1,
+  "atBatIndex": 53
+ },
+ {
+  "homeTeamWinProbability": 18.099999999999998,
+  "atBatIndex": 54
+ },
+ {
+  "homeTeamWinProbability": 15.4,
+  "atBatIndex": 55
+ },
+ {
+  "homeTeamWinProbability": 13.8,
+  "atBatIndex": 56
+ },
+ {
+  "homeTeamWinProbability": 15.0,
+  "atBatIndex": 57
+ },
+ {
+  "homeTeamWinProbability": 16.0,
+  "atBatIndex": 58
+ },
+ {
+  "homeTeamWinProbability": 16.7,
+  "atBatIndex": 59
+ },
+ {
+  "homeTeamWinProbability": 12.3,
+  "atBatIndex": 60
+ },
+ {
+  "homeTeamWinProbability": 9.3,
+  "atBatIndex": 61
+ },
+ {
+  "homeTeamWinProbability": 11.899999999999999,
+  "atBatIndex": 62
+ },
+ {
+  "homeTeamWinProbability": 28.1,
+  "atBatIndex": 63
+ },
+ {
+  "homeTeamWinProbability": 16.5,
+  "atBatIndex": 64
+ },
+ {
+  "homeTeamWinProbability": 18.099999999999998,
+  "atBatIndex": 65
+ },
+ {
+  "homeTeamWinProbability": 19.400000000000002,
+  "atBatIndex": 66
+ },
+ {
+  "homeTeamWinProbability": 20.4,
+  "atBatIndex": 67
+ },
+ {
+  "homeTeamWinProbability": 11.5,
+  "atBatIndex": 68
+ },
+ {
+  "homeTeamWinProbability": 4.7,
+  "atBatIndex": 69
+ },
+ {
+  "homeTeamWinProbability": 0.0,
+  "atBatIndex": 70
+ }
+]
