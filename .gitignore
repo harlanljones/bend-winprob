@@ -1,6 +1,6 @@
 /wp
 /wp.gpu
 /runs/
-/__pycache__/
+__pycache__/
 /.env
 /cloudflare/.wrangler/
