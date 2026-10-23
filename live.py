@@ -74,8 +74,9 @@ def fetch(url):
 class Source:
     """Replay reads fixtures/<pk>/<name>.json, fetching and saving any missing one."""
 
-    def __init__(self, pk, cache):
+    def __init__(self, pk, cache, allow_fetch=True):
         self.pk = pk
+        self.allow_fetch = allow_fetch
         self.dir = ROOT / "fixtures" / str(pk) if cache else None
 
     def get(self, name, **kw):
@@ -85,6 +86,8 @@ class Source:
         path = self.dir / f"{name}.json"
         if path.exists():
             return json.loads(path.read_text())
+        if not self.allow_fetch:
+            raise FileNotFoundError(f"missing fixture {path}; rerun with --fetch to download it")
         data = fetch(url)
         self.dir.mkdir(parents=True, exist_ok=True)
         path.write_text(json.dumps(data, indent=1))
@@ -283,9 +286,10 @@ class Publisher:
 class Book:
     """Rows keyed by at_bat_index (-1: pregame), rewritten to runs/<pk>.csv (and published)."""
 
-    def __init__(self, pk, away, home, depth, mode, publisher=None):
+    def __init__(self, pk, away, home, depth, mode, publisher=None, verbose=True):
         self.pk, self.away, self.home, self.depth, self.mode = pk, away, home, depth, mode
         self.publisher = publisher
+        self.verbose = verbose
         self.rows = {}
         self.mismatches = 0
         runs = ROOT / "runs"
@@ -312,7 +316,9 @@ class Book:
             "seconds": round(b["seconds"], 3), "mode": self.mode, "state_check": check,
         }
         self.fill_delta(idx)
-        self.print_row(idx)
+        if self.verbose:
+            self.print_row(idx)
+        return self.rows[idx]
 
     def fill_delta(self, idx):
         r = self.rows[idx]
@@ -395,39 +401,11 @@ def teams_of(status):
 
 
 def replay(args):
-    src = Source(args.pk, cache=True)
-    status = src.get("status")
-    teams = teams_of(status)
-    away_cum, home_cum = game_rates(src, teams)
-    (ROOT / "runs").mkdir(exist_ok=True)
-    (ROOT / "runs" / f"{args.pk}-rates.json").write_text(json.dumps({"away": away_cum, "home": home_cum}))
-    plays = complete_plays(src.get("plays"))
-    wp = wp_map(src.get("wp"))
-    codes = [encode_play(p) for p in plays]
-    book = Book(args.pk, teams["away"]["abbr"], teams["home"]["abbr"], args.depth, args.mode, args.publisher)
-    print(f"{teams['away']['abbr']} @ {teams['home']['abbr']}  awayCum {away_cum}  homeCum {home_cum}")
-    errors = 0
-    b = None
-    for k in range(len(plays) + 1):
-        try:
-            b = run_bend(args.depth, seed_for(k), away_cum, home_cum, codes[:k], args.mode)
-        except BendError as e:
-            errors += 1
-            print(f"#{plays[k - 1]['about']['atBatIndex'] if k else 'pre'} bend error: {e}", flush=True)
-            continue
-        if k == 0:
-            book.add(-1, b, None, None)
-        else:
-            idx = plays[k - 1]["about"]["atBatIndex"]
-            book.add(idx, b, plays[k - 1], wp.get(idx))
-    final = status["gameData"]["status"]["abstractGameState"] == "Final"
-    box_ok = True
-    if final and b is not None:
-        book.final(b["home_runs"] > b["away_runs"])
-        box_ok = box_check(src.get("box"), src.get("linescore"), b)
-    book.write()
-    book.summary()
-    return 0 if errors == 0 and book.mismatches == 0 and box_ok else 1
+    # Lazy import avoids a cycle: sim_engine reuses this module's host helpers.
+    from sim_engine import ReplayEngine
+    engine = ReplayEngine(args.pk, depth=args.depth, mode=args.mode,
+                          publisher=args.publisher, fetch=True, verbose=True)
+    return engine.run()
 
 
 def serve(port):
