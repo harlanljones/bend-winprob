@@ -16,7 +16,6 @@ def add_succ(a: Nat, -b: Nat) -> {1n+Nat.add(a, b) == Nat.add(a, 1n+b) : Nat}:
       %add_succ(p, b) : {2n+Nat.add(p, b) == 1n+_ : Nat}
       {==}
 
-# the first two terms of a triple sum swap
 def add_swap(x: Nat, +y: Nat, +z: Nat) -> {Nat.add(x, Nat.add(y, z)) == Nat.add(y, Nat.add(x, z)) : Nat}:
   match x:
     case 0n:
@@ -26,7 +25,6 @@ def add_swap(x: Nat, +y: Nat, +z: Nat) -> {Nat.add(x, Nat.add(y, z)) == Nat.add(
       %add_swap(q, y, z) : {1n+Nat.add(q, Nat.add(y, z)) == 1n+_ : Nat}
       {==}
 
-# (a + b) + (c + d) == (a + c) + (b + d)
 def swap4(a: Nat, +b: Nat, +c: Nat, +d: Nat) -> {Nat.add(Nat.add(a, b), Nat.add(c, d)) == Nat.add(Nat.add(a, c), Nat.add(b, d)) : Nat}:
   match a:
     case 0n:
@@ -67,8 +65,6 @@ def Laws.sims_all_counted(d, i, c):
 
 # Outs
 # ----
-# A half closes at three outs and a play past three is refused, so the
-# outs a state shows are 0, 1, 2, or those it had.
 
 def outs_close(o: Nat, top: Bool, -inn: Nat, -so: Nat, -sb: Game.Bases, -away: Game.Line, -home: Game.Line, -rej: Nat, -bs: Game.Bases, -l: Game.Line, w: {Nat.is_lt(so, 3n) == True{} : Bool})
   -> {Nat.is_lt(Game.outs(Game.close(o, Game.State{inn, top, so, sb, away, home, rej}, bs, l)), 3n) == True{} : Bool}:
@@ -135,14 +131,15 @@ def Laws.outs_below_three(ps):
 
 # Box score (OBR 9.03(c))
 # -----------------------
-# HBal(e, h): the batting side's batters equal e runners in hand, plus the
-# runners on base, plus its runs, outs and left on base. A slot takes a
-# runner into the hand (from a base, or a new batter) and puts it down (on
-# a base, home, or out), so every slot keeps HBal(0n, ..).
+# HBal(e, h): batters equal e held runners, plus runners on base, runs,
+# outs and left on base. The take pass increases e; the place pass lowers it.
 
 def sym(-A: Type, -a: A, -b: A, e: {a == b : A}) -> {b == a : A}:
   %e : {_ == a : A}
   {==}
+
+def add_succ_back(a: Nat, -b: Nat) -> {Nat.add(a, 1n+b) == 1n+Nat.add(a, b) : Nat}:
+  sym(Nat, 1n+Nat.add(a, b), Nat.add(a, 1n+b), add_succ(a, b))
 
 def HBal(e: Nat, h: Game.Half) -> Type:
   match h:
@@ -178,42 +175,45 @@ def count_b3(b1: Bool, b2: Bool) -> {Game.count(Game.Bases{b1, b2, True{}}) == 1
         case False{}:
           {==}
 
-def take1_bal(h: Game.Half, w: HBal(0n, h)) -> OkM(1n, Game.take1(h)):
+def take1_bal_e(e: Nat, h: Game.Half, w: HBal(e, h)) -> OkM(1n+e, Game.take1(h)):
   match h:
-    case Game.Half{bs, l, o}:
+    case Game.Half{bs, +l, o}:
       match bs:
         case Game.Bases{b1, b2, b3}:
           match b1:
             case True{}:
+              %add_succ_back(e, Nat.add(Game.count(Game.Bases{False{}, b2, b3}), Game.line_demand(l))) : {Game.line_bat(l) == _ : Nat}
               w
             case False{}:
               Unit{}
 
-def take2_bal(h: Game.Half, w: HBal(0n, h)) -> OkM(1n, Game.take2(h)):
+def take2_bal_e(e: Nat, h: Game.Half, w: HBal(e, h)) -> OkM(1n+e, Game.take2(h)):
   match h:
     case Game.Half{bs, +l, o}:
       match bs:
         case Game.Bases{+b1, b2, +b3}:
           match b2:
             case True{}:
-              %count_b2(b1, b3) : {Game.line_bat(l) == Nat.add(_, Game.line_demand(l)) : Nat}
+              %add_succ_back(e, Nat.add(Game.count(Game.Bases{b1, False{}, b3}), Game.line_demand(l))) : {Game.line_bat(l) == _ : Nat}
+              %count_b2(b1, b3) : {Game.line_bat(l) == Nat.add(e, Nat.add(_, Game.line_demand(l))) : Nat}
               w
             case False{}:
               Unit{}
 
-def take3_bal(h: Game.Half, w: HBal(0n, h)) -> OkM(1n, Game.take3(h)):
+def take3_bal_e(e: Nat, h: Game.Half, w: HBal(e, h)) -> OkM(1n+e, Game.take3(h)):
   match h:
     case Game.Half{bs, +l, o}:
       match bs:
         case Game.Bases{+b1, +b2, b3}:
           match b3:
             case True{}:
-              %count_b3(b1, b2) : {Game.line_bat(l) == Nat.add(_, Game.line_demand(l)) : Nat}
+              %add_succ_back(e, Nat.add(Game.count(Game.Bases{b1, b2, False{}}), Game.line_demand(l))) : {Game.line_bat(l) == _ : Nat}
+              %count_b3(b1, b2) : {Game.line_bat(l) == Nat.add(e, Nat.add(_, Game.line_demand(l))) : Nat}
               w
             case False{}:
               Unit{}
 
-def take_bat_bal(h: Game.Half, w: HBal(0n, h)) -> HBal(1n, Game.take_bat(h)):
+def take_bat_bal_e(e: Nat, h: Game.Half, w: HBal(e, h)) -> HBal(1n+e, Game.take_bat(h)):
   match h:
     case Game.Half{+bs, l, o}:
       match l:
@@ -221,7 +221,22 @@ def take_bat_bal(h: Game.Half, w: HBal(0n, h)) -> HBal(1n, Game.take_bat(h)):
           %w : {1n+bat == 1n+_ : Nat}
           {==}
 
-def put_bal(d: Game.Dest, h: Game.Half, w: HBal(1n, h)) -> OkM(0n, Game.put(d, h)):
+def take_origin_bal(k: Nat, e: Nat, h: Game.Half, w: HBal(e, h)) -> OkM(1n+e, Game.take_origin(k, h)):
+  match k:
+    case 0n:
+      take3_bal_e(e, h, w)
+    case 1n+k1:
+      match k1:
+        case 0n:
+          take2_bal_e(e, h, w)
+        case 1n+k2:
+          match k2:
+            case 0n:
+              take1_bal_e(e, h, w)
+            case 1n+k3:
+              take_bat_bal_e(e, h, w)
+
+def put_bal_e(e: Nat, d: Game.Dest, h: Game.Half, w: HBal(1n+e, h)) -> OkM(e, Game.put(d, h)):
   match d:
     case Game.Absent{}:
       Unit{}
@@ -230,25 +245,28 @@ def put_bal(d: Game.Dest, h: Game.Half, w: HBal(1n, h)) -> OkM(0n, Game.put(d, h
         case Game.Half{+bs, l, o}:
           match l:
             case Game.Line{+bat, +runs, +lo, +lob}:
-              %add_succ(runs, Nat.add(lo, lob)) : {bat == Nat.add(Game.count(bs), _) : Nat}
-              %add_succ(Game.count(bs), Nat.add(runs, Nat.add(lo, lob))) : {bat == _ : Nat}
+              %add_succ(runs, Nat.add(lo, lob)) : {bat == Nat.add(e, Nat.add(Game.count(bs), _)) : Nat}
+              %add_succ(Game.count(bs), Nat.add(runs, Nat.add(lo, lob))) : {bat == Nat.add(e, _) : Nat}
+              %add_succ(e, Nat.add(Game.count(bs), Nat.add(runs, Nat.add(lo, lob)))) : {bat == _ : Nat}
               w
     case Game.Run{}:
       match h:
         case Game.Half{+bs, l, o}:
           match l:
             case Game.Line{+bat, +runs, +lo, +lob}:
-              %add_succ(Game.count(bs), Nat.add(runs, Nat.add(lo, lob))) : {bat == _ : Nat}
+              %add_succ(Game.count(bs), Nat.add(runs, Nat.add(lo, lob))) : {bat == Nat.add(e, _) : Nat}
+              %add_succ(e, Nat.add(Game.count(bs), Nat.add(runs, Nat.add(lo, lob)))) : {bat == _ : Nat}
               w
     case Game.To1{}:
       match h:
-        case Game.Half{bs, l, o}:
+        case Game.Half{bs, +l, o}:
           match bs:
             case Game.Bases{b1, b2, b3}:
               match b1:
                 case True{}:
                   Unit{}
                 case False{}:
+                  %add_succ(e, Nat.add(Game.count(Game.Bases{False{}, b2, b3}), Game.line_demand(l))) : {Game.line_bat(l) == _ : Nat}
                   w
     case Game.To2{}:
       match h:
@@ -259,7 +277,8 @@ def put_bal(d: Game.Dest, h: Game.Half, w: HBal(1n, h)) -> OkM(0n, Game.put(d, h
                 case True{}:
                   Unit{}
                 case False{}:
-                  %sym(Nat, Game.count(Game.Bases{b1, True{}, b3}), 1n+Game.count(Game.Bases{b1, False{}, b3}), count_b2(b1, b3)) : {Game.line_bat(l) == Nat.add(_, Game.line_demand(l)) : Nat}
+                  %sym(Nat, Game.count(Game.Bases{b1, True{}, b3}), 1n+Game.count(Game.Bases{b1, False{}, b3}), count_b2(b1, b3)) : {Game.line_bat(l) == Nat.add(e, Nat.add(_, Game.line_demand(l))) : Nat}
+                  %add_succ(e, Nat.add(Game.count(Game.Bases{b1, False{}, b3}), Game.line_demand(l))) : {Game.line_bat(l) == _ : Nat}
                   w
     case Game.To3{}:
       match h:
@@ -270,107 +289,155 @@ def put_bal(d: Game.Dest, h: Game.Half, w: HBal(1n, h)) -> OkM(0n, Game.put(d, h
                 case True{}:
                   Unit{}
                 case False{}:
-                  %sym(Nat, Game.count(Game.Bases{b1, b2, True{}}), 1n+Game.count(Game.Bases{b1, b2, False{}}), count_b3(b1, b2)) : {Game.line_bat(l) == Nat.add(_, Game.line_demand(l)) : Nat}
+                  %sym(Nat, Game.count(Game.Bases{b1, b2, True{}}), 1n+Game.count(Game.Bases{b1, b2, False{}}), count_b3(b1, b2)) : {Game.line_bat(l) == Nat.add(e, Nat.add(_, Game.line_demand(l))) : Nat}
+                  %add_succ(e, Nat.add(Game.count(Game.Bases{b1, b2, False{}}), Game.line_demand(l))) : {Game.line_bat(l) == _ : Nat}
                   w
 
-def putm_bal(m: Maybe<Game.Half>, d: Game.Dest, w: OkM(1n, m)) -> OkM(0n, Game.put_m(d, m)):
-  match m:
-    case None{}:
-      Unit{}
-    case Some{h}:
-      put_bal(d, h, w)
-
-def slot3_bal(d: Game.Dest, +h: Game.Half, w: HBal(0n, h)) -> OkM(0n, Game.slot3(d, h)):
-  match d:
-    case Game.Absent{}:
-      w
-    case Game.Out{}:
-      putm_bal(Game.take3(h), Game.Out{}, take3_bal(h, w))
-    case Game.Run{}:
-      putm_bal(Game.take3(h), Game.Run{}, take3_bal(h, w))
-    case Game.To1{}:
-      putm_bal(Game.take3(h), Game.To1{}, take3_bal(h, w))
-    case Game.To2{}:
-      putm_bal(Game.take3(h), Game.To2{}, take3_bal(h, w))
-    case Game.To3{}:
-      putm_bal(Game.take3(h), Game.To3{}, take3_bal(h, w))
-
-def slot2_bal(d: Game.Dest, +h: Game.Half, w: HBal(0n, h)) -> OkM(0n, Game.slot2(d, h)):
-  match d:
-    case Game.Absent{}:
-      w
-    case Game.Out{}:
-      putm_bal(Game.take2(h), Game.Out{}, take2_bal(h, w))
-    case Game.Run{}:
-      putm_bal(Game.take2(h), Game.Run{}, take2_bal(h, w))
-    case Game.To1{}:
-      putm_bal(Game.take2(h), Game.To1{}, take2_bal(h, w))
-    case Game.To2{}:
-      putm_bal(Game.take2(h), Game.To2{}, take2_bal(h, w))
-    case Game.To3{}:
-      putm_bal(Game.take2(h), Game.To3{}, take2_bal(h, w))
-
-def slot1_bal(d: Game.Dest, +h: Game.Half, w: HBal(0n, h)) -> OkM(0n, Game.slot1(d, h)):
-  match d:
-    case Game.Absent{}:
-      w
-    case Game.Out{}:
-      putm_bal(Game.take1(h), Game.Out{}, take1_bal(h, w))
-    case Game.Run{}:
-      putm_bal(Game.take1(h), Game.Run{}, take1_bal(h, w))
-    case Game.To1{}:
-      putm_bal(Game.take1(h), Game.To1{}, take1_bal(h, w))
-    case Game.To2{}:
-      putm_bal(Game.take1(h), Game.To2{}, take1_bal(h, w))
-    case Game.To3{}:
-      putm_bal(Game.take1(h), Game.To3{}, take1_bal(h, w))
-
-def slotb_bal(d: Game.Dest, +h: Game.Half, w: HBal(0n, h)) -> OkM(0n, Game.slotb(d, h)):
-  match d:
-    case Game.Absent{}:
-      w
-    case Game.Out{}:
-      put_bal(Game.Out{}, Game.take_bat(h), take_bat_bal(h, w))
-    case Game.Run{}:
-      put_bal(Game.Run{}, Game.take_bat(h), take_bat_bal(h, w))
-    case Game.To1{}:
-      put_bal(Game.To1{}, Game.take_bat(h), take_bat_bal(h, w))
-    case Game.To2{}:
-      put_bal(Game.To2{}, Game.take_bat(h), take_bat_bal(h, w))
-    case Game.To3{}:
-      put_bal(Game.To3{}, Game.take_bat(h), take_bat_bal(h, w))
-
-def chainb_bal(m: Maybe<Game.Half>, bd: Game.Dest, w: OkM(0n, m)) -> OkM(0n, Game.chain_b(m, bd)):
-  match m:
-    case None{}:
-      Unit{}
-    case Some{h}:
-      slotb_bal(bd, h, w)
-
-def chain1_bal(m: Maybe<Game.Half>, +r1: Game.Dest, bd: Game.Dest, w: OkM(0n, m)) -> OkM(0n, Game.chain_1(m, r1, bd)):
-  match m:
-    case None{}:
-      Unit{}
-    case Some{+h}:
-      chainb_bal(Game.slot1(r1, h), bd, slot1_bal(r1, h, w))
-
-def chain2_bal(m: Maybe<Game.Half>, +r2: Game.Dest, r1: Game.Dest, bd: Game.Dest, w: OkM(0n, m)) -> OkM(0n, Game.chain_2(m, r2, r1, bd)):
-  match m:
-    case None{}:
-      Unit{}
-    case Some{+h}:
-      chain1_bal(Game.slot2(r2, h), r1, bd, slot2_bal(r2, h, w))
-
-def slots_bal(p: Game.Play, +h: Game.Half, w: HBal(0n, h)) -> OkM(0n, Game.slots(p, h)):
+# Pending predicates: the hand count is part of the invariant.
+def PBal(p: Game.Pending) -> Type:
   match p:
-    case Game.Play{+r3, r2, r1, bd}:
-      chain2_bal(Game.slot3(r3, h), r2, r1, bd, slot3_bal(r3, h, w))
+    case Game.Pending{+h, +n, _, _, _, _}:
+      HBal(n, h)
+
+def OkP(m: Maybe<&2, Game.Pending>) -> Type:
+  match m:
+    case None{}:
+      Unit
+    case Some{p}:
+      PBal(p)
+
+def take_done_bal(m: Maybe<Game.Half>, p: Game.Pending, w: OkM(1n+Game.p_hand(p), m)) -> OkP(Game.take_slot_done(m, p)):
+  match m:
+    case None{}:
+      Unit{}
+    case Some{h}:
+      match p:
+        case Game.Pending{_, n, r3, r2, r1, bd}:
+          w
+
+def take_dest_move(d: Game.Dest, +k: Nat, p: Game.Pending, w: PBal(p)) -> OkP(Game.take_slot_dest(True{}, k, p)):
+  match p:
+    case Game.Pending{+h, +n, r3, r2, r1, bd}:
+      take_done_bal(Game.take_origin(k, h), Game.Pending{h, n, r3, r2, r1, bd}, take_origin_bal(k, n, h, w))
+
+def take_dest_absent(k: Nat, p: Game.Pending, w: PBal(p)) -> OkP(Game.take_slot_dest(False{}, k, p)):
+  match p:
+    case Game.Pending{h, n, r3, r2, r1, bd}:
+      w
+
+def take_dest_bal(d: Game.Dest, +k: Nat, p: Game.Pending, w: PBal(p)) -> OkP(Game.take_slot_dest(Game.is_moved(d), k, p)):
+  match d:
+    case Game.Absent{}:
+      take_dest_absent(k, p, w)
+    case Game.Out{}:
+      take_dest_move(d, k, p, w)
+    case Game.Run{}:
+      take_dest_move(d, k, p, w)
+    case Game.To1{}:
+      take_dest_move(d, k, p, w)
+    case Game.To2{}:
+      take_dest_move(d, k, p, w)
+    case Game.To3{}:
+      take_dest_move(d, k, p, w)
+
+def take_slot_bal(+k: Nat, +p: Game.Pending, w: PBal(p)) -> OkP(Game.take_slot(k, p)):
+  match p:
+    case Game.Pending{+h, +n, r3, r2, r1, bd}:
+      +q = {Game.Pending{h, n, r3, r2, r1, bd} : Game.Pending}
+      take_dest_bal(Game.p_dest(k, q), k, q, w)
+
+def bind_take_bal(+k: Nat, m: Maybe<&2, Game.Pending>, w: OkP(m)) -> OkP(Game.bind_take(k, m)):
+  match m:
+    case None{}:
+      Unit{}
+    case Some{p}:
+      take_slot_bal(k, p, w)
+
+def take_all_bal(+p: Game.Play, +h: Game.Half, w: HBal(0n, h)) -> OkP(Game.take_all(p, h)):
+  match p:
+    case Game.Play{+r3, +r2, +r1, +bd}:
+      bind_take_bal(3n, Game.bind_take(2n, Game.bind_take(1n, Game.take_slot(0n, Game.Pending{h, 0n, r3, r2, r1, bd}))),
+        bind_take_bal(2n, Game.bind_take(1n, Game.take_slot(0n, Game.Pending{h, 0n, r3, r2, r1, bd})),
+          bind_take_bal(1n, Game.take_slot(0n, Game.Pending{h, 0n, r3, r2, r1, bd}),
+            take_slot_bal(0n, Game.Pending{h, 0n, r3, r2, r1, bd}, w))))
+
+def place_done_bal(m: Maybe<Game.Half>, e: Nat, p: Game.Pending, w: OkM(e, m)) -> OkP(Game.place_slot_done(m, e, p)):
+  match m:
+    case None{}:
+      Unit{}
+    case Some{h}:
+      match p:
+        case Game.Pending{_, n, r3, r2, r1, bd}:
+          w
+
+def place_dest_absent(p: Game.Pending, w: PBal(p)) -> OkP(Game.place_slot_dest(Game.Absent{}, p)):
+  match p:
+    case Game.Pending{h, n, r3, r2, r1, bd}:
+      w
+
+def place_dest_move(+d: Game.Dest, p: Game.Pending, w: PBal(p)) -> OkP(Game.place_slot_dest.go(True{}, d, p)):
+  match p:
+    case Game.Pending{+h, +n, r3, r2, r1, bd}:
+      match n:
+        case 0n:
+          Unit{}
+        case 1n+e:
+          place_done_bal(Game.put(d, h), e, Game.Pending{h, n, r3, r2, r1, bd}, put_bal_e(e, d, h, w))
+
+def place_dest_bal(d: Game.Dest, p: Game.Pending, w: PBal(p)) -> OkP(Game.place_slot_dest(d, p)):
+  match d:
+    case Game.Absent{}:
+      place_dest_absent(p, w)
+    case Game.Out{}:
+      place_dest_move(d, p, w)
+    case Game.Run{}:
+      place_dest_move(d, p, w)
+    case Game.To1{}:
+      place_dest_move(d, p, w)
+    case Game.To2{}:
+      place_dest_move(d, p, w)
+    case Game.To3{}:
+      place_dest_move(d, p, w)
+
+def place_slot_bal(+k: Nat, +p: Game.Pending, w: PBal(p)) -> OkP(Game.place_slot(k, p)):
+  match p:
+    case Game.Pending{+h, +n, r3, r2, r1, bd}:
+      +q = {Game.Pending{h, n, r3, r2, r1, bd} : Game.Pending}
+      place_dest_bal(Game.p_dest(k, q), q, w)
+
+def bind_place_bal(+k: Nat, m: Maybe<&2, Game.Pending>, w: OkP(m)) -> OkP(Game.bind_place(k, m)):
+  match m:
+    case None{}:
+      Unit{}
+    case Some{p}:
+      place_slot_bal(k, p, w)
+
+def finish_bal(m: Maybe<&2, Game.Pending>, w: OkP(m)) -> OkM(0n, Game.finish(m)):
+  match m:
+    case None{}:
+      Unit{}
+    case Some{p}:
+      match p:
+        case Game.Pending{h, n, r3, r2, r1, bd}:
+          match n:
+            case 0n:
+              w
+            case 1n+e:
+              Unit{}
+
+def put_all_bal(+m: Maybe<&2, Game.Pending>, w: OkP(m)) -> OkM(0n, Game.put_all(m)):
+  finish_bal(Game.bind_place(3n, Game.bind_place(2n, Game.bind_place(1n, Game.bind_place(0n, m)))),
+    bind_place_bal(3n, Game.bind_place(2n, Game.bind_place(1n, Game.bind_place(0n, m))),
+      bind_place_bal(2n, Game.bind_place(1n, Game.bind_place(0n, m)),
+        bind_place_bal(1n, Game.bind_place(0n, m), bind_place_bal(0n, m, w)))))
+
+def slots_bal(+p: Game.Play, +h: Game.Half, w: HBal(0n, h)) -> OkM(0n, Game.slots(p, h)):
+  put_all_bal(Game.take_all(p, h), take_all_bal(p, h, w))
 
 # The whole state: both teams balance (the side in the field has no one on base).
 def SBal(+s: Game.State) -> Type:
   {Game.away_supply(s) == Game.away_demand(s) : Nat} & {Game.home_supply(s) == Game.home_demand(s) : Nat}
 
-# A half ends: its runners on base become left on base.
 def lob_move(+c: Nat, l: Game.Line, w: {Game.line_bat(l) == Nat.add(c, Game.line_demand(l)) : Nat})
   -> {Game.line_bat(Game.add_lob(l, c)) == Game.line_demand(Game.add_lob(l, c)) : Nat}:
   match l:
@@ -482,8 +549,6 @@ def Laws.box_balances_home(ps):
 
 # Runs
 # ----
-# No slot takes a run away: RGe(r0, h) says the batting line has at least r0
-# runs, and every take and put keeps it (a run adds one).
 
 def BD(b: Bool, t: Type, f: Type) -> Type:
   match b:
@@ -608,98 +673,160 @@ def put_r(d: Game.Dest, +r0: Nat, h: Game.Half, w: RGe(r0, h)) -> OkR(r0, Game.p
                 case False{}:
                   w
 
-def putm_r(m: Maybe<Game.Half>, d: Game.Dest, +r0: Nat, w: OkR(r0, m)) -> OkR(r0, Game.put_m(d, m)):
-  match m:
-    case None{}:
-      Unit{}
-    case Some{h}:
-      put_r(d, r0, h, w)
+def take_origin_r(k: Nat, +r0: Nat, h: Game.Half, w: RGe(r0, h)) -> OkR(r0, Game.take_origin(k, h)):
+  match k:
+    case 0n:
+      take3_r(r0, h, w)
+    case 1n+k1:
+      match k1:
+        case 0n:
+          take2_r(r0, h, w)
+        case 1n+k2:
+          match k2:
+            case 0n:
+              take1_r(r0, h, w)
+            case 1n+k3:
+              take_bat_r(r0, h, w)
 
-def slot3_r(d: Game.Dest, +r0: Nat, +h: Game.Half, w: RGe(r0, h)) -> OkR(r0, Game.slot3(d, h)):
-  match d:
-    case Game.Absent{}:
-      w
-    case Game.Out{}:
-      putm_r(Game.take3(h), Game.Out{}, r0, take3_r(r0, h, w))
-    case Game.Run{}:
-      putm_r(Game.take3(h), Game.Run{}, r0, take3_r(r0, h, w))
-    case Game.To1{}:
-      putm_r(Game.take3(h), Game.To1{}, r0, take3_r(r0, h, w))
-    case Game.To2{}:
-      putm_r(Game.take3(h), Game.To2{}, r0, take3_r(r0, h, w))
-    case Game.To3{}:
-      putm_r(Game.take3(h), Game.To3{}, r0, take3_r(r0, h, w))
-
-def slot2_r(d: Game.Dest, +r0: Nat, +h: Game.Half, w: RGe(r0, h)) -> OkR(r0, Game.slot2(d, h)):
-  match d:
-    case Game.Absent{}:
-      w
-    case Game.Out{}:
-      putm_r(Game.take2(h), Game.Out{}, r0, take2_r(r0, h, w))
-    case Game.Run{}:
-      putm_r(Game.take2(h), Game.Run{}, r0, take2_r(r0, h, w))
-    case Game.To1{}:
-      putm_r(Game.take2(h), Game.To1{}, r0, take2_r(r0, h, w))
-    case Game.To2{}:
-      putm_r(Game.take2(h), Game.To2{}, r0, take2_r(r0, h, w))
-    case Game.To3{}:
-      putm_r(Game.take2(h), Game.To3{}, r0, take2_r(r0, h, w))
-
-def slot1_r(d: Game.Dest, +r0: Nat, +h: Game.Half, w: RGe(r0, h)) -> OkR(r0, Game.slot1(d, h)):
-  match d:
-    case Game.Absent{}:
-      w
-    case Game.Out{}:
-      putm_r(Game.take1(h), Game.Out{}, r0, take1_r(r0, h, w))
-    case Game.Run{}:
-      putm_r(Game.take1(h), Game.Run{}, r0, take1_r(r0, h, w))
-    case Game.To1{}:
-      putm_r(Game.take1(h), Game.To1{}, r0, take1_r(r0, h, w))
-    case Game.To2{}:
-      putm_r(Game.take1(h), Game.To2{}, r0, take1_r(r0, h, w))
-    case Game.To3{}:
-      putm_r(Game.take1(h), Game.To3{}, r0, take1_r(r0, h, w))
-
-def slotb_r(d: Game.Dest, +r0: Nat, +h: Game.Half, w: RGe(r0, h)) -> OkR(r0, Game.slotb(d, h)):
-  match d:
-    case Game.Absent{}:
-      w
-    case Game.Out{}:
-      put_r(Game.Out{}, r0, Game.take_bat(h), take_bat_r(r0, h, w))
-    case Game.Run{}:
-      put_r(Game.Run{}, r0, Game.take_bat(h), take_bat_r(r0, h, w))
-    case Game.To1{}:
-      put_r(Game.To1{}, r0, Game.take_bat(h), take_bat_r(r0, h, w))
-    case Game.To2{}:
-      put_r(Game.To2{}, r0, Game.take_bat(h), take_bat_r(r0, h, w))
-    case Game.To3{}:
-      put_r(Game.To3{}, r0, Game.take_bat(h), take_bat_r(r0, h, w))
-
-def chainb_r(m: Maybe<Game.Half>, bd: Game.Dest, +r0: Nat, w: OkR(r0, m)) -> OkR(r0, Game.chain_b(m, bd)):
-  match m:
-    case None{}:
-      Unit{}
-    case Some{h}:
-      slotb_r(bd, r0, h, w)
-
-def chain1_r(m: Maybe<Game.Half>, +r1: Game.Dest, bd: Game.Dest, +r0: Nat, w: OkR(r0, m)) -> OkR(r0, Game.chain_1(m, r1, bd)):
-  match m:
-    case None{}:
-      Unit{}
-    case Some{+h}:
-      chainb_r(Game.slot1(r1, h), bd, r0, slot1_r(r1, r0, h, w))
-
-def chain2_r(m: Maybe<Game.Half>, +r2: Game.Dest, r1: Game.Dest, bd: Game.Dest, +r0: Nat, w: OkR(r0, m)) -> OkR(r0, Game.chain_2(m, r2, r1, bd)):
-  match m:
-    case None{}:
-      Unit{}
-    case Some{+h}:
-      chain1_r(Game.slot2(r2, h), r1, bd, r0, slot2_r(r2, r0, h, w))
-
-def slots_r(p: Game.Play, +r0: Nat, +h: Game.Half, w: RGe(r0, h)) -> OkR(r0, Game.slots(p, h)):
+def PGe(-r0: Nat, p: Game.Pending) -> Type:
   match p:
-    case Game.Play{+r3, r2, r1, bd}:
-      chain2_r(Game.slot3(r3, h), r2, r1, bd, r0, slot3_r(r3, r0, h, w))
+    case Game.Pending{h, n, r3, r2, r1, bd}:
+      RGe(r0, h)
+
+def OkPR(-r0: Nat, m: Maybe<&2, Game.Pending>) -> Type:
+  match m:
+    case None{}:
+      Unit
+    case Some{p}:
+      PGe(r0, p)
+
+def take_done_r(m: Maybe<Game.Half>, +r0: Nat, p: Game.Pending, w: OkR(r0, m)) -> OkPR(r0, Game.take_slot_done(m, p)):
+  match m:
+    case None{}:
+      Unit{}
+    case Some{h}:
+      match p:
+        case Game.Pending{_, n, r3, r2, r1, bd}:
+          w
+
+def take_dest_move_r(d: Game.Dest, +k: Nat, +r0: Nat, p: Game.Pending, w: PGe(r0, p)) -> OkPR(r0, Game.take_slot_dest(True{}, k, p)):
+  match p:
+    case Game.Pending{+h, n, r3, r2, r1, bd}:
+      take_done_r(Game.take_origin(k, h), r0, Game.Pending{h, n, r3, r2, r1, bd}, take_origin_r(k, r0, h, w))
+
+def take_dest_absent_r(k: Nat, +r0: Nat, p: Game.Pending, w: PGe(r0, p)) -> OkPR(r0, Game.take_slot_dest(False{}, k, p)):
+  match p:
+    case Game.Pending{h, n, r3, r2, r1, bd}:
+      w
+
+def take_dest_r(d: Game.Dest, +k: Nat, +r0: Nat, p: Game.Pending, w: PGe(r0, p)) -> OkPR(r0, Game.take_slot_dest(Game.is_moved(d), k, p)):
+  match d:
+    case Game.Absent{}:
+      take_dest_absent_r(k, r0, p, w)
+    case Game.Out{}:
+      take_dest_move_r(d, k, r0, p, w)
+    case Game.Run{}:
+      take_dest_move_r(d, k, r0, p, w)
+    case Game.To1{}:
+      take_dest_move_r(d, k, r0, p, w)
+    case Game.To2{}:
+      take_dest_move_r(d, k, r0, p, w)
+    case Game.To3{}:
+      take_dest_move_r(d, k, r0, p, w)
+
+def take_slot_r(+k: Nat, +r0: Nat, +p: Game.Pending, w: PGe(r0, p)) -> OkPR(r0, Game.take_slot(k, p)):
+  match p:
+    case Game.Pending{h, n, r3, r2, r1, bd}:
+      +q = {Game.Pending{h, n, r3, r2, r1, bd} : Game.Pending}
+      take_dest_r(Game.p_dest(k, q), k, r0, q, w)
+
+def bind_take_r(+k: Nat, +r0: Nat, m: Maybe<&2, Game.Pending>, w: OkPR(r0, m)) -> OkPR(r0, Game.bind_take(k, m)):
+  match m:
+    case None{}:
+      Unit{}
+    case Some{p}:
+      take_slot_r(k, r0, p, w)
+
+def take_all_r(+p: Game.Play, +r0: Nat, +h: Game.Half, w: RGe(r0, h)) -> OkPR(r0, Game.take_all(p, h)):
+  match p:
+    case Game.Play{+r3, +r2, +r1, +bd}:
+      bind_take_r(3n, r0, Game.bind_take(2n, Game.bind_take(1n, Game.take_slot(0n, Game.Pending{h, 0n, r3, r2, r1, bd}))),
+        bind_take_r(2n, r0, Game.bind_take(1n, Game.take_slot(0n, Game.Pending{h, 0n, r3, r2, r1, bd})),
+          bind_take_r(1n, r0, Game.take_slot(0n, Game.Pending{h, 0n, r3, r2, r1, bd}),
+            take_slot_r(0n, r0, Game.Pending{h, 0n, r3, r2, r1, bd}, w))))
+
+def place_done_r(m: Maybe<Game.Half>, +r0: Nat, e: Nat, p: Game.Pending, w: OkR(r0, m)) -> OkPR(r0, Game.place_slot_done(m, e, p)):
+  match m:
+    case None{}:
+      Unit{}
+    case Some{h}:
+      match p:
+        case Game.Pending{_, n, r3, r2, r1, bd}:
+          w
+
+def place_dest_absent_r(+r0: Nat, p: Game.Pending, w: PGe(r0, p)) -> OkPR(r0, Game.place_slot_dest(Game.Absent{}, p)):
+  match p:
+    case Game.Pending{h, n, r3, r2, r1, bd}:
+      w
+
+def place_dest_move_r(+d: Game.Dest, +r0: Nat, p: Game.Pending, w: PGe(r0, p)) -> OkPR(r0, Game.place_slot_dest.go(True{}, d, p)):
+  match p:
+    case Game.Pending{+h, +n, r3, r2, r1, bd}:
+      match n:
+        case 0n:
+          Unit{}
+        case 1n+e:
+          place_done_r(Game.put(d, h), r0, e, Game.Pending{h, n, r3, r2, r1, bd}, put_r(d, r0, h, w))
+
+def place_dest_r(d: Game.Dest, +r0: Nat, p: Game.Pending, w: PGe(r0, p)) -> OkPR(r0, Game.place_slot_dest(d, p)):
+  match d:
+    case Game.Absent{}:
+      place_dest_absent_r(r0, p, w)
+    case Game.Out{}:
+      place_dest_move_r(d, r0, p, w)
+    case Game.Run{}:
+      place_dest_move_r(d, r0, p, w)
+    case Game.To1{}:
+      place_dest_move_r(d, r0, p, w)
+    case Game.To2{}:
+      place_dest_move_r(d, r0, p, w)
+    case Game.To3{}:
+      place_dest_move_r(d, r0, p, w)
+
+def place_slot_r(+k: Nat, +r0: Nat, +p: Game.Pending, w: PGe(r0, p)) -> OkPR(r0, Game.place_slot(k, p)):
+  match p:
+    case Game.Pending{h, n, r3, r2, r1, bd}:
+      +q = {Game.Pending{h, n, r3, r2, r1, bd} : Game.Pending}
+      place_dest_r(Game.p_dest(k, q), r0, q, w)
+
+def bind_place_r(+k: Nat, +r0: Nat, m: Maybe<&2, Game.Pending>, w: OkPR(r0, m)) -> OkPR(r0, Game.bind_place(k, m)):
+  match m:
+    case None{}:
+      Unit{}
+    case Some{p}:
+      place_slot_r(k, r0, p, w)
+
+def finish_r(+r0: Nat, m: Maybe<&2, Game.Pending>, w: OkPR(r0, m)) -> OkR(r0, Game.finish(m)):
+  match m:
+    case None{}:
+      Unit{}
+    case Some{p}:
+      match p:
+        case Game.Pending{h, n, r3, r2, r1, bd}:
+          match n:
+            case 0n:
+              w
+            case 1n+e:
+              Unit{}
+
+def put_all_r(+r0: Nat, +m: Maybe<&2, Game.Pending>, w: OkPR(r0, m)) -> OkR(r0, Game.put_all(m)):
+  finish_r(r0, Game.bind_place(3n, Game.bind_place(2n, Game.bind_place(1n, Game.bind_place(0n, m)))),
+    bind_place_r(3n, r0, Game.bind_place(2n, Game.bind_place(1n, Game.bind_place(0n, m))),
+      bind_place_r(2n, r0, Game.bind_place(1n, Game.bind_place(0n, m)),
+        bind_place_r(1n, r0, Game.bind_place(0n, m), bind_place_r(0n, r0, m, w)))))
+
+def slots_r(+p: Game.Play, +r0: Nat, +h: Game.Half, w: RGe(r0, h)) -> OkR(r0, Game.slots(p, h)):
+  put_all_r(r0, Game.take_all(p, h), take_all_r(p, r0, h, w))
 
 # Runs, the whole state: the side at bat only gains; the other is untouched.
 

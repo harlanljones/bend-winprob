@@ -30,12 +30,31 @@ function el(name, attrs, text) {
 }
 
 function parseCsv(text) {
-  const lines = text.trim().split(/\r?\n/);
-  const head = lines.shift().split(",");
-  return lines.filter(l => l).map(l => {
-    const cells = l.split(",");
-    return Object.fromEntries(head.map((h, i) => [h, cells[i]]));
-  });
+  const records = [];
+  let record = [], field = "", quoted = false;
+  const endRecord = () => {
+    record.push(field);
+    field = "";
+    if (record.some(v => v !== "")) records.push(record);
+    record = [];
+  };
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (quoted) {
+      if (c === '"') {
+        if (text[i + 1] === '"') { field += '"'; i++; }
+        else quoted = false;
+      } else field += c;
+    } else if (c === '"' && field === "") quoted = true;
+    else if (c === ",") { record.push(field); field = ""; }
+    else if (c === "\r" || c === "\n") {
+      if (c === "\r" && text[i + 1] === "\n") i++;
+      endRecord();
+    } else field += c;
+  }
+  if (field !== "" || record.length) endRecord();
+  const head = records.shift() || [];
+  return records.map(cells => Object.fromEntries(head.map((h, i) => [h, cells[i]])));
 }
 
 function num(v) { return v === "" || v === undefined ? null : Number(v); }
@@ -98,21 +117,31 @@ async function tick() {
     if (!res.ok) throw new Error(res.status);
     const rows = parseCsv(await res.text());
     const last = rows[rows.length - 1] || {};
-    document.getElementById("stats").innerHTML =
-      `<span class="bend">Bend <b>${fmt(latest(rows, "bend_home_wp"))}</b></span> · ` +
-      `<span class="mlb">MLB <b>${fmt(latest(rows, "mlb_home_wp"))}</b></span> · ` +
-      `Δ <b>${fmt(latest(rows, "delta"), true)}</b> · ` +
+    const stat = (label, value, className) => {
+      const span = document.createElement("span");
+      if (className) span.className = className;
+      const b = document.createElement("b");
+      b.textContent = value;
+      span.append(label + " ", b);
+      return span;
+    };
+    document.getElementById("stats").replaceChildren(
+      stat("Bend", fmt(latest(rows, "bend_home_wp")), "bend"), " · ",
+      stat("MLB", fmt(latest(rows, "mlb_home_wp")), "mlb"), " · ",
+      stat("Δ", fmt(latest(rows, "delta"), true)), " · ",
       `${last.half || ""}${last.inning || ""} ${last.outs || 0} out · ` +
-      `${meta.away} ${last.away_runs || 0} – ${meta.home} ${last.home_runs || 0} · ` +
-      `state ${last.state_check || "--"}`;
+        `${meta.away} ${last.away_runs || 0} – ${meta.home} ${last.home_runs || 0} · ` +
+        `state ${last.state_check || "--"}`
+    );
     draw(rows);
   } catch (e) {
     document.getElementById("stats").textContent = "waiting for runs/" + pk + ".csv";
+  } finally {
+    setTimeout(tick, 5000);
   }
 }
 
 tick();
-setInterval(tick, 5000);
 </script>
 </body>
 </html>

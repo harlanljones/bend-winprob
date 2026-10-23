@@ -32,6 +32,12 @@ type Line is Data:
 type Half is Data:
   Half{bases: Bases, line: Line, outs: Nat}
 
+# During a play, every moving runner is first taken out of its origin and
+# held here. `hand` counts the held runners; destinations stay in their
+# original slots until the placement pass. This makes exchanges possible.
+type Pending is Data:
+  Pending{half: Half, hand: Nat, r3: Dest, r2: Dest, r1: Dest, bat: Dest}
+
 type State is Data:
   State{inning: Nat, top: Bool, outs: Nat, bases: Bases, away: Line, home: Line, rejected: Nat}
 
@@ -159,74 +165,148 @@ def take_bat(h: Half) -> Half:
     case Half{bs, Line{bat, runs, lo, lob}, o}:
       Half{bs, Line{1n+bat, runs, lo, lob}, o}
 
-# Slots
-# -----
+# Slots: take every origin, then place every destination
+# ------------------------------------------------------
 
-def slot3.go(m: Bool, d: Dest, h: Half) -> Maybe<Half>:
-  match m:
-    case False{}:
-      Some{h}
-    case True{}:
-      put_m(d, take3(h))
+def p_half(p: Pending) -> Half:
+  match p:
+    case Pending{h, _, _, _, _, _}:
+      h
 
-def slot3(+d: Dest, h: Half) -> Maybe<Half>:
-  slot3.go(is_moved(d), d, h)
+def p_hand(p: Pending) -> Nat:
+  match p:
+    case Pending{_, n, _, _, _, _}:
+      n
 
-def slot2.go(m: Bool, d: Dest, h: Half) -> Maybe<Half>:
-  match m:
-    case False{}:
-      Some{h}
-    case True{}:
-      put_m(d, take2(h))
+def p_dest(k: Nat, p: Pending) -> Dest:
+  match k:
+    case 0n:
+      match p:
+        case Pending{_, _, d, _, _, _}:
+          d
+    case 1n+k1:
+      match k1:
+        case 0n:
+          match p:
+            case Pending{_, _, _, d, _, _}:
+              d
+        case 1n+k2:
+          match k2:
+            case 0n:
+              match p:
+                case Pending{_, _, _, _, d, _}:
+                  d
+            case 1n+k3:
+              match p:
+                case Pending{_, _, _, _, _, d}:
+                  d
 
-def slot2(+d: Dest, h: Half) -> Maybe<Half>:
-  slot2.go(is_moved(d), d, h)
+def take_origin(k: Nat, h: Half) -> Maybe<Half>:
+  match k:
+    case 0n:
+      take3(h)
+    case 1n+k1:
+      match k1:
+        case 0n:
+          take2(h)
+        case 1n+k2:
+          match k2:
+            case 0n:
+              take1(h)
+            case 1n+k3:
+              Some{take_bat(h)}
 
-def slot1.go(m: Bool, d: Dest, h: Half) -> Maybe<Half>:
-  match m:
-    case False{}:
-      Some{h}
-    case True{}:
-      put_m(d, take1(h))
-
-def slot1(+d: Dest, h: Half) -> Maybe<Half>:
-  slot1.go(is_moved(d), d, h)
-
-def slotb.go(m: Bool, d: Dest, h: Half) -> Maybe<Half>:
-  match m:
-    case False{}:
-      Some{h}
-    case True{}:
-      put(d, take_bat(h))
-
-def slotb(+d: Dest, h: Half) -> Maybe<Half>:
-  slotb.go(is_moved(d), d, h)
-
-def chain_b(m: Maybe<Half>, bd: Dest) -> Maybe<Half>:
-  match m:
-    case None{}:
-      None{}
-    case Some{h}:
-      slotb(bd, h)
-
-def chain_1(m: Maybe<Half>, r1: Dest, bd: Dest) -> Maybe<Half>:
-  match m:
-    case None{}:
-      None{}
-    case Some{h}:
-      chain_b(slot1(r1, h), bd)
-
-def chain_2(m: Maybe<Half>, r2: Dest, r1: Dest, bd: Dest) -> Maybe<Half>:
+def take_slot_done(m: Maybe<Half>, p: Pending) -> Maybe<&2, Pending>:
   match m:
     case None{}:
       None{}
     case Some{h}:
-      chain_1(slot2(r2, h), r1, bd)
+      match p:
+        case Pending{_, n, r3, r2, r1, bd}:
+          Some{Pending{h, 1n+n, r3, r2, r1, bd}}
 
-def slots(p: Play, h: Half) -> Maybe<Half>:
+def take_slot_dest.go(m: Bool, k: Nat, +p: Pending) -> Maybe<&2, Pending>:
+  match m:
+    case False{}:
+      Some{p}
+    case True{}:
+      take_slot_done(take_origin(k, p_half(p)), p)
+
+def take_slot_dest(m: Bool, k: Nat, +p: Pending) -> Maybe<&2, Pending>:
+  take_slot_dest.go(m, k, p)
+
+def take_slot(+k: Nat, +p: Pending) -> Maybe<&2, Pending>:
+  take_slot_dest(is_moved(p_dest(k, p)), k, p)
+
+def bind_take(k: Nat, m: Maybe<&2, Pending>) -> Maybe<&2, Pending>:
+  match m:
+    case None{}:
+      None{}
+    case Some{p}:
+      take_slot(k, p)
+
+# Start with an empty hand and take r3, r2, r1, then the batter.
+def take_all(p: Play, h: Half) -> Maybe<&2, Pending>:
   match p:
     case Play{r3, r2, r1, bd}:
-      chain_2(slot3(r3, h), r2, r1, bd)
+      bind_take(3n, bind_take(2n, bind_take(1n,
+        take_slot(0n, Pending{h, 0n, r3, r2, r1, bd}))))
+
+def place_slot_done(m: Maybe<Half>, e: Nat, p: Pending) -> Maybe<&2, Pending>:
+  match m:
+    case None{}:
+      None{}
+    case Some{h}:
+      match p:
+        case Pending{_, _, r3, r2, r1, bd}:
+          Some{Pending{h, e, r3, r2, r1, bd}}
+
+def place_slot_dest.hand(hand: Nat, d: Dest, +p: Pending) -> Maybe<&2, Pending>:
+  match hand:
+    case 0n:
+      None{}
+    case 1n+e:
+      place_slot_done(put(d, p_half(p)), e, p)
+
+def place_slot_dest.go(m: Bool, d: Dest, +p: Pending) -> Maybe<&2, Pending>:
+  match m:
+    case False{}:
+      Some{p}
+    case True{}:
+      place_slot_dest.hand(p_hand(p), d, p)
+
+def place_slot_dest(+d: Dest, +p: Pending) -> Maybe<&2, Pending>:
+  place_slot_dest.go(is_moved(d), d, p)
+
+def place_slot(k: Nat, +p: Pending) -> Maybe<&2, Pending>:
+  place_slot_dest(p_dest(k, p), p)
+
+def bind_place(k: Nat, m: Maybe<&2, Pending>) -> Maybe<&2, Pending>:
+  match m:
+    case None{}:
+      None{}
+    case Some{p}:
+      place_slot(k, p)
+
+# A play is complete only when every held runner has been placed.
+def finish(m: Maybe<&2, Pending>) -> Maybe<Half>:
+  match m:
+    case None{}:
+      None{}
+    case Some{p}:
+      match p:
+        case Pending{h, n, _, _, _, _}:
+          match n:
+            case 0n:
+              Some{h}
+            case 1n+e:
+              None{}
+
+def put_all(m: Maybe<&2, Pending>) -> Maybe<Half>:
+  finish(bind_place(3n, bind_place(2n, bind_place(1n, bind_place(0n, m)))))
+
+def slots(p: Play, h: Half) -> Maybe<Half>:
+  put_all(take_all(p, h))
 
 # Step
 # ----

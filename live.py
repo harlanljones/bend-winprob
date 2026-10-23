@@ -97,29 +97,71 @@ class Source:
 # Plays
 # -----
 
-def encode_play(play):
-    """One completed play as slots r3 r2 r1 batter: - X R 1 2 3.
+def _layout(before, slots):
+    """Return the first origin/destination collision, or None when valid."""
+    remaining = set(before)
+    for origin, code in slots.items():
+        if code != "-" and origin is not None:
+            if origin not in remaining:
+                return "origin", origin
+            remaining.remove(origin)
+    for origin in (3, 2, 1, None):
+        code = slots.get(origin, "-")
+        if code in "123":
+            destination = int(code)
+            if destination in remaining:
+                return "destination", destination
+            remaining.add(destination)
+    return None
 
-    A runner's movements are grouped by runner id: `originBase` is per event,
-    so a runner who steals second and then scores on a single shows origins
-    1B and 2B. The runner's base at the start of the play is the head of the
-    chain (a start that is no other segment's end); the batter starts at None.
+
+def _repair_forced(before, slots):
+    """Recover omitted forced advancements using the preceding base state.
+
+    MLB sometimes omits a runner who was forced to advance, especially on an
+    inning-ending force. Only a landing collision can trigger this repair:
+    an unmoved runner blocking first or second is shifted to the next base,
+    then the layout is checked again. Other invalid layouts are left alone so
+    Bend reports them instead of hiding a data problem.
+    """
+    slots = dict(slots)
+    for _ in range(3):
+        problem = _layout(before, slots)
+        if problem is None:
+            break
+        kind, base = problem
+        if kind != "destination" or base not in (1, 2) or base not in before:
+            break
+        if slots.get(base, "-") != "-":
+            break
+        slots[base] = str(base + 1)
+    return slots
+
+
+def encode_play(play, before=()):
+    """Encode one completed play as slots r3 r2 r1 batter: - X R 1 2 3.
+
+    Runner segments are grouped by runner id and ordered by playIndex. The
+    first segment's start is the runner's origin and the last segment's end
+    is the destination; out and score retain precedence. `before` is the
+    preceding play's occupied bases and enables forced-runner recovery.
     """
     i = play["about"]["atBatIndex"]
     by_runner = {}
-    for r in play.get("runners", []):
-        rid = r.get("details", {}).get("runner", {}).get("id")
+    for position, runner in enumerate(play.get("runners", [])):
+        rid = runner.get("details", {}).get("runner", {}).get("id")
         if rid is None:
             raise ValueError(f"runner without id at atBatIndex {i}")
-        by_runner.setdefault(rid, []).append(r["movement"])
+        details = runner.get("details", {})
+        by_runner.setdefault(rid, []).append(
+            (details.get("playIndex", position), position, runner["movement"]))
     slots = {}
-    for rid, segs in by_runner.items():
-        starts = [s.get("start") for s in segs]
-        ends = [s.get("end") for s in segs if s.get("end") is not None]
-        heads = {s for s in starts if s is None or s not in ends}
-        if len(heads) != 1:
-            raise ValueError(f"runner {rid}: no single start {sorted(map(str, heads))} at atBatIndex {i}")
-        origin = heads.pop()
+    for rid, entries in by_runner.items():
+        entries.sort(key=lambda entry: (entry[0] is None, entry[0], entry[1]))
+        segs = [entry[2] for entry in entries]
+        origin = segs[0].get("start")
+        if origin is None and segs[0].get("originBase") is not None:
+            origin = segs[0]["originBase"]
         if origin not in ("3B", "2B", "1B", None):
             raise ValueError(f"unknown origin {origin!r} at atBatIndex {i}")
         if origin in slots:
@@ -129,11 +171,32 @@ def encode_play(play):
         elif any(s.get("end") == "score" for s in segs):
             slots[origin] = "R"
         else:
-            tails = {e for e in ends if e not in starts}
-            if len(tails) != 1 or not tails <= {"1B", "2B", "3B"}:
-                raise ValueError(f"runner {rid}: unknown end {sorted(tails)} at atBatIndex {i}")
-            slots[origin] = tails.pop()[0]
-    return "".join(slots.get(origin, "-") for origin in ("3B", "2B", "1B", None))
+            end = segs[-1].get("end")
+            if end not in ("1B", "2B", "3B"):
+                raise ValueError(f"runner {rid}: unknown end {end!r} at atBatIndex {i}")
+            slots[origin] = end[0]
+    numeric_slots = {(None if origin is None else int(origin[0])): code
+                     for origin, code in slots.items()}
+    slots = _repair_forced(before, numeric_slots)
+    return "".join(slots.get(origin, "-") for origin in (3, 2, 1, None))
+
+
+def bases_after(play):
+    """The bases occupied after a completed play, for the next encoding."""
+    if play.get("count", {}).get("outs") == 3:
+        return set()
+    matchup = play.get("matchup", {})
+    return {base for base, key in ((1, "postOnFirst"), (2, "postOnSecond"), (3, "postOnThird"))
+            if key in matchup}
+
+
+def encode_plays(plays):
+    """Encode a complete play list, carrying base state between plays."""
+    codes, before = [], set()
+    for play in plays:
+        codes.append(encode_play(play, before))
+        before = bases_after(play)
+    return codes
 
 
 def complete_plays(pbp):
@@ -266,18 +329,24 @@ class Publisher:
 
     def push(self, pk, meta, csv_text):
         if csv_text == self.last:
-            return
+            return True
         req = urllib.request.Request(
             f"{self.url}/push/{pk}", method="POST",
             data=json.dumps({"meta": meta, "csv": csv_text}).encode(),
             headers={"Authorization": f"Bearer {self.token}", "Content-Type": "application/json",
                      "User-Agent": "bend-winprob/1"})
-        try:
-            with urllib.request.urlopen(req, timeout=10):
-                pass
-            self.last = csv_text
-        except Exception as e:  # a failed push is retried by the next write
-            print(f"publish failed: {e}", flush=True)
+        for attempt in range(3):
+            try:
+                with urllib.request.urlopen(req, timeout=10):
+                    pass
+                self.last = csv_text
+                return True
+            except Exception as e:
+                if attempt < 2:
+                    time.sleep(2)
+                else:
+                    print(f"publish failed after 3 attempts: {e}", flush=True)
+        return False
 
 
 # Rows, ticker, CSV
@@ -291,7 +360,6 @@ class Book:
         self.publisher = publisher
         self.verbose = verbose
         self.rows = {}
-        self.mismatches = 0
         runs = ROOT / "runs"
         runs.mkdir(exist_ok=True)
         self.csv = runs / f"{pk}.csv"
@@ -302,7 +370,6 @@ class Book:
         bad = check_state(b, play) if play is not None else []
         if b["rejected"] > 0 and "rejected" not in bad:
             bad.append("rejected")
-        self.mismatches += bool(bad)
         decided = b["home_wins"] + b["away_wins"]
         bend = 100.0 * b["home_wins"] / decided if decided else None
         check = "ok" if not bad else "MISMATCH(" + ",".join(bad) + ")"
@@ -319,6 +386,16 @@ class Book:
         if self.verbose:
             self.print_row(idx)
         return self.rows[idx]
+
+    def prune(self, valid_indices):
+        """Drop rows removed or replaced by a replay-review correction."""
+        valid = set(valid_indices)
+        for idx in list(self.rows):
+            if idx >= 0 and idx not in valid:
+                del self.rows[idx]
+
+    def mismatch_count(self):
+        return sum(row["state_check"] != "ok" for row in self.rows.values())
 
     def fill_delta(self, idx):
         r = self.rows[idx]
@@ -352,7 +429,8 @@ class Book:
                 w.writerow(self.rows[idx])
         tmp.replace(self.csv)
         if self.publisher is not None:
-            self.publisher.push(self.pk, self.meta, self.csv.read_text())
+            return self.publisher.push(self.pk, self.meta, self.csv.read_text())
+        return True
 
     def final(self, home_won):
         last = max(self.rows)
@@ -364,7 +442,7 @@ class Book:
         deltas = [abs(r["delta"]) for r in self.rows.values() if r["delta"] != ""]
         mean = sum(deltas) / len(deltas) if deltas else float("nan")
         print(f"SUMMARY rows {len(self.rows)} mean |Δ| {mean:.2f} over {len(deltas)} "
-              f"mismatches {self.mismatches}", flush=True)
+              f"mismatches {self.mismatch_count()}", flush=True)
         return mean
 
 
@@ -417,26 +495,38 @@ def serve(port):
     threading.Thread(target=httpd.serve_forever, daemon=True).start()
 
 
+def live_setup(src, pk):
+    """Fetch initial game/team data; called again after transient failures."""
+    status = src.get("status")
+    teams = teams_of(status)
+    rates_path = ROOT / "runs" / f"{pk}-rates.json"
+    (ROOT / "runs").mkdir(exist_ok=True)
+    if rates_path.exists():
+        rates = json.loads(rates_path.read_text())
+        away_cum, home_cum = rates["away"], rates["home"]
+    else:
+        away_cum, home_cum = game_rates(src, teams)
+        rates_path.write_text(json.dumps({"away": away_cum, "home": home_cum}))
+    return teams, away_cum, home_cum
+
+
 def live(args):
     src = Source(args.pk, cache=False)
     if not args.no_serve:
         serve(args.port)
         print(f"chart: http://127.0.0.1:{args.port}/web/?pk={args.pk}", flush=True)
-    status = src.get("status")
-    teams = teams_of(status)
-    rates_path = ROOT / "runs" / f"{args.pk}-rates.json"
-    (ROOT / "runs").mkdir(exist_ok=True)
-    if rates_path.exists():
-        r = json.loads(rates_path.read_text())
-        away_cum, home_cum = r["away"], r["home"]
-    else:
-        away_cum, home_cum = game_rates(src, teams)
-        rates_path.write_text(json.dumps({"away": away_cum, "home": home_cum}))
+    while True:
+        try:
+            teams, away_cum, home_cum = live_setup(src, args.pk)
+            break
+        except (RuntimeError, ValueError) as e:
+            print(f"initialization failed: {e}; retrying in 10s", flush=True)
+            time.sleep(10)
     away, home = teams["away"]["abbr"], teams["home"]["abbr"]
     print(f"{away} @ {home}  awayCum {away_cum}  homeCum {home_cum}  depth {args.depth}  {args.mode}",
           flush=True)
     book = Book(args.pk, away, home, args.depth, args.mode, args.publisher)
-    done = []  # codes already turned into rows
+    done = []  # codes whose complete suffix succeeded
     last_wait = 0.0
     try:
         while True:
@@ -457,6 +547,8 @@ def live(args):
                 except BendError as e:
                     print(f"#pre bend error: {e}", flush=True)
             if state == "Preview":
+                if -1 in book.rows:
+                    book.write()  # also retries a failed pregame publish
                 if time.time() - last_wait >= 60:
                     print(f"waiting: {detailed}", flush=True)
                     last_wait = time.time()
@@ -464,7 +556,7 @@ def live(args):
                 continue
             try:
                 plays = complete_plays(src.get("plays"))
-                codes = [encode_play(p) for p in plays]
+                codes = encode_plays(plays)
                 wp = wp_map(src.get("wp"))
             except (RuntimeError, ValueError) as e:
                 print(f"poll failed: {e}", flush=True)
@@ -474,25 +566,34 @@ def live(args):
                 same = 0
                 while same < min(len(codes), len(done)) and codes[same] == done[same]:
                     same += 1
+                book.prune(play["about"]["atBatIndex"] for play in plays)
+                complete = True
                 for k in range(same + 1, len(codes) + 1):
                     idx = plays[k - 1]["about"]["atBatIndex"]
                     try:
                         b = run_bend(args.depth, seed_for(k), away_cum, home_cum, codes[:k], args.mode)
                     except BendError as e:
-                        print(f"#{idx} bend error: {e}", flush=True)
-                        continue
+                        complete = False
+                        print(f"#{idx} bend error: {e}; will retry", flush=True)
+                        break
                     book.add(idx, b, plays[k - 1], wp.get(idx))
-                done = codes
+                if complete:
+                    done = codes
             book.backfill(wp)
             book.write()
             if state == "Final":
-                b = run_bend(args.depth, seed_for(len(codes)), away_cum, home_cum, codes, args.mode)
-                book.final(b["home_runs"] > b["away_runs"])
-                box_check(src.get("box"), src.get("linescore"), b)
-                book.backfill(wp_map(src.get("wp")))
-                book.write()
-                book.summary()
-                return 0
+                try:
+                    b = run_bend(args.depth, seed_for(len(codes)), away_cum, home_cum, codes, args.mode)
+                    book.final(b["home_runs"] > b["away_runs"])
+                    box_ok = box_check(src.get("box"), src.get("linescore"), b)
+                    book.backfill(wp_map(src.get("wp")))
+                    published = book.write()
+                    book.summary()
+                    return 0 if box_ok and book.mismatch_count() == 0 and published else 1
+                except (BendError, RuntimeError, ValueError) as e:
+                    print(f"finalization failed: {e}; retrying", flush=True)
+                    time.sleep(wait)
+                    continue
             time.sleep(wait)
     except KeyboardInterrupt:
         book.write()
@@ -513,6 +614,8 @@ def main():
     args = ap.parse_args()
     if args.depth is None:
         args.depth = 16 if args.replay else 20
+    if args.depth < 0:
+        ap.error("--depth must be nonnegative")
     args.publisher = None
     if args.publish:
         env = load_env()

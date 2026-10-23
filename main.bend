@@ -95,17 +95,21 @@ def rates7(xs: List<&2, String>, +what: String) -> Result<&2, &2, String, Sim.Ra
     case _:
       Fail{what ++ ": need 7 thresholds"}
 
+def rates_ok(r: Sim.Rates) -> Bool:
+  match r:
+    case Sim.Rates{+k, +o, +w, +s, +d, +t, +h}:
+      U32.is_eq(h, 10000) && U32.is_le(k, o) && U32.is_le(o, w)
+        && U32.is_le(w, s) && U32.is_le(s, d) && U32.is_le(d, t) && U32.is_le(t, h)
+
 def rates_top.go(ok: Bool, r: Sim.Rates, what: String) -> Result<&2, &2, String, Sim.Rates>:
   match ok:
     case True{}:
       Done{r}
     case False{}:
-      Fail{what ++ ": last threshold must be 10000"}
+      Fail{what ++ ": thresholds must be nondecreasing and end at 10000"}
 
-def rates_top(r: Sim.Rates, +what: String) -> Result<&2, &2, String, Sim.Rates>:
-  match r:
-    case Sim.Rates{k, o, w, s, d, t, +h}:
-      rates_top.go(U32.is_eq(h, 10000), Sim.Rates{k, o, w, s, d, t, h}, what)
+def rates_top(+r: Sim.Rates, +what: String) -> Result<&2, &2, String, Sim.Rates>:
+  rates_top.go(rates_ok(r), r, what)
 
 def rates(s: String, +what: String) -> Result<&2, &2, String, Sim.Rates>:
   do Result<&2, &2, String, Sim.Rates>:

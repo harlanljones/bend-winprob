@@ -55,7 +55,7 @@ class ReplayEngine:
         (live.ROOT / "runs" / f"{pk}-rates.json").write_text(
             json.dumps({"away": self.away_cum, "home": self.home_cum}))
         self.plays = live.complete_plays(self.source.get("plays"))
-        self.codes = [live.encode_play(play) for play in self.plays]
+        self.codes = live.encode_plays(self.plays)
         self.wp = live.wp_map(self.source.get("wp"))
         self.is_final = self.status["gameData"]["status"]["abstractGameState"] == "Final"
         self.reset()
@@ -162,13 +162,13 @@ class ReplayEngine:
         if target == len(self.plays) and self.is_final:
             try:
                 self.finalize()
-            except (live.BendError, RuntimeError) as e:
+            except (live.BendError, RuntimeError, ValueError) as e:
                 self._error("final", e)
                 self.box_ok = False
-        self.book.write()
+        published = self.book.write()
         if self.verbose:
             self.book.summary()
-        return 0 if self.errors == 0 and self.book.mismatches == 0 and self.box_ok else 1
+        return 0 if self.errors == 0 and self.book.mismatch_count() == 0 and self.box_ok and published else 1
 
 
 def main(argv=None):
