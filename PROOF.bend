@@ -479,3 +479,370 @@ def Laws.box_balances_away(ps):
 
 def Laws.box_balances_home(ps):
   bal_home(Game.run(ps, Game.start()), run_bal(ps, Game.start(), start_bal()))
+
+# Runs
+# ----
+# No slot takes a run away: RGe(r0, h) says the batting line has at least r0
+# runs, and every take and put keeps it (a run adds one).
+
+def BD(b: Bool, t: Type, f: Type) -> Type:
+  match b:
+    case True{}:
+      t
+    case False{}:
+      f
+
+def le_refl(n: Nat) -> {Nat.is_le(n, n) == True{} : Bool}:
+  match n:
+    case 0n:
+      {==}
+    case 1n+p:
+      le_refl(p)
+
+def le_succ(a: Nat, b: Nat, w: {Nat.is_le(a, b) == True{} : Bool}) -> {Nat.is_le(a, 1n+b) == True{} : Bool}:
+  match a b:
+    case 0n _:
+      {==}
+    case 1n+p 0n:
+      %w : BD(_, {Nat.is_le(1n+p, 1n) == True{} : Bool}, Unit)
+      Unit{}
+    case 1n+p 1n+q:
+      le_succ(p, q, w)
+
+def RGe(-r0: Nat, h: Game.Half) -> Type:
+  match h:
+    case Game.Half{bs, l, o}:
+      {Nat.is_le(r0, Game.line_runs(l)) == True{} : Bool}
+
+def OkR(-r0: Nat, m: Maybe<Game.Half>) -> Type:
+  match m:
+    case None{}:
+      Unit
+    case Some{h}:
+      RGe(r0, h)
+
+def take1_r(-r0: Nat, h: Game.Half, w: RGe(r0, h)) -> OkR(r0, Game.take1(h)):
+  match h:
+    case Game.Half{bs, l, o}:
+      match bs:
+        case Game.Bases{b1, b2, b3}:
+          match b1:
+            case True{}:
+              w
+            case False{}:
+              Unit{}
+
+def take2_r(-r0: Nat, h: Game.Half, w: RGe(r0, h)) -> OkR(r0, Game.take2(h)):
+  match h:
+    case Game.Half{bs, l, o}:
+      match bs:
+        case Game.Bases{b1, b2, b3}:
+          match b2:
+            case True{}:
+              w
+            case False{}:
+              Unit{}
+
+def take3_r(-r0: Nat, h: Game.Half, w: RGe(r0, h)) -> OkR(r0, Game.take3(h)):
+  match h:
+    case Game.Half{bs, l, o}:
+      match bs:
+        case Game.Bases{b1, b2, b3}:
+          match b3:
+            case True{}:
+              w
+            case False{}:
+              Unit{}
+
+def take_bat_r(-r0: Nat, h: Game.Half, w: RGe(r0, h)) -> RGe(r0, Game.take_bat(h)):
+  match h:
+    case Game.Half{bs, l, o}:
+      match l:
+        case Game.Line{bat, runs, lo, lob}:
+          w
+
+def put_r(d: Game.Dest, +r0: Nat, h: Game.Half, w: RGe(r0, h)) -> OkR(r0, Game.put(d, h)):
+  match d:
+    case Game.Absent{}:
+      Unit{}
+    case Game.Out{}:
+      match h:
+        case Game.Half{bs, l, o}:
+          match l:
+            case Game.Line{bat, runs, lo, lob}:
+              w
+    case Game.Run{}:
+      match h:
+        case Game.Half{bs, l, o}:
+          match l:
+            case Game.Line{bat, runs, lo, lob}:
+              le_succ(r0, runs, w)
+    case Game.To1{}:
+      match h:
+        case Game.Half{bs, l, o}:
+          match bs:
+            case Game.Bases{b1, b2, b3}:
+              match b1:
+                case True{}:
+                  Unit{}
+                case False{}:
+                  w
+    case Game.To2{}:
+      match h:
+        case Game.Half{bs, l, o}:
+          match bs:
+            case Game.Bases{b1, b2, b3}:
+              match b2:
+                case True{}:
+                  Unit{}
+                case False{}:
+                  w
+    case Game.To3{}:
+      match h:
+        case Game.Half{bs, l, o}:
+          match bs:
+            case Game.Bases{b1, b2, b3}:
+              match b3:
+                case True{}:
+                  Unit{}
+                case False{}:
+                  w
+
+def putm_r(m: Maybe<Game.Half>, d: Game.Dest, +r0: Nat, w: OkR(r0, m)) -> OkR(r0, Game.put_m(d, m)):
+  match m:
+    case None{}:
+      Unit{}
+    case Some{h}:
+      put_r(d, r0, h, w)
+
+def slot3_r(d: Game.Dest, +r0: Nat, +h: Game.Half, w: RGe(r0, h)) -> OkR(r0, Game.slot3(d, h)):
+  match d:
+    case Game.Absent{}:
+      w
+    case Game.Out{}:
+      putm_r(Game.take3(h), Game.Out{}, r0, take3_r(r0, h, w))
+    case Game.Run{}:
+      putm_r(Game.take3(h), Game.Run{}, r0, take3_r(r0, h, w))
+    case Game.To1{}:
+      putm_r(Game.take3(h), Game.To1{}, r0, take3_r(r0, h, w))
+    case Game.To2{}:
+      putm_r(Game.take3(h), Game.To2{}, r0, take3_r(r0, h, w))
+    case Game.To3{}:
+      putm_r(Game.take3(h), Game.To3{}, r0, take3_r(r0, h, w))
+
+def slot2_r(d: Game.Dest, +r0: Nat, +h: Game.Half, w: RGe(r0, h)) -> OkR(r0, Game.slot2(d, h)):
+  match d:
+    case Game.Absent{}:
+      w
+    case Game.Out{}:
+      putm_r(Game.take2(h), Game.Out{}, r0, take2_r(r0, h, w))
+    case Game.Run{}:
+      putm_r(Game.take2(h), Game.Run{}, r0, take2_r(r0, h, w))
+    case Game.To1{}:
+      putm_r(Game.take2(h), Game.To1{}, r0, take2_r(r0, h, w))
+    case Game.To2{}:
+      putm_r(Game.take2(h), Game.To2{}, r0, take2_r(r0, h, w))
+    case Game.To3{}:
+      putm_r(Game.take2(h), Game.To3{}, r0, take2_r(r0, h, w))
+
+def slot1_r(d: Game.Dest, +r0: Nat, +h: Game.Half, w: RGe(r0, h)) -> OkR(r0, Game.slot1(d, h)):
+  match d:
+    case Game.Absent{}:
+      w
+    case Game.Out{}:
+      putm_r(Game.take1(h), Game.Out{}, r0, take1_r(r0, h, w))
+    case Game.Run{}:
+      putm_r(Game.take1(h), Game.Run{}, r0, take1_r(r0, h, w))
+    case Game.To1{}:
+      putm_r(Game.take1(h), Game.To1{}, r0, take1_r(r0, h, w))
+    case Game.To2{}:
+      putm_r(Game.take1(h), Game.To2{}, r0, take1_r(r0, h, w))
+    case Game.To3{}:
+      putm_r(Game.take1(h), Game.To3{}, r0, take1_r(r0, h, w))
+
+def slotb_r(d: Game.Dest, +r0: Nat, +h: Game.Half, w: RGe(r0, h)) -> OkR(r0, Game.slotb(d, h)):
+  match d:
+    case Game.Absent{}:
+      w
+    case Game.Out{}:
+      put_r(Game.Out{}, r0, Game.take_bat(h), take_bat_r(r0, h, w))
+    case Game.Run{}:
+      put_r(Game.Run{}, r0, Game.take_bat(h), take_bat_r(r0, h, w))
+    case Game.To1{}:
+      put_r(Game.To1{}, r0, Game.take_bat(h), take_bat_r(r0, h, w))
+    case Game.To2{}:
+      put_r(Game.To2{}, r0, Game.take_bat(h), take_bat_r(r0, h, w))
+    case Game.To3{}:
+      put_r(Game.To3{}, r0, Game.take_bat(h), take_bat_r(r0, h, w))
+
+def chainb_r(m: Maybe<Game.Half>, bd: Game.Dest, +r0: Nat, w: OkR(r0, m)) -> OkR(r0, Game.chain_b(m, bd)):
+  match m:
+    case None{}:
+      Unit{}
+    case Some{h}:
+      slotb_r(bd, r0, h, w)
+
+def chain1_r(m: Maybe<Game.Half>, +r1: Game.Dest, bd: Game.Dest, +r0: Nat, w: OkR(r0, m)) -> OkR(r0, Game.chain_1(m, r1, bd)):
+  match m:
+    case None{}:
+      Unit{}
+    case Some{+h}:
+      chainb_r(Game.slot1(r1, h), bd, r0, slot1_r(r1, r0, h, w))
+
+def chain2_r(m: Maybe<Game.Half>, +r2: Game.Dest, r1: Game.Dest, bd: Game.Dest, +r0: Nat, w: OkR(r0, m)) -> OkR(r0, Game.chain_2(m, r2, r1, bd)):
+  match m:
+    case None{}:
+      Unit{}
+    case Some{+h}:
+      chain1_r(Game.slot2(r2, h), r1, bd, r0, slot2_r(r2, r0, h, w))
+
+def slots_r(p: Game.Play, +r0: Nat, +h: Game.Half, w: RGe(r0, h)) -> OkR(r0, Game.slots(p, h)):
+  match p:
+    case Game.Play{+r3, r2, r1, bd}:
+      chain2_r(Game.slot3(r3, h), r2, r1, bd, r0, slot3_r(r3, r0, h, w))
+
+# Runs, the whole state: the side at bat only gains; the other is untouched.
+
+def close_away_top(o: Nat, -inn: Nat, -so: Nat, -sb: Game.Bases, +away: Game.Line, -home: Game.Line, -rej: Nat, -bs: Game.Bases, l: Game.Line, w: {Nat.is_le(Game.line_runs(away), Game.line_runs(l)) == True{} : Bool})
+  -> {Nat.is_le(Game.line_runs(away), Game.away_runs(Game.close(o, Game.State{inn, True{}, so, sb, away, home, rej}, bs, l))) == True{} : Bool}:
+  match o:
+    case 0n:
+      w
+    case 1n+o1:
+      match o1:
+        case 0n:
+          w
+        case 1n+o2:
+          match o2:
+            case 0n:
+              w
+            case 1n+o3:
+              match o3:
+                case 0n:
+                  match l:
+                    case Game.Line{bat, runs, lo, lob}:
+                      w
+                case 1n+o4:
+                  le_refl(Game.line_runs(away))
+
+def after_away_top(m: Maybe<Game.Half>, -inn: Nat, -so: Nat, -sb: Game.Bases, +away: Game.Line, -home: Game.Line, -rej: Nat, w: OkR(Game.line_runs(away), m))
+  -> {Nat.is_le(Game.line_runs(away), Game.away_runs(Game.after(Game.State{inn, True{}, so, sb, away, home, rej}, m))) == True{} : Bool}:
+  match m:
+    case None{}:
+      le_refl(Game.line_runs(away))
+    case Some{h}:
+      match h:
+        case Game.Half{bs, l, o}:
+          close_away_top(o, inn, so, sb, away, home, rej, bs, l, w)
+
+def close_away_bot(o: Nat, -inn: Nat, -so: Nat, -sb: Game.Bases, +away: Game.Line, -home: Game.Line, -rej: Nat, -bs: Game.Bases, -l: Game.Line)
+  -> {Nat.is_le(Game.line_runs(away), Game.away_runs(Game.close(o, Game.State{inn, False{}, so, sb, away, home, rej}, bs, l))) == True{} : Bool}:
+  match o:
+    case 0n:
+      le_refl(Game.line_runs(away))
+    case 1n+o1:
+      match o1:
+        case 0n:
+          le_refl(Game.line_runs(away))
+        case 1n+o2:
+          match o2:
+            case 0n:
+              le_refl(Game.line_runs(away))
+            case 1n+o3:
+              match o3:
+                case 0n:
+                  le_refl(Game.line_runs(away))
+                case 1n+o4:
+                  le_refl(Game.line_runs(away))
+
+def after_away_bot(m: Maybe<Game.Half>, -inn: Nat, -so: Nat, -sb: Game.Bases, +away: Game.Line, -home: Game.Line, -rej: Nat)
+  -> {Nat.is_le(Game.line_runs(away), Game.away_runs(Game.after(Game.State{inn, False{}, so, sb, away, home, rej}, m))) == True{} : Bool}:
+  match m:
+    case None{}:
+      le_refl(Game.line_runs(away))
+    case Some{h}:
+      match h:
+        case Game.Half{bs, l, o}:
+          close_away_bot(o, inn, so, sb, away, home, rej, bs, l)
+
+def close_home_top(o: Nat, -inn: Nat, -so: Nat, -sb: Game.Bases, -away: Game.Line, +home: Game.Line, -rej: Nat, -bs: Game.Bases, -l: Game.Line)
+  -> {Nat.is_le(Game.line_runs(home), Game.home_runs(Game.close(o, Game.State{inn, True{}, so, sb, away, home, rej}, bs, l))) == True{} : Bool}:
+  match o:
+    case 0n:
+      le_refl(Game.line_runs(home))
+    case 1n+o1:
+      match o1:
+        case 0n:
+          le_refl(Game.line_runs(home))
+        case 1n+o2:
+          match o2:
+            case 0n:
+              le_refl(Game.line_runs(home))
+            case 1n+o3:
+              match o3:
+                case 0n:
+                  le_refl(Game.line_runs(home))
+                case 1n+o4:
+                  le_refl(Game.line_runs(home))
+
+def after_home_top(m: Maybe<Game.Half>, -inn: Nat, -so: Nat, -sb: Game.Bases, -away: Game.Line, +home: Game.Line, -rej: Nat)
+  -> {Nat.is_le(Game.line_runs(home), Game.home_runs(Game.after(Game.State{inn, True{}, so, sb, away, home, rej}, m))) == True{} : Bool}:
+  match m:
+    case None{}:
+      le_refl(Game.line_runs(home))
+    case Some{h}:
+      match h:
+        case Game.Half{bs, l, o}:
+          close_home_top(o, inn, so, sb, away, home, rej, bs, l)
+
+def close_home_bot(o: Nat, -inn: Nat, -so: Nat, -sb: Game.Bases, -away: Game.Line, +home: Game.Line, -rej: Nat, -bs: Game.Bases, l: Game.Line, w: {Nat.is_le(Game.line_runs(home), Game.line_runs(l)) == True{} : Bool})
+  -> {Nat.is_le(Game.line_runs(home), Game.home_runs(Game.close(o, Game.State{inn, False{}, so, sb, away, home, rej}, bs, l))) == True{} : Bool}:
+  match o:
+    case 0n:
+      w
+    case 1n+o1:
+      match o1:
+        case 0n:
+          w
+        case 1n+o2:
+          match o2:
+            case 0n:
+              w
+            case 1n+o3:
+              match o3:
+                case 0n:
+                  match l:
+                    case Game.Line{bat, runs, lo, lob}:
+                      w
+                case 1n+o4:
+                  le_refl(Game.line_runs(home))
+
+def after_home_bot(m: Maybe<Game.Half>, -inn: Nat, -so: Nat, -sb: Game.Bases, -away: Game.Line, +home: Game.Line, -rej: Nat, w: OkR(Game.line_runs(home), m))
+  -> {Nat.is_le(Game.line_runs(home), Game.home_runs(Game.after(Game.State{inn, False{}, so, sb, away, home, rej}, m))) == True{} : Bool}:
+  match m:
+    case None{}:
+      le_refl(Game.line_runs(home))
+    case Some{h}:
+      match h:
+        case Game.Half{bs, l, o}:
+          close_home_bot(o, inn, so, sb, away, home, rej, bs, l, w)
+
+def Laws.runs_never_decrease_away(s, p):
+  match s:
+    case Game.State{+inn, top, +so, +sb, +away, +home, +rej}:
+      match top:
+        case True{}:
+          after_away_top(Game.slots(p, Game.Half{sb, away, so}), inn, so, sb, away, home, rej,
+            slots_r(p, Game.line_runs(away), Game.Half{sb, away, so}, le_refl(Game.line_runs(away))))
+        case False{}:
+          after_away_bot(Game.slots(p, Game.Half{sb, home, so}), inn, so, sb, away, home, rej)
+
+def Laws.runs_never_decrease_home(s, p):
+  match s:
+    case Game.State{+inn, top, +so, +sb, +away, +home, +rej}:
+      match top:
+        case True{}:
+          after_home_top(Game.slots(p, Game.Half{sb, away, so}), inn, so, sb, away, home, rej)
+        case False{}:
+          after_home_bot(Game.slots(p, Game.Half{sb, home, so}), inn, so, sb, away, home, rej,
+            slots_r(p, Game.line_runs(home), Game.Half{sb, home, so}, le_refl(Game.line_runs(home))))

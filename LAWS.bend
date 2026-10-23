@@ -28,3 +28,14 @@ law box_balances_away:
 law box_balances_home:
   for +ps: List<&2, Game.Play>
   {Game.home_supply(Game.replay(Game.start(), ps)) == Game.home_demand(Game.replay(Game.start(), ps)) : Nat}
+
+# LAW: a play never takes a run off the board.
+law runs_never_decrease_away:
+  for +s: Game.State
+  for +p: Game.Play
+  {Nat.is_le(Game.away_runs(s), Game.away_runs(Game.step(s, p))) == True{} : Bool}
+
+law runs_never_decrease_home:
+  for +s: Game.State
+  for +p: Game.Play
+  {Nat.is_le(Game.home_runs(s), Game.home_runs(Game.step(s, p))) == True{} : Bool}
