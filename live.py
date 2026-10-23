@@ -7,13 +7,17 @@ and prints Bend's home win probability next to MLB's. Bend owns the
 scorebook and the simulation; this file owns HTTP, JSON, CSV and the chart.
 
   python3 live.py                       # live, World Series Game 1
+  python3 live.py --publish             # ... and push every update to the hosted page
   python3 live.py --pk 849809 --replay  # rehearse a finished game
+
+--publish reads WP_PUSH_URL and WP_PUSH_TOKEN from the environment or ./.env.
 """
 
 import argparse
 import csv
 import functools
 import json
+import os
 import subprocess
 import sys
 import threading
@@ -237,20 +241,58 @@ def seed_for(n_plays):
     return (2654435761 * (n_plays + 1)) % 2 ** 32
 
 
+def load_env():
+    """WP_* settings: ./.env (KEY=VALUE lines), overridden by the environment."""
+    vals = {}
+    path = ROOT / ".env"
+    if path.exists():
+        for line in path.read_text().splitlines():
+            key, sep, value = line.partition("=")
+            if sep and key.strip().startswith("WP_"):
+                vals[key.strip()] = value.strip()
+    vals.update({k: v for k, v in os.environ.items() if k.startswith("WP_")})
+    return vals
+
+
+class Publisher:
+    """POSTs the CSV and teams to the Cloudflare Worker (cloudflare/worker.js) when they change."""
+
+    def __init__(self, url, token):
+        self.url, self.token = url.rstrip("/"), token
+        self.last = None
+
+    def push(self, pk, meta, csv_text):
+        if csv_text == self.last:
+            return
+        req = urllib.request.Request(
+            f"{self.url}/push/{pk}", method="POST",
+            data=json.dumps({"meta": meta, "csv": csv_text}).encode(),
+            headers={"Authorization": f"Bearer {self.token}", "Content-Type": "application/json",
+                     "User-Agent": "bend-winprob/1"})
+        try:
+            with urllib.request.urlopen(req, timeout=10):
+                pass
+            self.last = csv_text
+        except Exception as e:  # a failed push is retried by the next write
+            print(f"publish failed: {e}", flush=True)
+
+
 # Rows, ticker, CSV
 # -----------------
 
 class Book:
-    """Rows keyed by at_bat_index (-1: pregame), rewritten to runs/<pk>.csv."""
+    """Rows keyed by at_bat_index (-1: pregame), rewritten to runs/<pk>.csv (and published)."""
 
-    def __init__(self, pk, away, home, depth, mode):
+    def __init__(self, pk, away, home, depth, mode, publisher=None):
         self.pk, self.away, self.home, self.depth, self.mode = pk, away, home, depth, mode
+        self.publisher = publisher
         self.rows = {}
         self.mismatches = 0
         runs = ROOT / "runs"
         runs.mkdir(exist_ok=True)
         self.csv = runs / f"{pk}.csv"
-        (runs / f"{pk}-meta.json").write_text(json.dumps({"pk": pk, "away": away, "home": home}))
+        self.meta = {"pk": pk, "away": away, "home": home}
+        (runs / f"{pk}-meta.json").write_text(json.dumps(self.meta))
 
     def add(self, idx, b, play, mlb):
         bad = check_state(b, play) if play is not None else []
@@ -303,6 +345,8 @@ class Book:
             for idx in sorted(self.rows):
                 w.writerow(self.rows[idx])
         tmp.replace(self.csv)
+        if self.publisher is not None:
+            self.publisher.push(self.pk, self.meta, self.csv.read_text())
 
     def final(self, home_won):
         last = max(self.rows)
@@ -360,7 +404,7 @@ def replay(args):
     plays = complete_plays(src.get("plays"))
     wp = wp_map(src.get("wp"))
     codes = [encode_play(p) for p in plays]
-    book = Book(args.pk, teams["away"]["abbr"], teams["home"]["abbr"], args.depth, args.mode)
+    book = Book(args.pk, teams["away"]["abbr"], teams["home"]["abbr"], args.depth, args.mode, args.publisher)
     print(f"{teams['away']['abbr']} @ {teams['home']['abbr']}  awayCum {away_cum}  homeCum {home_cum}")
     errors = 0
     b = None
@@ -413,7 +457,7 @@ def live(args):
     away, home = teams["away"]["abbr"], teams["home"]["abbr"]
     print(f"{away} @ {home}  awayCum {away_cum}  homeCum {home_cum}  depth {args.depth}  {args.mode}",
           flush=True)
-    book = Book(args.pk, away, home, args.depth, args.mode)
+    book = Book(args.pk, away, home, args.depth, args.mode, args.publisher)
     done = []  # codes already turned into rows
     last_wait = 0.0
     try:
@@ -486,9 +530,18 @@ def main():
     ap.add_argument("--mode", choices=("cpu", "gpu"), default=DEFAULT_MODE)
     ap.add_argument("--port", type=int, default=8765)
     ap.add_argument("--no-serve", action="store_true", help="live: do not start the chart server")
+    ap.add_argument("--publish", action="store_true",
+                    help="push every update to the hosted page (WP_PUSH_URL, WP_PUSH_TOKEN)")
     args = ap.parse_args()
     if args.depth is None:
         args.depth = 16 if args.replay else 20
+    args.publisher = None
+    if args.publish:
+        env = load_env()
+        if not env.get("WP_PUSH_URL") or not env.get("WP_PUSH_TOKEN"):
+            sys.exit("--publish needs WP_PUSH_URL and WP_PUSH_TOKEN (environment or .env)")
+        args.publisher = Publisher(env["WP_PUSH_URL"], env["WP_PUSH_TOKEN"])
+        print(f"publishing: {env['WP_PUSH_URL'].rstrip('/')}/?pk={args.pk}", flush=True)
     sys.exit(replay(args) if args.replay else live(args))
 
 

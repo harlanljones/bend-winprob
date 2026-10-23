@@ -6,3 +6,5 @@ When using Bend:
 
 Build: bend main.bend -o wp
 Check before commit: bend PROOF.bend && python3 live.py --pk 849809 --replay
+Deploy hosted page: cd cloudflare && npx wrangler@4 deploy   (https://bend-winprob.harlanljones.workers.dev)
+Publish to it: python3 live.py --publish   (WP_PUSH_URL, WP_PUSH_TOKEN in .env; PUSH_TOKEN is the Worker secret)

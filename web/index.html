@@ -79,7 +79,20 @@ function fmt(v, signed) {
   return (signed && v >= 0 ? "+" : "") + v.toFixed(1) + (signed ? "" : "%");
 }
 
+// Team names: fetched until the first publish has them (a page opened early shows AWAY @ HOME).
+let metaLoaded = false;
+async function loadMeta() {
+  try {
+    const res = await fetch(`/runs/${pk}-meta.json`, { cache: "no-store" });
+    if (!res.ok) return;
+    meta = await res.json();
+    metaLoaded = true;
+    document.getElementById("title").textContent = `${meta.away} @ ${meta.home} — Bend vs MLB home win probability`;
+  } catch (e) {}
+}
+
 async function tick() {
+  if (!metaLoaded) await loadMeta();
   try {
     const res = await fetch(`/runs/${pk}.csv`, { cache: "no-store" });
     if (!res.ok) throw new Error(res.status);
@@ -98,14 +111,8 @@ async function tick() {
   }
 }
 
-(async () => {
-  try {
-    meta = await (await fetch(`/runs/${pk}-meta.json`, { cache: "no-store" })).json();
-  } catch (e) {}
-  document.getElementById("title").textContent = `${meta.away} @ ${meta.home} — Bend vs MLB home win probability`;
-  await tick();
-  setInterval(tick, 5000);
-})();
+tick();
+setInterval(tick, 5000);
 </script>
 </body>
 </html>
