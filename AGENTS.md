@@ -10,3 +10,4 @@ Offline replay/demo: python3 sim_engine.py --pk 849809 [--fetch] [--delay 1] [--
 Deploy hosted page: cd cloudflare && npx wrangler@4 deploy   (https://bend-winprob.harlanljones.workers.dev)
 Publish to it: python3 live.py --publish   (WP_PUSH_URL, WP_PUSH_TOKEN in .env; PUSH_TOKEN is the Worker secret)
 Supervised live: bash run_live.sh   (restarts crashes with 5–60 s backoff; exits on clean Final/Ctrl-C)
+Evidence: timestamped stdout/stderr in logs/winprob-YYYY-MM-DD.log; per-play results in runs/<gamePk>.csv. Logs include commit and Bend version, never .env values.
