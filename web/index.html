@@ -294,8 +294,8 @@ function fmtDelta(v) {
 }
 
 function markBases(str) {
-  // bases is 3 chars like `12-` meaning runners on 1st and 2nd (r1/r2 oriented)
-  const b1 = str[2] !== "-", b2 = str[1] !== "-", b3 = str[0] !== "-";
+  // bases is 3 chars: first, second, third (e.g. `12-` = runners on 1st and 2nd)
+  const b1 = str[0] !== "-", b2 = str[1] !== "-", b3 = str[2] !== "-";
   document.querySelectorAll("#bases .base").forEach(node => {
     const which = node.dataset.base;
     const on = which === "1" ? b1 : which === "2" ? b2 : which === "3" ? b3 : false;
