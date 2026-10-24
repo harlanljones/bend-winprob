@@ -2,29 +2,177 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Bend vs MLB win probability</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bend vs MLB</title>
 <style>
-  body { font: 15px/1.4 system-ui, sans-serif; margin: 24px; color: #222; background: #fff; }
-  h1 { font-size: 22px; margin: 0 0 4px; }
-  #stats { margin: 0 0 12px; color: #444; }
-  #stats b { color: #111; }
-  #freshness { font-size: 12px; margin: -6px 0 12px; color: #287a45; }
-  #freshness.stale { color: #a86b00; }
-  #freshness.dead { color: #b00020; }
-  .bend { color: #2a6fdb; } .mlb { color: #e07a1f; }
-  svg text { font-size: 12px; fill: #555; }
+  :root { color-scheme: dark; }
+  :root, :root.dark {
+    --bg: #0f1220; --panel: #171b2c; --panel-edge: #232842;
+    --text: #e6e9f5; --muted: #98a0b8; --grid: #232842; --grid-strong: #2d3456;
+    --accent: #6ab0f3; --bend: #5b9dff; --bend-soft: #334d80;
+    --mlb: #ff9f5b; --warn: #d1a04a; --err: #e2565c; --ok: #4ac26b;
+
+  :root.light {
+    --bg: #fbfbfd; --panel: #ffffff; --panel-edge: #dfe2ec;
+    --text: #191d2b; --muted: #6b7286; --grid: #e4e7f2; --grid-strong: #cdd2e2;
+    --accent: #2563eb; --bend: #2563eb; --bend-soft: #bfdbfe;
+    --mlb: #ea7a26; --warn: #a16207; --err: #b91c1c; --ok: #15803d;
+    color-scheme: light;
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 15px/1.5 ui-sans-serif, system-ui, sans-serif;
+         background: var(--bg); color: var(--text); }
+
+  .page { max-width: 1020px; margin: 0 auto; padding: 22px clamp(12px, 4vw, 36px) 40px; }
+  header { display: flex; justify-content: space-between; align-items: baseline;
+           gap: 12px; margin: 0 0 18px; flex-wrap: wrap; }
+  h1 { margin: 0; font-size: 21px; font-weight: 650; letter-spacing: -0.2px; }
+  .sub { display: flex; align-items: center; gap: 12px; font-size: 12px; color: var(--muted); }
+  #freshness { padding: 3px 10px; border: 1px solid var(--panel-edge); border-radius: 999px;
+               background: var(--panel); color: var(--ok); }
+  #freshness.stale { color: var(--warn); }
+  #freshness.dead { color: var(--err); }
+
+  .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+           gap: 14px; margin: 0 0 12px; }
+  @media (max-width: 640px) { .cards { grid-template-columns: 1fr; } }
+  .card { background: var(--panel); border: 1px solid var(--panel-edge); border-radius: 12px;
+          padding: 14px 18px; }
+  .card label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.4px;
+                color: var(--muted); }
+  .card .value { font-size: 36px; font-weight: 700; line-height: 1.15;
+                 font-variant-numeric: tabular-nums; margin-top: 2px; }
+  .card .value.bend { color: var(--bend); }
+  .card .value.mlb { color: var(--mlb); }
+  .card .value.delta { color: var(--text); }
+  .card .value.delta.up { color: var(--ok); }
+  .card .value.delta.down { color: var(--err); }
+  .card .hint { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+  .state { display: flex; align-items: center; justify-content: space-between;
+           gap: 12px; flex-wrap: wrap;
+           background: var(--panel); border: 1px solid var(--panel-edge);
+           border-radius: 12px; padding: 12px 18px; margin: 0 0 14px; }
+  .state .score { font-size: 14px; font-weight: 600; }
+  .state .score span { font-variant-numeric: tabular-nums; }
+  .state .score .sep { color: var(--muted); font-weight: 300; padding: 0 8px; }
+  .state .inning { font-size: 12px; color: var(--muted); }
+  .state .inning b { color: var(--text); font-weight: 600; }
+  .bases { display: grid; grid-template-columns: repeat(3, 16px);
+           grid-template-rows: repeat(3, 16px); gap: 0; width: max-content; align: center; }
+  .base { width: 12px; height: 12px; border-radius: 2px;
+          background: var(--panel-edge); border: 1px solid var(--grid-strong);
+          transform: rotate(45deg); margin: 3px; }
+  .base.on { background: var(--bend); border-color: var(--bend); }
+  .base-grid { display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: center; }
+  .outs { display: inline-flex; gap: 6px; align-items: center; }
+  .out { width: 9px; height: 9px; border-radius: 50%; background: var(--panel-edge);
+         border: 1px solid var(--grid-strong); }
+  .out.on { background: var(--mlb); border-color: var(--mlb); }
+  .state .right { display: flex; align-items: center; gap: 18px; }
+
+  .chartPanel { background: var(--panel); border: 1px solid var(--panel-edge);
+                border-radius: 12px; padding: 12px 12px 8px; }
+  .chartPanel svg { display: block; width: 100%; height: auto; }
+  .chartPanel svg text { font-size: 11px; fill: var(--muted); }
+  .legend { display: flex; gap: 18px; padding: 8px 10px 6px; font-size: 12px;
+            color: var(--muted); justify-content: center; }
+  .legend i { display: inline-block; width: 14px; height: 3px; border-radius: 2px;
+              vertical-align: middle; margin: 0 4px 2px 0; }
+  .legend .bendline { background: var(--bend); }
+  .legend .mlbline { background: var(--mlb); }
+
+  footer { margin-top: 18px; font-size: 12px; color: var(--muted);
+           display: flex; justify-content: space-between; align-items: baseline;
+           flex-wrap: wrap; gap: 8px; }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
-<h1 id="title">Bend vs MLB</h1>
-<div id="stats">loading…</div>
-<div id="freshness">feed: waiting for first update</div>
-<svg id="chart" width="900" height="400" viewBox="0 0 900 400"></svg>
+<article class="page">
+  <header>
+    <h1 id="title">Bend vs MLB</h1>
+    <div class="sub">
+      <span id="freshness">feed: waiting</span>
+      <span id="gamelink">gamePk <span id="pknum">–</span></span>
+    </div>
+  </header>
+
+  <section class="cards">
+    <div class="card">
+      <label>Bend home win prob</label>
+      <div class="value bend" id="bend-val">–</div>
+      <div class="hint" id="bend-hint">GPU Monte Carlo</div>
+    </div>
+    <div class="card">
+      <label>MLB official</label>
+      <div class="value mlb" id="mlb-val">–</div>
+      <div class="hint" id="mlb-hint">statsapi</div>
+    </div>
+    <div class="card">
+      <label>Δ (Bend − MLB)</label>
+      <div class="value delta" id="delta-val">–</div>
+      <div class="hint" id="delta-hint">percentage points</div>
+    </div>
+  </section>
+
+  <section class="state" id="state">
+    <div class="left">
+      <div class="base-grid">
+        <div class="bases" id="bases">
+          <div></div>
+          <div class="base" data-base="2"></div>
+          <div></div>
+          <div class="base" data-base="3"></div>
+          <div></div>
+          <div class="base" data-base="1"></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div>
+          <div class="score" id="score">–</div>
+          <div class="inning" id="inning">–</div>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <div>
+        <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px">outs</div>
+        <div class="outs" id="outs">
+          <span class="out"></span><span class="out"></span><span class="out"></span>
+        </div>
+      </div>
+      <div id="modechip" style="font-size:12px;color:var(--muted)">–</div>
+    </div>
+  </section>
+
+  <section class="chartPanel">
+    <svg id="chart" viewBox="0 0 900 380" preserveAspectRatio="none"></svg>
+    <div class="legend">
+      <span><i class="bendline"></i>Bend</span>
+      <span><i class="mlbline"></i>MLB</span>
+    </div>
+  </section>
+
+  <footer>
+    <span>Runs by <a id="csvlink" href="#">runs/<span id="csvname">–</span>.csv</a>
+      · <a id="metalink" href="#">meta</a></span>
+    <span>Bend · live.py · <a href="https://statsapi.mlb.com" rel="noreferrer">MLB Stats API</a></span>
+  </footer>
+</article>
 <script>
 const pk = new URLSearchParams(location.search).get("pk") || "849805";
-const W = 900, H = 400, L = 48, R = 16, T = 16, B = 32;
+const W = 900, H = 380, L = 48, R = 16, T = 16, B = 30;
 const NS = "http://www.w3.org/2000/svg";
 let meta = { away: "AWAY", home: "HOME" };
+
+document.getElementById("pknum").textContent = pk;
+document.getElementById("csvname").textContent = pk;
+document.getElementById("csvlink").href = `/runs/${pk}.csv`;
+document.getElementById("metalink").href = `/runs/${pk}-meta.json`;
 
 function el(name, attrs, text) {
   const e = document.createElementNS(NS, name);
@@ -63,21 +211,53 @@ function parseCsv(text) {
 
 function num(v) { return v === "" || v === undefined ? null : Number(v); }
 
+function cssVar(name) { return getComputedStyle(document.body).getPropertyValue(name).trim(); }
+
 function draw(rows) {
   const svg = document.getElementById("chart");
   svg.replaceChildren();
   const n = Math.max(rows.length - 1, 1);
   const x = i => L + (W - L - R) * i / n;
   const y = p => T + (H - T - B) * (1 - p / 100);
+
+  // horizontal gridlines
   for (const g of [0, 25, 50, 75, 100]) {
     svg.append(el("line", { x1: L, x2: W - R, y1: y(g), y2: y(g),
-      stroke: g === 50 ? "#bbb" : "#e5e5e5", "stroke-width": 1 }));
-    svg.append(el("text", { x: L - 6, y: y(g) + 4, "text-anchor": "end" }, g + "%"));
+      stroke: g === 50 ? cssVar("--grid-strong") : cssVar("--grid"), "stroke-width": 1 }));
+    svg.append(el("text", { x: L - 8, y: y(g) + 4, "text-anchor": "end" }, g + "%"));
   }
-  svg.append(el("text", { x: L, y: H - 8 }, "pregame"));
+
+  // vertical tick per half-inning change (thin; only when present)
+  let prevKey = null;
+  const ticks = [];
+  rows.forEach((r, i) => {
+    const key = `${r.inning}/${r.half}`;
+    if (prevKey !== null && key !== prevKey) ticks.push(i);
+    prevKey = key;
+  });
+  for (const t of ticks) {
+    svg.append(el("line", { x1: x(t), x2: x(t), y1: T, y2: H - B,
+      stroke: cssVar("--grid"), "stroke-width": 1, "stroke-dasharray": "3 3" }));
+  }
+  svg.append(el("text", { x: L, y: H - 8, "text-anchor": "start" },
+    `${meta.away} @ ${meta.home}`));
   svg.append(el("text", { x: W - R, y: H - 8, "text-anchor": "end" }, "latest play"));
-  svg.append(el("text", { x: L + 6, y: T + 12 }, meta.home + " win probability"));
-  const line = (key, color, dash) => {
+
+  // area shading between MLB and Bend, where both are present
+  const pairs = [];
+  rows.forEach((r, i) => {
+    const m = num(r.mlb_home_wp), b = num(r.bend_home_wp);
+    if (m !== null && b !== null) pairs.push([x(i), y(m), y(b)]);
+  });
+  if (pairs.length > 1) {
+    let d = "";
+    for (const [px, my, by] of pairs) d += (d ? "L" : "M") + px.toFixed(1) + "," + by.toFixed(1);
+    for (let k = pairs.length - 1; k >= 0; k--) d += "L" + pairs[k][0].toFixed(1) + "," + pairs[k][1].toFixed(1);
+    d += "Z";
+    svg.append(el("path", { d, fill: cssVar("--bend-soft"), fill_opacity: 0.35, stroke: "none" }));
+  }
+
+  const line = (key, varName, dash) => {
     let d = "", pen = false;
     rows.forEach((r, i) => {
       const v = num(r[key]);
@@ -85,11 +265,11 @@ function draw(rows) {
       d += (pen ? "L" : "M") + x(i).toFixed(1) + "," + y(v).toFixed(1);
       pen = true;
     });
-    if (d) svg.append(el("path", { d, fill: "none", stroke: color, "stroke-width": 2.5,
-      "stroke-dasharray": dash || "none" }));
+    if (d) svg.append(el("path", { d, fill: "none",
+      stroke: cssVar(varName), "stroke-width": 2.4, "stroke-dasharray": dash || "none" }));
   };
-  line("mlb_home_wp", "#e07a1f", "6 4");
-  line("bend_home_wp", "#2a6fdb");
+  line("mlb_home_wp", "--mlb", "6 4");
+  line("bend_home_wp", "--bend");
 }
 
 function latest(rows, key) {
@@ -97,9 +277,36 @@ function latest(rows, key) {
   return null;
 }
 
-function fmt(v, signed) {
-  if (v === null) return "--";
-  return (signed && v >= 0 ? "+" : "") + v.toFixed(1) + (signed ? "" : "%");
+function fmt(v) {
+  if (v === null) return "–";
+  return v.toFixed(1) + "%";
+}
+
+function fmtDelta(v) {
+  if (v === null) return "–";
+  return (v >= 0 ? "+" : "") + v.toFixed(1);
+}
+
+function markBases(str) {
+  // bases is 3 chars like `12-` meaning runners on 1st and 2nd (r1/r2 oriented)
+  const b1 = str[2] !== "-", b2 = str[1] !== "-", b3 = str[0] !== "-";
+  document.querySelectorAll("#bases .base").forEach(node => {
+    const which = node.dataset.base;
+    const on = which === "1" ? b1 : which === "2" ? b2 : which === "3" ? b3 : false;
+    node.classList.toggle("on", on);
+  });
+}
+
+function markOuts(n) {
+  document.querySelectorAll("#outs .out").forEach((node, i) => {
+    node.classList.toggle("on", i < n);
+  });
+}
+
+function setCard(id, cls, text) {
+  const node = document.getElementById(id);
+  node.textContent = text;
+  if (cls !== undefined) node.className = cls;
 }
 
 // A successful CSV response is a heartbeat from the publisher, not just a
@@ -108,12 +315,12 @@ let lastFetchMs = null;
 function updateFreshness() {
   const node = document.getElementById("freshness");
   if (lastFetchMs === null) {
-    node.textContent = "feed: waiting for first update";
+    node.textContent = "feed: waiting";
     node.className = "dead";
     return;
   }
   const seconds = Math.max(0, Math.floor((Date.now() - lastFetchMs) / 1000));
-  node.textContent = `feed: updated ${seconds}s ago`;
+  node.textContent = `feed: ${seconds}s ago`;
   node.className = seconds < 30 ? "" : seconds < 90 ? "stale" : "dead";
 }
 setInterval(updateFreshness, 1000);
@@ -126,7 +333,7 @@ async function loadMeta() {
     if (!res.ok) return;
     meta = await res.json();
     metaLoaded = true;
-    document.getElementById("title").textContent = `${meta.away} @ ${meta.home} — Bend vs MLB home win probability`;
+    document.getElementById("title").textContent = `${meta.away} @ ${meta.home} — Bend vs MLB`;
   } catch (e) {}
 }
 
@@ -139,25 +346,27 @@ async function tick() {
     lastFetchMs = Date.now();
     updateFreshness();
     const last = rows[rows.length - 1] || {};
-    const stat = (label, value, className) => {
-      const span = document.createElement("span");
-      if (className) span.className = className;
-      const b = document.createElement("b");
-      b.textContent = value;
-      span.append(label + " ", b);
-      return span;
-    };
-    document.getElementById("stats").replaceChildren(
-      stat("Bend", fmt(latest(rows, "bend_home_wp")), "bend"), " · ",
-      stat("MLB", fmt(latest(rows, "mlb_home_wp")), "mlb"), " · ",
-      stat("Δ", fmt(latest(rows, "delta"), true)), " · ",
-      `${last.half || ""}${last.inning || ""} ${last.outs || 0} out · ` +
-        `${meta.away} ${last.away_runs || 0} – ${meta.home} ${last.home_runs || 0} · ` +
-        `state ${last.state_check || "--"}`
-    );
+    const bend = latest(rows, "bend_home_wp");
+    const mlb = latest(rows, "mlb_home_wp");
+    const delta = latest(rows, "delta");
+    setCard("bend-val", "value bend", fmt(bend));
+    setCard("mlb-val", "value mlb", mlb === null ? "–" : fmt(mlb));
+    if (delta === null) setCard("delta-val", "value delta", "–");
+    else setCard("delta-val", "value delta " + (delta > 0 ? "up" : delta < 0 ? "down" : ""),
+                 fmtDelta(delta));
+    document.getElementById("bend-hint").textContent = `${Number(last.sims || 0).toLocaleString()} sims · ${last.seconds || 0}s ${last.mode || ""}`;
+    const halfLabel = (last.half === "T" ? "Top" : last.half === "B" ? "Bottom" : "") + " " + (last.inning || "");
+    document.getElementById("inning").textContent = halfLabel.trim();
+    document.getElementById("score").innerHTML =
+      `<span>${meta.away} <b>${last.away_runs || 0}</b></span>` +
+      `<span class="sep">–</span>` +
+      `<span><b>${last.home_runs || 0}</b> ${meta.home}</span>`;
+    markBases(last.bases || "---");
+    markOuts(Number(last.outs || 0));
+    document.getElementById("modechip").textContent = `state ${last.state_check || "–"}`;
     draw(rows);
   } catch (e) {
-    document.getElementById("stats").textContent = "waiting for runs/" + pk + ".csv";
+    document.getElementById("score").textContent = "waiting for feed";
   } finally {
     updateFreshness();
     setTimeout(tick, 5000);
