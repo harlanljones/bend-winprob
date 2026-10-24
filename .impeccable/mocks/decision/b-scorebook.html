@@ -1,0 +1,64 @@
+<!doctype html><html lang=en><meta charset=utf-8><title>B · Scorebook</title>
+<link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;700&family=Caveat:wght@500;700&display=swap">
+
+<script src="https://cdn.jsdelivr.net/npm/pele@1/dist/pele.global.js"></script>
+<script>
+async function rows(){const t=await (await fetch('/web/demo/849809.csv')).text();const L=t.trim().split('\n');const h=L[0].split(',');return L.slice(1).map(l=>Object.fromEntries(l.split(',').map((v,i)=>[h[i],v])));}
+function chartSrc(rs){
+  const b=rs.map(r=>r.bend_home_wp||'null'), m=rs.map(r=>r.mlb_home_wp||'null');
+  const xs=rs.map((r,i)=>i);
+  return `xychart\n  x-axis "play" [${xs.join(',')}]\n  y-axis "home win %" 0 --> 100\n  line "Bend" [${b.join(',')}]\n  line "MLB" [${m.map(v=>v==='null'?'0':v).join(',')}]`;
+}
+</script>
+
+<style>
+:root{--card:#efe6d2;--teal:#2c6e63;--ink:#1d1d1b;--red:#b3362b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--card);color:var(--ink);font:14px/1.3 "Archivo Narrow",sans-serif;--pele-font-family:"Archivo Narrow";--pele-text:#2c6e63;--pele-line:#2c6e63;--pele-muted:#2c6e63;--pele-background:transparent}
+.card{width:1280px;margin:0 auto;padding:26px 36px;background:
+ repeating-linear-gradient(0deg,transparent 0 23px,rgba(44,110,99,.14) 23px 24px)}
+.head{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--teal);padding-bottom:6px;color:var(--teal)}
+.head h1{margin:0;font-size:38px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;line-height:1}
+.head .meta{font-size:13px;text-transform:uppercase;letter-spacing:.1em}
+.hand{font-family:Caveat,cursive;color:var(--ink);font-size:22px;font-weight:600}
+.grid{display:grid;grid-template-columns:150px repeat(9,1fr) 120px;margin-top:14px;border:2px solid var(--teal)}
+.grid > div{border-right:1px solid var(--teal);border-bottom:1px solid var(--teal);min-height:64px;position:relative;color:var(--teal);font-size:12px;padding:3px 5px;text-transform:uppercase;letter-spacing:.06em}
+.grid .h{min-height:28px;font-weight:700;background:rgba(44,110,99,.08)}
+.grid .team{font-size:18px;font-weight:700;display:flex;align-items:center;gap:6px} .grid .team img{height:22px}
+.dia{position:absolute;inset:14px 18px 10px;}
+.dia svg{width:100%;height:100%}
+.pencil{font-family:Caveat,cursive;color:var(--ink);font-size:20px;position:absolute;right:6px;bottom:2px;text-transform:none;letter-spacing:0}
+.open{outline:3px solid var(--red);outline-offset:-3px}
+.margin{display:grid;grid-template-columns:1fr 440px;gap:30px;margin-top:16px;align-items:start}
+.foot{border-top:2px solid var(--teal);color:var(--teal);font-size:12px;text-transform:uppercase;letter-spacing:.08em;padding-top:6px}
+.foot table{border-collapse:collapse;width:100%} .foot td,.foot th{border:1px solid var(--teal);padding:3px 6px;text-align:right} .foot th{text-align:left}
+.note{font-family:Caveat,cursive;font-size:24px;color:var(--ink);line-height:1.1;text-transform:none;letter-spacing:0}
+.note b{color:var(--red)}
+</style>
+<div class=card>
+<div class=head><div><h1>Official Scorebook</h1><div class=meta>Bend vs MLB · gamePk 849809 · 2026-10-23 · kept by <span class=hand>game.bend · step</span></div></div><div class=meta>Proofs: <span class=hand>ALL PROOFS CHECK ✓</span> · 2<sup>16</sup> games per play</div></div>
+<div class=grid id=g></div>
+<div class=margin>
+ <div class=foot><table><tr><th>Proof of box score (OBR 9.03(c))</th><th>LAD</th><th>MIL</th></tr><tr><th>AB + BB + HBP + SH + SF + CI</th><td>31</td><td>30</td></tr><tr><th>R + LOB + PO</th><td>31</td><td>30</td></tr><tr><th>Balance</th><td class=hand style="font-size:20px;text-align:right">✓ proven</td><td class=hand style="font-size:20px;text-align:right">✓ proven</td></tr></table></div>
+ <div><div class=note>Keeper's note — home win, per play: Bend <b>85.2</b>, MLB 85.4, Δ −0.2 pp. Mean |Δ| 2.70 pp over 70 plays.</div><div id=chart style="margin-top:6px"></div></div>
+</div></div>
+<script>
+rows().then(rs=>{
+ const g=document.getElementById('g');const H=['','1','2','3','4','5','6','7','8','9','R H E'];
+ H.forEach(h=>{const d=document.createElement('div');d.className='h';d.textContent=h;g.append(d)});
+ for(const side of ['T','B']){
+  const t=document.createElement('div');t.className='team';t.innerHTML=side==='T'?'<img src="https://www.mlbstatic.com/team-logos/119.svg">LAD':'<img src="https://www.mlbstatic.com/team-logos/158.svg">MIL';g.append(t);
+  for(let inn=1;inn<=9;inn++){
+   const d=document.createElement('div');const ps=rs.filter(r=>r.inning==inn&&r.half===side&&r.at_bat_index>=0);
+   const last=ps[ps.length-1];const isOpen=inn===9&&side==='T';if(isOpen)d.classList.add('open');
+   const b=last?last.bases:'---';
+   const on=i=>b[i]!=='-';
+   d.innerHTML=`<svg viewBox="0 0 40 40"><g fill="none" stroke="#2c6e63" stroke-width="1.2"><path d="M20 36 L36 20 L20 4 L4 20 Z"/></g><circle cx="36" cy="20" r="3" fill="${on(0)?'#1d1d1b':'none'}" stroke="#2c6e63"/><circle cx="20" cy="4" r="3" fill="${on(1)?'#1d1d1b':'none'}" stroke="#2c6e63"/><circle cx="4" cy="20" r="3" fill="${on(2)?'#1d1d1b':'none'}" stroke="#2c6e63"/></svg>`;
+   d.firstChild.classList.add('dia');d.className+=' ';d.insertAdjacentHTML('beforeend',`<span class=pencil>${last?(last.outs+' out · '+last.bend_home_wp):''}</span>`);
+   g.append(d);
+  }
+  const r=document.createElement('div');r.className='pencil';r.style.position='static';r.style.minHeight='64px';r.innerHTML=side==='T'?'1 &nbsp; 5 &nbsp; 0':'2 &nbsp; 6 &nbsp; 0';g.append(r);
+ }
+ pele.mount(document.getElementById('chart'),chartSrc(rs),{fontSize:11,zoom:false});
+});
+</script>

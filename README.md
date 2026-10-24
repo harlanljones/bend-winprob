@@ -58,7 +58,7 @@ reports zero mismatches. Per-game results: `runs/bench/season-summary.json`.
 | `sim_engine.py` | offline replay engine over a cached fixture (no network) |
 | `bench.py` | batch benchmark: Brier / log loss / MAE vs MLB, per game |
 | `tests/` | Python unit tests for the replay engine and CSV encoding |
-| `web/` | the hosted page (one HTML file; `web/demo/` is a bundled replay) |
+| `web/` | the hosted page: one HTML file, self-hosted fonts in `web/fonts/`, a bundled replay in `web/demo/`; diagrams and the live chart are Mermaid rendered by [Pele](https://pele.run) |
 | `cloudflare/` | Worker + Durable Object serving the page and the feed |
 
 ## Quick start

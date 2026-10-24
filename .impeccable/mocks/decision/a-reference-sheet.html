@@ -1,0 +1,65 @@
+<!doctype html><html lang=en><meta charset=utf-8><title>A · Reference Sheet</title>
+<link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;700;900&display=swap">
+
+<script src="https://cdn.jsdelivr.net/npm/pele@1/dist/pele.global.js"></script>
+<script>
+async function rows(){const t=await (await fetch('/web/demo/849809.csv')).text();const L=t.trim().split('\n');const h=L[0].split(',');return L.slice(1).map(l=>Object.fromEntries(l.split(',').map((v,i)=>[h[i],v])));}
+function chartSrc(rs){
+  const b=rs.map(r=>r.bend_home_wp||'null'), m=rs.map(r=>r.mlb_home_wp||'null');
+  const xs=rs.map((r,i)=>i);
+  return `xychart\n  x-axis "play" [${xs.join(',')}]\n  y-axis "home win %" 0 --> 100\n  line "Bend" [${b.join(',')}]\n  line "MLB" [${m.map(v=>v==='null'?'0':v).join(',')}]`;
+}
+</script>
+
+<style>
+:root{--paper:#f4f1ea;--ink:#17191c;--gold:#b7861b;--mute:#5a6270;--rule:#17191c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.35 "Libre Franklin",system-ui,sans-serif;font-variant-numeric:tabular-nums;--pele-font-family:"Libre Franklin";--pele-text:#17191c;--pele-line:#17191c;--pele-muted:#5a6270;--pele-background:transparent}
+.sheet{width:1280px;margin:0 auto;padding:28px 40px}
+.mast{display:flex;align-items:baseline;gap:24px;border-bottom:3px solid var(--rule);padding-bottom:8px}
+.mast h1{margin:0;font-size:44px;font-weight:900;letter-spacing:-.02em;line-height:1}
+.mast .season{font-size:15px;font-weight:500;display:flex;gap:18px}
+.season b{font-weight:900}
+.season small{color:var(--mute);font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin-right:4px}
+.toc{display:flex;gap:26px;padding:8px 0;border-bottom:1px solid var(--rule);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase}
+.toc a{color:inherit;text-decoration:none} .toc a.act{text-decoration:underline;text-underline-offset:4px;font-weight:700}
+.grid{display:grid;grid-template-columns:2fr 1fr;gap:36px;margin-top:18px}
+h2{font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin:0 0 6px;font-weight:700;display:flex;justify-content:space-between}
+h2 span{font-weight:400;color:var(--mute);letter-spacing:0;text-transform:none}
+table{border-collapse:collapse;width:100%}
+th{text-align:right;font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:4px 6px;border-top:2px solid var(--rule);border-bottom:1px solid var(--rule);font-weight:700}
+td{text-align:right;padding:3px 6px;border-bottom:1px solid rgba(23,25,28,.14)}
+th:first-child,td:first-child,th.l,td.l{text-align:left}
+tr.now td{background:var(--gold);color:#fff;font-weight:700}
+tr.now td:first-child::before{content:"▶ "}
+tr.st td{color:var(--mute);font-style:italic;border-bottom:none;padding-top:8px}
+.fig{border-top:2px solid var(--rule);padding-top:6px}
+.three{display:flex;justify-content:space-between;margin-top:10px;border-top:1px solid var(--rule);padding-top:8px}
+.three div{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.three b{display:block;font-size:34px;font-weight:900;color:var(--ink);letter-spacing:-.02em;line-height:1}
+.three .g b{color:var(--gold)}
+.logos{display:flex;gap:10px;align-items:center;font-size:20px;font-weight:900} .logos img{height:26px}
+</style>
+<div class=sheet>
+<div class=mast><h1>BEND vs MLB</h1><div class=season><span><small>Run</small><b>2026-10-23</b></span><span><small>G</small><b>12</b></span><span><small>PA</small><b>871</b></span><span><small>Brier</small><b>.1245</b> <span style="color:var(--mute)">MLB .1543</span></span><span><small>LL</small><b>.3913</b></span><span><small>Sims/play</small><b>2<sup>20</sup></b></span><span><small>Proofs</small><b>ALL CHECK</b></span></div></div>
+<nav class=toc><a class=act href=#>Reproduce</a><a href=#>Play log</a><a href=#>Laws</a><a href=#>Benchmark</a><a href=#>Limits</a><a href=#>Source</a></nav>
+<div class=grid>
+<section>
+<h2><span class=logos><img src="https://www.mlbstatic.com/team-logos/119.svg" alt="">LAD 1 – 2 MIL<img src="https://www.mlbstatic.com/team-logos/158.svg" alt=""></span><span>gamePk 849809 · replay snapshot · polled 5 s</span></h2>
+<table id=log><thead><tr><th>Inn</th><th>Bases</th><th>Outs</th><th>Away</th><th>Home</th><th>Bend WP</th><th>MLB WP</th><th>Δ pp</th><th>Sims</th><th>s</th><th>Check</th></tr></thead><tbody></tbody></table>
+</section>
+<aside>
+<h2>Figure 1 <span>home win %, per completed play</span></h2>
+<div class=fig id=chart></div>
+<div class=three><div>Bend<b>85.2%</b></div><div>MLB official<b>85.4%</b></div><div class=g>Δ<b>−0.2</b></div></div>
+</aside>
+</div></div>
+<script>
+rows().then(rs=>{
+ const tb=document.querySelector('#log tbody');const last=rs.slice(-12);
+ last.forEach((r,i)=>{const tr=document.createElement('tr');if(i===last.length-1)tr.className='now';
+ tr.innerHTML=`<td>${r.half==='T'?'▲':'▼'}${r.inning}</td><td>${r.bases}</td><td>${r.outs}</td><td>${r.away_runs}</td><td>${r.home_runs}</td><td>${r.bend_home_wp}</td><td>${r.mlb_home_wp||'—'}</td><td>${r.delta||'—'}</td><td>${Number(r.sims).toLocaleString()}</td><td>${r.seconds}</td><td>${r.state_check}</td>`;tb.append(tr)});
+ const s=document.createElement('tr');s.className='st';s.innerHTML='<td colspan=11 class=l>feed: 4 s ago · published feed · scorebook check ok on 70 of 70 plays · next poll in 1 s</td>';tb.append(s);
+ pele.mount(document.getElementById('chart'),chartSrc(rs),{fontSize:11,zoom:false});
+});
+</script>

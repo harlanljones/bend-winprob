@@ -1,0 +1,42 @@
+<!doctype html><html lang=en><meta charset=utf-8><title>C · Centre-rail</title>
+<link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
+
+<script src="https://cdn.jsdelivr.net/npm/pele@1/dist/pele.global.js"></script>
+<script>
+async function rows(){const t=await (await fetch('/web/demo/849809.csv')).text();const L=t.trim().split('\n');const h=L[0].split(',');return L.slice(1).map(l=>Object.fromEntries(l.split(',').map((v,i)=>[h[i],v])));}
+function chartSrc(rs){
+  const b=rs.map(r=>r.bend_home_wp||'null'), m=rs.map(r=>r.mlb_home_wp||'null');
+  const xs=rs.map((r,i)=>i);
+  return `xychart\n  x-axis "play" [${xs.join(',')}]\n  y-axis "home win %" 0 --> 100\n  line "Bend" [${b.join(',')}]\n  line "MLB" [${m.map(v=>v==='null'?'0':v).join(',')}]`;
+}
+</script>
+
+<style>
+:root{--bone:#efe9dc;--ink:#1a1a1a;--verm:#c0392b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bone);color:var(--ink);font:17px/1.5 "Source Serif 4",Georgia,serif;--pele-font-family:"Source Serif 4";--pele-text:#1a1a1a;--pele-line:#1a1a1a;--pele-muted:#6b6b6b;--pele-background:transparent}
+.page{width:1280px;margin:0 auto;padding:40px 60px 30px 70px;display:grid;grid-template-columns:300px 60px 300px 1fr;column-gap:0}
+.title{grid-column:1/5;display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--ink);margin-bottom:22px;padding-bottom:4px}
+.title h1{margin:0;font-weight:400;font-size:26px;font-variant:small-caps;letter-spacing:.06em}
+.title .k{font-size:11px;font-variant:small-caps;letter-spacing:.14em;color:var(--verm)}
+.col p{margin:0 0 1em;text-align:justify;hyphens:auto}
+.rail{border-left:1px solid var(--ink);border-right:1px solid var(--ink);display:flex;flex-direction:column;align-items:center;color:var(--verm);font-size:11px;font-variant:small-caps;letter-spacing:.12em;padding-top:4px;gap:22px}
+.rail i{display:block;width:7px;height:7px;border:1px solid var(--verm);margin-top:4px} .rail i.f{background:var(--verm)}
+.m{padding-left:40px;position:relative;font-size:11px;font-variant:small-caps;letter-spacing:.1em}
+.m .br{position:absolute;left:14px;top:0;bottom:0;border-left:1px solid var(--ink);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);width:10px}
+.m .lbl{color:var(--verm)}
+.m .n{display:flex;justify-content:space-between;font-size:14px;font-variant:normal;letter-spacing:0;border-top:1px solid var(--ink);margin-top:8px;padding-top:4px}
+.m .n b{font-weight:600}
+code{font:14px ui-monospace,Menlo,monospace}
+.laws{grid-column:1/4;margin-top:6px;border-top:1px solid var(--ink);font-size:13px;display:grid;grid-template-columns:28px 1fr 28px 1fr;column-gap:14px;padding-top:6px}
+.laws span{color:var(--verm);font-variant:small-caps;letter-spacing:.1em}
+</style>
+<div class=page>
+<div class=title><h1>Bend vs MLB · a proven scorebook, simulated 2<sup>20</sup> times a play</h1><span class=k>reproduce · laws · benchmark · limits · source</span></div>
+<div class=col><p><code>game.bend</code> holds the state of a game and the single <code>step</code> that applies one completed play. Every moving runner is first taken off its origin and held, then placed, so exchanges and force plays need no special cases. A play that cannot be applied legally returns <code>None</code> and is counted as rejected, never silently dropped.</p><p><code>sim.bend</code> plays 2<sup>d</sup> games forward from the current state, each driven by the same proven <code>step</code>. Plate appearances are integer draws against cumulative thresholds; no floating point in the engine; <code>tree!</code> runs the identical program on the GPU.</p></div>
+<div class=rail><span>§1<i class=f></i></span><span>§2<i></i></span><span>§3<i></i></span><span>§4<i></i></span></div>
+<div class=col style="padding-left:28px"><p><code>LAWS.bend</code> states what must hold for every input; <code>PROOF.bend</code> proves each one by induction and case analysis. <code>bend PROOF.bend</code> prints <code>ALL PROOFS CHECK</code> before any commit: the tree plays and counts exactly 2<sup>d</sup> games however the work splits; the scorebook never shows three outs; each team's batters balance its runs, putouts and runners left and on base (OBR 9.03(c)); a play never takes a run off the board.</p><p>Benchmark of 2026-10-23: 12 games, 871 plays, Brier 0.1245 against MLB's 0.1543.</p></div>
+<div class=m><div class=br></div><div class=lbl>Plate · LAD @ MIL · 849809 · live</div><div id=chart></div><div class=n><span>Bend <b>85.2</b></span><span>MLB <b>85.4</b></span><span>Δ <b>−0.2</b></span></div><div style="margin-top:6px">▲9 · 12- · 2 out · feed 4 s</div></div>
+<div class=laws><span>i</span><div>tree_counts_pow2 ✓</div><span>ii</span><div>never_three_outs ✓</div><span>iii</span><div>box_score_balances ✓</div><span>iv</span><div>runs_never_decrease ✓</div></div>
+</div>
+<script>rows().then(rs=>pele.mount(document.getElementById('chart'),chartSrc(rs),{fontSize:10,zoom:false}));</script>
