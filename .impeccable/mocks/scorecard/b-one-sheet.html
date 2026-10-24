@@ -40,7 +40,7 @@
   .key .b { border-left: 0; font: 700 14px/1 var(--hand); color: var(--graphite); }
 </style>
 <div class="page">
-  <div class="mast"><h1>Official Scorebook</h1><span class="meta">B · One Sheet · LAD @ MIL · NLCS Game 1 · gamePk 849809</span></div>
+  <div class="mast"><h1>Official Scorebook</h1><span class="meta">B · One Sheet · TB @ MIL · World Series Game 1 · gamePk 849805</span></div>
   <table id="sheet"></table>
   <p class="foot-note">The whole game on one sheet, visitors over home. Each box: <span class="hand">the play</span>, the batter's trip, his out circled, run dots, and Bend's home-win number pencilled after the play. Under each team, after every half-inning: R · H · LOB pencilled, then <span class="key"><span class="b">50.4</span><span>54.8</span><span>51.5</span></span> Bend, MLB and the market median when the half ended. At the right, each batter's day: hits for at-bats.</p>
 </div>
@@ -48,7 +48,7 @@
 Book.load().then(({ plays, halves, lines, final }) => {
   const innings = 9, last = plays[plays.length - 1];
   const logo = id => `<img src="https://www.mlbstatic.com/team-logos/${id}.svg" alt="">`;
-  const teams = { away: ["Los Angeles Dodgers", 119, "visitors"], home: ["Milwaukee Brewers", 158, "home"] };
+  const teams = { away: ["Tampa Bay Rays", 139, "visitors"], home: ["Milwaukee Brewers", 158, "home"] };
   let html = `<colgroup><col class="bat">${"<col>".repeat(innings)}<col class="tot"></colgroup>`
     + `<thead><tr><th class="l">Batter</th>${Array.from({ length: innings }, (_, i) => `<th>${i + 1}</th>`).join("")}<th>H–AB</th></tr></thead><tbody>`;
   for (const side of ["away", "home"]) {

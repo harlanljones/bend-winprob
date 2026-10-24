@@ -9,7 +9,7 @@ plays where it has a value, and all of them together on the plays where every
 source has one ("common"). Results land in runs/bench/.
 
     python3 bench.py                 # games from fixtures-bench/pks.json
-    python3 bench.py --pks 849809 849805 --depth 20
+    python3 bench.py --pks 823244 849805 --depth 20
 """
 from __future__ import annotations
 

@@ -1,0 +1,3866 @@
+{
+ "allPlays": [
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Yandy D\u00edaz flies out to right fielder Sal Frelick."
+   },
+   "about": {
+    "atBatIndex": 0,
+    "startTime": "2026-10-24T00:16:34.973Z",
+    "endTime": "2026-10-24T00:17:15.416Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 650490,
+     "fullName": "Yandy D\u00edaz"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 650490,
+       "fullName": "Yandy D\u00edaz"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 0
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Jonathan Aranda singles on a line drive to right fielder Sal Frelick."
+   },
+   "about": {
+    "atBatIndex": 1,
+    "startTime": "2026-10-24T00:17:26.069Z",
+    "endTime": "2026-10-24T00:18:28.873Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 666018,
+     "fullName": "Jonathan Aranda"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 666018,
+       "fullName": "Jonathan Aranda"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 1
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Chandler Simpson singles on a soft ground ball to left fielder Jackson Chourio. Jonathan Aranda to 2nd."
+   },
+   "about": {
+    "atBatIndex": 2,
+    "startTime": "2026-10-24T00:18:31.188Z",
+    "endTime": "2026-10-24T00:20:46.931Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 802415,
+     "fullName": "Chandler Simpson"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 802415,
+       "fullName": "Chandler Simpson"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 666018,
+       "fullName": "Jonathan Aranda"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 2
+  },
+  {
+   "result": {
+    "event": "Double Play",
+    "eventType": "double_play",
+    "description": "Junior Caminero lines into a double play, third baseman David Hamilton to second baseman Brice Turang. Jonathan Aranda out at 2nd."
+   },
+   "about": {
+    "atBatIndex": 3,
+    "startTime": "2026-10-24T00:20:55.094Z",
+    "endTime": "2026-10-24T00:21:47.671Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 691406,
+     "fullName": "Junior Caminero"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Double Play",
+      "eventType": "double_play",
+      "movementReason": null,
+      "runner": {
+       "id": 691406,
+       "fullName": "Junior Caminero"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Double Play",
+      "eventType": "double_play",
+      "movementReason": "r_doubled_off",
+      "runner": {
+       "id": 666018,
+       "fullName": "Jonathan Aranda"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 3
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Jackson Chourio singles on a line drive to right fielder Victor Mesa Jr."
+   },
+   "about": {
+    "atBatIndex": 4,
+    "startTime": "2026-10-24T00:24:36.765Z",
+    "endTime": "2026-10-24T00:25:04.752Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 694192,
+     "fullName": "Jackson Chourio"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 694192,
+       "fullName": "Jackson Chourio"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 4
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Jake Bauers flies out to right fielder Victor Mesa Jr."
+   },
+   "about": {
+    "atBatIndex": 5,
+    "startTime": "2026-10-24T00:25:51.122Z",
+    "endTime": "2026-10-24T00:28:09.434Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 641343,
+     "fullName": "Jake Bauers"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 641343,
+       "fullName": "Jake Bauers"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 5
+  },
+  {
+   "result": {
+    "event": "Triple",
+    "eventType": "triple",
+    "description": "Christian Yelich triples (1) on a sharp line drive to center fielder Jonny DeLuca. Jackson Chourio scores."
+   },
+   "about": {
+    "atBatIndex": 6,
+    "startTime": "2026-10-24T00:28:17.372Z",
+    "endTime": "2026-10-24T00:30:34.903Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 592885,
+     "fullName": "Christian Yelich"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Triple",
+      "eventType": "triple",
+      "movementReason": null,
+      "runner": {
+       "id": 592885,
+       "fullName": "Christian Yelich"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Triple",
+      "eventType": "triple",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 694192,
+       "fullName": "Jackson Chourio"
+      },
+      "responsiblePitcher": {
+       "id": 607259
+      },
+      "isScoringEvent": true,
+      "rbi": true,
+      "earned": true,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 6
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "William Contreras singles on a sharp line drive to left fielder Chandler Simpson, deflected by shortstop Taylor Walls. Christian Yelich scores."
+   },
+   "about": {
+    "atBatIndex": 7,
+    "startTime": "2026-10-24T00:31:16.329Z",
+    "endTime": "2026-10-24T00:31:30.490Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 661388,
+     "fullName": "William Contreras"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 661388,
+       "fullName": "William Contreras"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_deflection"
+      },
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 592885,
+       "fullName": "Christian Yelich"
+      },
+      "responsiblePitcher": {
+       "id": 607259
+      },
+      "isScoringEvent": true,
+      "rbi": true,
+      "earned": true,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 7
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Brice Turang strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 8,
+    "startTime": "2026-10-24T00:32:45.585Z",
+    "endTime": "2026-10-24T00:33:55.003Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 668930,
+     "fullName": "Brice Turang"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 668930,
+       "fullName": "Brice Turang"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 8
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Garrett Mitchell strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 9,
+    "startTime": "2026-10-24T00:34:06.276Z",
+    "endTime": "2026-10-24T00:36:38.099Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 669003,
+     "fullName": "Garrett Mitchell"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 669003,
+       "fullName": "Garrett Mitchell"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 9
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Liam Hicks grounds out, second baseman Brice Turang to first baseman Jake Bauers."
+   },
+   "about": {
+    "atBatIndex": 10,
+    "startTime": "2026-10-24T00:39:24.076Z",
+    "endTime": "2026-10-24T00:40:32.136Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 689414,
+     "fullName": "Liam Hicks"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 689414,
+       "fullName": "Liam Hicks"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 10
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Jonny DeLuca flies out to center fielder Garrett Mitchell."
+   },
+   "about": {
+    "atBatIndex": 11,
+    "startTime": "2026-10-24T00:40:41.912Z",
+    "endTime": "2026-10-24T00:41:34.207Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 676356,
+     "fullName": "Jonny DeLuca"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 676356,
+       "fullName": "Jonny DeLuca"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 11
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Victor Mesa Jr. strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 12,
+    "startTime": "2026-10-24T00:41:44.442Z",
+    "endTime": "2026-10-24T00:43:30.315Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 683748,
+     "fullName": "Victor Mesa Jr."
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 683748,
+       "fullName": "Victor Mesa Jr."
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 12
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Cooper Pratt flies out to left fielder Chandler Simpson."
+   },
+   "about": {
+    "atBatIndex": 13,
+    "startTime": "2026-10-24T00:46:14.291Z",
+    "endTime": "2026-10-24T00:46:49.522Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 806198,
+     "fullName": "Cooper Pratt"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 806198,
+       "fullName": "Cooper Pratt"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 13
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Sal Frelick singles on a ground ball to right fielder Victor Mesa Jr."
+   },
+   "about": {
+    "atBatIndex": 14,
+    "startTime": "2026-10-24T00:46:54.700Z",
+    "endTime": "2026-10-24T00:47:56.508Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 686217,
+     "fullName": "Sal Frelick"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 686217,
+       "fullName": "Sal Frelick"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 14
+  },
+  {
+   "result": {
+    "event": "Sac Bunt",
+    "eventType": "sac_bunt",
+    "description": "David Hamilton out on a sacrifice bunt, pitcher Nick Martinez to second baseman Ben Williamson. Sal Frelick to 2nd."
+   },
+   "about": {
+    "atBatIndex": 15,
+    "startTime": "2026-10-24T00:48:03.821Z",
+    "endTime": "2026-10-24T00:48:32.258Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 666152,
+     "fullName": "David Hamilton"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Sac Bunt",
+      "eventType": "sac_bunt",
+      "movementReason": null,
+      "runner": {
+       "id": 666152,
+       "fullName": "David Hamilton"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "1"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Sac Bunt",
+      "eventType": "sac_bunt",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 686217,
+       "fullName": "Sal Frelick"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 15
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Jackson Chourio strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 16,
+    "startTime": "2026-10-24T00:48:48.252Z",
+    "endTime": "2026-10-24T00:51:21.305Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 694192,
+     "fullName": "Jackson Chourio"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Stolen Base 3B",
+      "eventType": "stolen_base_3b",
+      "movementReason": "r_stolen_base_3b",
+      "runner": {
+       "id": 686217,
+       "fullName": "Sal Frelick"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 694192,
+       "fullName": "Jackson Chourio"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 16
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Ben Williamson grounds out to first baseman Jake Bauers."
+   },
+   "about": {
+    "atBatIndex": 17,
+    "startTime": "2026-10-24T00:54:20.650Z",
+    "endTime": "2026-10-24T00:56:38.813Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 810938,
+     "fullName": "Ben Williamson"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 810938,
+       "fullName": "Ben Williamson"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 17
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Taylor Walls called out on strikes."
+   },
+   "about": {
+    "atBatIndex": 18,
+    "startTime": "2026-10-24T00:56:49.689Z",
+    "endTime": "2026-10-24T00:59:10.036Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 670764,
+     "fullName": "Taylor Walls"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 670764,
+       "fullName": "Taylor Walls"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 18
+  },
+  {
+   "result": {
+    "event": "Lineout",
+    "eventType": "field_out",
+    "description": "Yandy D\u00edaz lines out sharply to second baseman Brice Turang."
+   },
+   "about": {
+    "atBatIndex": 19,
+    "startTime": "2026-10-24T00:59:16.394Z",
+    "endTime": "2026-10-24T01:00:09.434Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 650490,
+     "fullName": "Yandy D\u00edaz"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Lineout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 650490,
+       "fullName": "Yandy D\u00edaz"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 19
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Jake Bauers strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 20,
+    "startTime": "2026-10-24T01:02:47.598Z",
+    "endTime": "2026-10-24T01:04:53.538Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 641343,
+     "fullName": "Jake Bauers"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 641343,
+       "fullName": "Jake Bauers"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 20
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Christian Yelich strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 21,
+    "startTime": "2026-10-24T01:05:00.958Z",
+    "endTime": "2026-10-24T01:07:54.643Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 592885,
+     "fullName": "Christian Yelich"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 592885,
+       "fullName": "Christian Yelich"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 8
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 21
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "William Contreras flies out to right fielder Victor Mesa Jr."
+   },
+   "about": {
+    "atBatIndex": 22,
+    "startTime": "2026-10-24T01:08:28.599Z",
+    "endTime": "2026-10-24T01:09:00.799Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 661388,
+     "fullName": "William Contreras"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 661388,
+       "fullName": "William Contreras"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 22
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Jonathan Aranda walks."
+   },
+   "about": {
+    "atBatIndex": 23,
+    "startTime": "2026-10-24T01:11:49.600Z",
+    "endTime": "2026-10-24T01:13:37.884Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 666018,
+     "fullName": "Jonathan Aranda"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 666018,
+       "fullName": "Jonathan Aranda"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 23
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Chandler Simpson strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 24,
+    "startTime": "2026-10-24T01:14:14.040Z",
+    "endTime": "2026-10-24T01:16:16.891Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 802415,
+     "fullName": "Chandler Simpson"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 802415,
+       "fullName": "Chandler Simpson"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 24
+  },
+  {
+   "result": {
+    "event": "Double",
+    "eventType": "double",
+    "description": "Junior Caminero doubles (4) on a sharp line drive to center fielder Garrett Mitchell. Jonathan Aranda to 3rd."
+   },
+   "about": {
+    "atBatIndex": 25,
+    "startTime": "2026-10-24T01:16:42.213Z",
+    "endTime": "2026-10-24T01:17:42.618Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 691406,
+     "fullName": "Junior Caminero"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Double",
+      "eventType": "double",
+      "movementReason": null,
+      "runner": {
+       "id": 691406,
+       "fullName": "Junior Caminero"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Double",
+      "eventType": "double",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 666018,
+       "fullName": "Jonathan Aranda"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 25
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Liam Hicks grounds out, first baseman Jake Bauers to pitcher Jacob Misiorowski. Jonathan Aranda scores. Junior Caminero to 3rd."
+   },
+   "about": {
+    "atBatIndex": 26,
+    "startTime": "2026-10-24T01:18:57.584Z",
+    "endTime": "2026-10-24T01:20:00.659Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 689414,
+     "fullName": "Liam Hicks"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 689414,
+       "fullName": "Liam Hicks"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "1"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 666018,
+       "fullName": "Jonathan Aranda"
+      },
+      "responsiblePitcher": {
+       "id": 694819
+      },
+      "isScoringEvent": true,
+      "rbi": true,
+      "earned": true,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 691406,
+       "fullName": "Junior Caminero"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 26
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Jonny DeLuca flies out sharply to left fielder Jackson Chourio."
+   },
+   "about": {
+    "atBatIndex": 27,
+    "startTime": "2026-10-24T01:20:27.320Z",
+    "endTime": "2026-10-24T01:20:46.297Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 676356,
+     "fullName": "Jonny DeLuca"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 676356,
+       "fullName": "Jonny DeLuca"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 27
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Brice Turang flies out sharply to left fielder Chandler Simpson."
+   },
+   "about": {
+    "atBatIndex": 28,
+    "startTime": "2026-10-24T01:23:28.882Z",
+    "endTime": "2026-10-24T01:24:22.195Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 668930,
+     "fullName": "Brice Turang"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 668930,
+       "fullName": "Brice Turang"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 28
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Garrett Mitchell grounds out, second baseman Ben Williamson to first baseman Jonathan Aranda."
+   },
+   "about": {
+    "atBatIndex": 29,
+    "startTime": "2026-10-24T01:24:25.918Z",
+    "endTime": "2026-10-24T01:25:11.659Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 669003,
+     "fullName": "Garrett Mitchell"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 669003,
+       "fullName": "Garrett Mitchell"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 29
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Cooper Pratt grounds out to first baseman Jonathan Aranda."
+   },
+   "about": {
+    "atBatIndex": 30,
+    "startTime": "2026-10-24T01:25:27.228Z",
+    "endTime": "2026-10-24T01:27:33.814Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 806198,
+     "fullName": "Cooper Pratt"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 806198,
+       "fullName": "Cooper Pratt"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 30
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Victor Mesa Jr. singles on a line drive to right fielder Sal Frelick."
+   },
+   "about": {
+    "atBatIndex": 31,
+    "startTime": "2026-10-24T01:30:24.109Z",
+    "endTime": "2026-10-24T01:32:52.998Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 683748,
+     "fullName": "Victor Mesa Jr."
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 683748,
+       "fullName": "Victor Mesa Jr."
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 31
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Ben Williamson grounds out, third baseman David Hamilton to first baseman Jake Bauers. Victor Mesa Jr. to 2nd."
+   },
+   "about": {
+    "atBatIndex": 32,
+    "startTime": "2026-10-24T01:32:57.639Z",
+    "endTime": "2026-10-24T01:37:08.972Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 810938,
+     "fullName": "Ben Williamson"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 810938,
+       "fullName": "Ben Williamson"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 8
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 683748,
+       "fullName": "Victor Mesa Jr."
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 8
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 32
+  },
+  {
+   "result": {
+    "event": "Pop Out",
+    "eventType": "field_out",
+    "description": "Taylor Walls pops out to third baseman David Hamilton in foul territory."
+   },
+   "about": {
+    "atBatIndex": 33,
+    "startTime": "2026-10-24T01:37:28.858Z",
+    "endTime": "2026-10-24T01:40:15.753Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 670764,
+     "fullName": "Taylor Walls"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Pop Out",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 670764,
+       "fullName": "Taylor Walls"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 33
+  },
+  {
+   "result": {
+    "event": "Caught Stealing 3B",
+    "eventType": "caught_stealing_3b",
+    "description": "Victor Mesa Jr. caught stealing 3rd base, catcher William Contreras to third baseman David Hamilton."
+   },
+   "about": {
+    "atBatIndex": 34,
+    "startTime": "2026-10-24T01:40:26.948Z",
+    "endTime": "2026-10-24T01:41:23.831Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 650490,
+     "fullName": "Yandy D\u00edaz"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Caught Stealing 3B",
+      "eventType": "caught_stealing_3b",
+      "movementReason": "r_caught_stealing_3b",
+      "runner": {
+       "id": 683748,
+       "fullName": "Victor Mesa Jr."
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 34
+  },
+  {
+   "result": {
+    "event": "Pop Out",
+    "eventType": "field_out",
+    "description": "Sal Frelick pops out to second baseman Ben Williamson."
+   },
+   "about": {
+    "atBatIndex": 35,
+    "startTime": "2026-10-24T01:44:33.870Z",
+    "endTime": "2026-10-24T01:46:54.832Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 686217,
+     "fullName": "Sal Frelick"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Pop Out",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 686217,
+       "fullName": "Sal Frelick"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 35
+  },
+  {
+   "result": {
+    "event": "Double",
+    "eventType": "double",
+    "description": "David Hamilton doubles (1) on a sharp line drive to right fielder Victor Mesa Jr. David Hamilton out at 3rd on the throw, right fielder Victor Mesa Jr. to second baseman Ben Williamson to third baseman Junior Caminero."
+   },
+   "about": {
+    "atBatIndex": 36,
+    "startTime": "2026-10-24T01:47:05.111Z",
+    "endTime": "2026-10-24T01:47:35.599Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 666152,
+     "fullName": "David Hamilton"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Double",
+      "eventType": "double",
+      "movementReason": null,
+      "runner": {
+       "id": 666152,
+       "fullName": "David Hamilton"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Runner Out",
+      "eventType": "other_out",
+      "movementReason": "r_out_stretching",
+      "runner": {
+       "id": 666152,
+       "fullName": "David Hamilton"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_assist_of"
+      },
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 36
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Jackson Chourio grounds out, shortstop Taylor Walls to first baseman Jonathan Aranda."
+   },
+   "about": {
+    "atBatIndex": 37,
+    "startTime": "2026-10-24T01:48:07.858Z",
+    "endTime": "2026-10-24T01:50:31.770Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 694192,
+     "fullName": "Jackson Chourio"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 694192,
+       "fullName": "Jackson Chourio"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 37
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Yandy D\u00edaz grounds out, second baseman Brice Turang to first baseman Jake Bauers."
+   },
+   "about": {
+    "atBatIndex": 38,
+    "startTime": "2026-10-24T01:54:08.309Z",
+    "endTime": "2026-10-24T01:54:35.046Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 650490,
+     "fullName": "Yandy D\u00edaz"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 650490,
+       "fullName": "Yandy D\u00edaz"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 38
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Jonathan Aranda singles on a ground ball to right fielder Sal Frelick."
+   },
+   "about": {
+    "atBatIndex": 39,
+    "startTime": "2026-10-24T01:54:42.548Z",
+    "endTime": "2026-10-24T01:56:06.181Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 666018,
+     "fullName": "Jonathan Aranda"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 666018,
+       "fullName": "Jonathan Aranda"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 39
+  },
+  {
+   "result": {
+    "event": "Strikeout Double Play",
+    "eventType": "strikeout_double_play",
+    "description": "Chandler Simpson strikes out swinging and Jonathan Aranda caught stealing 2nd, catcher William Contreras to shortstop Cooper Pratt to catcher William Contreras."
+   },
+   "about": {
+    "atBatIndex": 40,
+    "startTime": "2026-10-24T01:56:18.203Z",
+    "endTime": "2026-10-24T01:59:22.823Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 802415,
+     "fullName": "Chandler Simpson"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout Double Play",
+      "eventType": "strikeout_double_play",
+      "movementReason": null,
+      "runner": {
+       "id": 802415,
+       "fullName": "Chandler Simpson"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Caught Stealing 2B",
+      "eventType": "caught_stealing_2b",
+      "movementReason": "r_caught_stealing_2b",
+      "runner": {
+       "id": 666018,
+       "fullName": "Jonathan Aranda"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 40
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Jake Bauers grounds out, second baseman Ben Williamson to first baseman Jonathan Aranda."
+   },
+   "about": {
+    "atBatIndex": 41,
+    "startTime": "2026-10-24T02:02:30.277Z",
+    "endTime": "2026-10-24T02:03:12.990Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 641343,
+     "fullName": "Jake Bauers"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 641343,
+       "fullName": "Jake Bauers"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 41
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Christian Yelich grounds out sharply, shortstop Taylor Walls to first baseman Jonathan Aranda."
+   },
+   "about": {
+    "atBatIndex": 42,
+    "startTime": "2026-10-24T02:03:22.507Z",
+    "endTime": "2026-10-24T02:04:00.223Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 592885,
+     "fullName": "Christian Yelich"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 592885,
+       "fullName": "Christian Yelich"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 42
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "William Contreras walks."
+   },
+   "about": {
+    "atBatIndex": 43,
+    "startTime": "2026-10-24T02:04:16.164Z",
+    "endTime": "2026-10-24T02:05:19.967Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 661388,
+     "fullName": "William Contreras"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 661388,
+       "fullName": "William Contreras"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 43
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Brice Turang walks. William Contreras to 2nd."
+   },
+   "about": {
+    "atBatIndex": 44,
+    "startTime": "2026-10-24T02:05:27.255Z",
+    "endTime": "2026-10-24T02:09:20.920Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 668930,
+     "fullName": "Brice Turang"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 661388,
+       "fullName": "William Contreras"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 8
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 668930,
+       "fullName": "Brice Turang"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 8
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 44
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Garrett Mitchell grounds out, second baseman Ben Williamson to first baseman Jonathan Aranda."
+   },
+   "about": {
+    "atBatIndex": 45,
+    "startTime": "2026-10-24T02:10:41.851Z",
+    "endTime": "2026-10-24T02:11:39.529Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 669003,
+     "fullName": "Garrett Mitchell"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 669003,
+       "fullName": "Garrett Mitchell"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 45
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Junior Caminero strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 46,
+    "startTime": "2026-10-24T02:14:32.074Z",
+    "endTime": "2026-10-24T02:15:41.860Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 691406,
+     "fullName": "Junior Caminero"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 691406,
+       "fullName": "Junior Caminero"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 46
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Liam Hicks strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 47,
+    "startTime": "2026-10-24T02:18:38.700Z",
+    "endTime": "2026-10-24T02:20:14.671Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 689414,
+     "fullName": "Liam Hicks"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 689414,
+       "fullName": "Liam Hicks"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 47
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Jonny DeLuca flies out to right fielder Sal Frelick."
+   },
+   "about": {
+    "atBatIndex": 48,
+    "startTime": "2026-10-24T02:20:17.182Z",
+    "endTime": "2026-10-24T02:21:38.125Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 676356,
+     "fullName": "Jonny DeLuca"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 676356,
+       "fullName": "Jonny DeLuca"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 48
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Cooper Pratt walks."
+   },
+   "about": {
+    "atBatIndex": 49,
+    "startTime": "2026-10-24T02:25:25.265Z",
+    "endTime": "2026-10-24T02:28:49.767Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 806198,
+     "fullName": "Cooper Pratt"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 806198,
+       "fullName": "Cooper Pratt"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 8
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 49
+  },
+  {
+   "result": {
+    "event": "Lineout",
+    "eventType": "field_out",
+    "description": "Sal Frelick lines out to left fielder Chandler Simpson."
+   },
+   "about": {
+    "atBatIndex": 50,
+    "startTime": "2026-10-24T02:28:59.679Z",
+    "endTime": "2026-10-24T02:29:46.200Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 686217,
+     "fullName": "Sal Frelick"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Lineout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 686217,
+       "fullName": "Sal Frelick"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 50
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "David Hamilton grounds out, shortstop Taylor Walls to first baseman Jonathan Aranda. Cooper Pratt to 2nd."
+   },
+   "about": {
+    "atBatIndex": 51,
+    "startTime": "2026-10-24T02:29:57.851Z",
+    "endTime": "2026-10-24T02:31:04.075Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 666152,
+     "fullName": "David Hamilton"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 666152,
+       "fullName": "David Hamilton"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 806198,
+       "fullName": "Cooper Pratt"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 51
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Jackson Chourio singles on a ground ball to right fielder Victor Mesa Jr. Cooper Pratt scores."
+   },
+   "about": {
+    "atBatIndex": 52,
+    "startTime": "2026-10-24T02:33:56.881Z",
+    "endTime": "2026-10-24T02:34:12.564Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 694192,
+     "fullName": "Jackson Chourio"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 694192,
+       "fullName": "Jackson Chourio"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 806198,
+       "fullName": "Cooper Pratt"
+      },
+      "responsiblePitcher": {
+       "id": 571927
+      },
+      "isScoringEvent": true,
+      "rbi": true,
+      "earned": true,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 52
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Rays challenged (fair or foul in outfield), call on the field was upheld: Jake Bauers singles on a line drive to left fielder Chandler Simpson. Jackson Chourio to 3rd."
+   },
+   "about": {
+    "atBatIndex": 53,
+    "startTime": "2026-10-24T02:34:56.102Z",
+    "endTime": "2026-10-24T02:35:48.682Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 641343,
+     "fullName": "Jake Bauers"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 641343,
+       "fullName": "Jake Bauers"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 694192,
+       "fullName": "Jackson Chourio"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 694192,
+       "fullName": "Jackson Chourio"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 53
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Christian Yelich grounds out to first baseman Jonathan Aranda."
+   },
+   "about": {
+    "atBatIndex": 54,
+    "startTime": "2026-10-24T02:38:20.640Z",
+    "endTime": "2026-10-24T02:39:41.500Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 592885,
+     "fullName": "Christian Yelich"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 592885,
+       "fullName": "Christian Yelich"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 54
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Victor Mesa Jr. strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 55,
+    "startTime": "2026-10-24T02:42:56.763Z",
+    "endTime": "2026-10-24T02:45:51.091Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 683748,
+     "fullName": "Victor Mesa Jr."
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 683748,
+       "fullName": "Victor Mesa Jr."
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 55
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Ben Williamson strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 56,
+    "startTime": "2026-10-24T02:46:01.983Z",
+    "endTime": "2026-10-24T02:47:28.075Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 810938,
+     "fullName": "Ben Williamson"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 810938,
+       "fullName": "Ben Williamson"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 56
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Ryan Vilade grounds out sharply, shortstop Cooper Pratt to first baseman Jake Bauers."
+   },
+   "about": {
+    "atBatIndex": 57,
+    "startTime": "2026-10-24T02:49:01.782Z",
+    "endTime": "2026-10-24T02:49:26.107Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 668723,
+     "fullName": "Ryan Vilade"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 668723,
+       "fullName": "Ryan Vilade"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 57
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "William Contreras singles on a line drive to left fielder Chandler Simpson."
+   },
+   "about": {
+    "atBatIndex": 58,
+    "startTime": "2026-10-24T02:52:35.860Z",
+    "endTime": "2026-10-24T02:53:52.595Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 661388,
+     "fullName": "William Contreras"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 661388,
+       "fullName": "William Contreras"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 58
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Brice Turang walks. William Contreras to 2nd."
+   },
+   "about": {
+    "atBatIndex": 59,
+    "startTime": "2026-10-24T02:57:53.693Z",
+    "endTime": "2026-10-24T02:59:41.055Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 668930,
+     "fullName": "Brice Turang"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 661388,
+       "fullName": "William Contreras"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 8
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 668930,
+       "fullName": "Brice Turang"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 8
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 59
+  },
+  {
+   "result": {
+    "event": "Bunt Lineout",
+    "eventType": "field_out",
+    "description": "Garrett Mitchell bunt lines out to third baseman Junior Caminero."
+   },
+   "about": {
+    "atBatIndex": 60,
+    "startTime": "2026-10-24T02:59:48.168Z",
+    "endTime": "2026-10-24T03:00:34.073Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 669003,
+     "fullName": "Garrett Mitchell"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Bunt Lineout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 669003,
+       "fullName": "Garrett Mitchell"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 60
+  },
+  {
+   "result": {
+    "event": "Forceout",
+    "eventType": "force_out",
+    "description": "Brewers challenged (play at 1st), call on the field was overturned: Brewers challenged (force play), call on the field was upheld: Cooper Pratt grounds into a force out, third baseman Junior Caminero to second baseman Ryan Vilade. William Contreras to 3rd. Brice Turang out at 2nd. Cooper Pratt to 1st."
+   },
+   "about": {
+    "atBatIndex": 61,
+    "startTime": "2026-10-24T03:00:52.520Z",
+    "endTime": "2026-10-24T03:02:25.001Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 806198,
+     "fullName": "Cooper Pratt"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Forceout",
+      "eventType": "force_out",
+      "movementReason": "r_force_out",
+      "runner": {
+       "id": 668930,
+       "fullName": "Brice Turang"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Forceout",
+      "eventType": "force_out",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 661388,
+       "fullName": "William Contreras"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Forceout",
+      "eventType": "force_out",
+      "movementReason": null,
+      "runner": {
+       "id": 806198,
+       "fullName": "Cooper Pratt"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 61
+  },
+  {
+   "result": {
+    "event": "Forceout",
+    "eventType": "force_out",
+    "description": "Gary S\u00e1nchez grounds into a force out, third baseman Junior Caminero to second baseman Ryan Vilade. Cooper Pratt out at 2nd."
+   },
+   "about": {
+    "atBatIndex": 62,
+    "startTime": "2026-10-24T03:08:12.349Z",
+    "endTime": "2026-10-24T03:09:20.771Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 596142,
+     "fullName": "Gary S\u00e1nchez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Forceout",
+      "eventType": "force_out",
+      "movementReason": "r_force_out",
+      "runner": {
+       "id": 806198,
+       "fullName": "Cooper Pratt"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Forceout",
+      "eventType": "force_out",
+      "movementReason": null,
+      "runner": {
+       "id": 596142,
+       "fullName": "Gary S\u00e1nchez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 62
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Yandy D\u00edaz grounds out softly, third baseman Joey Ortiz to first baseman Jake Bauers."
+   },
+   "about": {
+    "atBatIndex": 63,
+    "startTime": "2026-10-24T03:12:24.598Z",
+    "endTime": "2026-10-24T03:13:08.979Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 650490,
+     "fullName": "Yandy D\u00edaz"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 650490,
+       "fullName": "Yandy D\u00edaz"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 63
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Jonathan Aranda singles on a line drive to left fielder Jackson Chourio."
+   },
+   "about": {
+    "atBatIndex": 64,
+    "startTime": "2026-10-24T03:13:16.822Z",
+    "endTime": "2026-10-24T03:14:13.416Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 666018,
+     "fullName": "Jonathan Aranda"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 666018,
+       "fullName": "Jonathan Aranda"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 64
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Chandler Simpson singles on a ground ball to center fielder Garrett Mitchell. Jonathan Aranda to 2nd."
+   },
+   "about": {
+    "atBatIndex": 65,
+    "startTime": "2026-10-24T03:14:25.081Z",
+    "endTime": "2026-10-24T03:16:18.275Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 802415,
+     "fullName": "Chandler Simpson"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 802415,
+       "fullName": "Chandler Simpson"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 666018,
+       "fullName": "Jonathan Aranda"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 65
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Junior Caminero walks."
+   },
+   "about": {
+    "atBatIndex": 66,
+    "startTime": "2026-10-24T03:17:20.319Z",
+    "endTime": "2026-10-24T03:19:44.508Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 691406,
+     "fullName": "Junior Caminero"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Stolen Base 3B",
+      "eventType": "stolen_base_3b",
+      "movementReason": "r_stolen_base_3b",
+      "runner": {
+       "id": 622761,
+       "fullName": "Jorge Mateo"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Stolen Base 2B",
+      "eventType": "stolen_base_2b",
+      "movementReason": "r_stolen_base_2b",
+      "runner": {
+       "id": 802415,
+       "fullName": "Chandler Simpson"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 691406,
+       "fullName": "Junior Caminero"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 8
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 66
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Rays challenged (force play), call on the field was overturned: Rays challenged (play at 1st), call on the field was upheld: Liam Hicks grounds out sharply, second baseman Brice Turang to shortstop Cooper Pratt to first baseman Jake Bauers. Jorge Mateo scores. Chandler Simpson to 3rd. Junior Caminero to 2nd."
+   },
+   "about": {
+    "atBatIndex": 67,
+    "startTime": "2026-10-24T03:19:58.585Z",
+    "endTime": "2026-10-24T03:20:27.406Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 689414,
+     "fullName": "Liam Hicks"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 689414,
+       "fullName": "Liam Hicks"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 622761,
+       "fullName": "Jorge Mateo"
+      },
+      "responsiblePitcher": {
+       "id": 656730
+      },
+      "isScoringEvent": true,
+      "rbi": true,
+      "earned": true,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 802415,
+       "fullName": "Chandler Simpson"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 691406,
+       "fullName": "Junior Caminero"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 67
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Jonny DeLuca strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 68,
+    "startTime": "2026-10-24T03:24:42.954Z",
+    "endTime": "2026-10-24T03:26:24.976Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 676356,
+     "fullName": "Jonny DeLuca"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 676356,
+       "fullName": "Jonny DeLuca"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 68
+  }
+ ]
+}

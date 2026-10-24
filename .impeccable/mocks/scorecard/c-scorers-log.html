@@ -37,14 +37,14 @@
   tr.now td:last-child { box-shadow: inset -2px 2px 0 var(--red), inset 0 -2px 0 var(--red); }
 </style>
 <div class="page">
-  <div class="mast"><h1>Scorer's Log</h1><span class="meta">C · LAD @ MIL · NLCS Game 1 · gamePk 849809</span></div>
+  <div class="mast"><h1>Scorer's Log</h1><span class="meta">C · TB @ MIL · World Series Game 1 · gamePk 849805</span></div>
   <div class="cols"><table id="early"></table><table id="late"></table></div>
   <p class="foot-note">Every plate appearance in order. <span class="hand">The play</span> with the batter's trip, the situation it left (bases, outs), then the home side's win number after it: <span class="hand">Bend</span>, MLB, the market median. <span class="hand">Swing</span> is what the play did to the batting side's chances by Bend's count; the scorer circles any swing of 8 points or more. Each half-inning heading carries its R · H · LOB.</p>
 </div>
 <script>
 Book.load().then(({ plays, halves }) => {
   const last = plays[plays.length - 1];
-  const abbr = { away: "LAD", home: "MIL" };
+  const abbr = { away: "TB", home: "MIL" };
   const head = `<colgroup><col class="no"><col class="bat"><col class="box"><col class="sit"><col class="n"><col class="n"><col class="n"><col class="sw"></colgroup>`
     + `<thead><tr><th></th><th class="l">Batter</th><th class="l">Play</th><th class="l">After</th><th>Bend</th><th>MLB</th><th>Mkt</th><th>Swing</th></tr></thead>`;
   const body = hs => hs.map(h => `<tr class="half"><td colspan="8"><span class="inn">${h.side === "away" ? "Top" : "Bottom"} ${h.inning}<b>${abbr[h.side]}</b></span>`

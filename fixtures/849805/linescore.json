@@ -1,0 +1,12 @@
+{
+ "teams": {
+  "home": {
+   "runs": 3,
+   "leftOnBase": 8
+  },
+  "away": {
+   "runs": 2,
+   "leftOnBase": 4
+  }
+ }
+}

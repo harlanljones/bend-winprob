@@ -36,7 +36,7 @@ What a neighbouring project could not truthfully copy:
 - Per-play CSV columns used by the page: `at_bat_index, inning, half, bases, outs, code, batter, play, away_runs, home_runs, bend_home_wp, mlb_home_wp, kalshi_home_wp, polymarket_home_wp, polymarket_us_home_wp, delta, sims, seconds, mode, state_check, wall_time`. `code` is Bend's 4-character play code (the page follows each batter around the bases with it), `batter` the batter's surname and `play` the scorer's notation (K, Kc for a called third strike, 6-3, F8, 1B, BB, 4-6-3 DP), from MLB's play-by-play. The three market columns are optional and may be empty: each venue's home-win price in percent (bid/ask midpoint; Kalshi's two team markets normalised to 100), read within 60 s after the play ended; shown as a reference line, the market median in each scorecard box, and the readout only when present; `delta` stays Bend − MLB.
 - Meta JSON: `pk, away, home` plus optional `away_name, home_name, away_logo, home_logo`, and `markets`: `[{key, name, url, id}]` for venues listing the game (`key` ∈ `kalshi, polymarket, polymarket_us`; the page links the venue name to `url`).
 - The page is one static HTML file (`web/index.html`) served by the Worker; no build step, no framework.
-- Offline reproduction: `bend PROOF.bend`, `python3 sim_engine.py --pk 849809`, `python3 bench.py`, `python3 -m unittest discover -s tests -v`.
+- Offline reproduction: `bend PROOF.bend`, `python3 sim_engine.py --pk 849805`, `python3 bench.py`, `python3 -m unittest discover -s tests -v`.
 
 ## Capabilities and Constraints
 
@@ -56,7 +56,7 @@ What a neighbouring project could not truthfully copy:
 
 - Benchmark run of 2026-10-23 (README.md, web/index.html): 12 games, 871 plays scored (859 with an MLB value), 0 failures, depth 2^20 on GPU. Brier 0.1245 vs 0.1543 (19.3% better), log loss 0.3913 vs 0.4565 (14.3%), mean |error| 29.08 pp vs 32.97 pp (11.8%), scorebook mismatches 29/871 (3.3%), 0.099 s per play (≈10.6M sims/s). Bend's Brier lower in 9 of 12 games. Per-game table in web/index.html.
 - Second run at depth 2^16, one game, 75 plays: Brier 0.031 vs 0.048.
-- Bundled replay `web/demo/849809.csv` + `849809-meta.json`: 70 plays, mean |Δ| to MLB 2.70 pp, box score matches official under OBR 9.03(c), zero mismatches.
+- Bundled replay `web/demo/849805.csv` + `849805-meta.json` (World Series Game 1, TB @ MIL): 69 plays, mean |Δ| to MLB 2.19 pp, box score matches official under OBR 9.03(c), zero mismatches.
 - Code snippets in the page are verbatim from `game.bend`, `sim.bend`, and `live.py` output.
 - Team logos arrive via `meta.away_logo` / `home_logo` when published; none bundled.
 - No testimonials, press, or customer logos exist; none may be invented.

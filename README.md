@@ -42,10 +42,10 @@ MLB value), 0 failures, depth 2^20 (1,048,576 sims/play) on the GPU.
 | Time per play | 0.099 s | — | ≈10.6M sims/s |
 
 Bend's Brier is lower in 9 of the 12 games. A second run at depth 2^16 on a single
-game (75 plays) gave Brier 0.031 against MLB's 0.048. On a bundled full-game replay
-the mean absolute difference to MLB is 2.70 pp over 70 plays, Bend's box score
-matches the official one exactly under OBR 9.03(c), and the per-play scorebook check
-reports zero mismatches. Per-game results: `runs/bench/season-summary.json`.
+game (75 plays) gave Brier 0.031 against MLB's 0.048. On the bundled replay of World
+Series Game 1 (TB @ MIL) the mean absolute difference to MLB is 2.19 pp over 69 plays,
+Bend's box score matches the official one exactly under OBR 9.03(c), and the per-play
+scorebook check reports zero mismatches. Per-game results: `runs/bench/season-summary.json`.
 
 The same plays against the markets (each source scored on the plays where it has a
 price; per-game means, averaged over the 12 games):
@@ -102,14 +102,14 @@ clients), Manifold (no per-game markets).
 | `sim_engine.py` | offline replay engine over a cached fixture (no network) |
 | `bench.py` | batch benchmark: Brier / log loss / MAE vs MLB and the markets, per game |
 | `tests/` | Python unit tests for the replay engine, CSV encoding and market pricing |
-| `web/` | the hosted page: one HTML file, self-hosted fonts in `web/fonts/`, a bundled replay in `web/demo/`; diagrams and the live chart are Mermaid rendered by [Pele](https://pele.run) |
+| `web/` | the hosted page: one HTML file, self-hosted fonts in `web/fonts/`, a bundled replay of World Series Game 1 in `web/demo/`; diagrams and the live chart are Mermaid rendered by [Pele](https://pele.run) |
 | `cloudflare/` | Worker + Durable Object serving the page and the feed |
 
 ## Quick start
 
 ```sh
 bend PROOF.bend                            # ALL PROOFS CHECK
-python3 sim_engine.py --pk 849809          # replay a finished game, 65,536 sims/play
+python3 sim_engine.py --pk 849805          # replay World Series Game 1, 65,536 sims/play
 python3 bench.py                           # the 12-game benchmark (GPU, depth 20)
 python3 -m unittest discover -s tests -v
 ```

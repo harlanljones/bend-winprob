@@ -5,16 +5,16 @@ The fixture is the input timeline; Bend remains the owner of the scorebook
 and the Monte Carlo simulation. This module adds a reusable replay engine
 for tests and demos rather than another game model:
 
-    engine = ReplayEngine(849809, depth=8)       # no network needed
+    engine = ReplayEngine(849805, depth=8)       # no network needed
     engine.pregame()
     first = engine.step()                         # one completed play
     engine.seek(20)                               # reset + replay 20 plays
     engine.run()                                  # whole game, returns 0/1
 
 CLI:
-    python3 sim_engine.py --pk 849809
-    python3 sim_engine.py --pk 849809 --delay 1 --serve
-    python3 sim_engine.py --pk 849809 --fetch --publish
+    python3 sim_engine.py --pk 849805
+    python3 sim_engine.py --pk 849805 --delay 1 --serve
+    python3 sim_engine.py --pk 849805 --fetch --publish
 
 Fixtures are read from fixtures/<pk>/ and are never downloaded unless
 --fetch (or fetch=True) is explicitly supplied. Batter names, scoring notation
@@ -184,7 +184,7 @@ class ReplayEngine:
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--pk", type=int, default=849809, help="fixture gamePk (default: NLCS Game 1)")
+    ap.add_argument("--pk", type=int, default=849805, help="fixture gamePk (default: World Series Game 1)")
     ap.add_argument("--depth", type=int, default=16, help="2^depth simulations per play")
     ap.add_argument("--mode", choices=("cpu", "gpu"), default=live.DEFAULT_MODE)
     ap.add_argument("--fetch", action="store_true", help="download missing fixture data; otherwise offline")

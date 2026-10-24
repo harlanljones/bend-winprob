@@ -165,10 +165,10 @@ class RecordedReplayTest(unittest.TestCase):
         self.assertEqual(([], {}), (listings, samples))
 
     def test_bundled_replay_reads_recorded_prices_offline(self):
-        engine = ReplayEngine(849809, depth=2, mode="cpu", fetch=False, verbose=False)
-        rows = engine.seek(3)
+        engine = ReplayEngine(849805, depth=2, mode="cpu", fetch=False, verbose=False)
+        rows = engine.seek(2)
         self.assertEqual(["kalshi", "polymarket", "polymarket_us"], [m["key"] for m in engine.listings])
-        for idx in (-1, 0, 1, 2):
+        for idx in (-1, 0, 1):
             for col in markets.COLUMNS:
                 self.assertIsInstance(rows[idx][col], float, f"{col} at {idx}")
                 self.assertTrue(0.0 <= rows[idx][col] <= 100.0)

@@ -442,7 +442,7 @@ def step(+s: State, p: Play) -&gt; State:
         </tbody>
       </table>
     </div>
-    <p>Bend's Brier is lower in 9 of the 12 games. A second run at depth 2<sup>16</sup> (65,536 sims per play, one game, 75 plays) gave Brier 0.031 against MLB's 0.048. On the bundled replay the mean absolute difference to MLB is 2.70 pp over 70 plays, Bend's box score matches the official one exactly under OBR 9.03(c), and the scorebook check reports zero mismatches.</p>
+    <p>Bend's Brier is lower in 9 of the 12 games. A second run at depth 2<sup>16</sup> (65,536 sims per play, one game, 75 plays) gave Brier 0.031 against MLB's 0.048. On the bundled replay of World Series Game 1 the mean absolute difference to MLB is 2.19 pp over 69 plays, Bend's box score matches the official one exactly under OBR 9.03(c), and the scorebook check reports zero mismatches.</p>
   </section>
 
   <section class="back" id="reproduce" aria-labelledby="reproduce-h">
@@ -450,7 +450,7 @@ def step(+s: State, p: Play) -&gt; State:
     <p>Fixtures are cached; nothing is fetched unless asked.</p>
 <pre><code>git clone https://github.com/harlanljones/bend-winprob &amp;&amp; cd bend-winprob
 bend PROOF.bend                            # ALL PROOFS CHECK
-python3 sim_engine.py --pk 849809          # replay a finished game, 65,536 sims/play
+python3 sim_engine.py --pk 849805          # replay World Series Game 1, 65,536 sims/play
 python3 bench.py                           # the 12-game benchmark above (GPU, depth 20)
 python3 -m unittest discover -s tests -v</code></pre>
     <p>This page and its feed are one Cloudflare Worker with a single Durable Object (<code>cloudflare/</code>): <code>live.py --publish</code> POSTs each new CSV and the page polls it, falling back to the bundled replay when nothing is published. Open <code>?pk=&lt;gamePk&gt;</code> for another game. <code>bash run_live.sh</code> supervises a live game with backoff and logs every run.</p>

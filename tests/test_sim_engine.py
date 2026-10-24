@@ -4,10 +4,10 @@ from sim_engine import ReplayEngine
 
 
 class ReplayEngineTest(unittest.TestCase):
-    """These tests use the committed NLCS fixture and never access the network."""
+    """These tests use the committed World Series Game 1 fixture and never access the network."""
 
     def engine(self, depth=3):
-        return ReplayEngine(849809, depth=depth, mode="cpu", fetch=False, verbose=False)
+        return ReplayEngine(849805, depth=depth, mode="cpu", fetch=False, verbose=False)
 
     @staticmethod
     def comparable(row):
@@ -36,9 +36,9 @@ class ReplayEngineTest(unittest.TestCase):
         engine = self.engine(depth=2)
         self.assertEqual(0, engine.run())
         self.assertTrue(engine.box_ok)
-        self.assertEqual(71, len(engine.book.rows))
-        self.assertEqual(100.0, engine.book.rows[69]["bend_home_wp"])
-        self.assertEqual(0, engine.book.rows[69]["sims"])
+        self.assertEqual(70, len(engine.book.rows))
+        self.assertEqual(100.0, engine.book.rows[68]["bend_home_wp"])
+        self.assertEqual(0, engine.book.rows[68]["sims"])
 
     def test_missing_fixture_is_offline_error(self):
         with self.assertRaises(FileNotFoundError):

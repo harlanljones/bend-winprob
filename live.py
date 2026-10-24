@@ -10,7 +10,7 @@ are read beside both, per play.
 
   python3 live.py                       # live, World Series Game 1
   python3 live.py --publish             # ... and push every update to the hosted page
-  python3 live.py --pk 849809 --replay  # rehearse a finished game
+  python3 live.py --pk 849805 --replay  # rehearse a finished game
   python3 live.py --no-markets          # Bend and MLB only
 
 --publish reads WP_PUSH_URL and WP_PUSH_TOKEN from the environment or ./.env.

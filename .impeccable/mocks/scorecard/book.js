@@ -1,4 +1,4 @@
-// Shared by the three scorecard mockups: the bundled NLCS replay (web/demo/849809.csv)
+// Shared by the three scorecard mockups: the bundled World Series Game 1 replay (web/demo/849805.csv)
 // turned into plate appearances, half-innings and batting lines, the way the page does it.
 window.Book = (() => {
   const HIT = new Set(["1B", "2B", "3B", "HR"]);
@@ -79,7 +79,7 @@ window.Book = (() => {
     return { rows, plays, halves, lines, final: rows[rows.length - 1] };
   }
 
-  async function load(path = "/web/demo/849809.csv") {
+  async function load(path = "/web/demo/849805.csv") {
     const text = await (await fetch(path)).text();
     const [head, ...body] = text.trim().split("\n");
     const cols = head.split(",");

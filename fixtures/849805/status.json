@@ -9,12 +9,14 @@
   },
   "teams": {
    "away": {
-    "id": 119,
-    "abbreviation": "LAD"
+    "id": 139,
+    "abbreviation": "TB",
+    "teamName": "Rays"
    },
    "home": {
     "id": 158,
-    "abbreviation": "MIL"
+    "abbreviation": "MIL",
+    "teamName": "Brewers"
    }
   }
  }

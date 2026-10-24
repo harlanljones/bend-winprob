@@ -2,6 +2,7 @@
 // Worker answers the two paths the page polls, from one Durable Object that
 // live.py --publish fills over HTTP:
 //   POST /push/<pk>              {"meta": {...}, "csv": "..."}  (Bearer PUSH_TOKEN)
+//   DELETE /push/<pk>            unpublish a game                (Bearer PUSH_TOKEN)
 //   GET  /runs/<pk>.csv          the latest CSV live.py wrote
 //   GET  /runs/<pk>-meta.json    {"pk", "away", "home", names, logos, markets}
 import { DurableObject } from "cloudflare:workers";
@@ -27,6 +28,10 @@ export class Feed extends DurableObject {
   async read(key) {
     return (await this.ctx.storage.get(key)) ?? null;
   }
+
+  async drop(pk) {
+    return (await this.ctx.storage.delete([`meta:${pk}`, `csv:${pk}`])) > 0;
+  }
 }
 
 function authorized(request, token) {
@@ -46,6 +51,10 @@ export default {
     const feed = env.FEED.get(env.FEED.idFromName("feed"));
 
     const push = url.pathname.match(/^\/push\/(\d+)$/);
+    if (push && request.method === "DELETE") {
+      if (!authorized(request, env.PUSH_TOKEN)) return text("unauthorized\n", 401);
+      return (await feed.drop(push[1])) ? text("deleted\n", 200) : text("nothing published\n", 404);
+    }
     if (push && request.method === "POST") {
       if (!authorized(request, env.PUSH_TOKEN)) return text("unauthorized\n", 401);
       let body;
