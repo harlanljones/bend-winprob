@@ -5,10 +5,13 @@ The host shell around ./wp (main.bend): fetches MLB Stats API data, encodes
 every completed play as a 4-char code, runs Bend on the whole play list,
 and prints Bend's home win probability next to MLB's. Bend owns the
 scorebook and the simulation; this file owns HTTP, JSON, CSV and the chart.
+Prediction-market prices (markets.py: Kalshi, Polymarket, Polymarket US)
+are read beside both, per play.
 
   python3 live.py                       # live, World Series Game 1
   python3 live.py --publish             # ... and push every update to the hosted page
   python3 live.py --pk 849809 --replay  # rehearse a finished game
+  python3 live.py --no-markets          # Bend and MLB only
 
 --publish reads WP_PUSH_URL and WP_PUSH_TOKEN from the environment or ./.env.
 """
@@ -26,11 +29,13 @@ import urllib.request
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
+import markets
+
 ROOT = Path(__file__).resolve().parent
 API = "https://statsapi.mlb.com/api"
 URLS = {
     "status": API + "/v1.1/game/{pk}/feed/live?fields=metaData,wait,gameData,status,"
-    "abstractGameState,detailedState,teams,away,home,id,abbreviation",
+    "abstractGameState,detailedState,teams,away,home,id,abbreviation,teamName",
     "plays": API + "/v1/game/{pk}/playByPlay?fields=allPlays,result,eventType,awayScore,"
     "homeScore,about,atBatIndex,inning,isTopInning,isComplete,count,outs,runners,movement,"
     "originBase,start,end,isOut,details,runner,matchup,postOnFirst,postOnSecond,postOnThird,id",
@@ -39,15 +44,25 @@ URLS = {
     "atBats,baseOnBalls,hitByPitch,sacBunts,sacFlies,catchersInterference,runs,putOuts",
     "linescore": API + "/v1/game/{pk}/linescore?fields=teams,home,away,runs,leftOnBase",
     "teamstats": API + "/v1/teams/{id}/stats?stats=season&group=hitting,pitching&season=2026",
+    "schedule": API + "/v1/schedule?gamePk={pk}&fields=dates,games,gamePk,gameDate,officialDate",
+    "scoring": API + "/v1/game/{pk}/playByPlay?fields=allPlays,about,atBatIndex,startTime,endTime,"
+    "isComplete,result,event,eventType,description,matchup,batter,id,fullName,runners,details,"
+    "runner,credits,position,code,credit",
+}
+
+TEAM_NAMES = {
+    119: "Los Angeles Dodgers",
+    139: "Tampa Bay Rays",
+    158: "Milwaukee Brewers",
 }
 
 # 2025 MLB per-plate-appearance rates (Baseball-Reference league totals, PA 182,926).
 LEAGUE = {"K": .2222, "O": .4638, "W": .0946, "S": .1428, "D": .0423, "T": .0034, "H": .0309}
 ORDER = "KOWSDTH"
 DEFAULT_MODE = "gpu"  # RTX 4070 Ti: 2^20 games 0.09 s (gpu) vs 0.15 s (24 threads)
-CSV_HEADER = ["wall_time", "at_bat_index", "inning", "half", "outs", "bases", "away_runs",
-              "home_runs", "bend_home_wp", "mlb_home_wp", "delta", "sims", "unfinished",
-              "seconds", "mode", "state_check"]
+CSV_HEADER = ["wall_time", "at_bat_index", "inning", "half", "outs", "bases", "code", "batter",
+              "play", "away_runs", "home_runs", "bend_home_wp", "mlb_home_wp", *markets.COLUMNS,
+              "delta", "sims", "unfinished", "seconds", "mode", "state_check"]
 
 
 class BendError(Exception):
@@ -92,6 +107,13 @@ class Source:
         self.dir.mkdir(parents=True, exist_ok=True)
         path.write_text(json.dumps(data, indent=1))
         return data
+
+    def optional(self, name, **kw):
+        """Like get, but None when the fixture is missing and fetching is off."""
+        try:
+            return self.get(name, **kw)
+        except FileNotFoundError:
+            return None
 
 
 # Plays
@@ -201,6 +223,77 @@ def encode_plays(plays):
 
 def complete_plays(pbp):
     return [p for p in pbp.get("allPlays", []) if p.get("about", {}).get("isComplete")]
+
+
+# Scorer's notation
+# -----------------
+# What a scorekeeper writes in the batter's box, from the MLB play: hits and walks
+# by name, strikeouts as K (Kc: called, drawn as a backwards K), outs as the fielders
+# who handled the ball (6-3, F8, 3U), double plays as the whole relay (6-4-3 DP).
+
+HITS = {"single": "1B", "double": "2B", "triple": "3B", "home_run": "HR"}
+NAMED = {"walk": "BB", "intent_walk": "IBB", "hit_by_pitch": "HBP", "catcher_interf": "CI",
+         "fielders_choice": "FC", "fielders_choice_out": "FC", "force_out": "FC",
+         "triple_play": "TP", "strikeout_double_play": "K DP"}
+DOUBLE_PLAYS = {"grounded_into_double_play": "", "double_play": "", "sac_fly_double_play": "SF ",
+                "sac_bunt_double_play": "SAC "}
+FLY_WORDS = (("flies", "F"), ("lines", "L"), ("pops", "P"))
+RUNNER_PLAYS = (("pickoff_caught_stealing", "POCS"), ("caught_stealing", "CS"), ("pickoff", "PO"),
+                ("stolen_base", "SB"), ("wild_pitch", "WP"), ("passed_ball", "PB"), ("balk", "BK"))
+SUFFIXES = {"Jr.", "Sr.", "II", "III", "IV"}
+
+
+def last_name(full):
+    words = [w for w in (full or "").split() if w not in SUFFIXES]
+    return words[-1] if words else ""
+
+
+def relay(runners):
+    """Fielders who assisted and put out, in order, a fielder repeating in a row once."""
+    out = []
+    for r in runners:
+        for c in r.get("credits", []):
+            pos = (c.get("position") or {}).get("code")
+            if c.get("credit") in ("f_assist", "f_putout") and pos and (not out or out[-1] != pos):
+                out.append(pos)
+    return out
+
+
+def notation(play):
+    result = play.get("result", {})
+    kind, desc = result.get("eventType", ""), result.get("description", "").lower()
+    runners = play.get("runners", [])
+    batter = play.get("matchup", {}).get("batter", {}).get("id")
+    own = relay([r for r in runners if r.get("details", {}).get("runner", {}).get("id") == batter])
+    if kind in HITS:
+        return HITS[kind]
+    if kind == "strikeout":
+        return "Kc" if "called out on strikes" in desc else "K"
+    if kind in NAMED:
+        return NAMED[kind]
+    if kind in DOUBLE_PLAYS:
+        return f"{DOUBLE_PLAYS[kind]}{'-'.join(relay(runners))} DP".strip()
+    if kind == "field_error":
+        pos = next(((c.get("position") or {}).get("code") for r in runners for c in r.get("credits", [])
+                    if "error" in c.get("credit", "")), "")
+        return f"E{pos}"
+    if kind == "sac_fly":
+        return f"SF{own[-1] if own else ''}"
+    if kind == "sac_bunt":
+        return f"SAC {'-'.join(own)}".strip()
+    if kind == "field_out" and len(own) == 1:
+        letter = next((l for word, l in FLY_WORDS if word in desc), None)
+        return f"{letter}{own[0]}" if letter else f"{own[0]}U"
+    if kind == "field_out" and own:
+        return "-".join(own)
+    return next((abbr for prefix, abbr in RUNNER_PLAYS if kind.startswith(prefix)), result.get("event", ""))
+
+
+def scorecard(scoring):
+    """{at_bat_index: {"batter": last name, "play": notation}} for every completed play."""
+    return {p["about"]["atBatIndex"]: {
+        "batter": last_name(p.get("matchup", {}).get("batter", {}).get("fullName")),
+        "play": notation(p)} for p in complete_plays(scoring or {})}
 
 
 def check_state(b, play):
@@ -328,18 +421,19 @@ class Publisher:
         self.last = None
 
     def push(self, pk, meta, csv_text):
-        if csv_text == self.last:
+        body = json.dumps({"meta": meta, "csv": csv_text})
+        if body == self.last:
             return True
         req = urllib.request.Request(
             f"{self.url}/push/{pk}", method="POST",
-            data=json.dumps({"meta": meta, "csv": csv_text}).encode(),
+            data=body.encode(),
             headers={"Authorization": f"Bearer {self.token}", "Content-Type": "application/json",
                      "User-Agent": "bend-winprob/1"})
         for attempt in range(3):
             try:
                 with urllib.request.urlopen(req, timeout=10):
                     pass
-                self.last = csv_text
+                self.last = body
                 return True
             except Exception as e:
                 if attempt < 2:
@@ -355,7 +449,7 @@ class Publisher:
 class Book:
     """Rows keyed by at_bat_index (-1: pregame), rewritten to runs/<pk>.csv (and published)."""
 
-    def __init__(self, pk, away, home, depth, mode, publisher=None, verbose=True):
+    def __init__(self, pk, away, home, depth, mode, publisher=None, verbose=True, team_info=None):
         self.pk, self.away, self.home, self.depth, self.mode = pk, away, home, depth, mode
         self.publisher = publisher
         self.verbose = verbose
@@ -363,10 +457,17 @@ class Book:
         runs = ROOT / "runs"
         runs.mkdir(exist_ok=True)
         self.csv = runs / f"{pk}.csv"
+        self.meta_path = runs / f"{pk}-meta.json"
         self.meta = {"pk": pk, "away": away, "home": home}
-        (runs / f"{pk}-meta.json").write_text(json.dumps(self.meta))
+        if team_info is not None:
+            for side in ("away", "home"):
+                self.meta[f"{side}_name"] = team_info[side]["name"]
+                self.meta[f"{side}_logo"] = team_info[side]["logo"]
+        self.meta_path.write_text(json.dumps(self.meta))
+        self.tape, self.samples = markets.Tape(), {}
+        self.notes = {}  # at_bat_index -> {"batter", "play"}: scorecard()
 
-    def add(self, idx, b, play, mlb):
+    def add(self, idx, b, play, mlb, code=""):
         bad = check_state(b, play) if play is not None else []
         if b["rejected"] > 0 and "rejected" not in bad:
             bad.append("rejected")
@@ -376,12 +477,15 @@ class Book:
         self.rows[idx] = {
             "wall_time": time.strftime("%Y-%m-%dT%H:%M:%S"), "at_bat_index": idx,
             "inning": b["inning"], "half": "T" if b["top"] else "B", "outs": b["outs"],
-            "bases": b["bases"], "away_runs": b["away_runs"], "home_runs": b["home_runs"],
+            "bases": b["bases"], "code": code, "batter": "", "play": "",
+            "away_runs": b["away_runs"], "home_runs": b["home_runs"],
             "bend_home_wp": "" if bend is None else round(bend, 2),
             "mlb_home_wp": "" if mlb is None else round(mlb, 2), "delta": "",
             "sims": 2 ** self.depth, "unfinished": b["unfinished"],
             "seconds": round(b["seconds"], 3), "mode": self.mode, "state_check": check,
         }
+        self.fill_notes(idx)
+        self.fill_markets(idx)
         self.fill_delta(idx)
         if self.verbose:
             self.print_row(idx)
@@ -403,10 +507,38 @@ class Book:
             else round(r["bend_home_wp"] - r["mlb_home_wp"], 2)
 
     def backfill(self, wp):
+        """Refresh MLB WP, including revisions to earlier at-bats."""
         for idx, r in self.rows.items():
-            if r["mlb_home_wp"] == "" and idx in wp:
-                r["mlb_home_wp"] = round(wp[idx], 2)
-                self.fill_delta(idx)
+            if idx in wp:
+                value = round(wp[idx], 2)
+                if r["mlb_home_wp"] != value:
+                    r["mlb_home_wp"] = value
+                    self.fill_delta(idx)
+
+    def fill_notes(self, idx):
+        note = self.notes.get(idx, {})
+        self.rows[idx]["batter"], self.rows[idx]["play"] = note.get("batter", ""), note.get("play", "")
+
+    def set_scoring(self, notes):
+        """Write each play's batter and the scorer's notation (`scorecard`) into its row."""
+        self.notes = notes
+        for idx in self.rows:
+            self.fill_notes(idx)
+
+    def fill_markets(self, idx):
+        r = self.rows[idx]
+        for key, col in zip(markets.KEYS, markets.COLUMNS):
+            p = self.tape.at(key, *self.samples[idx]) if idx in self.samples else None
+            r[col] = "" if p is None else round(p, 2)
+
+    def set_markets(self, tape, samples, listings):
+        """Read every row's market prices from `tape` at its instant in `samples`."""
+        self.tape, self.samples = tape, samples
+        for idx in self.rows:
+            self.fill_markets(idx)
+        if listings and listings != self.meta.get("markets"):
+            self.meta["markets"] = listings
+            self.meta_path.write_text(json.dumps(self.meta))
 
     def print_row(self, idx):
         r = self.rows[idx]
@@ -441,8 +573,14 @@ class Book:
     def summary(self):
         deltas = [abs(r["delta"]) for r in self.rows.values() if r["delta"] != ""]
         mean = sum(deltas) / len(deltas) if deltas else float("nan")
+        venues = ""
+        for key, col in zip(markets.KEYS, markets.COLUMNS):
+            gaps = [abs(r["bend_home_wp"] - r[col]) for r in self.rows.values()
+                    if r["bend_home_wp"] != "" and r[col] != ""]
+            if gaps:
+                venues += f" | Bend-{key} {sum(gaps) / len(gaps):.2f} over {len(gaps)}"
         print(f"SUMMARY rows {len(self.rows)} mean |Δ| {mean:.2f} over {len(deltas)} "
-              f"mismatches {self.mismatch_count()}", flush=True)
+              f"mismatches {self.mismatch_count()}{venues}", flush=True)
         return mean
 
 
@@ -475,7 +613,18 @@ def box_check(box, ls, b):
 
 def teams_of(status):
     t = status["gameData"]["teams"]
-    return {s: {"id": t[s]["id"], "abbr": t[s]["abbreviation"]} for s in ("away", "home")}
+    result = {}
+    for side in ("away", "home"):
+        team = t[side]
+        team_id = team["id"]
+        abbr = team["abbreviation"]
+        result[side] = {
+            "id": team_id,
+            "abbr": abbr,
+            "name": team.get("teamName") or TEAM_NAMES.get(team_id, abbr),
+            "logo": f"https://www.mlbstatic.com/team-logos/{team_id}.svg",
+        }
+    return result
 
 
 def replay(args):
@@ -510,6 +659,24 @@ def live_setup(src, pk):
     return teams, away_cum, home_cum
 
 
+def read_scoring(src, book, feed, started):
+    """Per poll: each play's batter and notation, and with a market feed every row's prices.
+
+    Before first pitch there is no play to score; the pregame row reads the latest
+    market price. A failed fetch keeps the rows as they were.
+    """
+    if feed is not None:
+        feed.poll()
+    try:
+        scoring = src.get("scoring") if started else {}
+    except (RuntimeError, ValueError) as e:
+        print(f"scoring poll failed: {e}", flush=True)
+        return
+    book.set_scoring(scorecard(scoring))
+    if feed is not None:
+        book.set_markets(feed.tape, markets.sample_times(scoring), feed.listings())
+
+
 def live(args):
     src = Source(args.pk, cache=False)
     if not args.no_serve:
@@ -518,14 +685,16 @@ def live(args):
     while True:
         try:
             teams, away_cum, home_cum = live_setup(src, args.pk)
+            game = None if args.no_markets else markets.game_of(src.get("schedule"), teams)
             break
-        except (RuntimeError, ValueError) as e:
+        except (RuntimeError, ValueError, KeyError, IndexError) as e:
             print(f"initialization failed: {e}; retrying in 10s", flush=True)
             time.sleep(10)
     away, home = teams["away"]["abbr"], teams["home"]["abbr"]
     print(f"{away} @ {home}  awayCum {away_cum}  homeCum {home_cum}  depth {args.depth}  {args.mode}",
           flush=True)
-    book = Book(args.pk, away, home, args.depth, args.mode, args.publisher)
+    book = Book(args.pk, away, home, args.depth, args.mode, args.publisher, team_info=teams)
+    feed = None if game is None else markets.LiveFeed(game)
     done = []  # codes whose complete suffix succeeded
     last_wait = 0.0
     try:
@@ -547,6 +716,7 @@ def live(args):
                 except BendError as e:
                     print(f"#pre bend error: {e}", flush=True)
             if state == "Preview":
+                read_scoring(src, book, feed, False)
                 if -1 in book.rows:
                     book.write()  # also retries a failed pregame publish
                 if time.time() - last_wait >= 60:
@@ -576,9 +746,10 @@ def live(args):
                         complete = False
                         print(f"#{idx} bend error: {e}; will retry", flush=True)
                         break
-                    book.add(idx, b, plays[k - 1], wp.get(idx))
+                    book.add(idx, b, plays[k - 1], wp.get(idx), codes[k - 1])
                 if complete:
                     done = codes
+            read_scoring(src, book, feed, True)
             book.backfill(wp)
             book.write()
             if state == "Final":
@@ -587,6 +758,9 @@ def live(args):
                     book.final(b["home_runs"] > b["away_runs"])
                     box_ok = box_check(src.get("box"), src.get("linescore"), b)
                     book.backfill(wp_map(src.get("wp")))
+                    if feed is not None:
+                        feed.catch_up(max((t for t, _ in book.samples.values() if t is not None), default=0))
+                    read_scoring(src, book, feed, True)
                     published = book.write()
                     book.summary()
                     return 0 if box_ok and book.mismatch_count() == 0 and published else 1
@@ -609,6 +783,7 @@ def main():
     ap.add_argument("--mode", choices=("cpu", "gpu"), default=DEFAULT_MODE)
     ap.add_argument("--port", type=int, default=8765)
     ap.add_argument("--no-serve", action="store_true", help="live: do not start the chart server")
+    ap.add_argument("--no-markets", action="store_true", help="live: skip prediction-market prices")
     ap.add_argument("--publish", action="store_true",
                     help="push every update to the hosted page (WP_PUSH_URL, WP_PUSH_TOKEN)")
     args = ap.parse_args()

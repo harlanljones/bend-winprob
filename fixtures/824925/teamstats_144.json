@@ -1,0 +1,139 @@
+{
+ "copyright": "Copyright 2026 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt",
+ "stats": [
+  {
+   "type": {
+    "displayName": "season"
+   },
+   "group": {
+    "displayName": "hitting"
+   },
+   "exemptions": [],
+   "splits": [
+    {
+     "season": "2026",
+     "stat": {
+      "gamesPlayed": 162,
+      "groundOuts": 1319,
+      "airOuts": 1552,
+      "runs": 742,
+      "doubles": 251,
+      "triples": 13,
+      "homeRuns": 204,
+      "strikeOuts": 1310,
+      "baseOnBalls": 465,
+      "intentionalWalks": 13,
+      "hits": 1348,
+      "hitByPitch": 56,
+      "avg": ".246",
+      "atBats": 5471,
+      "obp": ".309",
+      "slg": ".409",
+      "ops": ".718",
+      "caughtStealing": 23,
+      "stolenBases": 83,
+      "stolenBasePercentage": ".783",
+      "caughtStealingPercentage": ".217",
+      "groundIntoDoublePlay": 89,
+      "numberOfPitches": 23508,
+      "plateAppearances": 6053,
+      "totalBases": 2237,
+      "rbi": 711,
+      "leftOnBase": 1050,
+      "sacBunts": 11,
+      "sacFlies": 47,
+      "babip": ".286",
+      "groundOutsToAirouts": "0.85",
+      "catchersInterference": 3,
+      "atBatsPerHomeRun": "26.82"
+     },
+     "team": {
+      "id": 144,
+      "name": "Atlanta Braves",
+      "link": "/api/v1/teams/144"
+     }
+    }
+   ]
+  },
+  {
+   "type": {
+    "displayName": "season"
+   },
+   "group": {
+    "displayName": "pitching"
+   },
+   "exemptions": [],
+   "splits": [
+    {
+     "season": "2026",
+     "stat": {
+      "gamesPlayed": 162,
+      "gamesStarted": 162,
+      "groundOuts": 1316,
+      "airOuts": 1519,
+      "runs": 626,
+      "doubles": 204,
+      "triples": 26,
+      "homeRuns": 185,
+      "strikeOuts": 1350,
+      "baseOnBalls": 529,
+      "intentionalWalks": 15,
+      "hits": 1259,
+      "hitByPitch": 61,
+      "avg": ".234",
+      "atBats": 5382,
+      "obp": ".308",
+      "slg": ".385",
+      "ops": ".693",
+      "caughtStealing": 22,
+      "stolenBases": 112,
+      "stolenBasePercentage": ".836",
+      "caughtStealingPercentage": ".164",
+      "groundIntoDoublePlay": 119,
+      "numberOfPitches": 23276,
+      "era": "3.63",
+      "inningsPitched": "1438.0",
+      "wins": 94,
+      "losses": 68,
+      "saves": 49,
+      "saveOpportunities": 69,
+      "holds": 106,
+      "blownSaves": 20,
+      "earnedRuns": 580,
+      "whip": "1.24",
+      "battersFaced": 6037,
+      "outs": 4314,
+      "gamesPitched": 162,
+      "completeGames": 1,
+      "shutouts": 10,
+      "strikes": 14859,
+      "strikePercentage": ".640",
+      "hitBatsmen": 61,
+      "balks": 5,
+      "wildPitches": 30,
+      "pickoffs": 7,
+      "totalBases": 2070,
+      "groundOutsToAirouts": "0.87",
+      "winPercentage": ".580",
+      "pitchesPerInning": "16.19",
+      "gamesFinished": 161,
+      "strikeoutWalkRatio": "2.55",
+      "strikeoutsPer9Inn": "8.45",
+      "walksPer9Inn": "3.31",
+      "hitsPer9Inn": "7.88",
+      "runsScoredPer9": "3.92",
+      "homeRunsPer9": "1.16",
+      "catchersInterference": 3,
+      "sacBunts": 23,
+      "sacFlies": 39
+     },
+     "team": {
+      "id": 144,
+      "name": "Atlanta Braves",
+      "link": "/api/v1/teams/144"
+     }
+    }
+   ]
+  }
+ ]
+}

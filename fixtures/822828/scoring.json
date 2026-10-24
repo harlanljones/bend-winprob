@@ -1,0 +1,4384 @@
+{
+ "allPlays": [
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Kody Clemens flies out to right fielder Nathan Lukes."
+   },
+   "about": {
+    "atBatIndex": 0,
+    "startTime": "2026-04-12T17:38:10.115Z",
+    "endTime": "2026-04-12T17:39:29.336Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 665019,
+     "fullName": "Kody Clemens"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 665019,
+       "fullName": "Kody Clemens"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 0
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Trevor Larnach flies out to center fielder Daulton Varsho."
+   },
+   "about": {
+    "atBatIndex": 1,
+    "startTime": "2026-04-12T17:39:34.111Z",
+    "endTime": "2026-04-12T17:40:33.056Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 663616,
+     "fullName": "Trevor Larnach"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 663616,
+       "fullName": "Trevor Larnach"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 1
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Luke Keaschall called out on strikes."
+   },
+   "about": {
+    "atBatIndex": 2,
+    "startTime": "2026-04-12T17:40:50.170Z",
+    "endTime": "2026-04-12T17:42:05.819Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 807712,
+     "fullName": "Luke Keaschall"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 807712,
+       "fullName": "Luke Keaschall"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 2
+  },
+  {
+   "result": {
+    "event": "Double",
+    "eventType": "double",
+    "description": "Ernie Clement doubles (5) on a line drive to left fielder Trevor Larnach."
+   },
+   "about": {
+    "atBatIndex": 3,
+    "startTime": "2026-04-12T17:44:03.056Z",
+    "endTime": "2026-04-12T17:44:51.224Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 676391,
+     "fullName": "Ernie Clement"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Double",
+      "eventType": "double",
+      "movementReason": null,
+      "runner": {
+       "id": 676391,
+       "fullName": "Ernie Clement"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 3
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Daulton Varsho singles on a sharp ground ball to right fielder Matt Wallner, deflected by second baseman Luke Keaschall. Ernie Clement scores."
+   },
+   "about": {
+    "atBatIndex": 4,
+    "startTime": "2026-04-12T17:45:07.796Z",
+    "endTime": "2026-04-12T17:46:39.839Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 662139,
+     "fullName": "Daulton Varsho"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 662139,
+       "fullName": "Daulton Varsho"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_deflection"
+      },
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 676391,
+       "fullName": "Ernie Clement"
+      },
+      "responsiblePitcher": {
+       "id": 671737
+      },
+      "isScoringEvent": true,
+      "rbi": true,
+      "earned": true,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 4
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Vladimir Guerrero Jr. walks. Daulton Varsho to 2nd."
+   },
+   "about": {
+    "atBatIndex": 5,
+    "startTime": "2026-04-12T17:46:56.066Z",
+    "endTime": "2026-04-12T17:50:53.336Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 665489,
+     "fullName": "Vladimir Guerrero Jr."
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 662139,
+       "fullName": "Daulton Varsho"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 8
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 665489,
+       "fullName": "Vladimir Guerrero Jr."
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 8
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 5
+  },
+  {
+   "result": {
+    "event": "Grounded Into DP",
+    "eventType": "grounded_into_double_play",
+    "description": "Jes\u00fas S\u00e1nchez grounds into a double play, second baseman Luke Keaschall to shortstop Brooks Lee to first baseman Kody Clemens. Daulton Varsho to 3rd. Vladimir Guerrero Jr. out at 2nd. Jes\u00fas S\u00e1nchez out at 1st."
+   },
+   "about": {
+    "atBatIndex": 6,
+    "startTime": "2026-04-12T17:51:08.646Z",
+    "endTime": "2026-04-12T17:53:28.400Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 660821,
+     "fullName": "Jes\u00fas S\u00e1nchez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Grounded Into DP",
+      "eventType": "grounded_into_double_play",
+      "movementReason": "r_force_out",
+      "runner": {
+       "id": 665489,
+       "fullName": "Vladimir Guerrero Jr."
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Grounded Into DP",
+      "eventType": "grounded_into_double_play",
+      "movementReason": null,
+      "runner": {
+       "id": 660821,
+       "fullName": "Jes\u00fas S\u00e1nchez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Grounded Into DP",
+      "eventType": "grounded_into_double_play",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 662139,
+       "fullName": "Daulton Varsho"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 6
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Kazuma Okamoto walks."
+   },
+   "about": {
+    "atBatIndex": 7,
+    "startTime": "2026-04-12T17:53:52.633Z",
+    "endTime": "2026-04-12T17:55:46.018Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 672960,
+     "fullName": "Kazuma Okamoto"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 672960,
+       "fullName": "Kazuma Okamoto"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 7
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Nathan Lukes strikes out on a foul tip."
+   },
+   "about": {
+    "atBatIndex": 8,
+    "startTime": "2026-04-12T17:55:50.793Z",
+    "endTime": "2026-04-12T17:57:12.903Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 664770,
+     "fullName": "Nathan Lukes"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 664770,
+       "fullName": "Nathan Lukes"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 8
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Josh Bell walks."
+   },
+   "about": {
+    "atBatIndex": 9,
+    "startTime": "2026-04-12T17:59:10.449Z",
+    "endTime": "2026-04-12T18:00:40.947Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 605137,
+     "fullName": "Josh Bell"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 605137,
+       "fullName": "Josh Bell"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 9
+  },
+  {
+   "result": {
+    "event": "Hit By Pitch",
+    "eventType": "hit_by_pitch",
+    "description": "Matt Wallner hit by pitch. Josh Bell to 2nd."
+   },
+   "about": {
+    "atBatIndex": 10,
+    "startTime": "2026-04-12T18:00:45.333Z",
+    "endTime": "2026-04-12T18:02:39.129Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 670242,
+     "fullName": "Matt Wallner"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Hit By Pitch",
+      "eventType": "hit_by_pitch",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 605137,
+       "fullName": "Josh Bell"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Hit By Pitch",
+      "eventType": "hit_by_pitch",
+      "movementReason": null,
+      "runner": {
+       "id": 670242,
+       "fullName": "Matt Wallner"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 10
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Victor Caratini called out on strikes."
+   },
+   "about": {
+    "atBatIndex": 11,
+    "startTime": "2026-04-12T18:03:05.031Z",
+    "endTime": "2026-04-12T18:06:03.160Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 605170,
+     "fullName": "Victor Caratini"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 605170,
+       "fullName": "Victor Caratini"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 8
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 11
+  },
+  {
+   "result": {
+    "event": "Home Run",
+    "eventType": "home_run",
+    "description": "Tristan Gray homers (2) on a fly ball to right field. Josh Bell scores. Matt Wallner scores."
+   },
+   "about": {
+    "atBatIndex": 12,
+    "startTime": "2026-04-12T18:06:20.818Z",
+    "endTime": "2026-04-12T18:07:29.988Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 656484,
+     "fullName": "Tristan Gray"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Home Run",
+      "eventType": "home_run",
+      "movementReason": null,
+      "runner": {
+       "id": 656484,
+       "fullName": "Tristan Gray"
+      },
+      "responsiblePitcher": {
+       "id": 453286
+      },
+      "isScoringEvent": true,
+      "rbi": true,
+      "earned": true,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Home Run",
+      "eventType": "home_run",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 605137,
+       "fullName": "Josh Bell"
+      },
+      "responsiblePitcher": {
+       "id": 453286
+      },
+      "isScoringEvent": true,
+      "rbi": true,
+      "earned": true,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Home Run",
+      "eventType": "home_run",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 670242,
+       "fullName": "Matt Wallner"
+      },
+      "responsiblePitcher": {
+       "id": 453286
+      },
+      "isScoringEvent": true,
+      "rbi": true,
+      "earned": true,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 12
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Brooks Lee flies out to center fielder Daulton Varsho."
+   },
+   "about": {
+    "atBatIndex": 13,
+    "startTime": "2026-04-12T18:07:35.065Z",
+    "endTime": "2026-04-12T18:09:35.383Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 686797,
+     "fullName": "Brooks Lee"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 686797,
+       "fullName": "Brooks Lee"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 13
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "James Outman strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 14,
+    "startTime": "2026-04-12T18:09:51.209Z",
+    "endTime": "2026-04-12T18:11:11.720Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 681546,
+     "fullName": "James Outman"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 681546,
+       "fullName": "James Outman"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 14
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Eloy Jim\u00e9nez strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 15,
+    "startTime": "2026-04-12T18:13:06.016Z",
+    "endTime": "2026-04-12T18:13:58.075Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 650391,
+     "fullName": "Eloy Jim\u00e9nez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 650391,
+       "fullName": "Eloy Jim\u00e9nez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 15
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Andr\u00e9s Gim\u00e9nez called out on strikes."
+   },
+   "about": {
+    "atBatIndex": 16,
+    "startTime": "2026-04-12T18:14:01.319Z",
+    "endTime": "2026-04-12T18:15:48.810Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 665926,
+     "fullName": "Andr\u00e9s Gim\u00e9nez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 665926,
+       "fullName": "Andr\u00e9s Gim\u00e9nez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 16
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Brandon Valenzuela strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 17,
+    "startTime": "2026-04-12T18:15:59.457Z",
+    "endTime": "2026-04-12T18:18:39.702Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 678218,
+     "fullName": "Brandon Valenzuela"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 678218,
+       "fullName": "Brandon Valenzuela"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 17
+  },
+  {
+   "result": {
+    "event": "Home Run",
+    "eventType": "home_run",
+    "description": "Kody Clemens homers (2) on a fly ball to right center field."
+   },
+   "about": {
+    "atBatIndex": 18,
+    "startTime": "2026-04-12T18:20:40.014Z",
+    "endTime": "2026-04-12T18:23:10.645Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 665019,
+     "fullName": "Kody Clemens"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Home Run",
+      "eventType": "home_run",
+      "movementReason": null,
+      "runner": {
+       "id": 665019,
+       "fullName": "Kody Clemens"
+      },
+      "responsiblePitcher": {
+       "id": 453286
+      },
+      "isScoringEvent": true,
+      "rbi": true,
+      "earned": true,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 18
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Trevor Larnach singles on a line drive to center fielder Daulton Varsho."
+   },
+   "about": {
+    "atBatIndex": 19,
+    "startTime": "2026-04-12T18:23:11.760Z",
+    "endTime": "2026-04-12T18:24:20.841Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 663616,
+     "fullName": "Trevor Larnach"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 663616,
+       "fullName": "Trevor Larnach"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 19
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Luke Keaschall singles on a ground ball to left fielder Jes\u00fas S\u00e1nchez. Trevor Larnach to 2nd."
+   },
+   "about": {
+    "atBatIndex": 20,
+    "startTime": "2026-04-12T18:24:26.628Z",
+    "endTime": "2026-04-12T18:26:29.594Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 807712,
+     "fullName": "Luke Keaschall"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 807712,
+       "fullName": "Luke Keaschall"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 663616,
+       "fullName": "Trevor Larnach"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 20
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Josh Bell walks. Trevor Larnach to 3rd. Luke Keaschall to 2nd."
+   },
+   "about": {
+    "atBatIndex": 21,
+    "startTime": "2026-04-12T18:27:23.059Z",
+    "endTime": "2026-04-12T18:28:54.779Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 605137,
+     "fullName": "Josh Bell"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 663616,
+       "fullName": "Trevor Larnach"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 807712,
+       "fullName": "Luke Keaschall"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 605137,
+       "fullName": "Josh Bell"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 21
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Matt Wallner singles on a sharp line drive to right fielder Nathan Lukes. Trevor Larnach scores. Luke Keaschall to 3rd. Josh Bell to 2nd."
+   },
+   "about": {
+    "atBatIndex": 22,
+    "startTime": "2026-04-12T18:29:17.505Z",
+    "endTime": "2026-04-12T18:31:32.925Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 670242,
+     "fullName": "Matt Wallner"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 670242,
+       "fullName": "Matt Wallner"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 663616,
+       "fullName": "Trevor Larnach"
+      },
+      "responsiblePitcher": {
+       "id": 453286
+      },
+      "isScoringEvent": true,
+      "rbi": true,
+      "earned": true,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 807712,
+       "fullName": "Luke Keaschall"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 605137,
+       "fullName": "Josh Bell"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 22
+  },
+  {
+   "result": {
+    "event": "Sac Fly",
+    "eventType": "sac_fly",
+    "description": "Victor Caratini out on a sacrifice fly to right fielder Nathan Lukes. Luke Keaschall scores. Josh Bell to 3rd."
+   },
+   "about": {
+    "atBatIndex": 23,
+    "startTime": "2026-04-12T18:32:03.622Z",
+    "endTime": "2026-04-12T18:33:30.836Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 605170,
+     "fullName": "Victor Caratini"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Sac Fly",
+      "eventType": "sac_fly",
+      "movementReason": null,
+      "runner": {
+       "id": 605170,
+       "fullName": "Victor Caratini"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Sac Fly",
+      "eventType": "sac_fly",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 605137,
+       "fullName": "Josh Bell"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Sac Fly",
+      "eventType": "sac_fly",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 807712,
+       "fullName": "Luke Keaschall"
+      },
+      "responsiblePitcher": {
+       "id": 453286
+      },
+      "isScoringEvent": true,
+      "rbi": true,
+      "earned": true,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 23
+  },
+  {
+   "result": {
+    "event": "Hit By Pitch",
+    "eventType": "hit_by_pitch",
+    "description": "Tristan Gray hit by pitch. Matt Wallner to 2nd."
+   },
+   "about": {
+    "atBatIndex": 24,
+    "startTime": "2026-04-12T18:36:18.787Z",
+    "endTime": "2026-04-12T18:36:49.370Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 656484,
+     "fullName": "Tristan Gray"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Hit By Pitch",
+      "eventType": "hit_by_pitch",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 670242,
+       "fullName": "Matt Wallner"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Hit By Pitch",
+      "eventType": "hit_by_pitch",
+      "movementReason": null,
+      "runner": {
+       "id": 656484,
+       "fullName": "Tristan Gray"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 24
+  },
+  {
+   "result": {
+    "event": "Double",
+    "eventType": "double",
+    "description": "Brooks Lee doubles (1) on a line drive to left fielder Jes\u00fas S\u00e1nchez. Josh Bell scores. Matt Wallner scores. Tristan Gray to 3rd."
+   },
+   "about": {
+    "atBatIndex": 25,
+    "startTime": "2026-04-12T18:38:00.976Z",
+    "endTime": "2026-04-12T18:38:17.411Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 686797,
+     "fullName": "Brooks Lee"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Double",
+      "eventType": "double",
+      "movementReason": null,
+      "runner": {
+       "id": 686797,
+       "fullName": "Brooks Lee"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Double",
+      "eventType": "double",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 605137,
+       "fullName": "Josh Bell"
+      },
+      "responsiblePitcher": {
+       "id": 453286
+      },
+      "isScoringEvent": true,
+      "rbi": true,
+      "earned": true,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Double",
+      "eventType": "double",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 670242,
+       "fullName": "Matt Wallner"
+      },
+      "responsiblePitcher": {
+       "id": 453286
+      },
+      "isScoringEvent": true,
+      "rbi": true,
+      "earned": true,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Double",
+      "eventType": "double",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 656484,
+       "fullName": "Tristan Gray"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 25
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "James Outman grounds out, second baseman Ernie Clement to first baseman Vladimir Guerrero Jr."
+   },
+   "about": {
+    "atBatIndex": 26,
+    "startTime": "2026-04-12T18:38:41.216Z",
+    "endTime": "2026-04-12T18:38:57.102Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 681546,
+     "fullName": "James Outman"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 681546,
+       "fullName": "James Outman"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 26
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Kody Clemens grounds out softly, pitcher Joe Mantiply to first baseman Vladimir Guerrero Jr."
+   },
+   "about": {
+    "atBatIndex": 27,
+    "startTime": "2026-04-12T18:39:08.567Z",
+    "endTime": "2026-04-12T18:40:10.334Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 665019,
+     "fullName": "Kody Clemens"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 665019,
+       "fullName": "Kody Clemens"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "1"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 27
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Ernie Clement grounds out, third baseman Tristan Gray to first baseman Kody Clemens."
+   },
+   "about": {
+    "atBatIndex": 28,
+    "startTime": "2026-04-12T18:42:15.957Z",
+    "endTime": "2026-04-12T18:43:11.904Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 676391,
+     "fullName": "Ernie Clement"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 676391,
+       "fullName": "Ernie Clement"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 28
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Daulton Varsho singles on a line drive to center fielder James Outman."
+   },
+   "about": {
+    "atBatIndex": 29,
+    "startTime": "2026-04-12T18:43:20.778Z",
+    "endTime": "2026-04-12T18:43:48.300Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 662139,
+     "fullName": "Daulton Varsho"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 662139,
+       "fullName": "Daulton Varsho"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 29
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Vladimir Guerrero Jr. walks. Daulton Varsho to 2nd."
+   },
+   "about": {
+    "atBatIndex": 30,
+    "startTime": "2026-04-12T18:44:00.017Z",
+    "endTime": "2026-04-12T18:45:37.874Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 665489,
+     "fullName": "Vladimir Guerrero Jr."
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 662139,
+       "fullName": "Daulton Varsho"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 665489,
+       "fullName": "Vladimir Guerrero Jr."
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 30
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Jes\u00fas S\u00e1nchez strikes out on a foul tip."
+   },
+   "about": {
+    "atBatIndex": 31,
+    "startTime": "2026-04-12T18:45:51.373Z",
+    "endTime": "2026-04-12T18:48:20.687Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 660821,
+     "fullName": "Jes\u00fas S\u00e1nchez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 660821,
+       "fullName": "Jes\u00fas S\u00e1nchez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 31
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Kazuma Okamoto flies out sharply to center fielder James Outman."
+   },
+   "about": {
+    "atBatIndex": 32,
+    "startTime": "2026-04-12T18:48:37.272Z",
+    "endTime": "2026-04-12T18:50:31.682Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 672960,
+     "fullName": "Kazuma Okamoto"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 672960,
+       "fullName": "Kazuma Okamoto"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 32
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Trevor Larnach strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 33,
+    "startTime": "2026-04-12T18:52:41.159Z",
+    "endTime": "2026-04-12T18:53:28.937Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 663616,
+     "fullName": "Trevor Larnach"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 663616,
+       "fullName": "Trevor Larnach"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 33
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Luke Keaschall singles on a sharp ground ball to center fielder Daulton Varsho."
+   },
+   "about": {
+    "atBatIndex": 34,
+    "startTime": "2026-04-12T18:53:40.152Z",
+    "endTime": "2026-04-12T18:55:18.372Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 807712,
+     "fullName": "Luke Keaschall"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 807712,
+       "fullName": "Luke Keaschall"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 34
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Josh Bell grounds out, third baseman Kazuma Okamoto to first baseman Vladimir Guerrero Jr."
+   },
+   "about": {
+    "atBatIndex": 35,
+    "startTime": "2026-04-12T18:55:21.628Z",
+    "endTime": "2026-04-12T18:57:53.259Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 605137,
+     "fullName": "Josh Bell"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Stolen Base 2B",
+      "eventType": "stolen_base_2b",
+      "movementReason": "r_stolen_base_2b",
+      "runner": {
+       "id": 807712,
+       "fullName": "Luke Keaschall"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 605137,
+       "fullName": "Josh Bell"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 35
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Matt Wallner grounds out sharply, shortstop Andr\u00e9s Gim\u00e9nez to first baseman Vladimir Guerrero Jr."
+   },
+   "about": {
+    "atBatIndex": 36,
+    "startTime": "2026-04-12T18:58:09.784Z",
+    "endTime": "2026-04-12T18:58:47.493Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 670242,
+     "fullName": "Matt Wallner"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 670242,
+       "fullName": "Matt Wallner"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 36
+  },
+  {
+   "result": {
+    "event": "Pop Out",
+    "eventType": "field_out",
+    "description": "Nathan Lukes pops out to third baseman Tristan Gray in foul territory."
+   },
+   "about": {
+    "atBatIndex": 37,
+    "startTime": "2026-04-12T19:01:09.307Z",
+    "endTime": "2026-04-12T19:02:31.414Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 664770,
+     "fullName": "Nathan Lukes"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Pop Out",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 664770,
+       "fullName": "Nathan Lukes"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 37
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Eloy Jim\u00e9nez singles on a line drive to left fielder Trevor Larnach."
+   },
+   "about": {
+    "atBatIndex": 38,
+    "startTime": "2026-04-12T19:02:39.140Z",
+    "endTime": "2026-04-12T19:04:11.784Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 650391,
+     "fullName": "Eloy Jim\u00e9nez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 650391,
+       "fullName": "Eloy Jim\u00e9nez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 38
+  },
+  {
+   "result": {
+    "event": "Forceout",
+    "eventType": "force_out",
+    "description": "Andr\u00e9s Gim\u00e9nez grounds into a force out, second baseman Luke Keaschall to shortstop Brooks Lee. Eloy Jim\u00e9nez out at 2nd. Andr\u00e9s Gim\u00e9nez to 1st."
+   },
+   "about": {
+    "atBatIndex": 39,
+    "startTime": "2026-04-12T19:04:21.458Z",
+    "endTime": "2026-04-12T19:04:58.347Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 665926,
+     "fullName": "Andr\u00e9s Gim\u00e9nez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Forceout",
+      "eventType": "force_out",
+      "movementReason": "r_force_out",
+      "runner": {
+       "id": 650391,
+       "fullName": "Eloy Jim\u00e9nez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Forceout",
+      "eventType": "force_out",
+      "movementReason": null,
+      "runner": {
+       "id": 665926,
+       "fullName": "Andr\u00e9s Gim\u00e9nez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 39
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Brandon Valenzuela walks. Andr\u00e9s Gim\u00e9nez to 2nd."
+   },
+   "about": {
+    "atBatIndex": 40,
+    "startTime": "2026-04-12T19:05:18.205Z",
+    "endTime": "2026-04-12T19:09:48.468Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 678218,
+     "fullName": "Brandon Valenzuela"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 665926,
+       "fullName": "Andr\u00e9s Gim\u00e9nez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 10
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 678218,
+       "fullName": "Brandon Valenzuela"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 10
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 40
+  },
+  {
+   "result": {
+    "event": "Lineout",
+    "eventType": "field_out",
+    "description": "Ernie Clement lines out to third baseman Tristan Gray."
+   },
+   "about": {
+    "atBatIndex": 41,
+    "startTime": "2026-04-12T19:11:06.375Z",
+    "endTime": "2026-04-12T19:11:58.459Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 676391,
+     "fullName": "Ernie Clement"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Lineout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 676391,
+       "fullName": "Ernie Clement"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 41
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Victor Caratini grounds out, second baseman Ernie Clement to first baseman Vladimir Guerrero Jr."
+   },
+   "about": {
+    "atBatIndex": 42,
+    "startTime": "2026-04-12T19:14:22.789Z",
+    "endTime": "2026-04-12T19:14:33.360Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 605170,
+     "fullName": "Victor Caratini"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 605170,
+       "fullName": "Victor Caratini"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 42
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Tristan Gray grounds out softly, catcher Brandon Valenzuela to first baseman Vladimir Guerrero Jr."
+   },
+   "about": {
+    "atBatIndex": 43,
+    "startTime": "2026-04-12T19:14:49.333Z",
+    "endTime": "2026-04-12T19:15:45.189Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 656484,
+     "fullName": "Tristan Gray"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 656484,
+       "fullName": "Tristan Gray"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 43
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Brooks Lee strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 44,
+    "startTime": "2026-04-12T19:15:59.913Z",
+    "endTime": "2026-04-12T19:17:10.873Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 686797,
+     "fullName": "Brooks Lee"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 686797,
+       "fullName": "Brooks Lee"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 44
+  },
+  {
+   "result": {
+    "event": "Double",
+    "eventType": "double",
+    "description": "Daulton Varsho doubles (4) on a sharp line drive to right fielder Matt Wallner."
+   },
+   "about": {
+    "atBatIndex": 45,
+    "startTime": "2026-04-12T19:19:07.321Z",
+    "endTime": "2026-04-12T19:20:32.319Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 662139,
+     "fullName": "Daulton Varsho"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Double",
+      "eventType": "double",
+      "movementReason": null,
+      "runner": {
+       "id": 662139,
+       "fullName": "Daulton Varsho"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 45
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Vladimir Guerrero Jr. grounds out sharply, shortstop Brooks Lee to first baseman Kody Clemens."
+   },
+   "about": {
+    "atBatIndex": 46,
+    "startTime": "2026-04-12T19:20:52.619Z",
+    "endTime": "2026-04-12T19:22:31.244Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 665489,
+     "fullName": "Vladimir Guerrero Jr."
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 665489,
+       "fullName": "Vladimir Guerrero Jr."
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 46
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Jes\u00fas S\u00e1nchez strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 47,
+    "startTime": "2026-04-12T19:22:43.566Z",
+    "endTime": "2026-04-12T19:24:27.293Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 660821,
+     "fullName": "Jes\u00fas S\u00e1nchez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 660821,
+       "fullName": "Jes\u00fas S\u00e1nchez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 47
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Kazuma Okamoto strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 48,
+    "startTime": "2026-04-12T19:24:44.584Z",
+    "endTime": "2026-04-12T19:27:07.148Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 672960,
+     "fullName": "Kazuma Okamoto"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 672960,
+       "fullName": "Kazuma Okamoto"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 48
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "James Outman challenged (pitch result), call on the field was confirmed: James Outman called out on strikes."
+   },
+   "about": {
+    "atBatIndex": 49,
+    "startTime": "2026-04-12T19:29:44.104Z",
+    "endTime": "2026-04-12T19:31:11.809Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 681546,
+     "fullName": "James Outman"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 681546,
+       "fullName": "James Outman"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 49
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Kody Clemens strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 50,
+    "startTime": "2026-04-12T19:31:24.113Z",
+    "endTime": "2026-04-12T19:33:26.387Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 665019,
+     "fullName": "Kody Clemens"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 665019,
+       "fullName": "Kody Clemens"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 50
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Trevor Larnach flies out to center fielder Daulton Varsho."
+   },
+   "about": {
+    "atBatIndex": 51,
+    "startTime": "2026-04-12T19:33:38.047Z",
+    "endTime": "2026-04-12T19:34:22.016Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 663616,
+     "fullName": "Trevor Larnach"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 663616,
+       "fullName": "Trevor Larnach"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 51
+  },
+  {
+   "result": {
+    "event": "Pop Out",
+    "eventType": "field_out",
+    "description": "Nathan Lukes pops out to shortstop Brooks Lee."
+   },
+   "about": {
+    "atBatIndex": 52,
+    "startTime": "2026-04-12T19:36:46.437Z",
+    "endTime": "2026-04-12T19:39:02.537Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 664770,
+     "fullName": "Nathan Lukes"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Pop Out",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 664770,
+       "fullName": "Nathan Lukes"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 8
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 52
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Eloy Jim\u00e9nez strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 53,
+    "startTime": "2026-04-12T19:39:12.256Z",
+    "endTime": "2026-04-12T19:40:31.923Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 650391,
+     "fullName": "Eloy Jim\u00e9nez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 650391,
+       "fullName": "Eloy Jim\u00e9nez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 53
+  },
+  {
+   "result": {
+    "event": "Double",
+    "eventType": "double",
+    "description": "Andr\u00e9s Gim\u00e9nez doubles (1) on a fly ball to right fielder Matt Wallner."
+   },
+   "about": {
+    "atBatIndex": 54,
+    "startTime": "2026-04-12T19:40:50.856Z",
+    "endTime": "2026-04-12T19:41:58.448Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 665926,
+     "fullName": "Andr\u00e9s Gim\u00e9nez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Double",
+      "eventType": "double",
+      "movementReason": null,
+      "runner": {
+       "id": 665926,
+       "fullName": "Andr\u00e9s Gim\u00e9nez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 54
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Brandon Valenzuela strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 55,
+    "startTime": "2026-04-12T19:42:19.274Z",
+    "endTime": "2026-04-12T19:43:31.038Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 678218,
+     "fullName": "Brandon Valenzuela"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 678218,
+       "fullName": "Brandon Valenzuela"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 55
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Luke Keaschall called out on strikes."
+   },
+   "about": {
+    "atBatIndex": 56,
+    "startTime": "2026-04-12T19:46:04.878Z",
+    "endTime": "2026-04-12T19:47:16.605Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 807712,
+     "fullName": "Luke Keaschall"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 807712,
+       "fullName": "Luke Keaschall"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 56
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Josh Bell strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 57,
+    "startTime": "2026-04-12T19:47:22.129Z",
+    "endTime": "2026-04-12T19:48:42.809Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 605137,
+     "fullName": "Josh Bell"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 605137,
+       "fullName": "Josh Bell"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 57
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Matt Wallner strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 58,
+    "startTime": "2026-04-12T19:48:52.016Z",
+    "endTime": "2026-04-12T19:51:00.582Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 670242,
+     "fullName": "Matt Wallner"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 670242,
+       "fullName": "Matt Wallner"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 58
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Ernie Clement singles on a sharp ground ball to center fielder James Outman."
+   },
+   "about": {
+    "atBatIndex": 59,
+    "startTime": "2026-04-12T19:53:06.310Z",
+    "endTime": "2026-04-12T19:54:35.253Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 676391,
+     "fullName": "Ernie Clement"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 676391,
+       "fullName": "Ernie Clement"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 59
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Daulton Varsho flies out to right fielder Matt Wallner."
+   },
+   "about": {
+    "atBatIndex": 60,
+    "startTime": "2026-04-12T19:54:44.054Z",
+    "endTime": "2026-04-12T19:58:48.602Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 662139,
+     "fullName": "Daulton Varsho"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 662139,
+       "fullName": "Daulton Varsho"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 9
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 60
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Vladimir Guerrero Jr. singles on a ground ball to shortstop Brooks Lee. Ernie Clement to 2nd."
+   },
+   "about": {
+    "atBatIndex": 61,
+    "startTime": "2026-04-12T19:58:51.086Z",
+    "endTime": "2026-04-12T19:59:20.046Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 665489,
+     "fullName": "Vladimir Guerrero Jr."
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 665489,
+       "fullName": "Vladimir Guerrero Jr."
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 676391,
+       "fullName": "Ernie Clement"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 61
+  },
+  {
+   "result": {
+    "event": "Sac Fly",
+    "eventType": "sac_fly",
+    "description": "Jes\u00fas S\u00e1nchez out on a sacrifice fly to left fielder Trevor Larnach. Ernie Clement scores."
+   },
+   "about": {
+    "atBatIndex": 62,
+    "startTime": "2026-04-12T19:59:37.028Z",
+    "endTime": "2026-04-12T20:02:37.464Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 660821,
+     "fullName": "Jes\u00fas S\u00e1nchez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Wild Pitch",
+      "eventType": "wild_pitch",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 676391,
+       "fullName": "Ernie Clement"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Wild Pitch",
+      "eventType": "wild_pitch",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 665489,
+       "fullName": "Vladimir Guerrero Jr."
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Sac Fly",
+      "eventType": "sac_fly",
+      "movementReason": null,
+      "runner": {
+       "id": 660821,
+       "fullName": "Jes\u00fas S\u00e1nchez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Sac Fly",
+      "eventType": "sac_fly",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 676391,
+       "fullName": "Ernie Clement"
+      },
+      "responsiblePitcher": {
+       "id": 702193
+      },
+      "isScoringEvent": true,
+      "rbi": true,
+      "earned": true,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 62
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Kazuma Okamoto grounds out, shortstop Brooks Lee to first baseman Kody Clemens."
+   },
+   "about": {
+    "atBatIndex": 63,
+    "startTime": "2026-04-12T20:02:54.275Z",
+    "endTime": "2026-04-12T20:03:47.125Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 672960,
+     "fullName": "Kazuma Okamoto"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 672960,
+       "fullName": "Kazuma Okamoto"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 63
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Victor Caratini singles on a line drive to right fielder Nathan Lukes, deflected by second baseman Ernie Clement."
+   },
+   "about": {
+    "atBatIndex": 64,
+    "startTime": "2026-04-12T20:06:08.062Z",
+    "endTime": "2026-04-12T20:06:54.158Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 605170,
+     "fullName": "Victor Caratini"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 605170,
+       "fullName": "Victor Caratini"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_deflection"
+      },
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 64
+  },
+  {
+   "result": {
+    "event": "Grounded Into DP",
+    "eventType": "grounded_into_double_play",
+    "description": "Tristan Gray grounds into a double play, second baseman Ernie Clement to shortstop Andr\u00e9s Gim\u00e9nez to first baseman Vladimir Guerrero Jr. Victor Caratini out at 2nd. Tristan Gray out at 1st."
+   },
+   "about": {
+    "atBatIndex": 65,
+    "startTime": "2026-04-12T20:07:00.196Z",
+    "endTime": "2026-04-12T20:07:56.888Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 656484,
+     "fullName": "Tristan Gray"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Grounded Into DP",
+      "eventType": "grounded_into_double_play",
+      "movementReason": "r_force_out",
+      "runner": {
+       "id": 605170,
+       "fullName": "Victor Caratini"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Grounded Into DP",
+      "eventType": "grounded_into_double_play",
+      "movementReason": null,
+      "runner": {
+       "id": 656484,
+       "fullName": "Tristan Gray"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 65
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Brooks Lee grounds out, shortstop Andr\u00e9s Gim\u00e9nez to first baseman Vladimir Guerrero Jr."
+   },
+   "about": {
+    "atBatIndex": 66,
+    "startTime": "2026-04-12T20:08:13.964Z",
+    "endTime": "2026-04-12T20:08:55.476Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 686797,
+     "fullName": "Brooks Lee"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 686797,
+       "fullName": "Brooks Lee"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 66
+  },
+  {
+   "result": {
+    "event": "Lineout",
+    "eventType": "field_out",
+    "description": "Nathan Lukes lines out to left fielder Trevor Larnach."
+   },
+   "about": {
+    "atBatIndex": 67,
+    "startTime": "2026-04-12T20:10:59.569Z",
+    "endTime": "2026-04-12T20:12:23.563Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 664770,
+     "fullName": "Nathan Lukes"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Lineout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 664770,
+       "fullName": "Nathan Lukes"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 67
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Eloy Jim\u00e9nez singles on a line drive to left fielder Trevor Larnach."
+   },
+   "about": {
+    "atBatIndex": 68,
+    "startTime": "2026-04-12T20:12:26.999Z",
+    "endTime": "2026-04-12T20:13:30.275Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 650391,
+     "fullName": "Eloy Jim\u00e9nez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 650391,
+       "fullName": "Eloy Jim\u00e9nez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 68
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Andr\u00e9s Gim\u00e9nez singles on a pop up to shortstop Brooks Lee. Eloy Jim\u00e9nez to 2nd."
+   },
+   "about": {
+    "atBatIndex": 69,
+    "startTime": "2026-04-12T20:13:44.608Z",
+    "endTime": "2026-04-12T20:15:41.276Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 665926,
+     "fullName": "Andr\u00e9s Gim\u00e9nez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 665926,
+       "fullName": "Andr\u00e9s Gim\u00e9nez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 650391,
+       "fullName": "Eloy Jim\u00e9nez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 69
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Brandon Valenzuela flies out to right fielder Matt Wallner."
+   },
+   "about": {
+    "atBatIndex": 70,
+    "startTime": "2026-04-12T20:17:19.263Z",
+    "endTime": "2026-04-12T20:17:52.785Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 678218,
+     "fullName": "Brandon Valenzuela"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 678218,
+       "fullName": "Brandon Valenzuela"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 70
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Ernie Clement singles on a sharp line drive to left fielder Trevor Larnach. Eloy Jim\u00e9nez to 3rd. Andr\u00e9s Gim\u00e9nez to 2nd."
+   },
+   "about": {
+    "atBatIndex": 71,
+    "startTime": "2026-04-12T20:18:06.106Z",
+    "endTime": "2026-04-12T20:19:29.973Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 676391,
+     "fullName": "Ernie Clement"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 676391,
+       "fullName": "Ernie Clement"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 650391,
+       "fullName": "Eloy Jim\u00e9nez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 665926,
+       "fullName": "Andr\u00e9s Gim\u00e9nez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 71
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Daulton Varsho flies out to right fielder Matt Wallner."
+   },
+   "about": {
+    "atBatIndex": 72,
+    "startTime": "2026-04-12T20:19:57.248Z",
+    "endTime": "2026-04-12T20:21:00.779Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 662139,
+     "fullName": "Daulton Varsho"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 662139,
+       "fullName": "Daulton Varsho"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 72
+  },
+  {
+   "result": {
+    "event": "Pop Out",
+    "eventType": "field_out",
+    "description": "James Outman pops out to second baseman Ernie Clement."
+   },
+   "about": {
+    "atBatIndex": 73,
+    "startTime": "2026-04-12T20:23:20.636Z",
+    "endTime": "2026-04-12T20:24:38.345Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 681546,
+     "fullName": "James Outman"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Pop Out",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 681546,
+       "fullName": "James Outman"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 73
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Kody Clemens strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 74,
+    "startTime": "2026-04-12T20:24:52.748Z",
+    "endTime": "2026-04-12T20:26:04.766Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 665019,
+     "fullName": "Kody Clemens"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 665019,
+       "fullName": "Kody Clemens"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 74
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Trevor Larnach challenged (pitch result), call on the field was confirmed: Trevor Larnach called out on strikes."
+   },
+   "about": {
+    "atBatIndex": 75,
+    "startTime": "2026-04-12T20:26:18.239Z",
+    "endTime": "2026-04-12T20:28:03.941Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 663616,
+     "fullName": "Trevor Larnach"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 663616,
+       "fullName": "Trevor Larnach"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 75
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Vladimir Guerrero Jr. grounds out, second baseman Luke Keaschall to first baseman Kody Clemens."
+   },
+   "about": {
+    "atBatIndex": 76,
+    "startTime": "2026-04-12T20:30:16.342Z",
+    "endTime": "2026-04-12T20:31:04.479Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 665489,
+     "fullName": "Vladimir Guerrero Jr."
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 665489,
+       "fullName": "Vladimir Guerrero Jr."
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 76
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Jes\u00fas S\u00e1nchez singles on a sharp ground ball to left fielder Austin Martin."
+   },
+   "about": {
+    "atBatIndex": 77,
+    "startTime": "2026-04-12T20:31:40.230Z",
+    "endTime": "2026-04-12T20:31:56.236Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 660821,
+     "fullName": "Jes\u00fas S\u00e1nchez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 660821,
+       "fullName": "Jes\u00fas S\u00e1nchez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 77
+  },
+  {
+   "result": {
+    "event": "Grounded Into DP",
+    "eventType": "grounded_into_double_play",
+    "description": "Kazuma Okamoto grounds into a double play, shortstop Brooks Lee to second baseman Luke Keaschall to first baseman Kody Clemens. Jes\u00fas S\u00e1nchez out at 2nd. Kazuma Okamoto out at 1st."
+   },
+   "about": {
+    "atBatIndex": 78,
+    "startTime": "2026-04-12T20:32:08.596Z",
+    "endTime": "2026-04-12T20:34:59.001Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 672960,
+     "fullName": "Kazuma Okamoto"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Grounded Into DP",
+      "eventType": "grounded_into_double_play",
+      "movementReason": "r_force_out",
+      "runner": {
+       "id": 660821,
+       "fullName": "Jes\u00fas S\u00e1nchez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Grounded Into DP",
+      "eventType": "grounded_into_double_play",
+      "movementReason": null,
+      "runner": {
+       "id": 672960,
+       "fullName": "Kazuma Okamoto"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 78
+  }
+ ]
+}

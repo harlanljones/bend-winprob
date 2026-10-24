@@ -1,0 +1,23 @@
+{
+ "metaData": {
+  "wait": 10
+ },
+ "gameData": {
+  "status": {
+   "abstractGameState": "Final",
+   "detailedState": "Final"
+  },
+  "teams": {
+   "away": {
+    "id": 111,
+    "abbreviation": "BOS",
+    "teamName": "Red Sox"
+   },
+   "home": {
+    "id": 144,
+    "abbreviation": "ATL",
+    "teamName": "Braves"
+   }
+  }
+ }
+}

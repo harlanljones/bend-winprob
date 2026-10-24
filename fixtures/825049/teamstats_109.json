@@ -1,0 +1,139 @@
+{
+ "copyright": "Copyright 2026 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt",
+ "stats": [
+  {
+   "type": {
+    "displayName": "season"
+   },
+   "group": {
+    "displayName": "hitting"
+   },
+   "exemptions": [],
+   "splits": [
+    {
+     "season": "2026",
+     "stat": {
+      "gamesPlayed": 162,
+      "groundOuts": 1392,
+      "airOuts": 1618,
+      "runs": 739,
+      "doubles": 269,
+      "triples": 42,
+      "homeRuns": 166,
+      "strikeOuts": 1195,
+      "baseOnBalls": 541,
+      "intentionalWalks": 16,
+      "hits": 1341,
+      "hitByPitch": 58,
+      "avg": ".246",
+      "atBats": 5451,
+      "obp": ".318",
+      "slg": ".402",
+      "ops": ".720",
+      "caughtStealing": 27,
+      "stolenBases": 103,
+      "stolenBasePercentage": ".792",
+      "caughtStealingPercentage": ".208",
+      "groundIntoDoublePlay": 103,
+      "numberOfPitches": 24182,
+      "plateAppearances": 6148,
+      "totalBases": 2192,
+      "rbi": 706,
+      "leftOnBase": 1114,
+      "sacBunts": 41,
+      "sacFlies": 54,
+      "babip": ".284",
+      "groundOutsToAirouts": "0.86",
+      "catchersInterference": 3,
+      "atBatsPerHomeRun": "32.84"
+     },
+     "team": {
+      "id": 109,
+      "name": "Arizona Diamondbacks",
+      "link": "/api/v1/teams/109"
+     }
+    }
+   ]
+  },
+  {
+   "type": {
+    "displayName": "season"
+   },
+   "group": {
+    "displayName": "pitching"
+   },
+   "exemptions": [],
+   "splits": [
+    {
+     "season": "2026",
+     "stat": {
+      "gamesPlayed": 162,
+      "gamesStarted": 162,
+      "groundOuts": 1387,
+      "airOuts": 1661,
+      "runs": 730,
+      "doubles": 265,
+      "triples": 32,
+      "homeRuns": 186,
+      "strikeOuts": 1140,
+      "baseOnBalls": 483,
+      "intentionalWalks": 21,
+      "hits": 1368,
+      "hitByPitch": 67,
+      "avg": ".249",
+      "atBats": 5483,
+      "obp": ".315",
+      "slg": ".411",
+      "ops": ".726",
+      "caughtStealing": 22,
+      "stolenBases": 96,
+      "stolenBasePercentage": ".814",
+      "caughtStealingPercentage": ".186",
+      "groundIntoDoublePlay": 117,
+      "numberOfPitches": 23019,
+      "era": "4.18",
+      "inningsPitched": "1442.0",
+      "wins": 86,
+      "losses": 76,
+      "saves": 38,
+      "saveOpportunities": 57,
+      "holds": 84,
+      "blownSaves": 19,
+      "earnedRuns": 669,
+      "whip": "1.28",
+      "battersFaced": 6110,
+      "outs": 4326,
+      "gamesPitched": 162,
+      "completeGames": 1,
+      "shutouts": 10,
+      "strikes": 14734,
+      "strikePercentage": ".640",
+      "hitBatsmen": 67,
+      "balks": 7,
+      "wildPitches": 31,
+      "pickoffs": 12,
+      "totalBases": 2255,
+      "groundOutsToAirouts": "0.84",
+      "winPercentage": ".531",
+      "pitchesPerInning": "15.96",
+      "gamesFinished": 161,
+      "strikeoutWalkRatio": "2.36",
+      "strikeoutsPer9Inn": "7.12",
+      "walksPer9Inn": "3.01",
+      "hitsPer9Inn": "8.54",
+      "runsScoredPer9": "4.56",
+      "homeRunsPer9": "1.16",
+      "catchersInterference": 4,
+      "sacBunts": 25,
+      "sacFlies": 48
+     },
+     "team": {
+      "id": 109,
+      "name": "Arizona Diamondbacks",
+      "link": "/api/v1/teams/109"
+     }
+    }
+   ]
+  }
+ ]
+}

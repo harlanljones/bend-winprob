@@ -3,183 +3,493 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Bend vs MLB</title>
+<title>Bend vs MLB — a proven scorebook, simulated 2^20 times a play</title>
+<meta name="description" content="An MLB win-probability engine written in Bend: one machine-proven scorebook, 2^20 Monte Carlo games per play forked across the GPU, scored play-by-play against MLB's official number (Brier 0.1245 vs 0.1543 over 871 plays).">
+<meta property="og:title" content="Bend vs MLB — a proven scorebook, simulated 2^20 times a play">
+<meta property="og:description" content="One proven Bend scorebook, 913M simulated games, Brier 0.1245 vs MLB's 0.1543 over 871 plays. Live scorecard, method, benchmark, reproduce commands.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bend-winprob.harlanljones.workers.dev/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#efe6d2">
+<link rel="preload" href="/fonts/ArchivoNarrow.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/Caveat.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-  :root { color-scheme: dark; }
-  :root, :root.dark {
-    --bg: #0f1220; --panel: #171b2c; --panel-edge: #232842;
-    --text: #e6e9f5; --muted: #98a0b8; --grid: #232842; --grid-strong: #2d3456;
-    --accent: #6ab0f3; --bend: #5b9dff; --bend-soft: #334d80;
-    --mlb: #ff9f5b; --warn: #d1a04a; --err: #e2565c; --ok: #4ac26b;
+  @font-face { font-family: "Archivo"; src: url(/fonts/Archivo.woff2) format("woff2"); font-weight: 400 600; font-display: swap; }
+  @font-face { font-family: "Archivo Narrow"; src: url(/fonts/ArchivoNarrow.woff2) format("woff2"); font-weight: 400 700; font-display: swap; }
+  @font-face { font-family: "Caveat"; src: url(/fonts/Caveat.woff2) format("woff2"); font-weight: 400 700; font-display: swap; }
 
-  :root.light {
-    --bg: #fbfbfd; --panel: #ffffff; --panel-edge: #dfe2ec;
-    --text: #191d2b; --muted: #6b7286; --grid: #e4e7f2; --grid-strong: #cdd2e2;
-    --accent: #2563eb; --bend: #2563eb; --bend-soft: #bfdbfe;
-    --mlb: #ea7a26; --warn: #a16207; --err: #b91c1c; --ok: #15803d;
+  :root {
+    --stock: #efe6d2;
+    --print: #275f55;
+    --print-tint: rgba(39, 95, 85, 0.09);
+    --print-rule: rgba(39, 95, 85, 0.55);
+    --graphite: #1d1d1b;
+    --graphite-soft: #55544c;
+    --red: #b3362b;
+    --narrow: "Archivo Narrow", "Arial Narrow", sans-serif;
+    --text: "Archivo", system-ui, sans-serif;
+    --hand: "Caveat", "Segoe Print", cursive;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    --cell-w: 72px;
+    --cell-h: 66px;
+    --name-w: 76px;   /* plus 12px padding */
     color-scheme: light;
   }
 
   * { box-sizing: border-box; }
-  body { margin: 0; font: 15px/1.5 ui-sans-serif, system-ui, sans-serif;
-         background: var(--bg); color: var(--text); }
+  html { background: var(--stock); }
+  body {
+    margin: 0; color: var(--graphite); background: var(--stock);
+    font: 15px/1.5 var(--text); font-variant-numeric: tabular-nums;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--print); color: var(--stock); }
+  :focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+  a { color: var(--print); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { color: var(--graphite); }
+  b, strong { font-weight: 600; }
+  sup { font-size: 0.72em; line-height: 0; }
+  code { font-family: var(--mono); font-size: 0.86em; }
+  pre {
+    margin: 10px 0 0; padding: 10px 14px; overflow-x: auto;
+    border: 1px solid var(--print-rule); border-left-width: 1px; background: var(--print-tint);
+    font: 12.5px/1.5 var(--mono); color: var(--graphite);
+    scrollbar-color: var(--print) var(--stock);
+  }
+  pre code { font-size: inherit; }
+  .hand { font-family: var(--hand); font-weight: 500; color: var(--graphite); }
+  .print-ink { color: var(--print); }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-  .page { max-width: 1020px; margin: 0 auto; padding: 22px clamp(12px, 4vw, 36px) 40px; }
-  header { display: flex; justify-content: space-between; align-items: baseline;
-           gap: 12px; margin: 0 0 18px; flex-wrap: wrap; }
-  h1 { margin: 0; font-size: 21px; font-weight: 650; letter-spacing: -0.2px; }
-  .sub { display: flex; align-items: center; gap: 12px; font-size: 12px; color: var(--muted); }
-  #freshness { padding: 3px 10px; border: 1px solid var(--panel-edge); border-radius: 999px;
-               background: var(--panel); color: var(--ok); }
-  #freshness.stale { color: var(--warn); }
-  #freshness.dead { color: var(--err); }
+  .book { max-width: 1260px; margin: 0 auto; padding: 22px clamp(12px, 3vw, 32px) 56px; }
 
-  .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
-           gap: 14px; margin: 0 0 12px; }
-  @media (max-width: 640px) { .cards { grid-template-columns: 1fr; } }
-  .card { background: var(--panel); border: 1px solid var(--panel-edge); border-radius: 12px;
-          padding: 14px 18px; }
-  .card label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.4px;
-                color: var(--muted); }
-  .card .value { font-size: 36px; font-weight: 700; line-height: 1.15;
-                 font-variant-numeric: tabular-nums; margin-top: 2px; }
-  .card .value.bend { color: var(--bend); }
-  .card .value.mlb { color: var(--mlb); }
-  .card .value.delta { color: var(--text); }
-  .card .value.delta.up { color: var(--ok); }
-  .card .value.delta.down { color: var(--err); }
-  .card .hint { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  /* Masthead: the printed head of the card */
+  .mast { border-top: 3px solid var(--print); border-bottom: 1px solid var(--print); padding: 10px 0 8px; display: grid; grid-template-columns: 1fr auto; gap: 8px 24px; align-items: end; }
+  .mast h1 { margin: 0; font: 700 clamp(30px, 4.4vw, 46px)/1 var(--narrow); color: var(--print); letter-spacing: 0.02em; text-transform: uppercase; }
+  .mast .lede { margin: 8px 0 0; font: 400 15px/1.4 var(--text); color: var(--graphite); max-width: 72ch; }
+  .mast nav { display: flex; flex-wrap: wrap; gap: 4px 18px; font: 700 12.5px/1.6 var(--narrow); text-transform: uppercase; letter-spacing: 0.08em; }
+  .mast nav a { text-decoration: none; color: var(--print); border-bottom: 1px solid transparent; }
+  .mast nav a:hover, .mast nav a:focus-visible { border-bottom-color: var(--print); }
 
-  .state { display: flex; align-items: center; justify-content: space-between;
-           gap: 12px; flex-wrap: wrap;
-           background: var(--panel); border: 1px solid var(--panel-edge);
-           border-radius: 12px; padding: 12px 18px; margin: 0 0 14px; }
-  .state .score { font-size: 14px; font-weight: 600; }
-  .state .score span { font-variant-numeric: tabular-nums; }
-  .state .score .sep { color: var(--muted); font-weight: 300; padding: 0 8px; }
-  .state .inning { font-size: 12px; color: var(--muted); }
-  .state .inning b { color: var(--text); font-weight: 600; }
-  .bases { display: grid; grid-template-columns: repeat(3, 16px);
-           grid-template-rows: repeat(3, 16px); gap: 0; width: max-content; align: center; }
-  .base { width: 12px; height: 12px; border-radius: 2px;
-          background: var(--panel-edge); border: 1px solid var(--grid-strong);
-          transform: rotate(45deg); margin: 3px; }
-  .base.on { background: var(--bend); border-color: var(--bend); }
-  .base-grid { display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: center; }
-  .outs { display: inline-flex; gap: 6px; align-items: center; }
-  .out { width: 9px; height: 9px; border-radius: 50%; background: var(--panel-edge);
-         border: 1px solid var(--grid-strong); }
-  .out.on { background: var(--mlb); border-color: var(--mlb); }
-  .state .right { display: flex; align-items: center; gap: 18px; }
+  /* Fields: Date, Game, Scorer... printed labels, pencilled values */
+  .fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); border-bottom: 1px solid var(--print); }
+  .fields div { padding: 8px 10px 6px 0; border-right: 1px solid var(--print-rule); margin-right: 10px; min-width: 0; }
+  .fields div:last-child { border-right: 0; }
+  .fields dt { font: 700 11px/1.2 var(--narrow); text-transform: uppercase; letter-spacing: 0.1em; color: var(--print); }
+  .fields dd { margin: 2px 0 0; font: 500 21px/1.1 var(--hand); color: var(--graphite); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .fields dd.print { font: 400 14px/1.4 var(--text); }
+  .fields dd.stale { color: var(--red); }
+  .fields dd.dead { color: var(--red); text-decoration: line-through; text-decoration-thickness: 2px; }
 
-  .chartPanel { background: var(--panel); border: 1px solid var(--panel-edge);
-                border-radius: 12px; padding: 12px 12px 8px; }
-  .chartPanel svg { display: block; width: 100%; height: auto; }
-  .chartPanel svg text { font-size: 11px; fill: var(--muted); }
-  .legend { display: flex; gap: 18px; padding: 8px 10px 6px; font-size: 12px;
-            color: var(--muted); justify-content: center; }
-  .legend i { display: inline-block; width: 14px; height: 3px; border-radius: 2px;
-              vertical-align: middle; margin: 0 4px 2px 0; }
-  .legend .bendline { background: var(--bend); }
-  .legend .mlbline { background: var(--mlb); }
+  /* Line score */
+  .linescore { margin-top: 14px; overflow-x: auto; scrollbar-color: var(--print) var(--stock); }
+  .linescore table { border-collapse: collapse; width: 100%; }
+  .linescore th, .linescore td { border: 1px solid var(--print-rule); text-align: center; padding: 3px 6px; font: 400 13px/1.4 var(--narrow); color: var(--print); }
+  .linescore thead th { font-weight: 700; background: var(--print-tint); }
+  .linescore th.team { text-align: left; font: 700 15px/1.3 var(--narrow); color: var(--graphite); width: 180px; padding-left: 8px; }
+  .linescore th.team img { width: 20px; height: 20px; vertical-align: -5px; margin-right: 6px; }
+  .linescore td { font: 500 19px/1 var(--hand); color: var(--graphite); }
+  .linescore td.r { font-weight: 700; background: var(--print-tint); }
+  .linescore td.live { color: var(--red); }
 
-  footer { margin-top: 18px; font-size: 12px; color: var(--muted);
-           display: flex; justify-content: space-between; align-items: baseline;
-           flex-wrap: wrap; gap: 8px; }
-  footer a { color: var(--accent); text-decoration: none; }
-  footer a:hover { text-decoration: underline; }
+  /* The spread: the card page and the keeper's margin */
+  .spread { display: grid; grid-template-columns: minmax(0, 1fr) 360px; grid-template-rows: auto 1fr; grid-template-areas: "sheet lead" "sheet rest"; gap: 14px 28px; margin-top: 14px; align-items: start; }
+  .sheet { grid-area: sheet; min-width: 0; }
+  .lead { grid-area: lead; }
+  .rest { grid-area: rest; }
+  @media (max-width: 1160px) { .spread { grid-template-columns: 1fr; grid-template-rows: auto auto auto; grid-template-areas: "lead" "sheet" "rest"; } }
+
+  .grid-scroll { overflow-x: auto; border: 1px solid var(--print); scrollbar-color: var(--print) var(--stock); }
+  .grid { border-collapse: separate; border-spacing: 0; table-layout: fixed; width: max-content; }
+  .grid th, .grid td { border-right: 1px solid var(--print-rule); border-bottom: 1px solid var(--print-rule); padding: 0; }
+  .grid tr > :last-child { border-right: 0; }
+  .grid tbody tr:last-child > * { border-bottom: 0; }
+  .grid thead th { height: 24px; font: 700 12px/1 var(--narrow); color: var(--print); background: var(--print-tint); }
+  .grid thead th:first-child { width: var(--name-w); text-align: left; padding-left: 6px; text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; }
+  /* The batting order, written in by the keeper: slot number printed, names pencilled */
+  .grid th.slot { width: var(--name-w); padding: 4px 6px; text-align: left; vertical-align: top; background: var(--print-tint); }
+  .grid th.slot .no { font: 700 11px/1 var(--narrow); color: var(--print); margin-right: 4px; }
+  .grid th.slot .who { font: 500 17px/1 var(--hand); color: var(--graphite); }
+  .grid th.slot .sub { display: block; margin: 1px 0 0 14px; font: 500 14px/1 var(--hand); color: var(--graphite-soft); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  /* Each team's block opens with its name, printed across the sheet */
+  .grid tr.team th { height: 26px; padding: 0; text-align: left; border-top: 1px solid var(--print); background: var(--print-tint); }
+  .grid tr.team th > span { position: sticky; left: 0; display: inline-flex; align-items: center; gap: 6px; padding: 0 8px; font: 700 13px/1 var(--narrow); text-transform: uppercase; letter-spacing: 0.08em; color: var(--graphite); }
+  .grid tr.team img { width: 18px; height: 18px; }
+  .grid tr.team small { font: 400 12px/1 var(--narrow); letter-spacing: 0.06em; color: var(--print); }
+  /* Each batter's day at the end of his row: hits for at-bats, runs batted in */
+  .grid thead th.tot { width: 50px; }
+  .grid td.tot { width: 50px; height: auto; text-align: center; vertical-align: middle; font: 500 18px/1 var(--hand); color: var(--graphite); }
+  .grid td.tot small { display: block; margin-top: 2px; font: 400 10px/1.2 var(--narrow); color: var(--print); }
+  /* After each half-inning: R · H · LOB pencilled, then everyone's number when the half ended */
+  .grid tr.half th { padding: 4px 6px; text-align: left; vertical-align: top; background: var(--print-tint); border-bottom: 1px solid var(--print); font: 700 10px/1.3 var(--narrow); text-transform: uppercase; letter-spacing: 0.08em; color: var(--print); }
+  .grid tr.half td { height: 52px; vertical-align: top; border-bottom: 1px solid var(--print); }
+  .grid tr.half .tally { display: block; padding: 5px 0 3px; text-align: center; font: 500 15px/1 var(--hand); color: var(--graphite); }
+  .grid tr.half .band { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); height: 22px; margin: 0 3px; border: 1px solid var(--print-rule); }
+  .grid.priced tr.half .band { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1fr); }
+  .grid tr.half .band span { display: flex; align-items: center; justify-content: center; min-width: 0; overflow: hidden; border-left: 1px solid var(--print-rule); font: 400 10px/1 var(--narrow); color: var(--print); }
+  .grid tr.half .band .b { border-left: 0; font: 700 14px/1 var(--hand); color: var(--graphite); }
+  .grid td { width: var(--cell-w); height: var(--cell-h); position: relative; vertical-align: top; }
+  /* One box per plate appearance, kept the way a scorer keeps it */
+  .cell { position: absolute; inset: 0; }
+  .cell svg.dia { position: absolute; left: 17px; top: 4px; width: 38px; height: 38px; overflow: visible; }
+  .cell svg.dia .line { fill: none; stroke: var(--print); stroke-width: 1; }
+  .cell svg.dia .run { fill: var(--graphite); fill-opacity: 0.3; stroke: none; }
+  .cell svg.dia .path { fill: none; stroke: var(--graphite); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+  .cell .play { position: absolute; left: 17px; width: 38px; top: 15px; text-align: center; font: 700 16px/1 var(--hand); color: var(--graphite); white-space: nowrap; }
+  .cell .play.long { font-size: 13px; top: 17px; }
+  .cell .play.two { font-size: 11.5px; line-height: 1; top: 12px; }
+  .cell .play .kc { display: inline-block; transform: scaleX(-1); }
+  .cell .out { position: absolute; left: 4px; top: 4px; width: 18px; height: 18px; border: 1.5px solid var(--graphite); border-radius: 50%; font: 700 13px/15px var(--hand); text-align: center; color: var(--graphite); transform: rotate(-6deg); }
+  .cell .out.three { background: var(--graphite); color: var(--stock); }
+  .cell .dots { position: absolute; left: 5px; bottom: 7px; display: flex; gap: 3px; }
+  .cell .dots i { width: 5px; height: 5px; border-radius: 50%; background: var(--graphite); }
+  .cell .more { position: absolute; right: 4px; top: 5px; font: 400 10px/1 var(--narrow); color: var(--print); }
+  /* Bend's number pencilled after the play, MLB's printed beside it */
+  .cell .nums { position: absolute; right: 4px; bottom: 3px; display: flex; align-items: baseline; gap: 4px; }
+  .cell .nums b { position: relative; font: 700 15px/1 var(--hand); color: var(--graphite); }
+  .cell .nums span { font: 400 10px/1 var(--narrow); color: var(--print); letter-spacing: 0.02em; }
+  /* a play that moved Bend's number 8 points or more: the scorer circles it */
+  .cell .nums b.swing::after { content: ""; position: absolute; inset: -3px -4px -2px; border: 1.5px solid var(--graphite); border-radius: 50%; transform: rotate(-6deg); }
+  .cell svg.pen { position: absolute; inset: -1px; width: calc(100% + 2px); height: calc(100% + 2px); pointer-events: none; overflow: visible; }
+  .cell svg.pen rect { fill: none; stroke: var(--red); stroke-width: 2.4; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 0; }
+  .cell.drawn svg.pen rect { animation: draw 900ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+  @keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+  @media (prefers-reduced-motion: reduce) { .cell.drawn svg.pen rect { animation: none; } }
+  .sheet-foot { margin-top: 6px; font: 400 12px/1.5 var(--text); color: var(--graphite-soft); max-width: 90ch; }
+  .sheet-foot .hand { font-size: 17px; }
+  /* the foot of a box, printed small as a key */
+  .keyband { display: inline-grid; grid-template-columns: 34px 30px 30px; height: 18px; vertical-align: -4px; border: 1px solid var(--print-rule); }
+  .keyband.two { grid-template-columns: 34px 30px; }
+  .keyband span { display: flex; align-items: center; justify-content: center; border-left: 1px solid var(--print-rule); font: 400 10px/1 var(--narrow); color: var(--print); }
+  .keyband .b { border-left: 0; font: 700 14px/1 var(--hand); color: var(--graphite); }
+
+  /* The keeper's margin */
+  .margin { border-top: 1px solid var(--print); padding-top: 8px; display: grid; gap: 14px; }
+  .rest { border-top: 1px solid var(--print-rule); }
+  .margin h2 { margin: 0; font: 700 12px/1.4 var(--narrow); text-transform: uppercase; letter-spacing: 0.1em; color: var(--print); }
+  .actions { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: baseline; }
+  .actions a.primary { display: inline-block; padding: 7px 14px; background: var(--print); color: var(--stock); font: 700 13px/1 var(--narrow); text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; }
+  .actions a.primary:hover { background: var(--graphite); }
+  .actions a.quiet { font: 700 12px/1 var(--narrow); text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; border-bottom: 1px solid var(--print); padding-bottom: 2px; }
+  .tally { font: 500 23px/1.25 var(--hand); color: var(--graphite); }
+  .tally b { font-weight: 700; font-size: 44px; line-height: 1; display: block; }
+  .tally .delta.up { color: var(--print); }
+  .tally .delta.down { color: var(--graphite); }
+  .tally small { display: block; font: 400 12px/1.5 var(--text); color: var(--graphite-soft); margin-top: 2px; }
+  .now { font: 400 14px/1.5 var(--text); }
+  .now .hand { font-size: 20px; }
+  /* Figure 1: printed full width across the page, below the scorecard */
+  .figure { margin: 22px 0 0; border-top: 1px solid var(--print); padding-top: 8px; }
+  .figure h2 { margin: 0; font: 700 12px/1.4 var(--narrow); text-transform: uppercase; letter-spacing: 0.1em; color: var(--print); }
+  .figure figcaption { font: 400 12px/1.5 var(--text); color: var(--graphite-soft); margin-top: 4px; max-width: 90ch; }
+  #chart { min-height: 260px; }
+  #chart .pele-legend { display: none; }
+  /* Market reference lines: quieter strengths of the two inks, no point marks */
+  #chart .pele-line:is([data-id="Kalshi"], [data-id="Polymarket"], [data-id="Polymarket US"]) path { stroke-width: 1.5; }
+  #chart .pele-line:is([data-id="Kalshi"], [data-id="Polymarket"], [data-id="Polymarket US"]) circle { display: none; }
+  #chart .pele-line[data-id="Kalshi"] path { stroke: var(--graphite-soft); stroke-dasharray: 6 4; }
+  #chart .pele-line[data-id="Polymarket"] path { stroke: var(--print-rule); stroke-dasharray: 6 4; }
+  #chart .pele-line[data-id="Polymarket US"] path { stroke: var(--graphite-soft); stroke-dasharray: 1.5 3.5; }
+  .tally small.mkt[hidden] { display: none; }
+  .tally small.mkt a { color: var(--graphite-soft); }
+  .tally small.mkt a:hover { color: var(--graphite); }
+
+  /* Pele, printed on the stock */
+  .pele {
+    --pele-bg: var(--stock); --pele-fg: var(--print); --pele-muted: var(--print); --pele-line: var(--print);
+    --pele-surface: var(--stock); --pele-surface-alt: var(--print-tint); --pele-border: var(--print);
+    --pele-accent: var(--graphite); --pele-critical: var(--red); --pele-error: var(--red);
+    --pele-font: var(--narrow); --pele-font-mono: var(--mono); --pele-radius: 0;
+    --pele-series-1: var(--graphite); --pele-series-2: var(--print);
+    --pele-title-weight: 700; --pele-heading-weight: 700;
+  }
+  .diagram { margin: 14px 0 0; }
+  .diagram figcaption { font: 400 12px/1.5 var(--text); color: var(--graphite-soft); margin-top: 4px; }
+
+  /* The back of the card: printed instructions */
+  section.back { margin-top: 44px; }
+  section.back > h2 { margin: 0; padding: 6px 0 4px; border-top: 2px solid var(--print); border-bottom: 1px solid var(--print-rule); font: 700 24px/1.2 var(--narrow); text-transform: uppercase; letter-spacing: 0.08em; color: var(--print); display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  section.back > h2 .hand { font-size: 20px; text-transform: none; letter-spacing: 0; font-weight: 500; }
+  section.back > p { margin: 12px 0 0; max-width: 72ch; }
+  .steps { margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 22px; counter-reset: step; }
+  .steps li { display: grid; grid-template-columns: 28px minmax(0, 1fr); column-gap: 10px; counter-increment: step; }
+  .steps li::before { content: counter(step) "."; font: 700 22px/1.1 var(--hand); color: var(--print); }
+  .steps h3 { margin: 0; font: 700 18px/1.25 var(--narrow); color: var(--graphite); }
+  .steps p { margin: 6px 0 0; max-width: 72ch; }
+  .steps .body { min-width: 0; }
+
+  table.laws, table.bench { border-collapse: collapse; width: 100%; margin-top: 12px; }
+  table.laws th, table.laws td, table.bench th, table.bench td { border: 1px solid var(--print-rule); padding: 6px 10px; text-align: left; vertical-align: top; font-size: 14px; }
+  table.laws thead th, table.bench thead th { font: 700 11px/1.3 var(--narrow); text-transform: uppercase; letter-spacing: 0.1em; color: var(--print); background: var(--print-tint); }
+  table.laws td.law { font: 700 14px/1.4 var(--narrow); white-space: nowrap; }
+  table.laws td.law code, .laws td code { font-size: 12.5px; }
+  table.laws td.mark, table.bench td.num, table.bench th.num { text-align: right; white-space: nowrap; }
+  td.mark .hand { font-size: 21px; }
+  td.up { color: var(--print); } td.down { color: var(--graphite); font-weight: 600; }
+  table.bench caption { caption-side: top; text-align: left; padding: 0 0 6px; font: 400 13px/1.5 var(--text); color: var(--graphite-soft); }
+  .tablewrap { overflow-x: auto; scrollbar-color: var(--print) var(--stock); }
+  details { margin-top: 12px; }
+  summary { cursor: pointer; font: 700 13px/1.5 var(--narrow); text-transform: uppercase; letter-spacing: 0.08em; color: var(--print); }
+  summary:hover { color: var(--graphite); }
+  .balance { display: grid; grid-template-columns: auto auto; gap: 2px 18px; margin: 12px 0 0; width: max-content; max-width: 100%; }
+  .balance dt { font: 700 12px/1.6 var(--narrow); text-transform: uppercase; letter-spacing: 0.08em; color: var(--print); }
+  .balance dd { margin: 0; font: 400 14px/1.6 var(--text); }
+  ul.notes { margin: 12px 0 0; padding-left: 18px; max-width: 72ch; }
+  ul.notes li { margin: 0 0 8px; }
+  ul.notes li::marker { color: var(--print); }
+
+  footer { margin-top: 44px; padding-top: 10px; border-top: 3px solid var(--print); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px 18px; font: 700 12px/1.6 var(--narrow); text-transform: uppercase; letter-spacing: 0.08em; color: var(--print); }
+  footer a { text-decoration: none; border-bottom: 1px solid var(--print); }
+
+  @media (max-width: 720px) {
+    :root { --name-w: 84px; }
+    .mast { grid-template-columns: 1fr; }
+    .fields dd { font-size: 19px; }
+    .fields dd.print { white-space: normal; overflow: visible; }
+    .linescore th, .linescore td { padding: 3px 2px; font-size: 12px; }
+    .linescore th.team { width: 84px; padding-left: 4px; font-size: 14px; }
+    .linescore td { font-size: 17px; }
+    .grid th.slot, .grid thead th:first-child, .grid tr.half th { position: sticky; left: 0; z-index: 2; background: var(--stock); box-shadow: inset -1px 0 0 var(--print-rule); }
+    .grid th.slot::before, .grid thead th:first-child::before, .grid tr.half th::before { content: ""; position: absolute; inset: 0; background: var(--print-tint); z-index: -1; }
+    .tally b { font-size: 38px; }
+  }
 </style>
 </head>
 <body>
-<article class="page">
+<main class="book">
   <header>
-    <h1 id="title">Bend vs MLB</h1>
-    <div class="sub">
-      <span id="freshness">feed: waiting</span>
-      <span id="gamelink">gamePk <span id="pknum">–</span></span>
+    <div class="mast">
+      <div>
+        <h1>Official Scorebook</h1>
+        <p class="lede">Bend vs MLB. A win-probability engine written in <a href="https://bend-lang.org" rel="noreferrer">Bend</a>: one machine-proven scorebook, 2<sup>20</sup> Monte Carlo games per play forked across the GPU, scored play by play against MLB's official number. The invariants are theorems, not tests.</p>
+      </div>
+      <nav aria-label="Sections">
+        <a href="#reproduce">Reproduce</a>
+        <a href="#how">How it is kept</a>
+        <a href="#proof">Proof of box score</a>
+        <a href="#season">Season</a>
+        <a href="#notes">Notes</a>
+        <a href="https://github.com/harlanljones/bend-winprob">Source</a>
+      </nav>
     </div>
+    <dl class="fields" aria-label="Game card">
+      <div><dt>Game</dt><dd id="f-game">gamePk –</dd></div>
+      <div><dt>Date</dt><dd id="f-date">–</dd></div>
+      <div><dt>Scorer</dt><dd class="print"><code>game.bend</code>, one proven <code>step</code></dd></div>
+      <div><dt>Games per play</dt><dd id="f-sims">–</dd></div>
+      <div><dt>Feed</dt><dd id="f-feed">waiting</dd></div>
+    </dl>
   </header>
 
-  <section class="cards">
-    <div class="card">
-      <label>Bend home win prob</label>
-      <div class="value bend" id="bend-val">–</div>
-      <div class="hint" id="bend-hint">GPU Monte Carlo</div>
+  <section id="game" aria-label="The game being scored">
+    <div class="linescore">
+      <table aria-label="Line score">
+        <thead><tr id="ls-head"><th class="team">Team</th></tr></thead>
+        <tbody>
+          <tr id="ls-away"><th class="team"><span class="logo" id="away-logo"></span><span id="away-name">AWAY</span></th></tr>
+          <tr id="ls-home"><th class="team"><span class="logo" id="home-logo"></span><span id="home-name">HOME</span></th></tr>
+        </tbody>
+      </table>
     </div>
-    <div class="card">
-      <label>MLB official</label>
-      <div class="value mlb" id="mlb-val">–</div>
-      <div class="hint" id="mlb-hint">statsapi</div>
-    </div>
-    <div class="card">
-      <label>Δ (Bend − MLB)</label>
-      <div class="value delta" id="delta-val">–</div>
-      <div class="hint" id="delta-hint">percentage points</div>
-    </div>
-  </section>
 
-  <section class="state" id="state">
-    <div class="left">
-      <div class="base-grid">
-        <div class="bases" id="bases">
-          <div></div>
-          <div class="base" data-base="2"></div>
-          <div></div>
-          <div class="base" data-base="3"></div>
-          <div></div>
-          <div class="base" data-base="1"></div>
-          <div></div>
-          <div></div>
-          <div></div>
+    <div class="spread">
+      <div class="sheet">
+        <div class="grid-scroll" role="region" aria-label="Scorecard: both teams, batting order by inning">
+          <table class="grid" id="grid">
+            <thead><tr id="grid-head"><th scope="col">Batter</th></tr></thead>
+            <tbody id="grid-body"></tbody>
+          </table>
+        </div>
+        <p class="sheet-foot">The whole game on one sheet, visitors over home; each box is one plate appearance, kept the way a scorer keeps it and replayed through Bend's <code>step</code>: <span class="hand">the play</span> pencilled in the diamond (6-3, F8, K, a backwards K for a called third strike, 1B, BB), the batter's trip around the bases traced and shaded when he scores, his out circled, a dot for each run scored on the play, and <span class="hand">Bend's home-win number</span> after it beside <span class="print-ink">MLB's</span>. A circled number marks a play that moved Bend's by 8 points or more. Under each team, after every half-inning: R · H · LOB, then <span class="keyband" id="key" aria-hidden="true"><span class="b">50.4</span><span>54.8</span><span>51.5</span></span> Bend, MLB and the median of the <span class="print-ink">prediction markets</span> when the half ended (each venue's price per play is on each box's hover and in Figure 1). At the right, each batter's hits for at-bats. The red pencil marks the play that just happened. Batting-order slot is inferred from the plate-appearance count, not from the lineup card.</p>
+      </div>
+
+      <aside class="margin lead" aria-label="Keeper's margin">
+        <div class="actions">
+          <a class="primary" href="#reproduce">Reproduce this card</a>
+          <a class="quiet" href="https://github.com/harlanljones/bend-winprob">Source</a>
+          <a class="quiet" id="csvlink" href="#">Raw CSV</a>
+          <a class="quiet" id="metalink" href="#">Meta</a>
         </div>
         <div>
-          <div class="score" id="score">–</div>
-          <div class="inning" id="inning">–</div>
+          <h2>Home win probability, running</h2>
+          <div class="tally" id="tally"><b id="bend-val">–</b><span>Bend, <span id="bend-hint">waiting for the feed</span></span><small>MLB official <span id="mlb-val">–</span> · Δ <span class="delta" id="delta-val">–</span></small><small class="mkt" id="mkt-line" hidden></small></div>
         </div>
-      </div>
-    </div>
-    <div class="right">
-      <div>
-        <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px">outs</div>
-        <div class="outs" id="outs">
-          <span class="out"></span><span class="out"></span><span class="out"></span>
+      </aside>
+      <aside class="margin rest" aria-label="The play now">
+        <div class="now" id="now">
+          <h2>Now</h2>
+          <span class="hand" id="now-line">–</span>
+          <div id="now-check"></div>
         </div>
-      </div>
-      <div id="modechip" style="font-size:12px;color:var(--muted)">–</div>
+      </aside>
     </div>
+
+    <figure class="figure">
+      <h2>Figure 1</h2>
+      <div id="chart" aria-label="Win probability chart"></div>
+      <figcaption id="chart-cap">Home-team win probability after each completed play. Graphite: Bend. Teal: MLB official.</figcaption>
+    </figure>
   </section>
 
-  <section class="chartPanel">
-    <svg id="chart" viewBox="0 0 900 380" preserveAspectRatio="none"></svg>
-    <div class="legend">
-      <span><i class="bendline"></i>Bend</span>
-      <span><i class="mlbline"></i>MLB</span>
+  <section class="back" id="how" aria-labelledby="how-h">
+    <h2 id="how-h">How this book is kept <span class="hand">four files, one binary</span></h2>
+    <p>A scorebook, a simulator, the proofs that constrain both, and the harness that drives them against real games.</p>
+    <ol class="steps">
+      <li>
+        <div class="body">
+          <h3>The scorebook is one function, and it is proven.</h3>
+          <p><code>game.bend</code> holds the state of a game and the single <code>step</code> that applies one completed play. Every moving runner is first taken off its origin and held, then placed, so exchanges and force plays need no special cases. A play that cannot be applied legally returns <code>None</code> and is counted as rejected, never silently dropped.</p>
+<pre><code># take every origin, then place every destination
+def take_all(p: Play, h: Half) -&gt; Maybe&lt;&amp;2, Pending&gt;
+def put_all(m: Maybe&lt;&amp;2, Pending&gt;) -&gt; Maybe&lt;Half&gt;
+
+def step(+s: State, p: Play) -&gt; State:
+  after(s, slots(p, half_of(s)))</code></pre>
+        </div>
+      </li>
+      <li>
+        <div class="body">
+          <h3>2<sup>d</sup> games fork across the GPU.</h3>
+          <p><code>sim.bend</code> plays 2<sup>d</sup> games forward from the current scorebook state, each one driven by the same proven <code>step</code>. Plate appearances are integer draws against cumulative thresholds, no floating point in the engine, and <code>tree!</code> runs the identical program on the GPU.</p>
+<pre><code>def tree(d: Nat, +i: U32, +c: Ctx) -&gt; Tally:
+  match d:
+    case 0n:   tally_of(one(i, c))
+    case 1n++p:
+      a b = tree(p, i, c) tree(p, (i + U32.from_nat(pow2(p)) : U32), c)
+      tally_add(a, b)</code></pre>
+          <figure class="diagram">
+            <div class="pele-src" data-diagram="tree"></div>
+            <figcaption>Figure 2. <code>tree</code> at depth 3: each level halves the index range, the leaves (pencilled) each play one game with <code>step</code>, and the tallies add back up the tree. At depth 20 the same shape holds 1,048,576 games.</figcaption>
+          </figure>
+        </div>
+      </li>
+      <li>
+        <div class="body">
+          <h3>The invariants are theorems.</h3>
+          <p><code>LAWS.bend</code> states what must hold for every input; <code>PROOF.bend</code> proves each one by induction and case analysis, and <code>bend PROOF.bend</code> must print <code>ALL PROOFS CHECK</code> before any commit. The four laws are tabled under <a href="#proof">Proof of box score</a>.</p>
+          <figure class="diagram">
+            <div class="pele-src" data-diagram="gate"></div>
+            <figcaption>Figure 3. The commit gate. Nothing reaches the repository, the benchmark, or this page without the proofs checking.</figcaption>
+          </figure>
+        </div>
+      </li>
+      <li>
+        <div class="body">
+          <h3>The harness replays real games.</h3>
+          <p><code>live.py</code> pulls the MLB Stats API feed: completed plays, the official <code>homeTeamWinProbability</code>, and each team's season batting line. It turns the batting line into seven cumulative thresholds out of 10,000 (K, O, W, S, D, T, H), encodes each play into four destination slots (<code>r3 r2 r1 batter</code>, chars <code>- X R 1 2 3</code>), and runs the compiled <code>wp</code> once per play. Results stream to <code>runs/&lt;gamePk&gt;.csv</code> and are POSTed to a Cloudflare Worker whose Durable Object this page polls every 5 s. No framework: one HTML file, one Worker, one binary.</p>
+<pre><code>"away": [2371, 6803, 7962, 9305, 9675, 9696, 10000]
+#   K 23.7%  O 44.3%  W 11.6%  S 13.4%  D 3.7%  T 0.2%  H 3.0%</code></pre>
+          <figure class="diagram">
+            <div class="pele-src" data-diagram="pipeline"></div>
+            <figcaption>Figure 4. One play's path from the MLB feed to this card.</figcaption>
+          </figure>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="back" id="proof" aria-labelledby="proof-h">
+    <h2 id="proof-h">Proof of box score <span class="hand">OBR 9.03(c)</span></h2>
+    <p>A scorekeeper proves a box score by checking that each team's plate appearances balance its runs, putouts and runners left on base. Here that check, and three others, hold for every possible input, because they are proven about <code>step</code> itself.</p>
+    <table class="laws">
+      <thead><tr><th scope="col">Law</th><th scope="col">What must hold, for every input</th><th scope="col">Proof</th><th scope="col" class="mark">Status</th></tr></thead>
+      <tbody>
+        <tr><td class="law">Tree counts 2<sup>d</sup></td><td>The simulation tree plays and counts exactly 2<sup>d</sup> games, however the work is split across workers.</td><td>Induction on <code>d</code>.</td><td class="mark"><span class="hand">proven</span></td></tr>
+        <tr><td class="law">Never three outs</td><td>The scorebook never shows three or more outs; the third out ends the half-inning inside <code>step</code>.</td><td>Case analysis on the play.</td><td class="mark"><span class="hand">proven</span></td></tr>
+        <tr><td class="law">Box score balances</td><td>Each team's batters balance its runs, putouts and runners left and on base: OBR 9.03(c), "How to prove a box score".</td><td>Induction over plays.</td><td class="mark"><span class="hand">proven</span></td></tr>
+        <tr><td class="law">Runs never come off</td><td>A play never takes a run off the board.</td><td>Case analysis on the play.</td><td class="mark"><span class="hand">proven</span></td></tr>
+      </tbody>
+    </table>
+    <dl class="balance">
+      <dt>Checked by</dt><dd><code>bend PROOF.bend</code> → <code>ALL PROOFS CHECK</code>, required before any commit.</dd>
+      <dt>Rejected plays</dt><dd>A play the encoding cannot carry is refused and counted, never dropped: 29 of 871 in the benchmark, 0 in the bundled replay.</dd>
+    </dl>
+  </section>
+
+  <section class="back" id="season" aria-labelledby="season-h">
+    <h2 id="season-h">Season benchmark <span class="hand">12 games · 871 plays · 2<sup>20</sup> sims a play</span></h2>
+    <p><code>bench.py</code> replays finished games at depth 2<sup>20</sup> (1,048,576 sims per play) on the GPU and scores Bend against the true outcome and against MLB's official win probability for the same plays. Run of 2026-10-23: 12 games, 871 plays scored (859 carrying an MLB value), 0 failures.</p>
+    <div class="tablewrap">
+    <table class="bench">
+      <caption>Aggregate over the benchmark. Lower is better for every scored metric.</caption>
+      <thead><tr><th scope="col">Metric</th><th scope="col" class="num">Bend</th><th scope="col" class="num">MLB official</th><th scope="col" class="num">Bend better by</th></tr></thead>
+      <tbody>
+        <tr><td>Brier score</td><td class="num">0.1245</td><td class="num">0.1543</td><td class="num up">19.3%</td></tr>
+        <tr><td>Log loss</td><td class="num">0.3913</td><td class="num">0.4565</td><td class="num up">14.3%</td></tr>
+        <tr><td>Mean |error| vs outcome</td><td class="num">29.08 pp</td><td class="num">32.97 pp</td><td class="num up">11.8%</td></tr>
+        <tr><td>Scorebook mismatches</td><td class="num">29 / 871 plays (3.3%)</td><td class="num">—</td><td class="num">—</td></tr>
+        <tr><td>Time per play</td><td class="num">0.099 s</td><td class="num">—</td><td class="num">≈10.6M sims/s</td></tr>
+      </tbody>
+    </table>
     </div>
+    <div class="tablewrap" style="margin-top:16px">
+    <table class="bench">
+      <caption>Per game. Δ is Bend's Brier minus MLB's; negative means Bend was closer.</caption>
+        <thead><tr><th scope="col">gamePk</th><th scope="col">Final</th><th scope="col" class="num">Plays</th><th scope="col" class="num">Bend Brier</th><th scope="col" class="num">MLB Brier</th><th scope="col" class="num">Δ</th><th scope="col" class="num">Mismatches</th></tr></thead>
+        <tbody>
+          <tr><td>823244</td><td>7-0</td><td class="num">75</td><td class="num">0.031</td><td class="num">0.048</td><td class="num up">−0.017</td><td class="num">0</td></tr>
+          <tr><td>822828</td><td>8-2</td><td class="num">80</td><td class="num">0.070</td><td class="num">0.064</td><td class="num down">+0.006</td><td class="num">0</td></tr>
+          <tr><td>822908</td><td>3-2</td><td class="num">73</td><td class="num">0.078</td><td class="num">0.122</td><td class="num up">−0.044</td><td class="num">0</td></tr>
+          <tr><td>824925</td><td>2-3</td><td class="num">71</td><td class="num">0.146</td><td class="num">0.139</td><td class="num down">+0.007</td><td class="num">5</td></tr>
+          <tr><td>824187</td><td>2-0</td><td class="num">64</td><td class="num">0.086</td><td class="num">0.136</td><td class="num up">−0.050</td><td class="num">0</td></tr>
+          <tr><td>825072</td><td>1-8</td><td class="num">73</td><td class="num">0.070</td><td class="num">0.079</td><td class="num up">−0.009</td><td class="num">0</td></tr>
+          <tr><td>822882</td><td>3-0</td><td class="num">69</td><td class="num">0.032</td><td class="num">0.045</td><td class="num up">−0.013</td><td class="num">0</td></tr>
+          <tr><td>824247</td><td>3-4</td><td class="num">77</td><td class="num">0.193</td><td class="num">0.277</td><td class="num up">−0.084</td><td class="num">0</td></tr>
+          <tr><td>825049</td><td>2-1</td><td class="num">76</td><td class="num">0.177</td><td class="num">0.264</td><td class="num up">−0.087</td><td class="num">8</td></tr>
+          <tr><td>823585</td><td>2-3</td><td class="num">76</td><td class="num">0.296</td><td class="num">0.210</td><td class="num down">+0.086</td><td class="num">7</td></tr>
+          <tr><td>824550</td><td>2-0</td><td class="num">65</td><td class="num">0.130</td><td class="num">0.153</td><td class="num up">−0.023</td><td class="num">0</td></tr>
+          <tr><td>823164</td><td>5-1</td><td class="num">72</td><td class="num">0.185</td><td class="num">0.313</td><td class="num up">−0.129</td><td class="num">9</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Bend's Brier is lower in 9 of the 12 games. A second run at depth 2<sup>16</sup> (65,536 sims per play, one game, 75 plays) gave Brier 0.031 against MLB's 0.048. On the bundled replay the mean absolute difference to MLB is 2.70 pp over 70 plays, Bend's box score matches the official one exactly under OBR 9.03(c), and the scorebook check reports zero mismatches.</p>
+  </section>
+
+  <section class="back" id="reproduce" aria-labelledby="reproduce-h">
+    <h2 id="reproduce-h">Reproduce <span class="hand">offline by default</span></h2>
+    <p>Fixtures are cached; nothing is fetched unless asked.</p>
+<pre><code>git clone https://github.com/harlanljones/bend-winprob &amp;&amp; cd bend-winprob
+bend PROOF.bend                            # ALL PROOFS CHECK
+python3 sim_engine.py --pk 849809          # replay a finished game, 65,536 sims/play
+python3 bench.py                           # the 12-game benchmark above (GPU, depth 20)
+python3 -m unittest discover -s tests -v</code></pre>
+    <p>This page and its feed are one Cloudflare Worker with a single Durable Object (<code>cloudflare/</code>): <code>live.py --publish</code> POSTs each new CSV and the page polls it, falling back to the bundled replay when nothing is published. Open <code>?pk=&lt;gamePk&gt;</code> for another game. <code>bash run_live.sh</code> supervises a live game with backoff and logs every run.</p>
+  </section>
+
+  <section class="back" id="notes" aria-labelledby="notes-h">
+    <h2 id="notes-h">Notes <span class="hand">what this card does not know</span></h2>
+    <ul class="notes">
+      <li><b>Season-level team rates.</b> Plate appearances are i.i.d. draws from each team's season distribution: no batter, pitcher, platoon, park, umpire, weather, leverage or bullpen state.</li>
+      <li><b>A four-slot play encoding.</b> A play is four destinations (r3, r2, r1, batter). Pickoffs, caught stealings, wild pitches and passed balls do not fit and are refused: 29 of 871 plays in the benchmark, 0 in the bundled replay.</li>
+      <li><b>Small sample.</b> 12 games and 871 plays, with per-game Brier from 0.03 to 0.30. Treat the aggregate as suggestive, not settled.</li>
+      <li><b>A benchmark, not a claim of superiority.</b> MLB's win probability is a production model with far more information than this proof of concept uses.</li>
+      <li><b>Not a betting tool.</b> It is a demonstration that a proven, parallel scorebook can track a production model on real data. Where a prediction market lists the game, its price is shown as a reference, not as ground truth.</li>
+    </ul>
   </section>
 
   <footer>
-    <span>Runs by <a id="csvlink" href="#">runs/<span id="csvname">–</span>.csv</a>
-      · <a id="metalink" href="#">meta</a></span>
-    <span>Bend · live.py · <a href="https://statsapi.mlb.com" rel="noreferrer">MLB Stats API</a></span>
+    <span>Bend · live.py · <a href="https://statsapi.mlb.com" rel="noreferrer">MLB Stats API</a> · diagrams by <a href="https://pele.run" rel="noreferrer">Pele</a></span>
+    <span><a href="https://github.com/harlanljones/bend-winprob">harlanljones/bend-winprob</a></span>
   </footer>
-</article>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/pele@1.9.0/dist/pele.global.js"></script>
 <script>
 const pk = new URLSearchParams(location.search).get("pk") || "849805";
-const W = 900, H = 380, L = 48, R = 16, T = 16, B = 30;
-const NS = "http://www.w3.org/2000/svg";
+const SLOTS = 9;
 let meta = { away: "AWAY", home: "HOME" };
+let metaLoaded = false;
+let lastRows = [];
+let lastFetchMs = null;
+let feedMissing = false;   // every source for this gamePk answered 404
+let source = "live";
+let lastNowKey = null;
+let chart = null;
 
-document.getElementById("pknum").textContent = pk;
-document.getElementById("csvname").textContent = pk;
-document.getElementById("csvlink").href = `/runs/${pk}.csv`;
-document.getElementById("metalink").href = `/runs/${pk}-meta.json`;
-
-function el(name, attrs, text) {
-  const e = document.createElementNS(NS, name);
-  for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
-  if (text !== undefined) e.textContent = text;
-  return e;
-}
+const $ = id => document.getElementById(id);
+$("f-game").textContent = `gamePk ${pk}`;
+$("csvlink").href = `/runs/${pk}.csv`;
+$("metalink").href = `/runs/${pk}-meta.json`;
 
 function parseCsv(text) {
   const records = [];
@@ -209,171 +519,468 @@ function parseCsv(text) {
   return records.map(cells => Object.fromEntries(head.map((h, i) => [h, cells[i]])));
 }
 
-function num(v) { return v === "" || v === undefined ? null : Number(v); }
+const num = v => (v === "" || v === undefined ? null : Number(v));
+const fmt = v => (v === null ? "–" : v.toFixed(1) + "%");
+// A win number written in a box: one decimal, except a decided game, written 100 (or 0).
+const wp = v => (v === null ? "–" : v >= 99.95 ? "100" : v.toFixed(1));
+const fmtDelta = v => (v === null ? "–" : (v >= 0 ? "+" : "−") + Math.abs(v).toFixed(1) + " pp");
+const halfArrow = h => (h === "T" ? "▲" : h === "B" ? "▼" : "");
+const teamName = side => meta[`${side}_name`] || meta[side];
 
-function cssVar(name) { return getComputedStyle(document.body).getPropertyValue(name).trim(); }
-
-function draw(rows) {
-  const svg = document.getElementById("chart");
-  svg.replaceChildren();
-  const n = Math.max(rows.length - 1, 1);
-  const x = i => L + (W - L - R) * i / n;
-  const y = p => T + (H - T - B) * (1 - p / 100);
-
-  // horizontal gridlines
-  for (const g of [0, 25, 50, 75, 100]) {
-    svg.append(el("line", { x1: L, x2: W - R, y1: y(g), y2: y(g),
-      stroke: g === 50 ? cssVar("--grid-strong") : cssVar("--grid"), "stroke-width": 1 }));
-    svg.append(el("text", { x: L - 8, y: y(g) + 4, "text-anchor": "end" }, g + "%"));
-  }
-
-  // vertical tick per half-inning change (thin; only when present)
-  let prevKey = null;
-  const ticks = [];
-  rows.forEach((r, i) => {
-    const key = `${r.inning}/${r.half}`;
-    if (prevKey !== null && key !== prevKey) ticks.push(i);
-    prevKey = key;
-  });
-  for (const t of ticks) {
-    svg.append(el("line", { x1: x(t), x2: x(t), y1: T, y2: H - B,
-      stroke: cssVar("--grid"), "stroke-width": 1, "stroke-dasharray": "3 3" }));
-  }
-  svg.append(el("text", { x: L, y: H - 8, "text-anchor": "start" },
-    `${meta.away} @ ${meta.home}`));
-  svg.append(el("text", { x: W - R, y: H - 8, "text-anchor": "end" }, "latest play"));
-
-  // area shading between MLB and Bend, where both are present
-  const pairs = [];
-  rows.forEach((r, i) => {
-    const m = num(r.mlb_home_wp), b = num(r.bend_home_wp);
-    if (m !== null && b !== null) pairs.push([x(i), y(m), y(b)]);
-  });
-  if (pairs.length > 1) {
-    let d = "";
-    for (const [px, my, by] of pairs) d += (d ? "L" : "M") + px.toFixed(1) + "," + by.toFixed(1);
-    for (let k = pairs.length - 1; k >= 0; k--) d += "L" + pairs[k][0].toFixed(1) + "," + pairs[k][1].toFixed(1);
-    d += "Z";
-    svg.append(el("path", { d, fill: cssVar("--bend-soft"), fill_opacity: 0.35, stroke: "none" }));
-  }
-
-  const line = (key, varName, dash) => {
-    let d = "", pen = false;
-    rows.forEach((r, i) => {
-      const v = num(r[key]);
-      if (v === null) { pen = false; return; }
-      d += (pen ? "L" : "M") + x(i).toFixed(1) + "," + y(v).toFixed(1);
-      pen = true;
-    });
-    if (d) svg.append(el("path", { d, fill: "none",
-      stroke: cssVar(varName), "stroke-width": 2.4, "stroke-dasharray": dash || "none" }));
-  };
-  line("mlb_home_wp", "--mlb", "6 4");
-  line("bend_home_wp", "--bend");
-}
+// Prediction-market reference prices: one optional CSV column per venue, in display order.
+// The chart line style for each lives in CSS under its series data-id (the venue name).
+const VENUES = [
+  { key: "kalshi", name: "Kalshi", ink: "dashed soft graphite" },
+  { key: "polymarket", name: "Polymarket", ink: "dashed light teal" },
+  { key: "polymarket_us", name: "Polymarket US", ink: "dotted soft graphite" },
+];
+const venueCol = v => `${v.key}_home_wp`;
+// Venues with at least one price in the feed; none when the columns are absent.
+const venuesIn = rows => VENUES.filter(v => rows.some(r => num(r[venueCol(v)]) !== null));
+const venueUrl = v => (Array.isArray(meta.markets) ? meta.markets.find(m => m && m.key === v.key && /^https:\/\//.test(m.url || "")) : null)?.url || null;
 
 function latest(rows, key) {
   for (let i = rows.length - 1; i >= 0; i--) if (num(rows[i][key]) !== null) return num(rows[i][key]);
   return null;
 }
 
-function fmt(v) {
-  if (v === null) return "–";
-  return v.toFixed(1) + "%";
+// The final row of a finished game carries sims = 0; report the run that produced the curve.
+function lastSim(rows) {
+  for (let i = rows.length - 1; i >= 0; i--) if (Number(rows[i].sims) > 0) return rows[i];
+  return null;
 }
 
-function fmtDelta(v) {
-  if (v === null) return "–";
-  return (v >= 0 ? "+" : "") + v.toFixed(1);
+// Turn the per-play rows into the scorebook: each plate appearance in its batter's box,
+// filed under the half-inning it started in (the previous row's state; a row carries the
+// state after its play, so the third out already shows the next half), with the batter's
+// trip around the bases, plus runs, hits and runners left per half-inning.
+const HIT = new Set(["1B", "2B", "3B", "HR"]);
+const SWING = 8;   // points of Bend's home-win number; a play that moves it this far is circled
+function book(rows) {
+  const plays = [];
+  const count = { away: 0, home: 0 };
+  const runsBy = { away: new Map(), home: new Map() };
+  const halves = new Map();   // "side/inning" -> { r, h, lob, bend, mlb, mk } at the end of the half
+  const lines = { away: new Map(), home: new Map() };   // slot -> { names, ab, h, rbi }
+  let prev = { inning: "1", half: "T", away_runs: "0", home_runs: "0" }, innings = 9, half = null;
+  for (const r of rows) {
+    const idx = Number(r.at_bat_index);
+    if (Number(r.inning) > innings) innings = Number(r.inning);
+    if (!(idx >= 0)) { prev = r; continue; }
+    const side = prev.half === "T" ? "away" : "home", inning = Number(prev.inning);
+    const key = `${side}/${inning}`;
+    if (!half || half.key !== key) half = { key, on: [null, null, null], outs: 0 };
+    const runs = Math.max(0, Number(r[`${side}_runs`]) - Number(prev[`${side}_runs`]));
+    const mkt = VENUES.map(v => [v, num(r[venueCol(v)])]).filter(([, x]) => x !== null);
+    const bend = num(r.bend_home_wp), before = num(prev.bend_home_wp);
+    const p = { r, idx, side, slot: (count[side]++ % SLOTS) + 1, inning, half: prev.half, runs,
+      play: r.play || "", batter: r.batter || "", reached: 0, outNo: 0,
+      bend, mlb: num(r.mlb_home_wp), mkt, mk: median(mkt.map(([, x]) => x)),
+      swing: bend !== null && before !== null ? bend - before : null };
+    advance(half, p, r.code);
+    const tot = halves.get(key) || { r: 0, h: 0, lob: null };
+    tot.r += runs;
+    if (HIT.has(p.play)) tot.h++;
+    if (half.outs >= 3 && tot.lob === null) tot.lob = half.on.filter(Boolean).length;
+    Object.assign(tot, { bend: p.bend, mlb: p.mlb, mk: p.mk });
+    halves.set(key, tot);
+    // The batter's line: a plate appearance unless he never batted (a pickoff or steal ended it).
+    const line = lines[side].get(p.slot) || { names: [], ab: 0, h: 0, rbi: 0 };
+    if (p.batter && !line.names.includes(p.batter)) line.names.push(p.batter);
+    if (r.code && r.code[3] !== "-") {
+      if (!/^(BB|IBB|HBP|CI)$/.test(p.play) && !/^(SAC|SF)/.test(p.play)) line.ab++;
+      if (HIT.has(p.play)) line.h++;
+      if (!/DP/.test(p.play) && !/^E/.test(p.play)) line.rbi += runs;   // no RBI on a double play or an error
+    }
+    lines[side].set(p.slot, line);
+    plays.push(p);
+    runsBy[side].set(inning, (runsBy[side].get(inning) || 0) + runs);
+    prev = r;
+  }
+  return { plays, innings, runsBy, halves, lines, last: rows[rows.length - 1] || null, priced: venuesIn(rows).length > 0 };
 }
 
-function markBases(str) {
-  // bases is 3 chars like `12-` meaning runners on 1st and 2nd (r1/r2 oriented)
-  const b1 = str[2] !== "-", b2 = str[1] !== "-", b3 = str[0] !== "-";
-  document.querySelectorAll("#bases .base").forEach(node => {
-    const which = node.dataset.base;
-    const on = which === "1" ? b1 : which === "2" ? b2 : which === "3" ? b3 : false;
-    node.classList.toggle("on", on);
-  });
+// Follow each batter around the bases with Bend's play code (slots r3 r2 r1 batter:
+// "-" stays, X out, R scores, 1-3 the base reached), the same moves Bend's step makes.
+// Outs on one play are numbered lead runner first.
+function advance(half, p, code) {
+  if (!code || code.length !== 4) return;
+  const next = [null, null, null];
+  const move = (who, c, from) => {
+    if (c === "-") { if (from) next[from - 1] = who; return; }   // a batter "-" did not bat (pickoff, steal)
+    if (c === "X") { who.outNo = ++half.outs; return; }
+    if (c === "R") { who.reached = 4; return; }
+    who.reached = Math.max(who.reached, Number(c));
+    next[Number(c) - 1] = who;
+  };
+  [3, 2, 1].forEach((from, i) => { if (half.on[from - 1]) move(half.on[from - 1], code[i], from); });
+  move(p, code[3], 0);
+  half.on = next;
 }
 
-function markOuts(n) {
-  document.querySelectorAll("#outs .out").forEach((node, i) => {
-    node.classList.toggle("on", i < n);
-  });
+// The market line in a cell: the median of the venues that priced the play.
+function median(xs) {
+  if (!xs.length) return null;
+  const s = [...xs].sort((a, b) => a - b), m = s.length >> 1;
+  return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2;
 }
 
-function setCard(id, cls, text) {
-  const node = document.getElementById(id);
-  node.textContent = text;
-  if (cls !== undefined) node.className = cls;
+// The box's diamond: printed base lines, the batter's path pencilled from home, shaded if he scored.
+const CORNERS = [[22, 42], [42, 22], [22, 2], [2, 22], [22, 42]];   // home, 1st, 2nd, 3rd, home
+function diamondSvg(reached) {
+  const path = reached ? "M" + CORNERS.slice(0, reached + 1).map(c => c.join(" ")).join(" L") : "";
+  return `<svg class="dia" viewBox="0 0 44 44" aria-hidden="true">`
+    + (reached === 4 ? `<path class="run" d="M22 42 L42 22 L22 2 L2 22 Z"/>` : "")
+    + `<path class="line" d="M22 42 L42 22 L22 2 L2 22 Z"/>`
+    + (path ? `<path class="path" d="${path}"/>` : "")
+    + `</svg>`;
 }
 
-// A successful CSV response is a heartbeat from the publisher, not just a
-// new play: a quiet game can still have a healthy feed.
-let lastFetchMs = null;
+const REACHED = ["", "reached first", "reached second", "reached third", "scored"];
+// A two-part play (4-6-3 DP, SAC 1-4) is written on two lines inside the diamond.
+const playHtml = play => {
+  const [first, ...rest] = play.split(" ");
+  const word = w => w === "Kc" ? `<span class="kc">K</span>` : esc(w);
+  return rest.length ? `${word(first)}<br>${esc(rest.join(" "))}` : word(first);
+};
+const playClass = play => play.includes(" ") ? " two" : play.length > 4 ? " long" : "";
+const playWords = play => play === "Kc" ? "K looking" : play;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+
+function basesText(b) {
+  const names = ["1st", "2nd", "3rd"].filter((_, i) => b[i] !== "-");
+  return names.length ? "runners on " + names.join(" and ") : "bases empty";
+}
+
+function renderLinescore(bk) {
+  const head = $("ls-head");
+  head.replaceChildren(head.firstElementChild);
+  for (let i = 1; i <= bk.innings; i++) {
+    const th = document.createElement("th"); th.scope = "col"; th.textContent = i; head.append(th);
+  }
+  const r = document.createElement("th"); r.scope = "col"; r.textContent = "R"; head.append(r);
+  const last = bk.last || {};
+  for (const side of ["away", "home"]) {
+    const tr = $(`ls-${side}`);
+    tr.replaceChildren(tr.firstElementChild);
+    const half = side === "away" ? "T" : "B";
+    for (let i = 1; i <= bk.innings; i++) {
+      const td = document.createElement("td");
+      const v = bk.runsBy[side].get(i);
+      const isLive = last.half === half && Number(last.inning) === i;
+      td.textContent = v === undefined ? (isLive ? "0" : "") : v;
+      if (isLive) td.className = "live";
+      tr.append(td);
+    }
+    const tot = document.createElement("td");
+    tot.className = "r";
+    tot.textContent = last[`${side}_runs`] ?? 0;
+    tr.append(tot);
+  }
+}
+
+function renderSheet(bk) {
+  const head = $("grid-head");
+  head.replaceChildren(head.firstElementChild);
+  for (let i = 1; i <= bk.innings; i++) {
+    const th = document.createElement("th"); th.scope = "col"; th.textContent = i; head.append(th);
+  }
+  head.insertAdjacentHTML("beforeend", `<th scope="col" class="tot">H–AB</th>`);
+  const cells = new Map();   // "side/slot/inning" -> plays
+  for (const p of bk.plays) {
+    const key = `${p.side}/${p.slot}/${p.inning}`;
+    if (!cells.has(key)) cells.set(key, []);
+    cells.get(key).push(p);
+  }
+  const nowPlay = bk.plays[bk.plays.length - 1];
+  const last = bk.last || {};
+  const body = $("grid-body");
+  body.replaceChildren();
+  $("grid").classList.toggle("priced", bk.priced);
+  $("key").classList.toggle("two", !bk.priced);
+  $("key").lastElementChild.hidden = !bk.priced;
+  for (const side of ["away", "home"]) {
+    // The team's name across the sheet, then its nine slots, then the half-inning strip.
+    const team = document.createElement("tr"); team.className = "team";
+    const logo = meta[`${side}_logo`] ? `<img src="${esc(meta[`${side}_logo`])}" alt="">` : "";
+    team.innerHTML = `<th scope="rowgroup" colspan="${bk.innings + 2}"><span>${logo}${esc(teamName(side))}`
+      + `<small>${side === "away" ? "visitors" : "home"} · ${last[`${side}_runs`] ?? 0} R</small></span></th>`;
+    body.append(team);
+    for (let s = 1; s <= SLOTS; s++) {
+      const line = bk.lines[side].get(s) || { names: [], ab: 0, h: 0, rbi: 0 };
+      const tr = document.createElement("tr");
+      const th = document.createElement("th"); th.scope = "row"; th.className = "slot";
+      th.innerHTML = `<span class="no">${s}</span><span class="who">${esc(line.names[0] || "")}</span>`
+        + line.names.slice(1).map(n => `<span class="sub">${esc(n)}</span>`).join("");
+      tr.append(th);
+      for (let i = 1; i <= bk.innings; i++) {
+        const td = document.createElement("td");
+        const ps = cells.get(`${side}/${s}/${i}`);
+        if (ps) td.append(boxCell(ps, s, nowPlay));
+        tr.append(td);
+      }
+      tr.insertAdjacentHTML("beforeend", line.names.length
+        ? `<td class="tot">${line.h}–${line.ab}<small>${line.rbi ? `${line.rbi} RBI` : ""}</small></td>` : `<td class="tot"></td>`);
+      body.append(tr);
+    }
+    const strip = document.createElement("tr"); strip.className = "half";
+    strip.innerHTML = `<th scope="row">After the half<br>R · H · LOB<br>Win %</th>`;
+    for (let i = 1; i <= bk.innings; i++) {
+      const h = bk.halves.get(`${side}/${i}`);
+      strip.insertAdjacentHTML("beforeend", !h ? "<td></td>" : `<td><span class="tally">${h.r} · ${h.h} · ${h.lob ?? "–"}</span>`
+        + `<span class="band"><span class="b">${wp(h.bend)}</span><span>${wp(h.mlb)}</span>`
+        + (bk.priced ? `<span>${wp(h.mk)}</span>` : "") + `</span>`
+        + `<span class="sr">${side === "away" ? "Top" : "Bottom"} ${i}: ${h.r} runs, ${h.h} hits, ${h.lob ?? "no"} left on base; Bend ${fmt(h.bend)}, MLB ${fmt(h.mlb)}${bk.priced ? `, market median ${fmt(h.mk)}` : ""}.</span></td>`);
+    }
+    strip.insertAdjacentHTML("beforeend", `<td class="tot"></td>`);
+    body.append(strip);
+  }
+}
+
+// One plate appearance as a scorer keeps it; when the order bats around, the later one, marked ×N.
+function boxCell(ps, s, nowPlay) {
+  const p = ps[ps.length - 1];
+  const isNow = nowPlay && p === nowPlay;
+  const big = p.swing !== null && Math.abs(p.swing) >= SWING;
+  const cell = document.createElement("div");
+  cell.className = "cell" + (isNow ? " now" : "");
+  cell.title = [p.batter, playWords(p.play), ...[["Bend", p.bend], ["MLB", p.mlb], ...p.mkt.map(([v, x]) => [v.name, x])]
+    .map(([k, x]) => `${k} ${fmt(x)}`)].filter(Boolean).join(" · ");
+  const said = [p.batter || `slot ${s}`, playWords(p.play), REACHED[p.reached], p.outNo ? `out ${p.outNo}` : "",
+    p.runs ? `${p.runs} run${p.runs > 1 ? "s" : ""} scored` : ""].filter(Boolean).join(", ");
+  cell.innerHTML = diamondSvg(p.reached)
+    + (p.play ? `<span class="play${playClass(p.play)}">${playHtml(p.play)}</span>` : "")
+    + (p.outNo ? `<span class="out${p.outNo === 3 ? " three" : ""}">${p.outNo}</span>` : "")
+    + (p.runs ? `<span class="dots">${"<i></i>".repeat(Math.min(p.runs, 4))}</span>` : "")
+    + (ps.length > 1 ? `<span class="more">×${ps.length}</span>` : "")
+    + `<span class="nums"><b${big ? ' class="swing"' : ""}>${wp(p.bend)}</b><span>${wp(p.mlb)}</span></span>`
+    + `<span class="sr">${halfArrow(p.half)}${p.inning}: ${esc(said)}. Bend ${fmt(p.bend)}${big ? `, a swing of ${Math.abs(p.swing).toFixed(1)} points` : ""}, MLB ${fmt(p.mlb)}${p.mkt.length ? `, market median ${fmt(p.mk)} (${p.mkt.map(([v, x]) => `${v.name} ${fmt(x)}`).join(", ")})` : ""}.</span>`
+    + (isNow ? `<svg class="pen" aria-hidden="true"><rect x="1" y="1" width="calc(100% - 2px)" height="calc(100% - 2px)" pathLength="1"/></svg>` : "");
+  return cell;
+}
+
+function chartSource(rows) {
+  const venues = venuesIn(rows);
+  const xs = [], bend = [], mlb = [];
+  const mk = venues.map(() => []), lastMk = venues.map(() => null);
+  let carried = 0, lastMlb = null;
+  for (const r of rows) {
+    const b = num(r.bend_home_wp);
+    if (b === null) continue;
+    venues.forEach((v, i) => { const x = num(r[venueCol(v)]); if (x !== null) lastMk[i] = x; });
+    let m = num(r.mlb_home_wp);
+    if (m === null) {
+      if (lastMlb === null) continue;   // no official number yet: nothing to compare
+      m = lastMlb; carried++;
+    }
+    lastMlb = m;
+    xs.push(`"${xs.length + 1}"`);
+    bend.push(b.toFixed(2));
+    mlb.push(m.toFixed(2));
+    venues.forEach((_, i) => mk[i].push(lastMk[i]));
+  }
+  // A Mermaid line cannot start mid-chart, so a venue is drawn only when it has a price at the
+  // first plotted play (the pregame row reads first pitch, so a listed venue normally does);
+  // later gaps carry the previous price, as MLB's line does.
+  const drawn = venues.map((v, i) => ({ v, data: mk[i] }))
+    .filter(d => d.data[0] !== null && d.data[0] !== undefined)
+    .map(d => ({ v: d.v, data: d.data.map(x => x.toFixed(2)) }));
+  const names = ["Bend", "MLB official", ...drawn.map(d => d.v.name)];
+  const src = `---
+config:
+  xyChart:
+    width: ${Math.max(280, $("chart").clientWidth)}
+    height: ${$("chart").clientWidth < 640 ? 250 : 320}
+---
+xychart
+  accTitle: Home-team win probability per completed play
+  accDescr: ${names.length === 2 ? "Two" : names.length === 3 ? "Three" : names.length === 4 ? "Four" : "Five"} lines over ${xs.length} plays: ${names.slice(0, -1).join(", ")}, and ${names[names.length - 1]}.
+  x-axis "play" [${xs.join(",")}]
+  y-axis "home win %" 0 --> 100
+  line "Bend" [${bend.join(",")}]
+  line "MLB" [${mlb.join(",")}]` + drawn.map(d => `
+  line "${d.v.name}" [${d.data.join(",")}]`).join("");
+  return { src, carried, n: xs.length, drawn };
+}
+
+function renderChart(rows) {
+  const { src, carried, n, drawn } = chartSource(rows);
+  if (!n) { $("chart").textContent = "No plays yet."; chart = null; return; }
+  if (chart) chart.update(src); else chart = pele.mount($("chart"), src, { zoom: false, fontSize: 11 });
+  $("chart-cap").textContent = `Home-team win probability after each of ${n} completed plays, numbered from the first. Graphite: Bend. Teal: MLB official.`
+    + (drawn.length ? ` Market prices, as a reference: ${drawn.map(d => `${d.v.ink}, ${d.v.name}`).join("; ")}.` : "")
+    + (carried ? ` ${carried} play${carried > 1 ? "s" : ""} without an MLB value carried the previous one.` : "");
+}
+
+// A successful CSV response is a heartbeat from the publisher, not only a new play.
 function updateFreshness() {
-  const node = document.getElementById("freshness");
+  const node = $("f-feed");
   if (lastFetchMs === null) {
-    node.textContent = "feed: waiting";
-    node.className = "dead";
+    node.textContent = feedMissing ? `nothing published for ${pk}` : "waiting";
+    node.className = feedMissing ? "stale" : "";
     return;
   }
   const seconds = Math.max(0, Math.floor((Date.now() - lastFetchMs) / 1000));
-  node.textContent = `feed: ${seconds}s ago`;
+  const label = source === "live" ? "live" : "replay";
+  node.textContent = `${label} · ${seconds}s ago`;
   node.className = seconds < 30 ? "" : seconds < 90 ? "stale" : "dead";
 }
 setInterval(updateFreshness, 1000);
 
-// Team names: fetched until the first publish has them (a page opened early shows AWAY @ HOME).
-let metaLoaded = false;
+function updateTeams() {
+  for (const side of ["away", "home"]) {
+    $(`${side}-name`).textContent = meta[side];
+    const url = meta[`${side}_logo`];
+    const slot = $(`${side}-logo`);
+    slot.replaceChildren();
+    if (url) {
+      const image = new Image();
+      image.src = url; image.alt = `${teamName(side)} logo`; image.width = 20; image.height = 20;
+      slot.append(image);
+    }
+  }
+  document.title = `${teamName("away")} @ ${teamName("home")} — Bend vs MLB`;
+}
+
 async function loadMeta() {
+  for (const base of ["/runs/", "/demo/"]) {
+    try {
+      const res = await fetch(base + pk + "-meta.json", { cache: "no-store" });
+      if (!res.ok) continue;
+      meta = await res.json();
+      metaLoaded = true;
+      updateTeams();
+      return;
+    } catch (e) {}
+  }
+}
+
+async function loadRows() {
   try {
-    const res = await fetch(`/runs/${pk}-meta.json`, { cache: "no-store" });
-    if (!res.ok) return;
-    meta = await res.json();
-    metaLoaded = true;
-    document.getElementById("title").textContent = `${meta.away} @ ${meta.home} — Bend vs MLB`;
+    source = "live";
+    const res = await fetch(`/runs/${pk}.csv`, { cache: "no-store" });
+    if (!res.ok) throw new Error(res.status);
+    return parseCsv(await res.text());
   } catch (e) {}
+  source = "replay";
+  const res = await fetch(`/demo/${pk}.csv`, { cache: "no-store" });
+  if (!res.ok) throw new Error(`no feed for ${pk}`);
+  return parseCsv(await res.text());
+}
+
+// One render per poll: masthead, line score, the open page, the margin, the chart.
+function render(rows) {
+  const bk = book(rows);
+  const last = bk.last || {};
+  const halfKey = `${last.inning}/${last.half}`;
+
+  const sim = lastSim(rows);
+  $("f-date").textContent = last.wall_time ? last.wall_time.slice(0, 10) : "–";
+  $("f-sims").textContent = sim ? `${Number(sim.sims).toLocaleString()} · ${sim.mode}` : "–";
+
+  renderLinescore(bk);
+  renderSheet(bk);
+
+  const bend = latest(rows, "bend_home_wp");
+  const mlb = latest(rows, "mlb_home_wp");
+  const delta = latest(rows, "delta") ?? (bend !== null && mlb !== null ? bend - mlb : null);
+  $("bend-val").textContent = fmt(bend);
+  $("bend-hint").textContent = bend === null ? "waiting for the feed"
+    : sim ? `${Number(sim.sims).toLocaleString()} games in ${sim.seconds} s on ${sim.mode}` : "";
+  $("mlb-val").textContent = fmt(mlb);
+  const d = $("delta-val");
+  d.textContent = fmtDelta(delta);
+  d.className = "delta " + (delta === null ? "" : delta > 0 ? "up" : delta < 0 ? "down" : "");
+  // Market reference prices from the latest play that has any (a play's price is read a minute
+  // after it ends), so a venue whose book has gone blank shows "–" rather than an old price.
+  const mkLine = $("mkt-line");
+  const quoted = venuesIn(rows);
+  const mkRow = [...rows].reverse().find(r => quoted.some(v => num(r[venueCol(v)]) !== null)) || {};
+  mkLine.replaceChildren();
+  mkLine.hidden = !quoted.length;
+  quoted.forEach((v, i) => {
+    const url = venueUrl(v);
+    const label = url ? Object.assign(document.createElement("a"), { href: url, target: "_blank", rel: "noopener", textContent: v.name }) : v.name;
+    mkLine.append(i ? " · " : "Market reference: ", label, ` ${fmt(num(mkRow[venueCol(v)]))}`);
+  });
+
+  const inningLabel = last.half === "T" ? "Top" : last.half === "B" ? "Bottom" : "";
+  const nowKey = `${last.at_bat_index}/${halfKey}`;
+  const finished = rows.length > 1 && Number(last.sims) === 0;
+  $("now-line").textContent = !last.inning ? "–"
+    : finished ? `Final after ${last.inning}. ${meta.away} ${last.away_runs || 0}, ${meta.home} ${last.home_runs || 0}.`
+    : `${inningLabel} ${last.inning}, ${basesText(last.bases || "---")}, ${last.outs || 0} out. ${meta.away} ${last.away_runs || 0}, ${meta.home} ${last.home_runs || 0}.`;
+  $("now-check").textContent = last.state_check
+    ? `Scorebook check after this play: ${last.state_check}. ${source === "live" ? "Published feed" : "Bundled replay"}, polled every 5 s.`
+    : "";
+
+  // The red pencil draws once per new play, not on every poll.
+  const nowCell = document.querySelector(".cell.now");
+  if (nowCell && nowKey !== lastNowKey) {
+    nowCell.classList.add("drawn");
+    const td = nowCell.parentElement, box = td.closest(".grid-scroll");
+    const right = td.offsetLeft + td.offsetWidth;
+    if (right > box.scrollLeft + box.clientWidth || td.offsetLeft < box.scrollLeft) {
+      box.scrollLeft = Math.max(0, right - box.clientWidth + 8);
+    }
+  }
+  lastNowKey = nowKey;
+
+  renderChart(rows);
 }
 
 async function tick() {
   if (!metaLoaded) await loadMeta();
   try {
-    const res = await fetch(`/runs/${pk}.csv`, { cache: "no-store" });
-    if (!res.ok) throw new Error(res.status);
-    const rows = parseCsv(await res.text());
+    const rows = await loadRows();
+    lastRows = rows;
     lastFetchMs = Date.now();
-    updateFreshness();
-    const last = rows[rows.length - 1] || {};
-    const bend = latest(rows, "bend_home_wp");
-    const mlb = latest(rows, "mlb_home_wp");
-    const delta = latest(rows, "delta");
-    setCard("bend-val", "value bend", fmt(bend));
-    setCard("mlb-val", "value mlb", mlb === null ? "–" : fmt(mlb));
-    if (delta === null) setCard("delta-val", "value delta", "–");
-    else setCard("delta-val", "value delta " + (delta > 0 ? "up" : delta < 0 ? "down" : ""),
-                 fmtDelta(delta));
-    document.getElementById("bend-hint").textContent = `${Number(last.sims || 0).toLocaleString()} sims · ${last.seconds || 0}s ${last.mode || ""}`;
-    const halfLabel = (last.half === "T" ? "Top" : last.half === "B" ? "Bottom" : "") + " " + (last.inning || "");
-    document.getElementById("inning").textContent = halfLabel.trim();
-    document.getElementById("score").innerHTML =
-      `<span>${meta.away} <b>${last.away_runs || 0}</b></span>` +
-      `<span class="sep">–</span>` +
-      `<span><b>${last.home_runs || 0}</b> ${meta.home}</span>`;
-    markBases(last.bases || "---");
-    markOuts(Number(last.outs || 0));
-    document.getElementById("modechip").textContent = `state ${last.state_check || "–"}`;
-    draw(rows);
+    render(rows);
   } catch (e) {
-    document.getElementById("score").textContent = "waiting for feed";
+    $("now-check").textContent = "Feed unavailable.";
+    feedMissing = !lastRows.length;
   } finally {
     updateFreshness();
     setTimeout(tick, 5000);
   }
 }
 
-updateFreshness();
+// The printed diagrams on the back of the card.
+const DIAGRAMS = {
+  tree: `flowchart TB
+  accTitle: The fork tree at depth 3
+  d3["tree d=3<br/>i = 0…7 · Tally: 8 games"] --> a["d=2<br/>0…3"] & b["d=2<br/>4…7"]
+  a --> a1["d=1<br/>0,1"] & a2["d=1<br/>2,3"]
+  b --> b1["d=1<br/>4,5"] & b2["d=1<br/>6,7"]
+  a1 --> g0["one(0)"] & g1["one(1)"]
+  a2 --> g2["one(2)"] & g3["one(3)"]
+  b1 --> g4["one(4)"] & g5["one(5)"]
+  b2 --> g6["one(6)"] & g7["one(7)"]
+  classDef pencil fill:#e6dbc2,stroke:#1d1d1b,color:#1d1d1b,stroke-width:1.6px
+  class g0,g1,g2,g3,g4,g5,g6,g7 pencil`,
+  gate: `flowchart LR
+  accTitle: The commit gate
+  laws[LAWS.bend<br/>what must hold] --> proof[PROOF.bend<br/>induction, case analysis]
+  proof --> run{{"bend PROOF.bend"}}
+  run --> ok["ALL PROOFS CHECK"] --> commit[commit · bench.py · this page]
+  run --> other["anything else"] --> stop[nothing ships]
+  classDef pencil fill:#e6dbc2,stroke:#1d1d1b,color:#1d1d1b,stroke-width:1.6px
+  class ok,commit pencil`,
+  pipeline: `flowchart LR
+  accTitle: One play's path from the MLB feed to this card
+  api[MLB Stats API<br/>plays · official WP · season batting] --> live[live.py]
+  live --> enc["7 thresholds / 10,000<br/>play as r3 r2 r1 batter"] --> wp[wp<br/>step → tree 2^d]
+  wp --> csv[("runs/&lt;gamePk&gt;.csv")]
+  csv -->|POST| worker[Worker + Durable Object]
+  worker -->|GET every 5 s| page[this card]
+  classDef pencil fill:#e6dbc2,stroke:#1d1d1b,color:#1d1d1b,stroke-width:1.6px
+  class wp pencil`,
+};
+for (const node of document.querySelectorAll(".pele-src")) {
+  pele.mount(node, DIAGRAMS[node.dataset.diagram], { zoom: false, fontSize: 12.5 });
+}
+
+render([]);
 tick();
 </script>
 </body>

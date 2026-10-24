@@ -1,0 +1,84 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>B · One Sheet</title>
+<link rel="stylesheet" href="book.css">
+<script src="book.js"></script>
+<style>
+  /* The whole game on one spread: visitors over home, innings across. Boxes carry Bend's number only;
+     MLB and the markets are compared once per half-inning, in the strip under each team. */
+  table { border-collapse: separate; border-spacing: 0; border: 1px solid var(--print); margin-top: 14px; width: 100%; table-layout: fixed; }
+  th, td { border-right: 1px solid var(--print-rule); border-bottom: 1px solid var(--print-rule); padding: 0; }
+  col.bat { width: 122px; } col.tot { width: 64px; }
+  thead th { height: 24px; background: var(--print-tint); font: 700 12px/1 var(--narrow); color: var(--print); }
+  thead th.l { text-align: left; padding-left: 6px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; }
+  tr.team th { height: 26px; text-align: left; padding: 0 8px; border-top: 1px solid var(--print); background: var(--print-tint);
+               font: 700 13px/1 var(--narrow); text-transform: uppercase; letter-spacing: 0.08em; color: var(--graphite); }
+  tr.team img { width: 18px; height: 18px; vertical-align: -4px; margin-right: 6px; }
+  tr.team th span { color: var(--print); font-weight: 400; margin-left: 8px; }
+  th.slot { padding: 4px 6px; text-align: left; vertical-align: top; background: var(--print-tint); }
+  th.slot .no { font: 700 11px/1 var(--narrow); color: var(--print); margin-right: 4px; }
+  th.slot .who { font: 500 17px/1 var(--hand); }
+  th.slot .sub { display: block; font: 500 14px/1 var(--hand); color: var(--graphite-soft); margin-left: 14px; }
+  td.box { height: 64px; position: relative; vertical-align: top; }
+  td.box .dia { position: absolute; left: 50%; margin-left: -20px; top: 5px; width: 40px; height: 40px; }
+  td.box .play { position: absolute; left: 50%; width: 40px; margin-left: -20px; top: 18px; font-size: 16px; }
+  td.box .play.long { font-size: 13px; top: 20px; }
+  td.box .play.two { font-size: 12px; top: 15px; }
+  td.box .out { position: absolute; left: 3px; top: 3px; }
+  td.box .dots { position: absolute; left: 5px; bottom: 6px; }
+  td.box .wp { position: absolute; right: 4px; bottom: 2px; font: 700 15px/1 var(--hand); }
+  td.tot { text-align: center; vertical-align: middle; font: 500 18px/1 var(--hand); }
+  td.tot small { display: block; font: 400 10px/1.2 var(--narrow); color: var(--print); }
+  /* After each half: the scorer's totals pencilled, then everyone's number at the end of the half */
+  tr.half th { text-align: left; padding: 4px 6px; background: var(--print-tint); border-bottom: 1px solid var(--print); font: 700 10px/1.25 var(--narrow); text-transform: uppercase; letter-spacing: 0.08em; color: var(--print); }
+  tr.half td { height: 50px; vertical-align: top; border-bottom: 1px solid var(--print); }
+  tr.half .tally { display: block; padding: 4px 0 2px; text-align: center; font: 500 15px/1 var(--hand); }
+  tr.half .band { display: grid; grid-template-columns: 1.2fr 1fr 1fr; height: 22px; margin: 2px 4px 0; border: 1px solid var(--print-rule); }
+  tr.half .band span { display: flex; align-items: center; justify-content: center; border-left: 1px solid var(--print-rule); font: 400 11px/1 var(--narrow); color: var(--print); }
+  tr.half .band .b { border-left: 0; font: 700 15px/1 var(--hand); color: var(--graphite); }
+  tr.half .band .up { font-weight: 700; }
+  .key { display: inline-grid; grid-template-columns: 38px 32px 32px; height: 18px; vertical-align: -4px; border: 1px solid var(--print-rule); }
+  .key span { display: flex; align-items: center; justify-content: center; border-left: 1px solid var(--print-rule); font: 400 10px/1 var(--narrow); color: var(--print); }
+  .key .b { border-left: 0; font: 700 14px/1 var(--hand); color: var(--graphite); }
+</style>
+<div class="page">
+  <div class="mast"><h1>Official Scorebook</h1><span class="meta">B · One Sheet · LAD @ MIL · NLCS Game 1 · gamePk 849809</span></div>
+  <table id="sheet"></table>
+  <p class="foot-note">The whole game on one sheet, visitors over home. Each box: <span class="hand">the play</span>, the batter's trip, his out circled, run dots, and Bend's home-win number pencilled after the play. Under each team, after every half-inning: R · H · LOB pencilled, then <span class="key"><span class="b">50.4</span><span>54.8</span><span>51.5</span></span> Bend, MLB and the market median when the half ended. At the right, each batter's day: hits for at-bats.</p>
+</div>
+<script>
+Book.load().then(({ plays, halves, lines, final }) => {
+  const innings = 9, last = plays[plays.length - 1];
+  const logo = id => `<img src="https://www.mlbstatic.com/team-logos/${id}.svg" alt="">`;
+  const teams = { away: ["Los Angeles Dodgers", 119, "visitors"], home: ["Milwaukee Brewers", 158, "home"] };
+  let html = `<colgroup><col class="bat">${"<col>".repeat(innings)}<col class="tot"></colgroup>`
+    + `<thead><tr><th class="l">Batter</th>${Array.from({ length: innings }, (_, i) => `<th>${i + 1}</th>`).join("")}<th>H–AB</th></tr></thead><tbody>`;
+  for (const side of ["away", "home"]) {
+    const [name, id, role] = teams[side];
+    html += `<tr class="team"><th colspan="${innings + 2}">${logo(id)}${name}<span>${role} · ${final[`${side}_runs`]} runs</span></th></tr>`;
+    const cells = new Map();
+    for (const p of plays) if (p.side === side) cells.set(`${p.slot}/${p.inning}`, p);
+    for (let s = 1; s <= 9; s++) {
+      const line = lines[side].get(s);
+      html += `<tr><th class="slot"><span class="no">${s}</span><span class="who">${Book.esc(line.names[0])}</span>`
+        + line.names.slice(1).map(n => `<span class="sub">${Book.esc(n)}</span>`).join("") + `</th>`;
+      for (let i = 1; i <= innings; i++) {
+        const p = cells.get(`${s}/${i}`);
+        html += !p ? `<td class="box"></td>` : `<td class="box${p === last ? " pen" : ""}">${Book.diamond(p.reached)}`
+          + `<span class="play${Book.playClass(p.play)}">${Book.playHtml(p.play)}</span>`
+          + (p.outNo ? `<span class="out${p.outNo === 3 ? " three" : ""}">${p.outNo}</span>` : "")
+          + (p.runs ? `<span class="dots">${"<i></i>".repeat(p.runs)}</span>` : "")
+          + `<span class="wp">${Book.f1(p.bend)}</span></td>`;
+      }
+      html += `<td class="tot">${line.h}–${line.ab}<small>${line.rbi ? `${line.rbi} RBI` : ""}</small></td></tr>`;
+    }
+    html += `<tr class="half"><th>After the half<br>R · H · LOB<br>Bend · MLB · Mkt</th>`;
+    for (let i = 1; i <= innings; i++) {
+      const h = halves.find(x => x.side === side && x.inning === i);
+      html += !h ? `<td></td>` : `<td><span class="tally">${h.r} · ${h.h} · ${h.lob ?? "–"}</span>`
+        + `<span class="band"><span class="b">${Book.f1(h.bend)}</span><span>${Book.f1(h.mlb)}</span><span>${Book.f1(h.mk)}</span></span></td>`;
+    }
+    html += `<td></td></tr>`;
+  }
+  document.getElementById("sheet").innerHTML = html + `</tbody>`;
+});
+</script>
+</html>

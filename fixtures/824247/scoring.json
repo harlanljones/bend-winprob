@@ -1,0 +1,4153 @@
+{
+ "allPlays": [
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Carter Jensen walks."
+   },
+   "about": {
+    "atBatIndex": 0,
+    "startTime": "2026-07-23T22:40:50.526Z",
+    "endTime": "2026-07-23T22:42:22.006Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 695600,
+     "fullName": "Carter Jensen"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 695600,
+       "fullName": "Carter Jensen"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 8
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 0
+  },
+  {
+   "result": {
+    "event": "Pop Out",
+    "eventType": "field_out",
+    "description": "Lane Thomas pops out to shortstop Kevin McGonigle."
+   },
+   "about": {
+    "atBatIndex": 1,
+    "startTime": "2026-07-23T22:42:22.476Z",
+    "endTime": "2026-07-23T22:42:59.055Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 657041,
+     "fullName": "Lane Thomas"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Pop Out",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 657041,
+       "fullName": "Lane Thomas"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 1
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Vinnie Pasquantino singles on a line drive to left fielder Zach McKinstry. Carter Jensen to 2nd."
+   },
+   "about": {
+    "atBatIndex": 2,
+    "startTime": "2026-07-23T22:43:00.154Z",
+    "endTime": "2026-07-23T22:44:40.682Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 686469,
+     "fullName": "Vinnie Pasquantino"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 686469,
+       "fullName": "Vinnie Pasquantino"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 695600,
+       "fullName": "Carter Jensen"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 2
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Salvador Perez walks. Carter Jensen to 3rd. Vinnie Pasquantino to 2nd."
+   },
+   "about": {
+    "atBatIndex": 3,
+    "startTime": "2026-07-23T22:44:44.502Z",
+    "endTime": "2026-07-23T22:48:26.563Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 521692,
+     "fullName": "Salvador Perez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 695600,
+       "fullName": "Carter Jensen"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 9
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 686469,
+       "fullName": "Vinnie Pasquantino"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 9
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 521692,
+       "fullName": "Salvador Perez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 9
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 3
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Michael Massey strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 4,
+    "startTime": "2026-07-23T22:49:29.824Z",
+    "endTime": "2026-07-23T22:50:46.044Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 686681,
+     "fullName": "Michael Massey"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 686681,
+       "fullName": "Michael Massey"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 4
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Isaac Collins strikes out swinging, catcher Dillon Dingler to pitcher Troy Melton. Vinnie Pasquantino to 3rd. Salvador Perez to 2nd. Isaac Collins to 1st."
+   },
+   "about": {
+    "atBatIndex": 5,
+    "startTime": "2026-07-23T22:50:47.492Z",
+    "endTime": "2026-07-23T22:52:00.909Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 686555,
+     "fullName": "Isaac Collins"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Runner Out",
+      "eventType": "other_out",
+      "movementReason": "r_runner_out",
+      "runner": {
+       "id": 695600,
+       "fullName": "Carter Jensen"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "1"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Runner Out",
+      "eventType": "other_out",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 686469,
+       "fullName": "Vinnie Pasquantino"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Runner Out",
+      "eventType": "other_out",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 521692,
+       "fullName": "Salvador Perez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 686555,
+       "fullName": "Isaac Collins"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 5
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Kevin McGonigle grounds out to first baseman Vinnie Pasquantino."
+   },
+   "about": {
+    "atBatIndex": 6,
+    "startTime": "2026-07-23T22:54:19.234Z",
+    "endTime": "2026-07-23T22:55:07.214Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 805808,
+     "fullName": "Kevin McGonigle"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 805808,
+       "fullName": "Kevin McGonigle"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 6
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Gleyber Torres singles on a line drive to right fielder Nick Loftin."
+   },
+   "about": {
+    "atBatIndex": 7,
+    "startTime": "2026-07-23T22:55:13.441Z",
+    "endTime": "2026-07-23T22:55:41.105Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 650402,
+     "fullName": "Gleyber Torres"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 650402,
+       "fullName": "Gleyber Torres"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 7
+  },
+  {
+   "result": {
+    "event": "Forceout",
+    "eventType": "force_out",
+    "description": "Colt Keith grounds into a force out, first baseman Vinnie Pasquantino to shortstop Andrew Velazquez. Gleyber Torres out at 2nd. Colt Keith to 1st."
+   },
+   "about": {
+    "atBatIndex": 8,
+    "startTime": "2026-07-23T22:55:57.430Z",
+    "endTime": "2026-07-23T22:57:55.630Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 690993,
+     "fullName": "Colt Keith"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Forceout",
+      "eventType": "force_out",
+      "movementReason": "r_force_out",
+      "runner": {
+       "id": 650402,
+       "fullName": "Gleyber Torres"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Forceout",
+      "eventType": "force_out",
+      "movementReason": null,
+      "runner": {
+       "id": 690993,
+       "fullName": "Colt Keith"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 8
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Riley Greene singles on a line drive to right fielder Nick Loftin. Colt Keith to 3rd."
+   },
+   "about": {
+    "atBatIndex": 9,
+    "startTime": "2026-07-23T22:58:06.037Z",
+    "endTime": "2026-07-23T22:59:09.738Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 682985,
+     "fullName": "Riley Greene"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 682985,
+       "fullName": "Riley Greene"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 690993,
+       "fullName": "Colt Keith"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 690993,
+       "fullName": "Colt Keith"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 9
+  },
+  {
+   "result": {
+    "event": "Forceout",
+    "eventType": "force_out",
+    "description": "Dillon Dingler grounds into a force out, shortstop Andrew Velazquez to second baseman Michael Massey. Riley Greene out at 2nd."
+   },
+   "about": {
+    "atBatIndex": 10,
+    "startTime": "2026-07-23T22:59:38.649Z",
+    "endTime": "2026-07-23T23:00:26.745Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 693307,
+     "fullName": "Dillon Dingler"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Forceout",
+      "eventType": "force_out",
+      "movementReason": "r_force_out",
+      "runner": {
+       "id": 682985,
+       "fullName": "Riley Greene"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Forceout",
+      "eventType": "force_out",
+      "movementReason": null,
+      "runner": {
+       "id": 693307,
+       "fullName": "Dillon Dingler"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 10
+  },
+  {
+   "result": {
+    "event": "Double",
+    "eventType": "double",
+    "description": "Josh Rojas doubles (3) on a sharp line drive to right fielder Kerry Carpenter."
+   },
+   "about": {
+    "atBatIndex": 11,
+    "startTime": "2026-07-23T23:01:53.868Z",
+    "endTime": "2026-07-23T23:03:46.528Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 668942,
+     "fullName": "Josh Rojas"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Double",
+      "eventType": "double",
+      "movementReason": null,
+      "runner": {
+       "id": 668942,
+       "fullName": "Josh Rojas"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 11
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Nick Loftin grounds out, third baseman Colt Keith to first baseman Spencer Torkelson."
+   },
+   "about": {
+    "atBatIndex": 12,
+    "startTime": "2026-07-23T23:03:51.687Z",
+    "endTime": "2026-07-23T23:04:41.637Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 679845,
+     "fullName": "Nick Loftin"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 679845,
+       "fullName": "Nick Loftin"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 12
+  },
+  {
+   "result": {
+    "event": "Lineout",
+    "eventType": "field_out",
+    "description": "Andrew Velazquez lines out to first baseman Spencer Torkelson."
+   },
+   "about": {
+    "atBatIndex": 13,
+    "startTime": "2026-07-23T23:04:49.081Z",
+    "endTime": "2026-07-23T23:05:35.762Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 623205,
+     "fullName": "Andrew Velazquez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Lineout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 623205,
+       "fullName": "Andrew Velazquez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 13
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Carter Jensen grounds out, first baseman Spencer Torkelson to pitcher Troy Melton."
+   },
+   "about": {
+    "atBatIndex": 14,
+    "startTime": "2026-07-23T23:05:40.316Z",
+    "endTime": "2026-07-23T23:07:10.351Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 695600,
+     "fullName": "Carter Jensen"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 695600,
+       "fullName": "Carter Jensen"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "1"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 14
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Kerry Carpenter grounds out, second baseman Michael Massey to first baseman Vinnie Pasquantino."
+   },
+   "about": {
+    "atBatIndex": 15,
+    "startTime": "2026-07-23T23:09:07.503Z",
+    "endTime": "2026-07-23T23:09:58.478Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 681481,
+     "fullName": "Kerry Carpenter"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 681481,
+       "fullName": "Kerry Carpenter"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 15
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Spencer Torkelson strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 16,
+    "startTime": "2026-07-23T23:10:03.545Z",
+    "endTime": "2026-07-23T23:10:52.915Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 679529,
+     "fullName": "Spencer Torkelson"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 679529,
+       "fullName": "Spencer Torkelson"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 16
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Zach McKinstry singles on a line drive to center fielder Lane Thomas."
+   },
+   "about": {
+    "atBatIndex": 17,
+    "startTime": "2026-07-23T23:10:54.935Z",
+    "endTime": "2026-07-23T23:11:54.649Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 656716,
+     "fullName": "Zach McKinstry"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 656716,
+       "fullName": "Zach McKinstry"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 17
+  },
+  {
+   "result": {
+    "event": "Pickoff 1B",
+    "eventType": "pickoff_1b",
+    "description": "Pitcher Randy Dobnak picks off Zach McKinstry at 1st on throw to first baseman Vinnie Pasquantino."
+   },
+   "about": {
+    "atBatIndex": 18,
+    "startTime": "2026-07-23T23:11:57.324Z",
+    "endTime": "2026-07-23T23:13:41.176Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 681546,
+     "fullName": "James Outman"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Pickoff 1B",
+      "eventType": "pickoff_1b",
+      "movementReason": "r_pickoff_1b",
+      "runner": {
+       "id": 656716,
+       "fullName": "Zach McKinstry"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "1"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 18
+  },
+  {
+   "result": {
+    "event": "Pop Out",
+    "eventType": "field_out",
+    "description": "Lane Thomas pops out to first baseman Spencer Torkelson in foul territory."
+   },
+   "about": {
+    "atBatIndex": 19,
+    "startTime": "2026-07-23T23:16:26.955Z",
+    "endTime": "2026-07-23T23:17:13.958Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 657041,
+     "fullName": "Lane Thomas"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Pop Out",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 657041,
+       "fullName": "Lane Thomas"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 19
+  },
+  {
+   "result": {
+    "event": "Pop Out",
+    "eventType": "field_out",
+    "description": "Vinnie Pasquantino pops out to third baseman Colt Keith."
+   },
+   "about": {
+    "atBatIndex": 20,
+    "startTime": "2026-07-23T23:17:21.185Z",
+    "endTime": "2026-07-23T23:19:01.192Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 686469,
+     "fullName": "Vinnie Pasquantino"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Pop Out",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 686469,
+       "fullName": "Vinnie Pasquantino"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 20
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Salvador Perez strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 21,
+    "startTime": "2026-07-23T23:19:09.095Z",
+    "endTime": "2026-07-23T23:20:11.776Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 521692,
+     "fullName": "Salvador Perez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 521692,
+       "fullName": "Salvador Perez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 21
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "James Outman strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 22,
+    "startTime": "2026-07-23T23:21:48.200Z",
+    "endTime": "2026-07-23T23:24:19.516Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 681546,
+     "fullName": "James Outman"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 681546,
+       "fullName": "James Outman"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 22
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Kevin McGonigle grounds out, first baseman Vinnie Pasquantino to pitcher Randy Dobnak."
+   },
+   "about": {
+    "atBatIndex": 23,
+    "startTime": "2026-07-23T23:24:21.861Z",
+    "endTime": "2026-07-23T23:25:03.309Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 805808,
+     "fullName": "Kevin McGonigle"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 805808,
+       "fullName": "Kevin McGonigle"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "1"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 23
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Gleyber Torres grounds out, third baseman Josh Rojas to first baseman Vinnie Pasquantino."
+   },
+   "about": {
+    "atBatIndex": 24,
+    "startTime": "2026-07-23T23:25:17.359Z",
+    "endTime": "2026-07-23T23:26:39.902Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 650402,
+     "fullName": "Gleyber Torres"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 650402,
+       "fullName": "Gleyber Torres"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 24
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Michael Massey strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 25,
+    "startTime": "2026-07-23T23:28:57.593Z",
+    "endTime": "2026-07-23T23:30:12.731Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 686681,
+     "fullName": "Michael Massey"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 686681,
+       "fullName": "Michael Massey"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 25
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Isaac Collins walks."
+   },
+   "about": {
+    "atBatIndex": 26,
+    "startTime": "2026-07-23T23:30:13.269Z",
+    "endTime": "2026-07-23T23:32:25.181Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 686555,
+     "fullName": "Isaac Collins"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 686555,
+       "fullName": "Isaac Collins"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 26
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Josh Rojas flies out to left fielder Zach McKinstry."
+   },
+   "about": {
+    "atBatIndex": 27,
+    "startTime": "2026-07-23T23:32:25.693Z",
+    "endTime": "2026-07-23T23:34:13.881Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 668942,
+     "fullName": "Josh Rojas"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 668942,
+       "fullName": "Josh Rojas"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 27
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Nick Loftin strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 28,
+    "startTime": "2026-07-23T23:34:24.442Z",
+    "endTime": "2026-07-23T23:35:55.141Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 679845,
+     "fullName": "Nick Loftin"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 679845,
+       "fullName": "Nick Loftin"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 28
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Colt Keith grounds out, second baseman Michael Massey to first baseman Vinnie Pasquantino."
+   },
+   "about": {
+    "atBatIndex": 29,
+    "startTime": "2026-07-23T23:38:15.122Z",
+    "endTime": "2026-07-23T23:40:32.392Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 690993,
+     "fullName": "Colt Keith"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 690993,
+       "fullName": "Colt Keith"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 29
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Riley Greene flies out to left fielder Isaac Collins."
+   },
+   "about": {
+    "atBatIndex": 30,
+    "startTime": "2026-07-23T23:40:37.051Z",
+    "endTime": "2026-07-23T23:42:00.777Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 682985,
+     "fullName": "Riley Greene"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 682985,
+       "fullName": "Riley Greene"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 30
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Dillon Dingler walks."
+   },
+   "about": {
+    "atBatIndex": 31,
+    "startTime": "2026-07-23T23:42:03.351Z",
+    "endTime": "2026-07-23T23:43:17.291Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 693307,
+     "fullName": "Dillon Dingler"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 693307,
+       "fullName": "Dillon Dingler"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 31
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Kerry Carpenter grounds out to first baseman Vinnie Pasquantino."
+   },
+   "about": {
+    "atBatIndex": 32,
+    "startTime": "2026-07-23T23:43:22.014Z",
+    "endTime": "2026-07-23T23:45:51.253Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 681481,
+     "fullName": "Kerry Carpenter"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 681481,
+       "fullName": "Kerry Carpenter"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 32
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Andrew Velazquez grounds out, third baseman Colt Keith to first baseman Spencer Torkelson."
+   },
+   "about": {
+    "atBatIndex": 33,
+    "startTime": "2026-07-23T23:47:28.919Z",
+    "endTime": "2026-07-23T23:49:44.600Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 623205,
+     "fullName": "Andrew Velazquez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 623205,
+       "fullName": "Andrew Velazquez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 33
+  },
+  {
+   "result": {
+    "event": "Double",
+    "eventType": "double",
+    "description": "Carter Jensen doubles (23) on a fly ball to right fielder Kerry Carpenter."
+   },
+   "about": {
+    "atBatIndex": 34,
+    "startTime": "2026-07-23T23:49:50.928Z",
+    "endTime": "2026-07-23T23:51:23.743Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 695600,
+     "fullName": "Carter Jensen"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Double",
+      "eventType": "double",
+      "movementReason": null,
+      "runner": {
+       "id": 695600,
+       "fullName": "Carter Jensen"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 34
+  },
+  {
+   "result": {
+    "event": "Pop Out",
+    "eventType": "field_out",
+    "description": "Lane Thomas pops out to second baseman Gleyber Torres."
+   },
+   "about": {
+    "atBatIndex": 35,
+    "startTime": "2026-07-23T23:51:39.643Z",
+    "endTime": "2026-07-23T23:52:27.242Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 657041,
+     "fullName": "Lane Thomas"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Pop Out",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 657041,
+       "fullName": "Lane Thomas"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 35
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Vinnie Pasquantino walks."
+   },
+   "about": {
+    "atBatIndex": 36,
+    "startTime": "2026-07-23T23:52:28.510Z",
+    "endTime": "2026-07-23T23:54:47.250Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 686469,
+     "fullName": "Vinnie Pasquantino"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 686469,
+       "fullName": "Vinnie Pasquantino"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 36
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Salvador Perez grounds out, third baseman Colt Keith to first baseman Spencer Torkelson."
+   },
+   "about": {
+    "atBatIndex": 37,
+    "startTime": "2026-07-23T23:56:04.229Z",
+    "endTime": "2026-07-23T23:56:14.077Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 521692,
+     "fullName": "Salvador Perez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 521692,
+       "fullName": "Salvador Perez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 37
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Spencer Torkelson called out on strikes."
+   },
+   "about": {
+    "atBatIndex": 38,
+    "startTime": "2026-07-23T23:58:10.533Z",
+    "endTime": "2026-07-23T23:59:22.411Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 679529,
+     "fullName": "Spencer Torkelson"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 679529,
+       "fullName": "Spencer Torkelson"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 38
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Zach McKinstry singles on a ground ball to right fielder Nick Loftin."
+   },
+   "about": {
+    "atBatIndex": 39,
+    "startTime": "2026-07-23T23:59:24.232Z",
+    "endTime": "2026-07-24T00:00:46.053Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 656716,
+     "fullName": "Zach McKinstry"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 656716,
+       "fullName": "Zach McKinstry"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 39
+  },
+  {
+   "result": {
+    "event": "Forceout",
+    "eventType": "force_out",
+    "description": "James Outman grounds into a force out, first baseman Vinnie Pasquantino to shortstop Andrew Velazquez. Zach McKinstry out at 2nd. James Outman to 1st."
+   },
+   "about": {
+    "atBatIndex": 40,
+    "startTime": "2026-07-24T00:00:55.234Z",
+    "endTime": "2026-07-24T00:02:10.537Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 681546,
+     "fullName": "James Outman"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Forceout",
+      "eventType": "force_out",
+      "movementReason": "r_force_out",
+      "runner": {
+       "id": 656716,
+       "fullName": "Zach McKinstry"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Forceout",
+      "eventType": "force_out",
+      "movementReason": null,
+      "runner": {
+       "id": 681546,
+       "fullName": "James Outman"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 40
+  },
+  {
+   "result": {
+    "event": "Caught Stealing 2B",
+    "eventType": "caught_stealing_2b",
+    "description": "Tigers challenged (tag play), call on the field was upheld: James Outman caught stealing 2nd base, catcher Carter Jensen to shortstop Andrew Velazquez."
+   },
+   "about": {
+    "atBatIndex": 41,
+    "startTime": "2026-07-24T00:02:27.424Z",
+    "endTime": "2026-07-24T00:04:48.375Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 805808,
+     "fullName": "Kevin McGonigle"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Caught Stealing 2B",
+      "eventType": "caught_stealing_2b",
+      "movementReason": "r_caught_stealing_2b",
+      "runner": {
+       "id": 681546,
+       "fullName": "James Outman"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 41
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Michael Massey singles on a ground ball to right fielder Kerry Carpenter."
+   },
+   "about": {
+    "atBatIndex": 42,
+    "startTime": "2026-07-24T00:09:19.557Z",
+    "endTime": "2026-07-24T00:09:30.458Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 686681,
+     "fullName": "Michael Massey"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 686681,
+       "fullName": "Michael Massey"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 42
+  },
+  {
+   "result": {
+    "event": "Home Run",
+    "eventType": "home_run",
+    "description": "Isaac Collins homers (6) on a fly ball to right field. Michael Massey scores."
+   },
+   "about": {
+    "atBatIndex": 43,
+    "startTime": "2026-07-24T00:09:31.953Z",
+    "endTime": "2026-07-24T00:11:59.618Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 686555,
+     "fullName": "Isaac Collins"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Home Run",
+      "eventType": "home_run",
+      "movementReason": null,
+      "runner": {
+       "id": 686555,
+       "fullName": "Isaac Collins"
+      },
+      "responsiblePitcher": {
+       "id": 675512
+      },
+      "isScoringEvent": true,
+      "rbi": true,
+      "earned": true,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Home Run",
+      "eventType": "home_run",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 686681,
+       "fullName": "Michael Massey"
+      },
+      "responsiblePitcher": {
+       "id": 675512
+      },
+      "isScoringEvent": true,
+      "rbi": true,
+      "earned": true,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 43
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Josh Rojas flies out to left fielder Zach McKinstry."
+   },
+   "about": {
+    "atBatIndex": 44,
+    "startTime": "2026-07-24T00:14:31.030Z",
+    "endTime": "2026-07-24T00:15:55.920Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 668942,
+     "fullName": "Josh Rojas"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 668942,
+       "fullName": "Josh Rojas"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 44
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Nick Loftin singles on a sharp line drive to center fielder James Outman."
+   },
+   "about": {
+    "atBatIndex": 45,
+    "startTime": "2026-07-24T00:15:57.840Z",
+    "endTime": "2026-07-24T00:17:49.030Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 679845,
+     "fullName": "Nick Loftin"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 679845,
+       "fullName": "Nick Loftin"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 45
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Andrew Velazquez grounds out, third baseman Colt Keith to first baseman Spencer Torkelson. Nick Loftin to 2nd."
+   },
+   "about": {
+    "atBatIndex": 46,
+    "startTime": "2026-07-24T00:17:53.639Z",
+    "endTime": "2026-07-24T00:18:57.406Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 623205,
+     "fullName": "Andrew Velazquez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 623205,
+       "fullName": "Andrew Velazquez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 679845,
+       "fullName": "Nick Loftin"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 46
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Carter Jensen grounds out to first baseman Spencer Torkelson."
+   },
+   "about": {
+    "atBatIndex": 47,
+    "startTime": "2026-07-24T00:19:05.527Z",
+    "endTime": "2026-07-24T00:21:22.946Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 695600,
+     "fullName": "Carter Jensen"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 695600,
+       "fullName": "Carter Jensen"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 47
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Kevin McGonigle flies out to center fielder Lane Thomas."
+   },
+   "about": {
+    "atBatIndex": 48,
+    "startTime": "2026-07-24T00:24:03.503Z",
+    "endTime": "2026-07-24T00:24:14.501Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 805808,
+     "fullName": "Kevin McGonigle"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 805808,
+       "fullName": "Kevin McGonigle"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 48
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Gleyber Torres strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 49,
+    "startTime": "2026-07-24T00:24:23.691Z",
+    "endTime": "2026-07-24T00:26:48.046Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 650402,
+     "fullName": "Gleyber Torres"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 650402,
+       "fullName": "Gleyber Torres"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 49
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Hao-Yu Lee walks."
+   },
+   "about": {
+    "atBatIndex": 50,
+    "startTime": "2026-07-24T00:27:18.959Z",
+    "endTime": "2026-07-24T00:28:51.746Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 701678,
+     "fullName": "Hao-Yu Lee"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 701678,
+       "fullName": "Hao-Yu Lee"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 50
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Riley Greene flies out sharply to center fielder Lane Thomas."
+   },
+   "about": {
+    "atBatIndex": 51,
+    "startTime": "2026-07-24T00:28:53.408Z",
+    "endTime": "2026-07-24T00:30:29.150Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 682985,
+     "fullName": "Riley Greene"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 682985,
+       "fullName": "Riley Greene"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 51
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Lane Thomas grounds out, second baseman Gleyber Torres to first baseman Spencer Torkelson."
+   },
+   "about": {
+    "atBatIndex": 52,
+    "startTime": "2026-07-24T00:33:00.548Z",
+    "endTime": "2026-07-24T00:33:44.213Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 657041,
+     "fullName": "Lane Thomas"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 657041,
+       "fullName": "Lane Thomas"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 52
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Vinnie Pasquantino flies out to center fielder James Outman."
+   },
+   "about": {
+    "atBatIndex": 53,
+    "startTime": "2026-07-24T00:33:48.666Z",
+    "endTime": "2026-07-24T00:35:44.102Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 686469,
+     "fullName": "Vinnie Pasquantino"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 686469,
+       "fullName": "Vinnie Pasquantino"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 53
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Salvador Perez flies out to right fielder Kerry Carpenter."
+   },
+   "about": {
+    "atBatIndex": 54,
+    "startTime": "2026-07-24T00:38:08.604Z",
+    "endTime": "2026-07-24T00:39:13.022Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 521692,
+     "fullName": "Salvador Perez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 521692,
+       "fullName": "Salvador Perez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 54
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Dillon Dingler singles on a line drive to right fielder Nick Loftin."
+   },
+   "about": {
+    "atBatIndex": 55,
+    "startTime": "2026-07-24T00:41:59.125Z",
+    "endTime": "2026-07-24T00:42:28.172Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 693307,
+     "fullName": "Dillon Dingler"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 693307,
+       "fullName": "Dillon Dingler"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 55
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Kerry Carpenter singles on a line drive to right fielder Nick Loftin. Dillon Dingler to 3rd."
+   },
+   "about": {
+    "atBatIndex": 56,
+    "startTime": "2026-07-24T00:42:31.023Z",
+    "endTime": "2026-07-24T00:43:22.447Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 681481,
+     "fullName": "Kerry Carpenter"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 681481,
+       "fullName": "Kerry Carpenter"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 693307,
+       "fullName": "Dillon Dingler"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 693307,
+       "fullName": "Dillon Dingler"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 56
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Spencer Torkelson strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 57,
+    "startTime": "2026-07-24T00:43:36.165Z",
+    "endTime": "2026-07-24T00:45:37.506Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 679529,
+     "fullName": "Spencer Torkelson"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 679529,
+       "fullName": "Spencer Torkelson"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 57
+  },
+  {
+   "result": {
+    "event": "Lineout",
+    "eventType": "field_out",
+    "description": "Zach McKinstry lines out to shortstop Andrew Velazquez."
+   },
+   "about": {
+    "atBatIndex": 58,
+    "startTime": "2026-07-24T00:45:39.658Z",
+    "endTime": "2026-07-24T00:46:13.347Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 656716,
+     "fullName": "Zach McKinstry"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Lineout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 656716,
+       "fullName": "Zach McKinstry"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 58
+  },
+  {
+   "result": {
+    "event": "Home Run",
+    "eventType": "home_run",
+    "description": "James Outman homers (4) on a fly ball to right center field. Dillon Dingler scores. Kerry Carpenter scores."
+   },
+   "about": {
+    "atBatIndex": 59,
+    "startTime": "2026-07-24T00:46:19.965Z",
+    "endTime": "2026-07-24T00:48:40.587Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 681546,
+     "fullName": "James Outman"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Home Run",
+      "eventType": "home_run",
+      "movementReason": null,
+      "runner": {
+       "id": 681546,
+       "fullName": "James Outman"
+      },
+      "responsiblePitcher": {
+       "id": 670167
+      },
+      "isScoringEvent": true,
+      "rbi": true,
+      "earned": true,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Home Run",
+      "eventType": "home_run",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 693307,
+       "fullName": "Dillon Dingler"
+      },
+      "responsiblePitcher": {
+       "id": 670167
+      },
+      "isScoringEvent": true,
+      "rbi": true,
+      "earned": true,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Home Run",
+      "eventType": "home_run",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 681481,
+       "fullName": "Kerry Carpenter"
+      },
+      "responsiblePitcher": {
+       "id": 670167
+      },
+      "isScoringEvent": true,
+      "rbi": true,
+      "earned": true,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 59
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Kevin McGonigle singles on a line drive to left fielder Isaac Collins. Kevin McGonigle out at 2nd on the throw, left fielder Isaac Collins to second baseman Michael Massey."
+   },
+   "about": {
+    "atBatIndex": 60,
+    "startTime": "2026-07-24T00:48:28.492Z",
+    "endTime": "2026-07-24T00:50:28.136Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 805808,
+     "fullName": "Kevin McGonigle"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 805808,
+       "fullName": "Kevin McGonigle"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Runner Out",
+      "eventType": "other_out",
+      "movementReason": "r_out_stretching",
+      "runner": {
+       "id": 805808,
+       "fullName": "Kevin McGonigle"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_assist_of"
+      },
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 60
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Michael Massey singles on a ground ball to right fielder Kerry Carpenter."
+   },
+   "about": {
+    "atBatIndex": 61,
+    "startTime": "2026-07-24T00:53:12.439Z",
+    "endTime": "2026-07-24T00:54:06.129Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 686681,
+     "fullName": "Michael Massey"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 686681,
+       "fullName": "Michael Massey"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 61
+  },
+  {
+   "result": {
+    "event": "Bunt Lineout",
+    "eventType": "field_out",
+    "description": "Isaac Collins bunt lines out to third baseman Hao-Yu Lee."
+   },
+   "about": {
+    "atBatIndex": 62,
+    "startTime": "2026-07-24T00:54:37.979Z",
+    "endTime": "2026-07-24T00:55:22.351Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 686555,
+     "fullName": "Isaac Collins"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Bunt Lineout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 686555,
+       "fullName": "Isaac Collins"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 62
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Josh Rojas singles on a line drive to center fielder James Outman. Tyler Tolbert scores."
+   },
+   "about": {
+    "atBatIndex": 63,
+    "startTime": "2026-07-24T00:55:38.961Z",
+    "endTime": "2026-07-24T00:57:24.738Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 668942,
+     "fullName": "Josh Rojas"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Stolen Base 2B",
+      "eventType": "stolen_base_2b",
+      "movementReason": "r_stolen_base_2b",
+      "runner": {
+       "id": 686475,
+       "fullName": "Tyler Tolbert"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Wild Pitch",
+      "eventType": "wild_pitch",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 686475,
+       "fullName": "Tyler Tolbert"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 668942,
+       "fullName": "Josh Rojas"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 686475,
+       "fullName": "Tyler Tolbert"
+      },
+      "responsiblePitcher": {
+       "id": 623454
+      },
+      "isScoringEvent": true,
+      "rbi": true,
+      "earned": true,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 63
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Nick Loftin flies out to right fielder Kerry Carpenter."
+   },
+   "about": {
+    "atBatIndex": 64,
+    "startTime": "2026-07-24T00:57:26.754Z",
+    "endTime": "2026-07-24T00:58:47.681Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 679845,
+     "fullName": "Nick Loftin"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 679845,
+       "fullName": "Nick Loftin"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 64
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Andrew Velazquez called out on strikes."
+   },
+   "about": {
+    "atBatIndex": 65,
+    "startTime": "2026-07-24T00:58:47.296Z",
+    "endTime": "2026-07-24T01:01:04.813Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 623205,
+     "fullName": "Andrew Velazquez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 623205,
+       "fullName": "Andrew Velazquez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 65
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Gleyber Torres strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 66,
+    "startTime": "2026-07-24T01:03:47.632Z",
+    "endTime": "2026-07-24T01:05:39.846Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 650402,
+     "fullName": "Gleyber Torres"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 650402,
+       "fullName": "Gleyber Torres"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 9
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 66
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Hao-Yu Lee singles on a ground ball to center fielder Lane Thomas."
+   },
+   "about": {
+    "atBatIndex": 67,
+    "startTime": "2026-07-24T01:05:43.189Z",
+    "endTime": "2026-07-24T01:07:19.045Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 701678,
+     "fullName": "Hao-Yu Lee"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 701678,
+       "fullName": "Hao-Yu Lee"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 67
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Riley Greene grounds out, second baseman Nick Loftin to first baseman Vinnie Pasquantino. Hao-Yu Lee to 2nd."
+   },
+   "about": {
+    "atBatIndex": 68,
+    "startTime": "2026-07-24T01:08:08.953Z",
+    "endTime": "2026-07-24T01:08:18.594Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 682985,
+     "fullName": "Riley Greene"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 682985,
+       "fullName": "Riley Greene"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 701678,
+       "fullName": "Hao-Yu Lee"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 68
+  },
+  {
+   "result": {
+    "event": "Double",
+    "eventType": "double",
+    "description": "Dillon Dingler doubles (22) on a sharp ground ball to left fielder Isaac Collins. Hao-Yu Lee scores."
+   },
+   "about": {
+    "atBatIndex": 69,
+    "startTime": "2026-07-24T01:08:25.454Z",
+    "endTime": "2026-07-24T01:10:27.781Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 693307,
+     "fullName": "Dillon Dingler"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Double",
+      "eventType": "double",
+      "movementReason": null,
+      "runner": {
+       "id": 693307,
+       "fullName": "Dillon Dingler"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Double",
+      "eventType": "double",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 701678,
+       "fullName": "Hao-Yu Lee"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Double",
+      "eventType": "double",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 701678,
+       "fullName": "Hao-Yu Lee"
+      },
+      "responsiblePitcher": {
+       "id": 674444
+      },
+      "isScoringEvent": true,
+      "rbi": true,
+      "earned": true,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 69
+  },
+  {
+   "result": {
+    "event": "Field Error",
+    "eventType": "field_error",
+    "description": "Kerry Carpenter reaches on a fielding error by first baseman Vinnie Pasquantino. Dillon Dingler to 3rd."
+   },
+   "about": {
+    "atBatIndex": 70,
+    "startTime": "2026-07-24T01:10:46.744Z",
+    "endTime": "2026-07-24T01:13:54.583Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 681481,
+     "fullName": "Kerry Carpenter"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Field Error",
+      "eventType": "field_error",
+      "movementReason": null,
+      "runner": {
+       "id": 681481,
+       "fullName": "Kerry Carpenter"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 8
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_fielding_error"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Field Error",
+      "eventType": "field_error",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 693307,
+       "fullName": "Dillon Dingler"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 8
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 70
+  },
+  {
+   "result": {
+    "event": "Pop Out",
+    "eventType": "field_out",
+    "description": "Spencer Torkelson pops out to shortstop Andrew Velazquez."
+   },
+   "about": {
+    "atBatIndex": 71,
+    "startTime": "2026-07-24T01:15:04.348Z",
+    "endTime": "2026-07-24T01:16:18.115Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 679529,
+     "fullName": "Spencer Torkelson"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Pop Out",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 679529,
+       "fullName": "Spencer Torkelson"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 71
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Carter Jensen strikes out on a foul tip."
+   },
+   "about": {
+    "atBatIndex": 72,
+    "startTime": "2026-07-24T01:19:03.254Z",
+    "endTime": "2026-07-24T01:20:22.776Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 695600,
+     "fullName": "Carter Jensen"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 695600,
+       "fullName": "Carter Jensen"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 72
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Lane Thomas walks."
+   },
+   "about": {
+    "atBatIndex": 73,
+    "startTime": "2026-07-24T01:20:25.977Z",
+    "endTime": "2026-07-24T01:22:05.441Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 657041,
+     "fullName": "Lane Thomas"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 657041,
+       "fullName": "Lane Thomas"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 73
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Vinnie Pasquantino singles on a ground ball to right fielder Matt Vierling. Lane Thomas to 2nd."
+   },
+   "about": {
+    "atBatIndex": 74,
+    "startTime": "2026-07-24T01:22:18.174Z",
+    "endTime": "2026-07-24T01:22:39.098Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 686469,
+     "fullName": "Vinnie Pasquantino"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 686469,
+       "fullName": "Vinnie Pasquantino"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 657041,
+       "fullName": "Lane Thomas"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 74
+  },
+  {
+   "result": {
+    "event": "Grounded Into DP",
+    "eventType": "grounded_into_double_play",
+    "description": "Salvador Perez grounds into a double play, first baseman Spencer Torkelson to shortstop Kevin McGonigle to pitcher Kyle Finnegan. Vinnie Pasquantino out at 2nd. Salvador Perez out at 1st."
+   },
+   "about": {
+    "atBatIndex": 75,
+    "startTime": "2026-07-24T01:25:33.452Z",
+    "endTime": "2026-07-24T01:26:04.706Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 521692,
+     "fullName": "Salvador Perez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Grounded Into DP",
+      "eventType": "grounded_into_double_play",
+      "movementReason": "r_force_out",
+      "runner": {
+       "id": 686469,
+       "fullName": "Vinnie Pasquantino"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Grounded Into DP",
+      "eventType": "grounded_into_double_play",
+      "movementReason": null,
+      "runner": {
+       "id": 521692,
+       "fullName": "Salvador Perez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "1"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 75
+  }
+ ]
+}

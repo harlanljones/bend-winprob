@@ -1,0 +1,139 @@
+{
+ "copyright": "Copyright 2026 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt",
+ "stats": [
+  {
+   "type": {
+    "displayName": "season"
+   },
+   "group": {
+    "displayName": "hitting"
+   },
+   "exemptions": [],
+   "splits": [
+    {
+     "season": "2026",
+     "stat": {
+      "gamesPlayed": 162,
+      "groundOuts": 1454,
+      "airOuts": 1573,
+      "runs": 648,
+      "doubles": 259,
+      "triples": 8,
+      "homeRuns": 152,
+      "strikeOuts": 1149,
+      "baseOnBalls": 459,
+      "intentionalWalks": 15,
+      "hits": 1346,
+      "hitByPitch": 60,
+      "avg": ".247",
+      "atBats": 5447,
+      "obp": ".310",
+      "slg": ".381",
+      "ops": ".691",
+      "caughtStealing": 17,
+      "stolenBases": 75,
+      "stolenBasePercentage": ".815",
+      "caughtStealingPercentage": ".185",
+      "groundIntoDoublePlay": 129,
+      "numberOfPitches": 23034,
+      "plateAppearances": 6044,
+      "totalBases": 2077,
+      "rbi": 615,
+      "leftOnBase": 1106,
+      "sacBunts": 24,
+      "sacFlies": 50,
+      "babip": ".285",
+      "groundOutsToAirouts": "0.92",
+      "catchersInterference": 3,
+      "atBatsPerHomeRun": "35.84"
+     },
+     "team": {
+      "id": 141,
+      "name": "Toronto Blue Jays",
+      "link": "/api/v1/teams/141"
+     }
+    }
+   ]
+  },
+  {
+   "type": {
+    "displayName": "season"
+   },
+   "group": {
+    "displayName": "pitching"
+   },
+   "exemptions": [],
+   "splits": [
+    {
+     "season": "2026",
+     "stat": {
+      "gamesPlayed": 162,
+      "gamesStarted": 162,
+      "groundOuts": 1337,
+      "airOuts": 1444,
+      "runs": 694,
+      "doubles": 211,
+      "triples": 11,
+      "homeRuns": 167,
+      "strikeOuts": 1410,
+      "baseOnBalls": 594,
+      "intentionalWalks": 34,
+      "hits": 1264,
+      "hitByPitch": 44,
+      "avg": ".235",
+      "atBats": 5383,
+      "obp": ".314",
+      "slg": ".371",
+      "ops": ".685",
+      "caughtStealing": 46,
+      "stolenBases": 145,
+      "stolenBasePercentage": ".759",
+      "caughtStealingPercentage": ".241",
+      "groundIntoDoublePlay": 92,
+      "numberOfPitches": 24029,
+      "era": "3.90",
+      "inningsPitched": "1436.0",
+      "wins": 79,
+      "losses": 83,
+      "saves": 52,
+      "saveOpportunities": 69,
+      "holds": 106,
+      "blownSaves": 17,
+      "earnedRuns": 622,
+      "whip": "1.29",
+      "battersFaced": 6097,
+      "outs": 4308,
+      "gamesPitched": 162,
+      "completeGames": 1,
+      "shutouts": 11,
+      "strikes": 15268,
+      "strikePercentage": ".640",
+      "hitBatsmen": 44,
+      "balks": 10,
+      "wildPitches": 49,
+      "pickoffs": 5,
+      "totalBases": 1998,
+      "groundOutsToAirouts": "0.93",
+      "winPercentage": ".488",
+      "pitchesPerInning": "16.73",
+      "gamesFinished": 161,
+      "strikeoutWalkRatio": "2.37",
+      "strikeoutsPer9Inn": "8.84",
+      "walksPer9Inn": "3.72",
+      "hitsPer9Inn": "7.92",
+      "runsScoredPer9": "4.35",
+      "homeRunsPer9": "1.05",
+      "catchersInterference": 4,
+      "sacBunts": 27,
+      "sacFlies": 45
+     },
+     "team": {
+      "id": 141,
+      "name": "Toronto Blue Jays",
+      "link": "/api/v1/teams/141"
+     }
+    }
+   ]
+  }
+ ]
+}

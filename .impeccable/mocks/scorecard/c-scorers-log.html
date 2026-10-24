@@ -1,0 +1,65 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>C · Scorer's Log</title>
+<link rel="stylesheet" href="book.css">
+<script src="book.js"></script>
+<style>
+  /* The scorer's play-by-play notes page: every plate appearance in order, grouped by half-inning,
+     with the situation it left and what it did to each side's number. */
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 14px; align-items: start; }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; border: 1px solid var(--print); table-layout: fixed; }
+  th, td { border-bottom: 1px solid var(--print-rule); padding: 0 6px; }
+  col.no { width: 26px; } col.bat { width: 98px; } col.box { width: 92px; } col.sit { width: 64px; } col.n { width: 46px; } col.sw { width: 58px; }
+  thead th { height: 24px; background: var(--print-tint); font: 700 11px/1 var(--narrow); text-transform: uppercase; letter-spacing: 0.08em; color: var(--print); text-align: center; }
+  thead th.l { text-align: left; }
+  tr.half td { height: 30px; background: var(--print-tint); border-top: 1px solid var(--print); border-bottom: 1px solid var(--print); }
+  tr.half .inn { font: 700 13px/1 var(--narrow); text-transform: uppercase; letter-spacing: 0.08em; color: var(--print); }
+  tr.half .inn b { color: var(--graphite); font-weight: 700; margin-left: 6px; }
+  tr.half .sum { float: right; font: 500 16px/30px var(--hand); }
+  tr.half .sum span { font: 400 10px/1 var(--narrow); text-transform: uppercase; letter-spacing: 0.06em; color: var(--print); margin: 0 2px 0 8px; }
+  td { height: 36px; vertical-align: middle; }
+  td.no { font: 700 11px/1 var(--narrow); color: var(--print); text-align: right; padding-right: 2px; }
+  td.bat { font: 500 18px/1 var(--hand); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  td.box { position: relative; }
+  td.box .dia { position: absolute; left: 4px; top: 3px; width: 30px; height: 30px; }
+  td.box .play { position: absolute; left: 40px; top: 10px; text-align: left; font-size: 17px; }
+  td.box .play.two, td.box .play.long { font-size: 14px; top: 11px; }
+  td.sit { position: relative; }
+  td.sit .sit { position: absolute; left: 4px; top: 4px; width: 34px; height: 24px; }
+  td.sit .outs { position: absolute; left: 40px; top: 12px; display: flex; gap: 2px; }
+  td.sit .outs i { width: 6px; height: 6px; border-radius: 50%; border: 1px solid var(--graphite); }
+  td.sit .outs i.on { background: var(--graphite); }
+  td.n { text-align: right; font: 400 12px/1 var(--narrow); color: var(--print); }
+  td.n.b { font: 700 17px/1 var(--hand); color: var(--graphite); }
+  td.sw { text-align: right; font: 700 16px/1 var(--hand); position: relative; }
+  td.sw.big span { position: relative; padding: 2px 4px; }
+  td.sw.big span::after { content: ""; position: absolute; inset: -3px -2px; border: 1.6px solid var(--graphite); border-radius: 50%; transform: rotate(-6deg); }
+  tr.now td { box-shadow: inset 0 2px 0 var(--red), inset 0 -2px 0 var(--red); }
+  tr.now td:first-child { box-shadow: inset 2px 2px 0 var(--red), inset 0 -2px 0 var(--red); }
+  tr.now td:last-child { box-shadow: inset -2px 2px 0 var(--red), inset 0 -2px 0 var(--red); }
+</style>
+<div class="page">
+  <div class="mast"><h1>Scorer's Log</h1><span class="meta">C · LAD @ MIL · NLCS Game 1 · gamePk 849809</span></div>
+  <div class="cols"><table id="early"></table><table id="late"></table></div>
+  <p class="foot-note">Every plate appearance in order. <span class="hand">The play</span> with the batter's trip, the situation it left (bases, outs), then the home side's win number after it: <span class="hand">Bend</span>, MLB, the market median. <span class="hand">Swing</span> is what the play did to the batting side's chances by Bend's count; the scorer circles any swing of 8 points or more. Each half-inning heading carries its R · H · LOB.</p>
+</div>
+<script>
+Book.load().then(({ plays, halves }) => {
+  const last = plays[plays.length - 1];
+  const abbr = { away: "LAD", home: "MIL" };
+  const head = `<colgroup><col class="no"><col class="bat"><col class="box"><col class="sit"><col class="n"><col class="n"><col class="n"><col class="sw"></colgroup>`
+    + `<thead><tr><th></th><th class="l">Batter</th><th class="l">Play</th><th class="l">After</th><th>Bend</th><th>MLB</th><th>Mkt</th><th>Swing</th></tr></thead>`;
+  const body = hs => hs.map(h => `<tr class="half"><td colspan="8"><span class="inn">${h.side === "away" ? "Top" : "Bottom"} ${h.inning}<b>${abbr[h.side]}</b></span>`
+      + `<span class="sum"><span>R</span>${h.r}<span>H</span>${h.h}<span>LOB</span>${h.lob ?? "–"}</span></td></tr>`
+      + h.plays.map(p => {
+        const outs = Math.min(p.half.plays.slice(0, p.half.plays.indexOf(p) + 1).reduce((n, q) => Math.max(n, q.outNo), 0), 3);
+        const big = p.swing !== null && Math.abs(p.swing) >= 8;
+        return `<tr class="${p === last ? "now" : ""}"><td class="no">${p.slot}</td><td class="bat">${Book.esc(p.batter)}</td>`
+          + `<td class="box">${Book.diamond(p.reached)}<span class="play${Book.playClass(p.play)}">${Book.playHtml(p.play).replace("<br>", " ")}</span></td>`
+          + `<td class="sit">${Book.bases(outs >= 3 ? "---" : p.basesAfter)}<span class="outs">${[1, 2, 3].map(k => `<i class="${k <= outs ? "on" : ""}"></i>`).join("")}</span></td>`
+          + `<td class="n b">${Book.f1(p.bend)}</td><td class="n">${Book.f1(p.mlb)}</td><td class="n">${Book.f1(p.mk)}</td>`
+          + `<td class="sw${big ? " big" : ""}"><span>${Book.signed(p.swing)}</span></td></tr>`;
+      }).join("")).join("");
+  document.getElementById("early").innerHTML = head + `<tbody>${body(halves.filter(h => h.inning <= 5))}</tbody>`;
+  document.getElementById("late").innerHTML = head + `<tbody>${body(halves.filter(h => h.inning > 5))}</tbody>`;
+});
+</script>
+</html>

@@ -1,0 +1,397 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-24T01:33:56Z",
+  "title": "Design System: Bend vs MLB",
+  "extensions": {
+    "colorMeta": {
+      "stock": {
+        "role": "neutral",
+        "displayName": "Buff Stock",
+        "canonical": "#efe6d2",
+        "tonalRamp": [
+          "oklch(15% 0.028 87)",
+          "oklch(25% 0.028 87)",
+          "oklch(35% 0.028 87)",
+          "oklch(45% 0.028 87)",
+          "oklch(55% 0.028 87)",
+          "oklch(65% 0.028 87)",
+          "oklch(80% 0.028 87)",
+          "oklch(95% 0.028 87)"
+        ]
+      },
+      "stock-deep": {
+        "role": "neutral",
+        "displayName": "Deep Stock",
+        "canonical": "#e6dbc2",
+        "tonalRamp": [
+          "oklch(15% 0.035 87)",
+          "oklch(25% 0.035 87)",
+          "oklch(35% 0.035 87)",
+          "oklch(45% 0.035 87)",
+          "oklch(55% 0.035 87)",
+          "oklch(65% 0.035 87)",
+          "oklch(80% 0.035 87)",
+          "oklch(95% 0.035 87)"
+        ]
+      },
+      "print": {
+        "role": "primary",
+        "displayName": "Scorebook Teal",
+        "canonical": "#275f55",
+        "tonalRamp": [
+          "oklch(15% 0.061 180)",
+          "oklch(25% 0.061 180)",
+          "oklch(35% 0.061 180)",
+          "oklch(45% 0.061 180)",
+          "oklch(55% 0.061 180)",
+          "oklch(65% 0.061 180)",
+          "oklch(80% 0.061 180)",
+          "oklch(95% 0.061 180)"
+        ]
+      },
+      "print-tint": {
+        "role": "primary",
+        "displayName": "Teal Tint",
+        "canonical": "rgba(39, 95, 85, 0.09)",
+        "tonalRamp": [
+          "oklch(15% 0.061 180)",
+          "oklch(25% 0.061 180)",
+          "oklch(35% 0.061 180)",
+          "oklch(45% 0.061 180)",
+          "oklch(55% 0.061 180)",
+          "oklch(65% 0.061 180)",
+          "oklch(80% 0.061 180)",
+          "oklch(95% 0.061 180)"
+        ]
+      },
+      "print-rule": {
+        "role": "primary",
+        "displayName": "Teal Rule",
+        "canonical": "rgba(39, 95, 85, 0.55)",
+        "tonalRamp": [
+          "oklch(15% 0.061 180)",
+          "oklch(25% 0.061 180)",
+          "oklch(35% 0.061 180)",
+          "oklch(45% 0.061 180)",
+          "oklch(55% 0.061 180)",
+          "oklch(65% 0.061 180)",
+          "oklch(80% 0.061 180)",
+          "oklch(95% 0.061 180)"
+        ]
+      },
+      "graphite": {
+        "role": "neutral",
+        "displayName": "Graphite",
+        "canonical": "#1d1d1b",
+        "tonalRamp": [
+          "oklch(15% 0.004 107)",
+          "oklch(25% 0.004 107)",
+          "oklch(35% 0.004 107)",
+          "oklch(45% 0.004 107)",
+          "oklch(55% 0.004 107)",
+          "oklch(65% 0.004 107)",
+          "oklch(80% 0.004 107)",
+          "oklch(95% 0.004 107)"
+        ]
+      },
+      "graphite-soft": {
+        "role": "neutral",
+        "displayName": "Soft Graphite",
+        "canonical": "#55544c",
+        "tonalRamp": [
+          "oklch(15% 0.013 101)",
+          "oklch(25% 0.013 101)",
+          "oklch(35% 0.013 101)",
+          "oklch(45% 0.013 101)",
+          "oklch(55% 0.013 101)",
+          "oklch(65% 0.013 101)",
+          "oklch(80% 0.013 101)",
+          "oklch(95% 0.013 101)"
+        ]
+      },
+      "red": {
+        "role": "secondary",
+        "displayName": "Red Pencil",
+        "canonical": "#b3362b",
+        "tonalRamp": [
+          "oklch(15% 0.163 29)",
+          "oklch(25% 0.163 29)",
+          "oklch(35% 0.163 29)",
+          "oklch(45% 0.163 29)",
+          "oklch(55% 0.163 29)",
+          "oklch(65% 0.163 29)",
+          "oklch(80% 0.163 29)",
+          "oklch(95% 0.163 29)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The masthead h1 only (Official Scorebook)."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section heads on the back of the card, between a 2px and a 1px rule."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Step titles in the printed instructions."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Printed prose at 72ch."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Figure and diagram captions, footnotes, tally sub-line."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Field labels, table heads, nav, footer, tabs, buttons, summaries: uppercase, tracked, teal."
+      },
+      "hand": {
+        "displayName": "Keeper's Hand",
+        "purpose": "Only what a scorekeeper writes during the game: outs, runs, win numbers, the running note, proven."
+      },
+      "hand-tally": {
+        "displayName": "Hand Tally",
+        "purpose": "The single large pencilled Bend number in the keeper's margin."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Reproduce commands and verbatim Bend source."
+      }
+    },
+    "shadows": [],
+    "elevationNote": "Flat. The only box-shadows in the build are a stock-coloured hairline under the selected tab (0 1px 0 var(--stock)) and the sticky slot column's inset -1px 0 0 var(--print-rule); both are rules, not elevation.",
+    "rules": [
+      {
+        "name": "rule-page",
+        "value": "3px solid var(--print)",
+        "purpose": "Masthead top and footer top: the page edge."
+      },
+      {
+        "name": "rule-section",
+        "value": "2px solid var(--print)",
+        "purpose": "Top of each back-of-card section head."
+      },
+      {
+        "name": "rule-row",
+        "value": "1px solid var(--print)",
+        "purpose": "Masthead bottom, fields bottom, margin top, grid frame."
+      },
+      {
+        "name": "rule-interior",
+        "value": "1px solid var(--print-rule)",
+        "purpose": "Every interior table and grid cell border; figure and rest-of-margin separators."
+      },
+      {
+        "name": "rule-pencil",
+        "value": "2px solid var(--red)",
+        "purpose": "Selected tab underline, dead feed strike-through."
+      }
+    ],
+    "motion": [
+      {
+        "name": "draw-pen",
+        "value": "900ms cubic-bezier(0.16, 1, 0.3, 1) both",
+        "purpose": "The red pencil outline draws itself when the latest play moves to a new cell (stroke-dashoffset 1\u21920 with pathLength=1); disabled under prefers-reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "stack",
+        "value": "1160px",
+        "purpose": "Spread collapses to one column: lead, sheet, rest."
+      },
+      {
+        "name": "phone",
+        "value": "720px",
+        "purpose": "Masthead one column; cells 72\u00d758; hand sizes step down; slot column sticky."
+      }
+    ],
+    "focus": {
+      "value": "2px solid var(--red); outline-offset: 2px",
+      "purpose": "Global :focus-visible, red pencil."
+    },
+    "selection": {
+      "value": "background var(--print); color var(--stock)"
+    },
+    "fonts": [
+      {
+        "family": "Archivo Narrow",
+        "src": "/fonts/ArchivoNarrow.woff2",
+        "weights": "400 700"
+      },
+      {
+        "family": "Archivo",
+        "src": "/fonts/Archivo.woff2",
+        "weights": "400 600"
+      },
+      {
+        "family": "Caveat",
+        "src": "/fonts/Caveat.woff2",
+        "weights": "400 700"
+      }
+    ],
+    "pele": {
+      "--pele-bg": "var(--stock)",
+      "--pele-fg": "var(--print)",
+      "--pele-muted": "var(--print)",
+      "--pele-line": "var(--print)",
+      "--pele-surface": "var(--stock)",
+      "--pele-surface-alt": "var(--print-tint)",
+      "--pele-border": "var(--print)",
+      "--pele-accent": "var(--graphite)",
+      "--pele-critical": "var(--red)",
+      "--pele-error": "var(--red)",
+      "--pele-font": "var(--narrow)",
+      "--pele-font-mono": "var(--mono)",
+      "--pele-radius": "0",
+      "--pele-series-1": "var(--graphite)",
+      "--pele-series-2": "var(--print)",
+      "--pele-title-weight": "700",
+      "--pele-heading-weight": "700"
+    }
+  },
+  "components": [
+    {
+      "name": "Primary Action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one teal-filled stamp on the card: Reproduce this card.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#reproduce\">Reproduce this card</a>",
+      "css": ".ds-btn-primary { display: inline-block; padding: 7px 14px; background: var(--print, #275f55); color: var(--stock, #efe6d2); font: 700 13px/1 \"Archivo Narrow\", \"Arial Narrow\", sans-serif; text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; border-radius: 0; } .ds-btn-primary:hover { background: var(--graphite, #1d1d1b); } .ds-btn-primary:focus-visible { outline: 2px solid var(--red, #b3362b); outline-offset: 2px; }"
+    },
+    {
+      "name": "Quiet Action",
+      "kind": "button",
+      "refersTo": "button-quiet",
+      "description": "Printed label with a teal bottom rule; Source, Raw CSV, Meta beside the primary.",
+      "html": "<a class=\"ds-btn-quiet\" href=\"#\">Raw CSV</a>",
+      "css": ".ds-btn-quiet { display: inline-block; font: 700 12px/1 \"Archivo Narrow\", \"Arial Narrow\", sans-serif; text-transform: uppercase; letter-spacing: 0.1em; color: var(--print, #275f55); text-decoration: none; border-bottom: 1px solid var(--print, #275f55); padding-bottom: 2px; } .ds-btn-quiet:hover { color: var(--graphite, #1d1d1b); } .ds-btn-quiet:focus-visible { outline: 2px solid var(--red, #b3362b); outline-offset: 2px; }"
+    },
+    {
+      "name": "Page Tab",
+      "kind": "nav",
+      "refersTo": "tab",
+      "description": "Edge tab of the scorecard page; the selected tab joins the page and carries a red pencil line.",
+      "html": "<div class=\"ds-tabs\" role=\"tablist\"><button type=\"button\" role=\"tab\" class=\"ds-tab\" aria-selected=\"true\">Away</button><button type=\"button\" role=\"tab\" class=\"ds-tab\" aria-selected=\"false\">Home</button><span class=\"ds-pageof\">page 1 of 2 \u00b7 flips with the half-inning</span></div>",
+      "css": ".ds-tabs { display: flex; align-items: flex-end; gap: 6px; background: var(--stock, #efe6d2); padding-top: 4px; border-bottom: 1px solid var(--print, #275f55); } .ds-tab { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px 4px; border: 1px solid var(--print-rule, rgba(39, 95, 85, 0.55)); border-bottom: 0; background: var(--print-tint, rgba(39, 95, 85, 0.09)); font: 700 13px/1.2 \"Archivo Narrow\", \"Arial Narrow\", sans-serif; text-transform: uppercase; letter-spacing: 0.06em; color: var(--print, #275f55); } .ds-tab:hover { background: var(--stock-deep, #e6dbc2); color: var(--graphite, #1d1d1b); } .ds-tab[aria-selected=\"true\"] { background: var(--stock, #efe6d2); color: var(--graphite, #1d1d1b); border-color: var(--print, #275f55); box-shadow: 0 1px 0 var(--stock, #efe6d2); position: relative; } .ds-tab[aria-selected=\"true\"]::after { content: \"\"; position: absolute; left: 10px; right: 10px; bottom: 3px; height: 2px; background: var(--red, #b3362b); } .ds-tab:focus-visible { outline: 2px solid var(--red, #b3362b); outline-offset: 2px; } .ds-pageof { margin-left: auto; font: 400 12px/1.4 \"Archivo Narrow\", \"Arial Narrow\", sans-serif; text-transform: uppercase; letter-spacing: 0.06em; color: var(--print, #275f55); }"
+    },
+    {
+      "name": "Masthead Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Uppercase condensed section links; hover draws a 1px teal rule.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\">Reproduce</a><a href=\"#\">How it is kept</a><a href=\"#\">Proof of box score</a><a href=\"#\">Season</a><a href=\"#\">Source</a></nav>",
+      "css": ".ds-nav { display: flex; flex-wrap: wrap; gap: 4px 18px; font: 700 12.5px/1.6 \"Archivo Narrow\", \"Arial Narrow\", sans-serif; text-transform: uppercase; letter-spacing: 0.08em; } .ds-nav a { text-decoration: none; color: var(--print, #275f55); border-bottom: 1px solid transparent; } .ds-nav a:hover, .ds-nav a:focus-visible { border-bottom-color: var(--print, #275f55); } .ds-nav a:focus-visible { outline: 2px solid var(--red, #b3362b); outline-offset: 2px; }"
+    },
+    {
+      "name": "Game Field",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "Printed label over a pencilled value; the stale state turns the pencil red.",
+      "html": "<dl class=\"ds-fields\"><div><dt>Game</dt><dd>gamePk 849809</dd></div><div><dt>Date</dt><dd>2026-10-23</dd></div><div><dt>Feed</dt><dd class=\"ds-stale\">stale 41 s</dd></div></dl>",
+      "css": ".ds-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); border-bottom: 1px solid var(--print, #275f55); margin: 0; } .ds-fields div { padding: 8px 10px 6px 0; border-right: 1px solid var(--print-rule, rgba(39, 95, 85, 0.55)); margin-right: 10px; min-width: 0; } .ds-fields div:last-child { border-right: 0; } .ds-fields dt { font: 700 11px/1.2 \"Archivo Narrow\", \"Arial Narrow\", sans-serif; text-transform: uppercase; letter-spacing: 0.1em; color: var(--print, #275f55); } .ds-fields dd { margin: 2px 0 0; font: 500 21px/1.1 \"Caveat\", \"Segoe Print\", cursive; color: var(--graphite, #1d1d1b); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .ds-fields dd.ds-stale { color: var(--red, #b3362b); }"
+    },
+    {
+      "name": "Ruled Table",
+      "kind": "card",
+      "refersTo": "table-head",
+      "description": "The card's ruled grid: tinted condensed header, 1px teal rules, tabular figures right-aligned.",
+      "html": "<table class=\"ds-table\"><thead><tr><th>Game</th><th class=\"num\">Plays</th><th class=\"num\">Bend Brier</th><th class=\"num\">MLB Brier</th></tr></thead><tbody><tr><td>849809</td><td class=\"num\">70</td><td class=\"num ds-up\">0.031</td><td class=\"num\">0.048</td></tr><tr><td>849805</td><td class=\"num\">75</td><td class=\"num ds-down\">0.121</td><td class=\"num\">0.118</td></tr></tbody></table>",
+      "css": ".ds-table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; font: 400 14px/1.5 \"Archivo\", system-ui, sans-serif; color: var(--graphite, #1d1d1b); } .ds-table th, .ds-table td { border: 1px solid var(--print-rule, rgba(39, 95, 85, 0.55)); padding: 6px 10px; text-align: left; vertical-align: top; } .ds-table thead th { font: 700 11px/1.3 \"Archivo Narrow\", \"Arial Narrow\", sans-serif; text-transform: uppercase; letter-spacing: 0.1em; color: var(--print, #275f55); background: var(--print-tint, rgba(39, 95, 85, 0.09)); } .ds-table .num { text-align: right; white-space: nowrap; } .ds-table .ds-up { color: var(--print, #275f55); } .ds-table .ds-down { color: var(--graphite, #1d1d1b); font-weight: 600; }"
+    },
+    {
+      "name": "Reproduce Block",
+      "kind": "custom",
+      "refersTo": "pre-block",
+      "description": "Commands and verbatim Bend source, printed on a teal tint inside a 1px rule.",
+      "html": "<pre class=\"ds-pre\"><code>bend PROOF.bend\npython3 sim_engine.py --pk 849809\npython3 bench.py</code></pre>",
+      "css": ".ds-pre { margin: 0; padding: 10px 14px; overflow-x: auto; border: 1px solid var(--print-rule, rgba(39, 95, 85, 0.55)); background: var(--print-tint, rgba(39, 95, 85, 0.09)); font: 12.5px/1.5 ui-monospace, \"SF Mono\", Menlo, Consolas, monospace; color: var(--graphite, #1d1d1b); scrollbar-color: var(--print, #275f55) var(--stock, #efe6d2); }"
+    },
+    {
+      "name": "Scorecard Cell",
+      "kind": "custom",
+      "refersTo": "scorecard-cell",
+      "description": "One completed play: printed diamond, graphite runners, pencilled Bend number over printed MLB number, circled out, and the red pencil outline on the latest play.",
+      "html": "<div class=\"ds-cell ds-drawn\"><svg class=\"ds-dia\" viewBox=\"0 0 40 40\" aria-hidden=\"true\"><path d=\"M20 37 L35 22 L20 7 L5 22 Z\"/><rect x=\"31\" y=\"18\" width=\"8\" height=\"8\" transform=\"rotate(45 35 22)\" class=\"on\"/><rect x=\"16\" y=\"3\" width=\"8\" height=\"8\" transform=\"rotate(45 20 7)\"/><rect x=\"1\" y=\"18\" width=\"8\" height=\"8\" transform=\"rotate(45 5 22)\" class=\"on\"/></svg><span class=\"ds-wp\">61.4</span><span class=\"ds-mlb\">MLB 58.9</span><span class=\"ds-out\">2</span><span class=\"ds-runs\">+1 run</span><svg class=\"ds-pen\" aria-hidden=\"true\"><rect x=\"1\" y=\"1\" width=\"calc(100% - 2px)\" height=\"calc(100% - 2px)\" pathLength=\"1\"/></svg></div>",
+      "css": ".ds-cell { position: relative; width: 84px; height: 64px; border: 1px solid var(--print-rule, rgba(39, 95, 85, 0.55)); background: var(--stock, #efe6d2); color: var(--graphite, #1d1d1b); font-variant-numeric: tabular-nums; } .ds-dia { position: absolute; left: 4px; top: 5px; width: 36px; height: 36px; } .ds-dia path { fill: none; stroke: var(--print, #275f55); stroke-width: 1.2; } .ds-dia rect { fill: var(--stock, #efe6d2); stroke: var(--print, #275f55); stroke-width: 1.1; } .ds-dia rect.on { fill: var(--graphite, #1d1d1b); stroke: var(--graphite, #1d1d1b); } .ds-wp { position: absolute; right: 6px; top: 2px; font: 700 22px/1 \"Caveat\", \"Segoe Print\", cursive; } .ds-mlb { position: absolute; right: 6px; top: 26px; font: 400 11px/1.2 \"Archivo Narrow\", \"Arial Narrow\", sans-serif; color: var(--print, #275f55); letter-spacing: 0.02em; } .ds-out { position: absolute; left: 4px; bottom: 3px; width: 18px; height: 18px; border: 1.5px solid var(--graphite, #1d1d1b); border-radius: 50%; font: 700 13px/15px \"Caveat\", \"Segoe Print\", cursive; text-align: center; transform: rotate(-6deg); } .ds-runs { position: absolute; right: 6px; bottom: 3px; font: 500 13px/1 \"Caveat\", \"Segoe Print\", cursive; } .ds-pen { position: absolute; inset: -1px; width: calc(100% + 2px); height: calc(100% + 2px); pointer-events: none; overflow: visible; } .ds-pen rect { fill: none; stroke: var(--red, #b3362b); stroke-width: 2.4; stroke-linejoin: round; stroke-dasharray: 1; } .ds-drawn .ds-pen rect { animation: ds-draw 900ms cubic-bezier(0.16, 1, 0.3, 1) both; } @keyframes ds-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } } @media (prefers-reduced-motion: reduce) { .ds-drawn .ds-pen rect { animation: none; } }"
+    },
+    {
+      "name": "Keeper's Tally",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "The running home-win number pencilled large in the margin, MLB and \u0394 printed small beneath.",
+      "html": "<div class=\"ds-tally\"><h2 class=\"ds-margin-h2\">Home win probability, running</h2><div class=\"ds-tally-body\"><b>61.4%</b><span>Bend, after 48 plays</span><small>MLB official 58.9% \u00b7 \u0394 <span class=\"ds-up\">+2.5 pp</span></small></div></div>",
+      "css": ".ds-tally { border-top: 1px solid var(--print, #275f55); padding-top: 8px; color: var(--graphite, #1d1d1b); font-variant-numeric: tabular-nums; } .ds-margin-h2 { margin: 0 0 14px; font: 700 12px/1.4 \"Archivo Narrow\", \"Arial Narrow\", sans-serif; text-transform: uppercase; letter-spacing: 0.1em; color: var(--print, #275f55); } .ds-tally-body { font: 500 23px/1.25 \"Caveat\", \"Segoe Print\", cursive; } .ds-tally-body b { font-weight: 700; font-size: 44px; line-height: 1; display: block; } .ds-tally-body small { display: block; font: 400 12px/1.5 \"Archivo\", system-ui, sans-serif; color: var(--graphite-soft, #55544c); margin-top: 2px; } .ds-tally-body .ds-up { color: var(--print, #275f55); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Scorebook",
+    "overview": "**Creative North Star: \"The Scorebook\"**\n\nThe page is a baseball scorebook being kept, and the thing it keeps is the proof. The material is buff card stock; everything the printer put on the card (headings, column heads, rules, tables, diagrams, the MLB number) is one teal ink; everything the engine writes (outs, runners, Bend's number, the running note, \"proven\") is graphite pencil in a handwriting face; and one red pencil marks the play happening now. There is no second surface. Depth is a thicker rule or a tint of the same ink, never a card, a shadow, or a radius.\n\nDensity is a filled-in card's: tight 1px-ruled tables, 84\u00d764 cells, 8\u201314px gaps, 72ch measure for printed instructions. The printed voice is condensed, uppercase, letterspaced; the pencilled voice is large, loose, and never used for anything the printer would have set. Pele diagrams are themed to print in the same teal on the same stock with graphite highlights, so the figures read as part of the card rather than as embedded screenshots. The rejected arrangement is the engine showcase: headline, stat cards, glowing chart, dark mode, code block as hero.",
+    "keyCharacteristics": [
+      "One material (buff stock) and three marks on it: teal print, graphite pencil, red pencil.",
+      "Printed vs pencilled is a semantic distinction: the face tells you who wrote the value.",
+      "Rules carry all structure: 3px (page edge), 2px (section head), 1px solid (row/header), 1px at 55% (interior grid).",
+      "No radius, no shadows, no cards, no dark theme; `color-scheme: light` is declared.",
+      "Tabular figures everywhere (`font-variant-numeric: tabular-nums` on body)."
+    ],
+    "rules": [
+      {
+        "name": "The Three Marks Rule",
+        "body": "Every colour on the page is one of three marks on the stock: teal print, graphite pencil, red pencil. There is no fourth ink; tints and alpha rules are strengths of teal, never new hues.",
+        "section": "colors"
+      },
+      {
+        "name": "The Red Pencil Rule",
+        "body": "Red marks only what is happening now or what is wrong now (latest play, live inning, stale feed, focus). It never decorates, never fills a surface larger than a 2px stroke, and never appears on the printed back of the card except as focus.",
+        "section": "colors"
+      },
+      {
+        "name": "The Printed/Pencilled Rule",
+        "body": "If the printer could have known it before the game, it is teal in Archivo Narrow; if the keeper wrote it during the game, it is graphite in Caveat. MLB's number is printed; Bend's is pencilled.",
+        "section": "colors"
+      },
+      {
+        "name": "The Keeper's Hand Rule",
+        "body": "Caveat is used only for what a scorekeeper would write by hand during the game: outs, runs, the win number, the running note, \"proven\", the step numerals. Never for headings, labels, links, prose, or anything the printer set.",
+        "section": "typography"
+      },
+      {
+        "name": "The Condensed Print Rule",
+        "body": "Anything printed on the card as structure (headings, column heads, labels, navigation, buttons, footer) is Archivo Narrow 700, uppercase, letterspaced 0.06\u20130.1em. Running prose is Archivo 400 at 15px, never condensed.",
+        "section": "typography"
+      },
+      {
+        "name": "The No Shadow Rule",
+        "body": "Nothing on the card floats. If a surface needs separation, give it a rule or a tint of the ink; never a drop shadow, blur, or lifted hover.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Rule Weight Rule",
+        "body": "Hierarchy of separation is rule weight: 3px for the page edge (masthead top, footer top), 2px for a section head, 1px solid for rows and frames, 1px at 55% alpha for interior cells.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do set every printed structural label in Archivo Narrow 700 uppercase with 0.06\u20130.1em tracking in teal (`print`).",
+      "Do use Caveat only for values a scorekeeper writes during the game, in graphite, at 17px or larger (The Keeper's Hand Rule).",
+      "Do separate with rules: 3px page edge, 2px section head, 1px row, 1px at 55% interior (The Rule Weight Rule).",
+      "Do keep red to the latest play, the live inning, the stale feed, the selected-tab underline and focus (The Red Pencil Rule).",
+      "Do theme every Pele diagram through `.pele { --pele-* }` so it prints in teal on the stock with graphite highlights.",
+      "Do keep `font-variant-numeric: tabular-nums` and right-align numeric columns.",
+      "Do keep prose at 72ch and footnotes at 90ch."
+    ],
+    "donts": [
+      "Don't add a radius to any box; the only round form is the pencilled out circle (The No Shadow Rule covers lift; Shapes covers corners).",
+      "Don't add box-shadows, blurs, cards, or raised surfaces; depth is rule weight and 9% tint.",
+      "Don't introduce a dark theme or a second stock colour beyond `stock-deep` on tab hover; `color-scheme: light` is declared.",
+      "Don't introduce a fourth hue; every colour is a strength of teal, graphite, or red on buff.",
+      "Don't set headings, labels, links or prose in Caveat, or set the pencilled Bend number in a printed face.",
+      "Don't render a diagram or chart with anything other than Pele."
+    ]
+  }
+}

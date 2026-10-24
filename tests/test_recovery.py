@@ -37,7 +37,7 @@ class RecoveryTest(unittest.TestCase):
                                       "home": {"id": 2, "abbreviation": "HME"}},
                         },
                     }
-                if name == "plays":
+                if name in ("plays", "scoring"):
                     return {"allPlays": [play]}
                 if name == "wp":
                     return []
@@ -60,7 +60,8 @@ class RecoveryTest(unittest.TestCase):
                 "home_wins": 0, "away_wins": 1, "unfinished": 0, "seconds": 0.001,
             }
 
-        args = SimpleNamespace(pk=pk, no_serve=True, port=8765, depth=1, mode="cpu", publisher=None)
+        args = SimpleNamespace(pk=pk, no_serve=True, no_markets=True, port=8765, depth=1, mode="cpu",
+                               publisher=None)
         try:
             with patch.object(live, "Source", return_value=source), \
                  patch.object(live, "run_bend", side_effect=fake_bend), \
@@ -89,6 +90,23 @@ class RecoveryTest(unittest.TestCase):
              patch.object(live.time, "sleep", lambda _: None):
             self.assertTrue(publisher.push(1, {"away": "A", "home": "H"}, "csv"))
         self.assertEqual(3, request.call_count)
+
+    def test_backfill_updates_revised_mlb_probability(self):
+        book = live.Book.__new__(live.Book)
+        book.rows = {3: {"mlb_home_wp": 46.0, "bend_home_wp": 56.36, "delta": 10.36}}
+        book.backfill({3: 54.8})
+        self.assertEqual(54.8, book.rows[3]["mlb_home_wp"])
+        self.assertEqual(1.56, book.rows[3]["delta"])
+
+    def test_team_mapping_includes_name_and_logo(self):
+        teams = live.teams_of({"gameData": {"teams": {
+            "away": {"id": 139, "abbreviation": "TB", "teamName": "Rays"},
+            "home": {"id": 158, "abbreviation": "MIL", "teamName": "Brewers"},
+        }}})
+        self.assertEqual("Rays", teams["away"]["name"])
+        self.assertEqual("Brewers", teams["home"]["name"])
+        self.assertEqual("https://www.mlbstatic.com/team-logos/139.svg", teams["away"]["logo"])
+        self.assertEqual("https://www.mlbstatic.com/team-logos/158.svg", teams["home"]["logo"])
 
     def test_prune_and_mismatch_count_follow_current_rows(self):
         book = live.Book.__new__(live.Book)

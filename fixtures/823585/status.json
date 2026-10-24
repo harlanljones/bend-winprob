@@ -1,0 +1,23 @@
+{
+ "metaData": {
+  "wait": 10
+ },
+ "gameData": {
+  "status": {
+   "abstractGameState": "Final",
+   "detailedState": "Final"
+  },
+  "teams": {
+   "away": {
+    "id": 158,
+    "abbreviation": "MIL",
+    "teamName": "Brewers"
+   },
+   "home": {
+    "id": 121,
+    "abbreviation": "NYM",
+    "teamName": "Mets"
+   }
+  }
+ }
+}

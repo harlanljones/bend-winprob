@@ -1,0 +1,3791 @@
+{
+ "allPlays": [
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Mookie Betts grounds out, second baseman Brice Turang to first baseman Jake Bauers."
+   },
+   "about": {
+    "atBatIndex": 0,
+    "startTime": "2026-10-12T00:16:42.320Z",
+    "endTime": "2026-10-12T00:17:35.968Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 605141,
+     "fullName": "Mookie Betts"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 605141,
+       "fullName": "Mookie Betts"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 0
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Freddie Freeman singles on a line drive to left fielder Jackson Chourio."
+   },
+   "about": {
+    "atBatIndex": 1,
+    "startTime": "2026-10-12T00:17:56.792Z",
+    "endTime": "2026-10-12T00:19:27.664Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 518692,
+     "fullName": "Freddie Freeman"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 518692,
+       "fullName": "Freddie Freeman"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 1
+  },
+  {
+   "result": {
+    "event": "Grounded Into DP",
+    "eventType": "grounded_into_double_play",
+    "description": "Will Smith grounds into a double play, shortstop Cooper Pratt to second baseman Brice Turang to first baseman Jake Bauers. Freddie Freeman out at 2nd. Will Smith out at 1st."
+   },
+   "about": {
+    "atBatIndex": 2,
+    "startTime": "2026-10-12T00:19:35.388Z",
+    "endTime": "2026-10-12T00:20:47.003Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 669257,
+     "fullName": "Will Smith"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Grounded Into DP",
+      "eventType": "grounded_into_double_play",
+      "movementReason": "r_force_out",
+      "runner": {
+       "id": 518692,
+       "fullName": "Freddie Freeman"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Grounded Into DP",
+      "eventType": "grounded_into_double_play",
+      "movementReason": null,
+      "runner": {
+       "id": 669257,
+       "fullName": "Will Smith"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 2
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Jackson Chourio strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 3,
+    "startTime": "2026-10-12T00:23:38.574Z",
+    "endTime": "2026-10-12T00:25:12.409Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 694192,
+     "fullName": "Jackson Chourio"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 694192,
+       "fullName": "Jackson Chourio"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 3
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Brice Turang grounds out, second baseman Enrique Hern\u00e1ndez to first baseman Freddie Freeman."
+   },
+   "about": {
+    "atBatIndex": 4,
+    "startTime": "2026-10-12T00:25:28.616Z",
+    "endTime": "2026-10-12T00:27:53.317Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 668930,
+     "fullName": "Brice Turang"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 668930,
+       "fullName": "Brice Turang"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 4
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "William Contreras strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 5,
+    "startTime": "2026-10-12T00:28:28.906Z",
+    "endTime": "2026-10-12T00:29:51.533Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 661388,
+     "fullName": "William Contreras"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 661388,
+       "fullName": "William Contreras"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 5
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Shohei Ohtani walks."
+   },
+   "about": {
+    "atBatIndex": 6,
+    "startTime": "2026-10-12T00:32:31.490Z",
+    "endTime": "2026-10-12T00:33:40.316Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 660271,
+     "fullName": "Shohei Ohtani"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 660271,
+       "fullName": "Shohei Ohtani"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 6
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Teoscar Hern\u00e1ndez singles on a line drive to right fielder Luis Lara. Shohei Ohtani to 2nd."
+   },
+   "about": {
+    "atBatIndex": 7,
+    "startTime": "2026-10-12T00:34:02.165Z",
+    "endTime": "2026-10-12T00:36:22.668Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 606192,
+     "fullName": "Teoscar Hern\u00e1ndez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 606192,
+       "fullName": "Teoscar Hern\u00e1ndez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 660271,
+       "fullName": "Shohei Ohtani"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 7
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Max Muncy strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 8,
+    "startTime": "2026-10-12T00:37:08.724Z",
+    "endTime": "2026-10-12T00:38:23.202Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 571970,
+     "fullName": "Max Muncy"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 571970,
+       "fullName": "Max Muncy"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 8
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Andy Pages singles on a ground ball to right fielder Luis Lara. Shohei Ohtani scores. Teoscar Hern\u00e1ndez to 2nd."
+   },
+   "about": {
+    "atBatIndex": 9,
+    "startTime": "2026-10-12T00:38:43.420Z",
+    "endTime": "2026-10-12T00:40:04.002Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 681624,
+     "fullName": "Andy Pages"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 681624,
+       "fullName": "Andy Pages"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 660271,
+       "fullName": "Shohei Ohtani"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 660271,
+       "fullName": "Shohei Ohtani"
+      },
+      "responsiblePitcher": {
+       "id": 694819
+      },
+      "isScoringEvent": true,
+      "rbi": true,
+      "earned": true,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 606192,
+       "fullName": "Teoscar Hern\u00e1ndez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 9
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Kyle Tucker walks. Teoscar Hern\u00e1ndez to 3rd. Andy Pages to 2nd."
+   },
+   "about": {
+    "atBatIndex": 10,
+    "startTime": "2026-10-12T00:40:26.217Z",
+    "endTime": "2026-10-12T00:44:38.647Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 663656,
+     "fullName": "Kyle Tucker"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 606192,
+       "fullName": "Teoscar Hern\u00e1ndez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 9
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 681624,
+       "fullName": "Andy Pages"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 9
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 663656,
+       "fullName": "Kyle Tucker"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 9
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 10
+  },
+  {
+   "result": {
+    "event": "Grounded Into DP",
+    "eventType": "grounded_into_double_play",
+    "description": "Enrique Hern\u00e1ndez grounds into a double play, shortstop Cooper Pratt to second baseman Brice Turang to first baseman Jake Bauers. Kyle Tucker out at 2nd. Enrique Hern\u00e1ndez out at 1st."
+   },
+   "about": {
+    "atBatIndex": 11,
+    "startTime": "2026-10-12T00:45:59.288Z",
+    "endTime": "2026-10-12T00:48:15.986Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 571771,
+     "fullName": "Enrique Hern\u00e1ndez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Grounded Into DP",
+      "eventType": "grounded_into_double_play",
+      "movementReason": "r_force_out",
+      "runner": {
+       "id": 663656,
+       "fullName": "Kyle Tucker"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Grounded Into DP",
+      "eventType": "grounded_into_double_play",
+      "movementReason": null,
+      "runner": {
+       "id": 571771,
+       "fullName": "Enrique Hern\u00e1ndez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 11
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Jake Bauers strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 12,
+    "startTime": "2026-10-12T00:50:38.246Z",
+    "endTime": "2026-10-12T00:51:52.277Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 641343,
+     "fullName": "Jake Bauers"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 641343,
+       "fullName": "Jake Bauers"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 12
+  },
+  {
+   "result": {
+    "event": "Double",
+    "eventType": "double",
+    "description": "Andrew Vaughn doubles (1) on a line drive to left fielder Teoscar Hern\u00e1ndez."
+   },
+   "about": {
+    "atBatIndex": 13,
+    "startTime": "2026-10-12T00:52:05.724Z",
+    "endTime": "2026-10-12T00:53:39.959Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 683734,
+     "fullName": "Andrew Vaughn"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Double",
+      "eventType": "double",
+      "movementReason": null,
+      "runner": {
+       "id": 683734,
+       "fullName": "Andrew Vaughn"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 13
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Garrett Mitchell grounds out, second baseman Enrique Hern\u00e1ndez to first baseman Freddie Freeman. Andrew Vaughn to 3rd."
+   },
+   "about": {
+    "atBatIndex": 14,
+    "startTime": "2026-10-12T00:54:01.707Z",
+    "endTime": "2026-10-12T00:54:20.113Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 669003,
+     "fullName": "Garrett Mitchell"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 669003,
+       "fullName": "Garrett Mitchell"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 683734,
+       "fullName": "Andrew Vaughn"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 14
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Cooper Pratt strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 15,
+    "startTime": "2026-10-12T00:54:43.797Z",
+    "endTime": "2026-10-12T00:56:30.219Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 806198,
+     "fullName": "Cooper Pratt"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 806198,
+       "fullName": "Cooper Pratt"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 15
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Mookie Betts singles on a ground ball to left fielder Jackson Chourio."
+   },
+   "about": {
+    "atBatIndex": 16,
+    "startTime": "2026-10-12T00:59:27.750Z",
+    "endTime": "2026-10-12T01:01:42.826Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 605141,
+     "fullName": "Mookie Betts"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 605141,
+       "fullName": "Mookie Betts"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 16
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Freddie Freeman strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 17,
+    "startTime": "2026-10-12T01:02:01.187Z",
+    "endTime": "2026-10-12T01:03:42.426Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 518692,
+     "fullName": "Freddie Freeman"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 518692,
+       "fullName": "Freddie Freeman"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 17
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Will Smith flies out to center fielder Garrett Mitchell."
+   },
+   "about": {
+    "atBatIndex": 18,
+    "startTime": "2026-10-12T01:03:56.352Z",
+    "endTime": "2026-10-12T01:06:13.831Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 669257,
+     "fullName": "Will Smith"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 669257,
+       "fullName": "Will Smith"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 18
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Shohei Ohtani strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 19,
+    "startTime": "2026-10-12T01:06:29.222Z",
+    "endTime": "2026-10-12T01:08:19.926Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 660271,
+     "fullName": "Shohei Ohtani"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 660271,
+       "fullName": "Shohei Ohtani"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 19
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Luis Lara strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 20,
+    "startTime": "2026-10-12T01:11:02.015Z",
+    "endTime": "2026-10-12T01:12:22.454Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 800325,
+     "fullName": "Luis Lara"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 800325,
+       "fullName": "Luis Lara"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 20
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Joey Ortiz called out on strikes."
+   },
+   "about": {
+    "atBatIndex": 21,
+    "startTime": "2026-10-12T01:12:31.567Z",
+    "endTime": "2026-10-12T01:13:19.710Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 687401,
+     "fullName": "Joey Ortiz"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 687401,
+       "fullName": "Joey Ortiz"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 21
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Jackson Chourio flies out to center fielder Andy Pages."
+   },
+   "about": {
+    "atBatIndex": 22,
+    "startTime": "2026-10-12T01:13:32.537Z",
+    "endTime": "2026-10-12T01:14:53.351Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 694192,
+     "fullName": "Jackson Chourio"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 694192,
+       "fullName": "Jackson Chourio"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 22
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Teoscar Hern\u00e1ndez singles on a sharp line drive to center fielder Garrett Mitchell."
+   },
+   "about": {
+    "atBatIndex": 23,
+    "startTime": "2026-10-12T01:17:42.270Z",
+    "endTime": "2026-10-12T01:18:23.362Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 606192,
+     "fullName": "Teoscar Hern\u00e1ndez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 606192,
+       "fullName": "Teoscar Hern\u00e1ndez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 23
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Max Muncy called out on strikes."
+   },
+   "about": {
+    "atBatIndex": 24,
+    "startTime": "2026-10-12T01:18:30.780Z",
+    "endTime": "2026-10-12T01:20:11.788Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 571970,
+     "fullName": "Max Muncy"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 571970,
+       "fullName": "Max Muncy"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 24
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Andy Pages flies out to right fielder Luis Lara."
+   },
+   "about": {
+    "atBatIndex": 25,
+    "startTime": "2026-10-12T01:20:29.915Z",
+    "endTime": "2026-10-12T01:22:10.119Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 681624,
+     "fullName": "Andy Pages"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 681624,
+       "fullName": "Andy Pages"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 25
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Kyle Tucker strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 26,
+    "startTime": "2026-10-12T01:22:31.194Z",
+    "endTime": "2026-10-12T01:26:56.524Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 663656,
+     "fullName": "Kyle Tucker"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Balk",
+      "eventType": "balk",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 606192,
+       "fullName": "Teoscar Hern\u00e1ndez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 663656,
+       "fullName": "Kyle Tucker"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 9
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 26
+  },
+  {
+   "result": {
+    "event": "Home Run",
+    "eventType": "home_run",
+    "description": "Brice Turang homers (1) on a fly ball to left center field."
+   },
+   "about": {
+    "atBatIndex": 27,
+    "startTime": "2026-10-12T01:30:00.319Z",
+    "endTime": "2026-10-12T01:30:54.827Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 668930,
+     "fullName": "Brice Turang"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Home Run",
+      "eventType": "home_run",
+      "movementReason": null,
+      "runner": {
+       "id": 668930,
+       "fullName": "Brice Turang"
+      },
+      "responsiblePitcher": {
+       "id": 669373
+      },
+      "isScoringEvent": true,
+      "rbi": true,
+      "earned": true,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 27
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "William Contreras strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 28,
+    "startTime": "2026-10-12T01:31:26.378Z",
+    "endTime": "2026-10-12T01:34:19.928Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 661388,
+     "fullName": "William Contreras"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 661388,
+       "fullName": "William Contreras"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 28
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Jake Bauers singles on a sharp line drive to right fielder Kyle Tucker."
+   },
+   "about": {
+    "atBatIndex": 29,
+    "startTime": "2026-10-12T01:34:41.168Z",
+    "endTime": "2026-10-12T01:35:06.402Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 641343,
+     "fullName": "Jake Bauers"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 641343,
+       "fullName": "Jake Bauers"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 29
+  },
+  {
+   "result": {
+    "event": "Grounded Into DP",
+    "eventType": "grounded_into_double_play",
+    "description": "Andrew Vaughn grounds into a double play, second baseman Enrique Hern\u00e1ndez to shortstop Mookie Betts to first baseman Freddie Freeman. Jake Bauers out at 2nd. Andrew Vaughn out at 1st."
+   },
+   "about": {
+    "atBatIndex": 30,
+    "startTime": "2026-10-12T01:35:27.025Z",
+    "endTime": "2026-10-12T01:36:49.210Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 683734,
+     "fullName": "Andrew Vaughn"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Grounded Into DP",
+      "eventType": "grounded_into_double_play",
+      "movementReason": "r_force_out",
+      "runner": {
+       "id": 641343,
+       "fullName": "Jake Bauers"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Grounded Into DP",
+      "eventType": "grounded_into_double_play",
+      "movementReason": null,
+      "runner": {
+       "id": 683734,
+       "fullName": "Andrew Vaughn"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 30
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Enrique Hern\u00e1ndez flies out to center fielder Garrett Mitchell."
+   },
+   "about": {
+    "atBatIndex": 31,
+    "startTime": "2026-10-12T01:39:35.517Z",
+    "endTime": "2026-10-12T01:40:17.388Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 571771,
+     "fullName": "Enrique Hern\u00e1ndez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 571771,
+       "fullName": "Enrique Hern\u00e1ndez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 31
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Mookie Betts walks."
+   },
+   "about": {
+    "atBatIndex": 32,
+    "startTime": "2026-10-12T01:40:40.202Z",
+    "endTime": "2026-10-12T01:42:50.120Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 605141,
+     "fullName": "Mookie Betts"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 605141,
+       "fullName": "Mookie Betts"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 32
+  },
+  {
+   "result": {
+    "event": "Grounded Into DP",
+    "eventType": "grounded_into_double_play",
+    "description": "Freddie Freeman grounds into a double play, second baseman Brice Turang to shortstop Cooper Pratt to first baseman Jake Bauers. Mookie Betts out at 2nd. Freddie Freeman out at 1st."
+   },
+   "about": {
+    "atBatIndex": 33,
+    "startTime": "2026-10-12T01:46:02.890Z",
+    "endTime": "2026-10-12T01:47:14.160Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 518692,
+     "fullName": "Freddie Freeman"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Grounded Into DP",
+      "eventType": "grounded_into_double_play",
+      "movementReason": "r_force_out",
+      "runner": {
+       "id": 605141,
+       "fullName": "Mookie Betts"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Grounded Into DP",
+      "eventType": "grounded_into_double_play",
+      "movementReason": null,
+      "runner": {
+       "id": 518692,
+       "fullName": "Freddie Freeman"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 33
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Garrett Mitchell walks."
+   },
+   "about": {
+    "atBatIndex": 34,
+    "startTime": "2026-10-12T01:49:56.272Z",
+    "endTime": "2026-10-12T01:51:35.709Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 669003,
+     "fullName": "Garrett Mitchell"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 669003,
+       "fullName": "Garrett Mitchell"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 34
+  },
+  {
+   "result": {
+    "event": "Sac Bunt",
+    "eventType": "sac_bunt",
+    "description": "Cooper Pratt out on a sacrifice bunt, first baseman Freddie Freeman to second baseman Enrique Hern\u00e1ndez. Garrett Mitchell to 2nd."
+   },
+   "about": {
+    "atBatIndex": 35,
+    "startTime": "2026-10-12T01:51:53.554Z",
+    "endTime": "2026-10-12T01:52:08.410Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 806198,
+     "fullName": "Cooper Pratt"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Sac Bunt",
+      "eventType": "sac_bunt",
+      "movementReason": null,
+      "runner": {
+       "id": 806198,
+       "fullName": "Cooper Pratt"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Sac Bunt",
+      "eventType": "sac_bunt",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 669003,
+       "fullName": "Garrett Mitchell"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 35
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Luis Lara singles on a sharp ground ball to center fielder Andy Pages. Garrett Mitchell scores."
+   },
+   "about": {
+    "atBatIndex": 36,
+    "startTime": "2026-10-12T01:52:34.622Z",
+    "endTime": "2026-10-12T01:52:53.751Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 800325,
+     "fullName": "Luis Lara"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 800325,
+       "fullName": "Luis Lara"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 669003,
+       "fullName": "Garrett Mitchell"
+      },
+      "responsiblePitcher": {
+       "id": 669373
+      },
+      "isScoringEvent": true,
+      "rbi": true,
+      "earned": true,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 36
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Joey Ortiz grounds out, shortstop Mookie Betts to first baseman Freddie Freeman. Luis Lara to 2nd."
+   },
+   "about": {
+    "atBatIndex": 37,
+    "startTime": "2026-10-12T01:53:23.545Z",
+    "endTime": "2026-10-12T01:54:45.564Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 687401,
+     "fullName": "Joey Ortiz"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 687401,
+       "fullName": "Joey Ortiz"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 800325,
+       "fullName": "Luis Lara"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 37
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Jackson Chourio singles on a sharp ground ball to third baseman Max Muncy. Luis Lara to 3rd."
+   },
+   "about": {
+    "atBatIndex": 38,
+    "startTime": "2026-10-12T01:56:13.227Z",
+    "endTime": "2026-10-12T01:57:11.803Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 694192,
+     "fullName": "Jackson Chourio"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 694192,
+       "fullName": "Jackson Chourio"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 800325,
+       "fullName": "Luis Lara"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 38
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Brice Turang walks. Jackson Chourio to 2nd."
+   },
+   "about": {
+    "atBatIndex": 39,
+    "startTime": "2026-10-12T01:57:54.962Z",
+    "endTime": "2026-10-12T01:59:23.735Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 668930,
+     "fullName": "Brice Turang"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 694192,
+       "fullName": "Jackson Chourio"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 668930,
+       "fullName": "Brice Turang"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 39
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "William Contreras flies out to right fielder Kyle Tucker."
+   },
+   "about": {
+    "atBatIndex": 40,
+    "startTime": "2026-10-12T01:59:50.640Z",
+    "endTime": "2026-10-12T02:02:27.824Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 661388,
+     "fullName": "William Contreras"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 661388,
+       "fullName": "William Contreras"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 40
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Will Smith flies out to right fielder Luis Lara."
+   },
+   "about": {
+    "atBatIndex": 41,
+    "startTime": "2026-10-12T02:05:45.302Z",
+    "endTime": "2026-10-12T02:06:14.142Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 669257,
+     "fullName": "Will Smith"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 669257,
+       "fullName": "Will Smith"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 41
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Shohei Ohtani singles on a soft line drive to left fielder Jackson Chourio."
+   },
+   "about": {
+    "atBatIndex": 42,
+    "startTime": "2026-10-12T02:06:35.884Z",
+    "endTime": "2026-10-12T02:07:54.659Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 660271,
+     "fullName": "Shohei Ohtani"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 660271,
+       "fullName": "Shohei Ohtani"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 42
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Teoscar Hern\u00e1ndez strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 43,
+    "startTime": "2026-10-12T02:08:16.509Z",
+    "endTime": "2026-10-12T02:09:27.251Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 606192,
+     "fullName": "Teoscar Hern\u00e1ndez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 606192,
+       "fullName": "Teoscar Hern\u00e1ndez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 43
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Max Muncy singles on a sharp ground ball to right fielder Luis Lara. Shohei Ohtani to 3rd."
+   },
+   "about": {
+    "atBatIndex": 44,
+    "startTime": "2026-10-12T02:09:47.447Z",
+    "endTime": "2026-10-12T02:10:45.063Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 571970,
+     "fullName": "Max Muncy"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 571970,
+       "fullName": "Max Muncy"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 660271,
+       "fullName": "Shohei Ohtani"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 660271,
+       "fullName": "Shohei Ohtani"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 44
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Andy Pages strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 45,
+    "startTime": "2026-10-12T02:11:09.080Z",
+    "endTime": "2026-10-12T02:12:15.325Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 681624,
+     "fullName": "Andy Pages"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 681624,
+       "fullName": "Andy Pages"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 45
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Jake Bauers walks."
+   },
+   "about": {
+    "atBatIndex": 46,
+    "startTime": "2026-10-12T02:15:22.511Z",
+    "endTime": "2026-10-12T02:17:55.383Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 641343,
+     "fullName": "Jake Bauers"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 641343,
+       "fullName": "Jake Bauers"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 8
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 46
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Andrew Vaughn strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 47,
+    "startTime": "2026-10-12T02:18:06.935Z",
+    "endTime": "2026-10-12T02:20:31.758Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 683734,
+     "fullName": "Andrew Vaughn"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Pickoff Caught Stealing 2B",
+      "eventType": "pickoff_caught_stealing_2b",
+      "movementReason": "r_pickoff_caught_stealing_2b",
+      "runner": {
+       "id": 641343,
+       "fullName": "Jake Bauers"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "1"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 683734,
+       "fullName": "Andrew Vaughn"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 47
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Garrett Mitchell strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 48,
+    "startTime": "2026-10-12T02:20:58.231Z",
+    "endTime": "2026-10-12T02:22:01.274Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 669003,
+     "fullName": "Garrett Mitchell"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 669003,
+       "fullName": "Garrett Mitchell"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 48
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Kyle Tucker strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 49,
+    "startTime": "2026-10-12T02:25:07.038Z",
+    "endTime": "2026-10-12T02:27:25.545Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 663656,
+     "fullName": "Kyle Tucker"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 663656,
+       "fullName": "Kyle Tucker"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 49
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Enrique Hern\u00e1ndez flies out to center fielder Garrett Mitchell."
+   },
+   "about": {
+    "atBatIndex": 50,
+    "startTime": "2026-10-12T02:27:41.551Z",
+    "endTime": "2026-10-12T02:29:45.552Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 571771,
+     "fullName": "Enrique Hern\u00e1ndez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 571771,
+       "fullName": "Enrique Hern\u00e1ndez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 50
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Mookie Betts flies out to right fielder Luis Lara."
+   },
+   "about": {
+    "atBatIndex": 51,
+    "startTime": "2026-10-12T02:30:10.794Z",
+    "endTime": "2026-10-12T02:31:03.719Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 605141,
+     "fullName": "Mookie Betts"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 605141,
+       "fullName": "Mookie Betts"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 51
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Cooper Pratt strikes out on a foul tip."
+   },
+   "about": {
+    "atBatIndex": 52,
+    "startTime": "2026-10-12T02:35:41.633Z",
+    "endTime": "2026-10-12T02:37:40.341Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 806198,
+     "fullName": "Cooper Pratt"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 806198,
+       "fullName": "Cooper Pratt"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 52
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Luis Lara called out on strikes."
+   },
+   "about": {
+    "atBatIndex": 53,
+    "startTime": "2026-10-12T02:38:01.929Z",
+    "endTime": "2026-10-12T02:39:21.404Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 800325,
+     "fullName": "Luis Lara"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 800325,
+       "fullName": "Luis Lara"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 53
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Joey Ortiz strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 54,
+    "startTime": "2026-10-12T02:39:35.878Z",
+    "endTime": "2026-10-12T02:40:41.105Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 687401,
+     "fullName": "Joey Ortiz"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 687401,
+       "fullName": "Joey Ortiz"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 54
+  },
+  {
+   "result": {
+    "event": "Pop Out",
+    "eventType": "field_out",
+    "description": "Freddie Freeman pops out to second baseman Brice Turang."
+   },
+   "about": {
+    "atBatIndex": 55,
+    "startTime": "2026-10-12T02:43:43.857Z",
+    "endTime": "2026-10-12T02:43:56.891Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 518692,
+     "fullName": "Freddie Freeman"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Pop Out",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 518692,
+       "fullName": "Freddie Freeman"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 55
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Will Smith walks."
+   },
+   "about": {
+    "atBatIndex": 56,
+    "startTime": "2026-10-12T02:44:18.411Z",
+    "endTime": "2026-10-12T02:45:20.465Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 669257,
+     "fullName": "Will Smith"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 669257,
+       "fullName": "Will Smith"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 56
+  },
+  {
+   "result": {
+    "event": "Pop Out",
+    "eventType": "field_out",
+    "description": "Shohei Ohtani pops out to third baseman Joey Ortiz."
+   },
+   "about": {
+    "atBatIndex": 57,
+    "startTime": "2026-10-12T02:46:12.512Z",
+    "endTime": "2026-10-12T02:48:04.377Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 660271,
+     "fullName": "Shohei Ohtani"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Pop Out",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 660271,
+       "fullName": "Shohei Ohtani"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 57
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Teoscar Hern\u00e1ndez grounds out, third baseman Joey Ortiz to first baseman Jake Bauers."
+   },
+   "about": {
+    "atBatIndex": 58,
+    "startTime": "2026-10-12T02:48:28.272Z",
+    "endTime": "2026-10-12T02:48:37.902Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 606192,
+     "fullName": "Teoscar Hern\u00e1ndez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 606192,
+       "fullName": "Teoscar Hern\u00e1ndez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 58
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Jackson Chourio singles on a ground ball to right fielder Kyle Tucker."
+   },
+   "about": {
+    "atBatIndex": 59,
+    "startTime": "2026-10-12T02:51:37.136Z",
+    "endTime": "2026-10-12T02:52:25.939Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 694192,
+     "fullName": "Jackson Chourio"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 694192,
+       "fullName": "Jackson Chourio"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 59
+  },
+  {
+   "result": {
+    "event": "Sac Bunt",
+    "eventType": "sac_bunt",
+    "description": "Brice Turang out on a sacrifice bunt, pitcher Tanner Scott to second baseman Enrique Hern\u00e1ndez. Jackson Chourio to 2nd."
+   },
+   "about": {
+    "atBatIndex": 60,
+    "startTime": "2026-10-12T02:55:37.042Z",
+    "endTime": "2026-10-12T02:55:47.109Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 668930,
+     "fullName": "Brice Turang"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Sac Bunt",
+      "eventType": "sac_bunt",
+      "movementReason": null,
+      "runner": {
+       "id": 668930,
+       "fullName": "Brice Turang"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "1"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Sac Bunt",
+      "eventType": "sac_bunt",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 694192,
+       "fullName": "Jackson Chourio"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 60
+  },
+  {
+   "result": {
+    "event": "Intent Walk",
+    "eventType": "intent_walk",
+    "description": "Tanner Scott intentionally walks William Contreras."
+   },
+   "about": {
+    "atBatIndex": 61,
+    "startTime": "2026-10-12T02:56:10.163Z",
+    "endTime": "2026-10-12T02:56:14.333Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 661388,
+     "fullName": "William Contreras"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Intent Walk",
+      "eventType": "intent_walk",
+      "movementReason": null,
+      "runner": {
+       "id": 661388,
+       "fullName": "William Contreras"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 61
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Jake Bauers strikes out on a foul tip."
+   },
+   "about": {
+    "atBatIndex": 62,
+    "startTime": "2026-10-12T02:56:31.799Z",
+    "endTime": "2026-10-12T02:58:24.834Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 641343,
+     "fullName": "Jake Bauers"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 641343,
+       "fullName": "Jake Bauers"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 62
+  },
+  {
+   "result": {
+    "event": "Intent Walk",
+    "eventType": "intent_walk",
+    "description": "Tanner Scott intentionally walks Andrew Vaughn. Jackson Chourio to 3rd. William Contreras to 2nd."
+   },
+   "about": {
+    "atBatIndex": 63,
+    "startTime": "2026-10-12T02:58:56.736Z",
+    "endTime": "2026-10-12T02:59:00.662Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 683734,
+     "fullName": "Andrew Vaughn"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Intent Walk",
+      "eventType": "intent_walk",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 694192,
+       "fullName": "Jackson Chourio"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Intent Walk",
+      "eventType": "intent_walk",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 661388,
+       "fullName": "William Contreras"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Intent Walk",
+      "eventType": "intent_walk",
+      "movementReason": null,
+      "runner": {
+       "id": 683734,
+       "fullName": "Andrew Vaughn"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 63
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Garrett Mitchell grounds out sharply, shortstop Mookie Betts to first baseman Freddie Freeman."
+   },
+   "about": {
+    "atBatIndex": 64,
+    "startTime": "2026-10-12T02:59:18.852Z",
+    "endTime": "2026-10-12T02:59:59.875Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 669003,
+     "fullName": "Garrett Mitchell"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 669003,
+       "fullName": "Garrett Mitchell"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 64
+  },
+  {
+   "result": {
+    "event": "Pop Out",
+    "eventType": "field_out",
+    "description": "Max Muncy pops out to second baseman Brice Turang."
+   },
+   "about": {
+    "atBatIndex": 65,
+    "startTime": "2026-10-12T03:03:02.096Z",
+    "endTime": "2026-10-12T03:04:15.366Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 571970,
+     "fullName": "Max Muncy"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Pop Out",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 571970,
+       "fullName": "Max Muncy"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 65
+  },
+  {
+   "result": {
+    "event": "Lineout",
+    "eventType": "field_out",
+    "description": "Andy Pages lines out to left fielder Jackson Chourio."
+   },
+   "about": {
+    "atBatIndex": 66,
+    "startTime": "2026-10-12T03:04:39.992Z",
+    "endTime": "2026-10-12T03:04:47.902Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 681624,
+     "fullName": "Andy Pages"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Lineout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 681624,
+       "fullName": "Andy Pages"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 66
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Kyle Tucker walks."
+   },
+   "about": {
+    "atBatIndex": 67,
+    "startTime": "2026-10-12T03:05:07.220Z",
+    "endTime": "2026-10-12T03:07:57.320Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 663656,
+     "fullName": "Kyle Tucker"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 663656,
+       "fullName": "Kyle Tucker"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 67
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Josue De Paula walks. Kyle Tucker to 2nd."
+   },
+   "about": {
+    "atBatIndex": 68,
+    "startTime": "2026-10-12T03:09:10.681Z",
+    "endTime": "2026-10-12T03:10:43.795Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 800543,
+     "fullName": "Josue De Paula"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 663656,
+       "fullName": "Kyle Tucker"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 800543,
+       "fullName": "Josue De Paula"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 68
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Mookie Betts flies out to center fielder Garrett Mitchell."
+   },
+   "about": {
+    "atBatIndex": 69,
+    "startTime": "2026-10-12T03:11:22.447Z",
+    "endTime": "2026-10-12T03:11:55.549Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 605141,
+     "fullName": "Mookie Betts"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 605141,
+       "fullName": "Mookie Betts"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 69
+  }
+ ]
+}

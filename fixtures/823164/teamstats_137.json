@@ -1,0 +1,139 @@
+{
+ "copyright": "Copyright 2026 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt",
+ "stats": [
+  {
+   "type": {
+    "displayName": "season"
+   },
+   "group": {
+    "displayName": "hitting"
+   },
+   "exemptions": [],
+   "splits": [
+    {
+     "season": "2026",
+     "stat": {
+      "gamesPlayed": 162,
+      "groundOuts": 1349,
+      "airOuts": 1525,
+      "runs": 669,
+      "doubles": 262,
+      "triples": 26,
+      "homeRuns": 178,
+      "strikeOuts": 1342,
+      "baseOnBalls": 449,
+      "intentionalWalks": 19,
+      "hits": 1341,
+      "hitByPitch": 54,
+      "avg": ".245",
+      "atBats": 5473,
+      "obp": ".306",
+      "slg": ".400",
+      "ops": ".706",
+      "caughtStealing": 26,
+      "stolenBases": 88,
+      "stolenBasePercentage": ".772",
+      "caughtStealingPercentage": ".228",
+      "groundIntoDoublePlay": 90,
+      "numberOfPitches": 23456,
+      "plateAppearances": 6061,
+      "totalBases": 2189,
+      "rbi": 646,
+      "leftOnBase": 1086,
+      "sacBunts": 41,
+      "sacFlies": 43,
+      "babip": ".291",
+      "groundOutsToAirouts": "0.88",
+      "catchersInterference": 1,
+      "atBatsPerHomeRun": "30.75"
+     },
+     "team": {
+      "id": 137,
+      "name": "San Francisco Giants",
+      "link": "/api/v1/teams/137"
+     }
+    }
+   ]
+  },
+  {
+   "type": {
+    "displayName": "season"
+   },
+   "group": {
+    "displayName": "pitching"
+   },
+   "exemptions": [],
+   "splits": [
+    {
+     "season": "2026",
+     "stat": {
+      "gamesPlayed": 162,
+      "gamesStarted": 162,
+      "groundOuts": 1503,
+      "airOuts": 1451,
+      "runs": 760,
+      "doubles": 232,
+      "triples": 34,
+      "homeRuns": 160,
+      "strikeOuts": 1204,
+      "baseOnBalls": 596,
+      "intentionalWalks": 20,
+      "hits": 1345,
+      "hitByPitch": 65,
+      "avg": ".248",
+      "atBats": 5422,
+      "obp": ".327",
+      "slg": ".392",
+      "ops": ".719",
+      "caughtStealing": 37,
+      "stolenBases": 134,
+      "stolenBasePercentage": ".784",
+      "caughtStealingPercentage": ".216",
+      "groundIntoDoublePlay": 123,
+      "numberOfPitches": 23926,
+      "era": "4.33",
+      "inningsPitched": "1430.0",
+      "wins": 65,
+      "losses": 97,
+      "saves": 30,
+      "saveOpportunities": 57,
+      "holds": 86,
+      "blownSaves": 27,
+      "earnedRuns": 688,
+      "whip": "1.36",
+      "battersFaced": 6167,
+      "outs": 4290,
+      "gamesPitched": 162,
+      "completeGames": 1,
+      "shutouts": 10,
+      "strikes": 14890,
+      "strikePercentage": ".620",
+      "hitBatsmen": 65,
+      "balks": 5,
+      "wildPitches": 56,
+      "pickoffs": 7,
+      "totalBases": 2125,
+      "groundOutsToAirouts": "1.04",
+      "winPercentage": ".401",
+      "pitchesPerInning": "16.73",
+      "gamesFinished": 161,
+      "strikeoutWalkRatio": "2.02",
+      "strikeoutsPer9Inn": "7.58",
+      "walksPer9Inn": "3.75",
+      "hitsPer9Inn": "8.47",
+      "runsScoredPer9": "4.78",
+      "homeRunsPer9": "1.01",
+      "catchersInterference": 3,
+      "sacBunts": 28,
+      "sacFlies": 53
+     },
+     "team": {
+      "id": 137,
+      "name": "San Francisco Giants",
+      "link": "/api/v1/teams/137"
+     }
+    }
+   ]
+  }
+ ]
+}

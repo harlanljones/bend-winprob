@@ -1,0 +1,36 @@
+/* Shared by the scorecard mockups: the page's stock, inks and faces (DESIGN.md). */
+@font-face { font-family: "Archivo"; src: url(/web/fonts/Archivo.woff2) format("woff2"); font-weight: 400 600; }
+@font-face { font-family: "Archivo Narrow"; src: url(/web/fonts/ArchivoNarrow.woff2) format("woff2"); font-weight: 400 700; }
+@font-face { font-family: "Caveat"; src: url(/web/fonts/Caveat.woff2) format("woff2"); font-weight: 400 700; }
+:root {
+  --stock: #efe6d2; --stock-deep: #e6dbc2; --print: #275f55; --print-tint: rgba(39, 95, 85, 0.09);
+  --print-rule: rgba(39, 95, 85, 0.55); --graphite: #1d1d1b; --graphite-soft: #55544c; --red: #b3362b;
+  --narrow: "Archivo Narrow", "Arial Narrow", sans-serif; --text: "Archivo", system-ui, sans-serif; --hand: "Caveat", cursive;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--stock); color: var(--graphite); font: 14px/1.4 var(--text); font-variant-numeric: tabular-nums; -webkit-font-smoothing: antialiased; }
+.page { width: 1260px; margin: 0 auto; padding: 22px 32px 40px; }
+.mast { display: flex; justify-content: space-between; align-items: baseline; border-top: 3px solid var(--print); border-bottom: 1px solid var(--print); padding: 8px 0; }
+.mast h1 { margin: 0; font: 700 30px/1 var(--narrow); text-transform: uppercase; letter-spacing: 0.02em; color: var(--print); }
+.mast .meta { font: 700 12px/1.4 var(--narrow); text-transform: uppercase; letter-spacing: 0.08em; color: var(--print); }
+.label { font: 700 11px/1.2 var(--narrow); text-transform: uppercase; letter-spacing: 0.1em; color: var(--print); }
+.hand { font-family: var(--hand); font-weight: 500; color: var(--graphite); }
+.foot-note { margin-top: 8px; font: 400 12px/1.5 var(--text); color: var(--graphite-soft); max-width: 96ch; }
+.foot-note .hand { font-size: 16px; }
+
+/* pencil marks shared by every layout */
+svg.dia .line { fill: none; stroke: var(--print); stroke-width: 1; }
+svg.dia .run { fill: var(--graphite); fill-opacity: 0.3; }
+svg.dia .path { fill: none; stroke: var(--graphite); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+svg.sit rect { fill: var(--stock); stroke: var(--print); stroke-width: 1.1; }
+svg.sit rect.on { fill: var(--graphite); stroke: var(--graphite); }
+.play { font: 700 17px/1 var(--hand); color: var(--graphite); white-space: nowrap; text-align: center; }
+.play.long { font-size: 14px; }
+.play.two { font-size: 12.5px; line-height: 1; }
+.play .kc { display: inline-block; transform: scaleX(-1); }
+.out { width: 18px; height: 18px; border: 1.5px solid var(--graphite); border-radius: 50%; font: 700 13px/15px var(--hand); text-align: center; color: var(--graphite); transform: rotate(-6deg); }
+.out.three { background: var(--graphite); color: var(--stock); }
+.dots { display: flex; gap: 3px; }
+.dots i { width: 5px; height: 5px; border-radius: 50%; background: var(--graphite); }
+.pen { outline: 2.4px solid var(--red); outline-offset: -2px; }
