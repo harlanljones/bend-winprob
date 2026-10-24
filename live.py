@@ -5,10 +5,13 @@ The host shell around ./wp (main.bend): fetches MLB Stats API data, encodes
 every completed play as a 4-char code, runs Bend on the whole play list,
 and prints Bend's home win probability next to MLB's. Bend owns the
 scorebook and the simulation; this file owns HTTP, JSON, CSV and the chart.
+Prediction-market prices (markets.py: Kalshi, Polymarket, Polymarket US)
+are read beside both, per play.
 
   python3 live.py                       # live, World Series Game 1
   python3 live.py --publish             # ... and push every update to the hosted page
   python3 live.py --pk 849809 --replay  # rehearse a finished game
+  python3 live.py --no-markets          # Bend and MLB only
 
 --publish reads WP_PUSH_URL and WP_PUSH_TOKEN from the environment or ./.env.
 """
@@ -26,6 +29,8 @@ import urllib.request
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
+import markets
+
 ROOT = Path(__file__).resolve().parent
 API = "https://statsapi.mlb.com/api"
 URLS = {
@@ -39,6 +44,8 @@ URLS = {
     "atBats,baseOnBalls,hitByPitch,sacBunts,sacFlies,catchersInterference,runs,putOuts",
     "linescore": API + "/v1/game/{pk}/linescore?fields=teams,home,away,runs,leftOnBase",
     "teamstats": API + "/v1/teams/{id}/stats?stats=season&group=hitting,pitching&season=2026",
+    "schedule": API + "/v1/schedule?gamePk={pk}&fields=dates,games,gamePk,gameDate,officialDate",
+    "times": API + "/v1/game/{pk}/playByPlay?fields=allPlays,about,atBatIndex,startTime,endTime,isComplete",
 }
 
 TEAM_NAMES = {
@@ -52,8 +59,8 @@ LEAGUE = {"K": .2222, "O": .4638, "W": .0946, "S": .1428, "D": .0423, "T": .0034
 ORDER = "KOWSDTH"
 DEFAULT_MODE = "gpu"  # RTX 4070 Ti: 2^20 games 0.09 s (gpu) vs 0.15 s (24 threads)
 CSV_HEADER = ["wall_time", "at_bat_index", "inning", "half", "outs", "bases", "away_runs",
-              "home_runs", "bend_home_wp", "mlb_home_wp", "delta", "sims", "unfinished",
-              "seconds", "mode", "state_check"]
+              "home_runs", "bend_home_wp", "mlb_home_wp", *markets.COLUMNS, "delta", "sims",
+              "unfinished", "seconds", "mode", "state_check"]
 
 
 class BendError(Exception):
@@ -334,18 +341,19 @@ class Publisher:
         self.last = None
 
     def push(self, pk, meta, csv_text):
-        if csv_text == self.last:
+        body = json.dumps({"meta": meta, "csv": csv_text})
+        if body == self.last:
             return True
         req = urllib.request.Request(
             f"{self.url}/push/{pk}", method="POST",
-            data=json.dumps({"meta": meta, "csv": csv_text}).encode(),
+            data=body.encode(),
             headers={"Authorization": f"Bearer {self.token}", "Content-Type": "application/json",
                      "User-Agent": "bend-winprob/1"})
         for attempt in range(3):
             try:
                 with urllib.request.urlopen(req, timeout=10):
                     pass
-                self.last = csv_text
+                self.last = body
                 return True
             except Exception as e:
                 if attempt < 2:
@@ -369,12 +377,14 @@ class Book:
         runs = ROOT / "runs"
         runs.mkdir(exist_ok=True)
         self.csv = runs / f"{pk}.csv"
+        self.meta_path = runs / f"{pk}-meta.json"
         self.meta = {"pk": pk, "away": away, "home": home}
         if team_info is not None:
             for side in ("away", "home"):
                 self.meta[f"{side}_name"] = team_info[side]["name"]
                 self.meta[f"{side}_logo"] = team_info[side]["logo"]
-        (runs / f"{pk}-meta.json").write_text(json.dumps(self.meta))
+        self.meta_path.write_text(json.dumps(self.meta))
+        self.tape, self.samples = markets.Tape(), {}
 
     def add(self, idx, b, play, mlb):
         bad = check_state(b, play) if play is not None else []
@@ -392,6 +402,7 @@ class Book:
             "sims": 2 ** self.depth, "unfinished": b["unfinished"],
             "seconds": round(b["seconds"], 3), "mode": self.mode, "state_check": check,
         }
+        self.fill_markets(idx)
         self.fill_delta(idx)
         if self.verbose:
             self.print_row(idx)
@@ -420,6 +431,21 @@ class Book:
                 if r["mlb_home_wp"] != value:
                     r["mlb_home_wp"] = value
                     self.fill_delta(idx)
+
+    def fill_markets(self, idx):
+        r = self.rows[idx]
+        for key, col in zip(markets.KEYS, markets.COLUMNS):
+            p = self.tape.at(key, *self.samples[idx]) if idx in self.samples else None
+            r[col] = "" if p is None else round(p, 2)
+
+    def set_markets(self, tape, samples, listings):
+        """Read every row's market prices from `tape` at its instant in `samples`."""
+        self.tape, self.samples = tape, samples
+        for idx in self.rows:
+            self.fill_markets(idx)
+        if listings and listings != self.meta.get("markets"):
+            self.meta["markets"] = listings
+            self.meta_path.write_text(json.dumps(self.meta))
 
     def print_row(self, idx):
         r = self.rows[idx]
@@ -454,8 +480,14 @@ class Book:
     def summary(self):
         deltas = [abs(r["delta"]) for r in self.rows.values() if r["delta"] != ""]
         mean = sum(deltas) / len(deltas) if deltas else float("nan")
+        venues = ""
+        for key, col in zip(markets.KEYS, markets.COLUMNS):
+            gaps = [abs(r["bend_home_wp"] - r[col]) for r in self.rows.values()
+                    if r["bend_home_wp"] != "" and r[col] != ""]
+            if gaps:
+                venues += f" | Bend-{key} {sum(gaps) / len(gaps):.2f} over {len(gaps)}"
         print(f"SUMMARY rows {len(self.rows)} mean |Δ| {mean:.2f} over {len(deltas)} "
-              f"mismatches {self.mismatch_count()}", flush=True)
+              f"mismatches {self.mismatch_count()}{venues}", flush=True)
         return mean
 
 
@@ -534,6 +566,18 @@ def live_setup(src, pk):
     return teams, away_cum, home_cum
 
 
+def read_markets(feed, src, book, samples, started):
+    """Start a background venue refresh, re-read every row's prices; return the sample instants."""
+    feed.poll()
+    if started:
+        try:
+            samples = markets.sample_times(src.get("times"))
+        except (RuntimeError, ValueError) as e:
+            print(f"times poll failed: {e}", flush=True)
+    book.set_markets(feed.tape, samples, feed.listings())
+    return samples
+
+
 def live(args):
     src = Source(args.pk, cache=False)
     if not args.no_serve:
@@ -542,14 +586,17 @@ def live(args):
     while True:
         try:
             teams, away_cum, home_cum = live_setup(src, args.pk)
+            game = None if args.no_markets else markets.game_of(src.get("schedule"), teams)
             break
-        except (RuntimeError, ValueError) as e:
+        except (RuntimeError, ValueError, KeyError, IndexError) as e:
             print(f"initialization failed: {e}; retrying in 10s", flush=True)
             time.sleep(10)
     away, home = teams["away"]["abbr"], teams["home"]["abbr"]
     print(f"{away} @ {home}  awayCum {away_cum}  homeCum {home_cum}  depth {args.depth}  {args.mode}",
           flush=True)
     book = Book(args.pk, away, home, args.depth, args.mode, args.publisher, team_info=teams)
+    feed = None if game is None else markets.LiveFeed(game)
+    samples = {-1: (None, None)}  # (read at, must postdate) by at_bat_index: markets.sample_times
     done = []  # codes whose complete suffix succeeded
     last_wait = 0.0
     try:
@@ -571,6 +618,8 @@ def live(args):
                 except BendError as e:
                     print(f"#pre bend error: {e}", flush=True)
             if state == "Preview":
+                if feed is not None:
+                    samples = read_markets(feed, src, book, samples, False)
                 if -1 in book.rows:
                     book.write()  # also retries a failed pregame publish
                 if time.time() - last_wait >= 60:
@@ -603,6 +652,8 @@ def live(args):
                     book.add(idx, b, plays[k - 1], wp.get(idx))
                 if complete:
                     done = codes
+            if feed is not None:
+                samples = read_markets(feed, src, book, samples, True)
             book.backfill(wp)
             book.write()
             if state == "Final":
@@ -611,6 +662,9 @@ def live(args):
                     book.final(b["home_runs"] > b["away_runs"])
                     box_ok = box_check(src.get("box"), src.get("linescore"), b)
                     book.backfill(wp_map(src.get("wp")))
+                    if feed is not None:
+                        feed.catch_up(max((t for t, _ in samples.values() if t is not None), default=0))
+                        samples = read_markets(feed, src, book, samples, True)
                     published = book.write()
                     book.summary()
                     return 0 if box_ok and book.mismatch_count() == 0 and published else 1
@@ -633,6 +687,7 @@ def main():
     ap.add_argument("--mode", choices=("cpu", "gpu"), default=DEFAULT_MODE)
     ap.add_argument("--port", type=int, default=8765)
     ap.add_argument("--no-serve", action="store_true", help="live: do not start the chart server")
+    ap.add_argument("--no-markets", action="store_true", help="live: skip prediction-market prices")
     ap.add_argument("--publish", action="store_true",
                     help="push every update to the hosted page (WP_PUSH_URL, WP_PUSH_TOKEN)")
     args = ap.parse_args()

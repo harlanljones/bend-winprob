@@ -155,6 +155,15 @@
   .figure figcaption { font: 400 12px/1.5 var(--text); color: var(--graphite-soft); margin-top: 4px; }
   #chart { min-height: 220px; }
   #chart .pele-legend { display: none; }
+  /* Market reference lines: quieter strengths of the two inks, no point marks */
+  #chart .pele-line:is([data-id="Kalshi"], [data-id="Polymarket"], [data-id="Polymarket US"]) path { stroke-width: 1.5; }
+  #chart .pele-line:is([data-id="Kalshi"], [data-id="Polymarket"], [data-id="Polymarket US"]) circle { display: none; }
+  #chart .pele-line[data-id="Kalshi"] path { stroke: var(--graphite-soft); stroke-dasharray: 6 4; }
+  #chart .pele-line[data-id="Polymarket"] path { stroke: var(--print-rule); stroke-dasharray: 6 4; }
+  #chart .pele-line[data-id="Polymarket US"] path { stroke: var(--graphite-soft); stroke-dasharray: 1.5 3.5; }
+  .tally small.mkt[hidden] { display: none; }
+  .tally small.mkt a { color: var(--graphite-soft); }
+  .tally small.mkt a:hover { color: var(--graphite); }
 
   /* Pele, printed on the stock */
   .pele {
@@ -282,7 +291,7 @@
         </div>
         <div>
           <h2>Home win probability, running</h2>
-          <div class="tally" id="tally"><b id="bend-val">–</b><span>Bend, <span id="bend-hint">waiting for the feed</span></span><small>MLB official <span id="mlb-val">–</span> · Δ <span class="delta" id="delta-val">–</span></small></div>
+          <div class="tally" id="tally"><b id="bend-val">–</b><span>Bend, <span id="bend-hint">waiting for the feed</span></span><small>MLB official <span id="mlb-val">–</span> · Δ <span class="delta" id="delta-val">–</span></small><small class="mkt" id="mkt-line" hidden></small></div>
         </div>
       </aside>
       <aside class="margin rest" aria-label="Keeper's figure">
@@ -432,7 +441,7 @@ python3 -m unittest discover -s tests -v</code></pre>
       <li><b>A four-slot play encoding.</b> A play is four destinations (r3, r2, r1, batter). Pickoffs, caught stealings, wild pitches and passed balls do not fit and are refused: 29 of 871 plays in the benchmark, 0 in the bundled replay.</li>
       <li><b>Small sample.</b> 12 games and 871 plays, with per-game Brier from 0.03 to 0.30. Treat the aggregate as suggestive, not settled.</li>
       <li><b>A benchmark, not a claim of superiority.</b> MLB's win probability is a production model with far more information than this proof of concept uses.</li>
-      <li><b>Not a betting tool.</b> It is a demonstration that a proven, parallel scorebook can track a production model on real data.</li>
+      <li><b>Not a betting tool.</b> It is a demonstration that a proven, parallel scorebook can track a production model on real data. Where a prediction market lists the game, its price is shown as a reference, not as ground truth.</li>
     </ul>
   </section>
 
@@ -497,6 +506,18 @@ const fmtDelta = v => (v === null ? "–" : (v >= 0 ? "+" : "−") + Math.abs(v)
 const halfArrow = h => (h === "T" ? "▲" : h === "B" ? "▼" : "");
 const teamName = side => meta[`${side}_name`] || meta[side];
 
+// Prediction-market reference prices: one optional CSV column per venue, in display order.
+// The chart line style for each lives in CSS under its series data-id (the venue name).
+const VENUES = [
+  { key: "kalshi", name: "Kalshi", ink: "dashed soft graphite" },
+  { key: "polymarket", name: "Polymarket", ink: "dashed light teal" },
+  { key: "polymarket_us", name: "Polymarket US", ink: "dotted soft graphite" },
+];
+const venueCol = v => `${v.key}_home_wp`;
+// Venues with at least one price in the feed; none when the columns are absent.
+const venuesIn = rows => VENUES.filter(v => rows.some(r => num(r[venueCol(v)]) !== null));
+const venueUrl = v => (Array.isArray(meta.markets) ? meta.markets.find(m => m && m.key === v.key && /^https:\/\//.test(m.url || "")) : null)?.url || null;
+
 function latest(rows, key) {
   for (let i = rows.length - 1; i >= 0; i--) if (num(rows[i][key]) !== null) return num(rows[i][key]);
   return null;
@@ -531,7 +552,8 @@ function book(rows) {
     // the harness reports outs after the play; a half that ended shows 0 with the next half's key
     const madeOut = outs > outsBefore ? outs : 0;
     plays.push({ r, idx, side, slot, inning, half: r.half, runs, madeOut, bases: r.bases || "---",
-      bend: num(r.bend_home_wp), mlb: num(r.mlb_home_wp) });
+      bend: num(r.bend_home_wp), mlb: num(r.mlb_home_wp),
+      mkt: VENUES.map(v => [v, num(r[venueCol(v)])]).filter(([, x]) => x !== null) });
     runsBy[side].set(inning, (runsBy[side].get(inning) || 0) + runs);
     prev = r;
   }
@@ -613,7 +635,7 @@ function renderSheet(bk, side) {
           + (p.madeOut ? `<span class="out${p.madeOut === 3 ? " three" : ""}">${p.madeOut}</span>` : "")
           + (p.runs ? `<span class="runs">+${p.runs} run${p.runs > 1 ? "s" : ""}</span>` : "")
           + (ps.length > 1 ? `<span class="more">×${ps.length}</span>` : "")
-          + `<span class="sr">${halfArrow(p.half)}${p.inning}, slot ${s}: ${basesText(p.bases)}, ${p.r.outs} out, Bend ${fmt(p.bend)}, MLB ${fmt(p.mlb)}.</span>`
+          + `<span class="sr">${halfArrow(p.half)}${p.inning}, slot ${s}: ${basesText(p.bases)}, ${p.r.outs} out, Bend ${fmt(p.bend)}, MLB ${fmt(p.mlb)}${p.mkt.map(([v, x]) => `, ${v.name} ${fmt(x)}`).join("")}.</span>`
           + (isNow ? `<svg class="pen" aria-hidden="true"><rect x="1" y="1" width="calc(100% - 2px)" height="calc(100% - 2px)" pathLength="1"/></svg>` : "");
         td.append(cell);
       }
@@ -628,11 +650,14 @@ function renderSheet(bk, side) {
 }
 
 function chartSource(rows) {
+  const venues = venuesIn(rows);
   const xs = [], bend = [], mlb = [];
+  const mk = venues.map(() => []), lastMk = venues.map(() => null);
   let carried = 0, lastMlb = null;
   for (const r of rows) {
     const b = num(r.bend_home_wp);
     if (b === null) continue;
+    venues.forEach((v, i) => { const x = num(r[venueCol(v)]); if (x !== null) lastMk[i] = x; });
     let m = num(r.mlb_home_wp);
     if (m === null) {
       if (lastMlb === null) continue;   // no official number yet: nothing to compare
@@ -642,7 +667,15 @@ function chartSource(rows) {
     xs.push(`"${xs.length + 1}"`);
     bend.push(b.toFixed(2));
     mlb.push(m.toFixed(2));
+    venues.forEach((_, i) => mk[i].push(lastMk[i]));
   }
+  // A Mermaid line cannot start mid-chart, so a venue is drawn only when it has a price at the
+  // first plotted play (the pregame row reads first pitch, so a listed venue normally does);
+  // later gaps carry the previous price, as MLB's line does.
+  const drawn = venues.map((v, i) => ({ v, data: mk[i] }))
+    .filter(d => d.data[0] !== null && d.data[0] !== undefined)
+    .map(d => ({ v: d.v, data: d.data.map(x => x.toFixed(2)) }));
+  const names = ["Bend", "MLB official", ...drawn.map(d => d.v.name)];
   const src = `---
 config:
   xyChart:
@@ -651,19 +684,21 @@ config:
 ---
 xychart
   accTitle: Home-team win probability per completed play
-  accDescr: Two lines over ${xs.length} plays: Bend, and MLB official.
+  accDescr: ${names.length === 2 ? "Two" : names.length === 3 ? "Three" : names.length === 4 ? "Four" : "Five"} lines over ${xs.length} plays: ${names.slice(0, -1).join(", ")}, and ${names[names.length - 1]}.
   x-axis "play" [${xs.join(",")}]
   y-axis "home win %" 0 --> 100
   line "Bend" [${bend.join(",")}]
-  line "MLB" [${mlb.join(",")}]`;
-  return { src, carried, n: xs.length };
+  line "MLB" [${mlb.join(",")}]` + drawn.map(d => `
+  line "${d.v.name}" [${d.data.join(",")}]`).join("");
+  return { src, carried, n: xs.length, drawn };
 }
 
 function renderChart(rows) {
-  const { src, carried, n } = chartSource(rows);
+  const { src, carried, n, drawn } = chartSource(rows);
   if (!n) { $("chart").textContent = "No plays yet."; chart = null; return; }
   if (chart) chart.update(src); else chart = pele.mount($("chart"), src, { zoom: false, fontSize: 11 });
   $("chart-cap").textContent = `Home-team win probability after each of ${n} completed plays, numbered from the first. Graphite: Bend. Teal: MLB official.`
+    + (drawn.length ? ` Market prices, as a reference: ${drawn.map(d => `${d.v.ink}, ${d.v.name}`).join("; ")}.` : "")
     + (carried ? ` ${carried} play${carried > 1 ? "s" : ""} without an MLB value carried the previous one.` : "");
 }
 
@@ -751,6 +786,18 @@ function render(rows) {
   const d = $("delta-val");
   d.textContent = fmtDelta(delta);
   d.className = "delta " + (delta === null ? "" : delta > 0 ? "up" : delta < 0 ? "down" : "");
+  // Market reference prices from the latest play that has any (a play's price is read a minute
+  // after it ends), so a venue whose book has gone blank shows "–" rather than an old price.
+  const mkLine = $("mkt-line");
+  const quoted = venuesIn(rows);
+  const mkRow = [...rows].reverse().find(r => quoted.some(v => num(r[venueCol(v)]) !== null)) || {};
+  mkLine.replaceChildren();
+  mkLine.hidden = !quoted.length;
+  quoted.forEach((v, i) => {
+    const url = venueUrl(v);
+    const label = url ? Object.assign(document.createElement("a"), { href: url, target: "_blank", rel: "noopener", textContent: v.name }) : v.name;
+    mkLine.append(i ? " · " : "Market reference: ", label, ` ${fmt(num(mkRow[venueCol(v)]))}`);
+  });
 
   const inningLabel = last.half === "T" ? "Top" : last.half === "B" ? "Bottom" : "";
   const nowKey = `${last.at_bat_index}/${halfKey}`;

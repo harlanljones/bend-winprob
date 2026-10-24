@@ -60,7 +60,8 @@ class RecoveryTest(unittest.TestCase):
                 "home_wins": 0, "away_wins": 1, "unfinished": 0, "seconds": 0.001,
             }
 
-        args = SimpleNamespace(pk=pk, no_serve=True, port=8765, depth=1, mode="cpu", publisher=None)
+        args = SimpleNamespace(pk=pk, no_serve=True, no_markets=True, port=8765, depth=1, mode="cpu",
+                               publisher=None)
         try:
             with patch.object(live, "Source", return_value=source), \
                  patch.object(live, "run_bend", side_effect=fake_bend), \

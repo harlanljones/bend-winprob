@@ -17,7 +17,9 @@ CLI:
     python3 sim_engine.py --pk 849809 --fetch --publish
 
 Fixtures are read from fixtures/<pk>/ and are never downloaded unless
---fetch (or fetch=True) is explicitly supplied. The same engine backs
+--fetch (or fetch=True) is explicitly supplied. Prediction-market prices come
+from fixtures/<pk>/markets.json, recorded once by markets.recorded (with
+--fetch); without it the market columns stay empty. The same engine backs
 `live.py --replay`, so the rehearsal and the reusable API cannot drift.
 """
 
@@ -29,6 +31,7 @@ import sys
 import time
 
 import live
+import markets
 
 
 class ReplayEngine:
@@ -57,6 +60,7 @@ class ReplayEngine:
         self.plays = live.complete_plays(self.source.get("plays"))
         self.codes = live.encode_plays(self.plays)
         self.wp = live.wp_map(self.source.get("wp"))
+        self.tape, self.listings, self.samples = markets.recorded(self.source, self.teams)
         self.is_final = self.status["gameData"]["status"]["abstractGameState"] == "Final"
         self.reset()
 
@@ -70,6 +74,7 @@ class ReplayEngine:
         self.book = live.Book(
             self.pk, self.teams["away"]["abbr"], self.teams["home"]["abbr"],
             self.depth, self.mode, self.publisher, verbose=self.verbose, team_info=self.teams)
+        self.book.set_markets(self.tape, self.samples, self.listings)
         return self
 
     def _bend(self, count):

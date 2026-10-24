@@ -2,8 +2,11 @@
 """Batch win-probability benchmark: replay many finished games at high depth.
 
 Scores Bend's play-by-play home win probabilities against the observed game
-outcomes (Brier score, log loss, MAE-vs-outcome) and against MLB's own
-winProbability field for the same plays. Results land in runs/bench/.
+outcomes (Brier score, log loss, MAE-vs-outcome), beside MLB's own
+winProbability field and the prediction-market prices recorded in
+fixtures/<pk>/markets.json for the same plays. Each source is scored on the
+plays where it has a value, and all of them together on the plays where every
+source has one ("common"). Results land in runs/bench/.
 
     python3 bench.py                 # games from fixtures-bench/pks.json
     python3 bench.py --pks 849809 849805 --depth 20
@@ -16,11 +19,13 @@ import math
 import time
 from pathlib import Path
 
+import markets
 from live import Source, ROOT
 from sim_engine import ReplayEngine
 
 BENCH = ROOT / "fixtures-bench"
 OUT = ROOT / "runs" / "bench"
+SOURCES = ("bend", "mlb", *markets.KEYS)
 
 
 def brier(home_wp, home_won):
@@ -38,6 +43,23 @@ def final_scores(src):
     """(away_runs, home_runs) from the finalized linescore fixture."""
     ls = src.get("linescore")
     return ls["teams"]["away"]["runs"], ls["teams"]["home"]["runs"]
+
+
+def score(rows, home_won, sources):
+    """Mean Brier, log loss and MAE-vs-outcome (pp) per source over `rows`."""
+    out = {}
+    for s in sources:
+        ps = [r[f"{s}_home_wp"] for r in rows]
+        if ps:
+            out[s] = {"brier": sum(brier(p, home_won) for p in ps) / len(ps),
+                      "logloss": sum(logloss(p, home_won) for p in ps) / len(ps),
+                      "mae_outcome": sum(abs(p - (100.0 if home_won else 0.0)) for p in ps) / len(ps)}
+    return out
+
+
+def mean_of(games, field):
+    vals = [g[field] for g in games if g.get(field) is not None]
+    return sum(vals) / len(vals) if vals else None
 
 
 def main(argv=None):
@@ -58,13 +80,13 @@ def main(argv=None):
           f"(2^{args.depth} = {2 ** args.depth} sims/play), mode={args.mode}", flush=True)
 
     fieldnames = ["gamePk", "at_bat_index", "inning", "half", "outs", "bases",
-                  "away_runs", "home_runs", "bend_home_wp", "mlb_home_wp",
+                  "away_runs", "home_runs", *(f"{s}_home_wp" for s in SOURCES),
                   "sims", "unfinished", "seconds", "state_check"]
     rows_file = rows_path.open("w")
     rows_file.write(",".join(fieldnames) + "\n")
 
-    # Per-game scoring: bend and mlb against the true home win (1) / loss (0).
-    # MLB is scored only where its WP field exists at or before each play.
+    # Per-game scoring against the true home win (1) / loss (0). Each source is
+    # scored where it has a value; "common" scores every source on the same plays.
     games = []
     start = time.monotonic()
     for n, pk in enumerate(pk_list, 1):
@@ -88,27 +110,27 @@ def main(argv=None):
             home_won = home_runs > away_runs
 
             played = [r for r in rows if r["state_check"] == "ok" and r["bend_home_wp"] != ""]
-            got_mlb = [r for r in played if r["mlb_home_wp"] != ""]
-            gb = sum(brier(r["bend_home_wp"], home_won) for r in played) / len(played)
-            gm = sum(brier(r["mlb_home_wp"], home_won) for r in got_mlb) / len(got_mlb)
-            lb = sum(logloss(r["bend_home_wp"], home_won) for r in played) / len(played)
-            lm = sum(logloss(r["mlb_home_wp"], home_won) for r in got_mlb) / len(got_mlb)
-            ab = sum(abs(r["bend_home_wp"] - (100.0 if home_won else 0.0)) for r in played) / len(played)
-            am = sum(abs(r["mlb_home_wp"] - (100.0 if home_won else 0.0)) for r in got_mlb) / len(got_mlb)
+            have = {s: [r for r in played if r[f"{s}_home_wp"] != ""] for s in SOURCES}
+            common = [r for r in played if all(r[f"{s}_home_wp"] != "" for s in SOURCES)]
             bad = [r for r in rows if r["state_check"] != "ok"]
             secs = sum(r["seconds"] for r in played) / max(len(played), 1)
             rec = {"gamePk": pk, "plays_compared": len(played),
-                   "plays_with_mlb": len(got_mlb), "home_won": home_won,
-                   "final": f"{away_runs}-{home_runs}",
-                   "bend_brier": round(gb, 5), "mlb_brier": round(gm, 5),
-                   "bend_logloss": round(lb, 5), "mlb_logloss": round(lm, 5),
-                   "bend_mae_outcome": round(ab, 3), "mlb_mae_outcome": round(am, 3),
+                   "home_won": home_won, "final": f"{away_runs}-{home_runs}",
+                   "markets": [m["id"] for m in engine.listings],
                    "state_mismatches": len(bad), "avg_sec_per_play": round(secs, 4),
-                   "sims": 2 ** args.depth}
+                   "sims": 2 ** args.depth, "common_plays": len(common)}
+            for s in SOURCES:
+                rec[f"plays_with_{s}"] = len(have[s])
+                own = score(have[s], home_won, [s]).get(s, {})
+                both = score(common, home_won, [s]).get(s, {})
+                for m in ("brier", "logloss", "mae_outcome"):
+                    rec[f"{s}_{m}"] = round(own[m], 5) if m in own else None
+                    rec[f"common_{s}_{m}"] = round(both[m], 5) if m in both else None
             games.append(rec)
             print(f"[{n}/{len(pk_list)}] pk {pk} {rec['final']} "
-                  f"bend Brier={rec['bend_brier']} mlb={rec['mlb_brier'] } "
-                  f"({len(played)} plays, {len(bad)} mism)", flush=True)
+                  f"bend Brier={rec['bend_brier']} mlb={rec['mlb_brier']} "
+                  + " ".join(f"{s}={rec[f'{s}_brier']}" for s in markets.KEYS)
+                  + f" ({len(played)} plays, {len(common)} common, {len(bad)} mism)", flush=True)
             for r in played:
                 rows_file.write(",".join(str(r.get(k, "")) for k in fieldnames) + "\n")
         except Exception as e:
@@ -118,24 +140,27 @@ def main(argv=None):
     rows_file.close()
 
     ok = [g for g in games if "error" not in g]
-    tot_bplays = sum(g["plays_compared"] for g in ok)
-    tot_mplays = sum(g["plays_with_mlb"] for g in ok)
     summary = {
         "label": args.label, "when": stamp, "depth": args.depth,
         "sims_per_play": 2 ** args.depth, "mode": args.mode,
         "games_requested": len(pk_list), "games_scored": len(ok),
         "games_failed": len(pk_list) - len(ok),
-        "bend_plays_scored": tot_bplays, "mlb_plays_scored": tot_mplays,
-        "bend_brier": round(sum(g["bend_brier"] for g in ok) / max(len(ok), 1), 5),
-        "mlb_brier": round(sum(g["mlb_brier"] for g in ok) / max(len(ok), 1), 5),
-        "bend_logloss": round(sum(g["bend_logloss"] for g in ok) / max(len(ok), 1), 5),
-        "mlb_logloss": round(sum(g["mlb_logloss"] for g in ok) / max(len(ok), 1), 5),
-        "bend_mae_outcome": round(sum(g["bend_mae_outcome"] for g in ok) / max(len(ok), 1), 3),
-        "mlb_mae_outcome": round(sum(g["mlb_mae_outcome"] for g in ok) / max(len(ok), 1), 3),
+        "common_plays_scored": sum(g["common_plays"] for g in ok),
+    }
+    for s in SOURCES:
+        summary[f"{s}_plays_scored"] = sum(g[f"plays_with_{s}"] for g in ok)
+        summary[f"{s}_games_scored"] = sum(g[f"plays_with_{s}"] > 0 for g in ok)
+    # Per-game means, averaged over the games where the source has plays.
+    for prefix in ("", "common_"):
+        for s in SOURCES:
+            for m, digits in (("brier", 5), ("logloss", 5), ("mae_outcome", 3)):
+                v = mean_of(ok, f"{prefix}{s}_{m}")
+                summary[f"{prefix}{s}_{m}"] = None if v is None else round(v, digits)
+    summary.update({
         "state_mismatches": sum(g["state_mismatches"] for g in ok),
         "avg_sec_per_play": round(sum(g["avg_sec_per_play"] for g in ok) / max(len(ok), 1), 4),
         "games": games,
-    }
+    })
     summary_path.write_text(json.dumps(summary, indent=1))
     print(json.dumps({k: v for k, v in summary.items() if k != "games"}, indent=2))
     print(f"rows: {rows_path}\nsummary: {summary_path}", flush=True)

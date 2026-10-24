@@ -3,10 +3,21 @@
 // live.py --publish fills over HTTP:
 //   POST /push/<pk>              {"meta": {...}, "csv": "..."}  (Bearer PUSH_TOKEN)
 //   GET  /runs/<pk>.csv          the latest CSV live.py wrote
-//   GET  /runs/<pk>-meta.json    {"pk", "away", "home"}
+//   GET  /runs/<pk>-meta.json    {"pk", "away", "home", names, logos, markets}
 import { DurableObject } from "cloudflare:workers";
 
 const MAX_CSV = 512 * 1024;
+const MARKET_KEYS = ["kalshi", "polymarket", "polymarket_us"];
+
+// Prediction-market listings shown on the page: known venues, https links only.
+function cleanMarkets(markets) {
+  if (!Array.isArray(markets)) return null;
+  const out = markets
+    .filter(m => m && MARKET_KEYS.includes(m.key) && typeof m.name === "string" && typeof m.id === "string"
+      && typeof m.url === "string" && m.url.startsWith("https://"))
+    .map(({ key, name, url, id }) => ({ key, name: name.slice(0, 40), url: url.slice(0, 300), id: id.slice(0, 120) }));
+  return out.length ? out : null;
+}
 
 export class Feed extends DurableObject {
   async put(pk, meta, csv) {
@@ -53,6 +64,8 @@ export default {
       for (const key of ["away_name", "home_name", "away_logo", "home_logo"]) {
         if (typeof meta[key] === "string") clean[key] = meta[key];
       }
+      const markets = cleanMarkets(meta.markets);
+      if (markets) clean.markets = markets;
       await feed.put(pk, JSON.stringify(clean), csv);
       return text("ok\n", 200);
     }
