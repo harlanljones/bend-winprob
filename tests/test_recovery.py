@@ -37,7 +37,7 @@ class RecoveryTest(unittest.TestCase):
                                       "home": {"id": 2, "abbreviation": "HME"}},
                         },
                     }
-                if name == "plays":
+                if name in ("plays", "scoring"):
                     return {"allPlays": [play]}
                 if name == "wp":
                     return []

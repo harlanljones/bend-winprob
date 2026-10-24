@@ -161,7 +161,7 @@ class RecordedReplayTest(unittest.TestCase):
     def test_replay_without_recording_leaves_market_columns_empty(self):
         with tempfile.TemporaryDirectory() as d:
             source = SimpleNamespace(dir=Path(d), allow_fetch=False)
-            tape, listings, samples = markets.recorded(source, teams=None)
+            tape, listings, samples = markets.recorded(source, teams=None, scoring={})
         self.assertEqual(([], {}), (listings, samples))
 
     def test_bundled_replay_reads_recorded_prices_offline(self):

@@ -17,10 +17,11 @@ CLI:
     python3 sim_engine.py --pk 849809 --fetch --publish
 
 Fixtures are read from fixtures/<pk>/ and are never downloaded unless
---fetch (or fetch=True) is explicitly supplied. Prediction-market prices come
-from fixtures/<pk>/markets.json, recorded once by markets.recorded (with
---fetch); without it the market columns stay empty. The same engine backs
-`live.py --replay`, so the rehearsal and the reusable API cannot drift.
+--fetch (or fetch=True) is explicitly supplied. Batter names, scoring notation
+and play times come from fixtures/<pk>/scoring.json, prediction-market prices
+from fixtures/<pk>/markets.json (recorded once by markets.recorded); without
+them those columns stay empty. The same engine backs `live.py --replay`, so
+the rehearsal and the reusable API cannot drift.
 """
 
 from __future__ import annotations
@@ -60,7 +61,10 @@ class ReplayEngine:
         self.plays = live.complete_plays(self.source.get("plays"))
         self.codes = live.encode_plays(self.plays)
         self.wp = live.wp_map(self.source.get("wp"))
-        self.tape, self.listings, self.samples = markets.recorded(self.source, self.teams)
+        # Batter names, notation and play times: optional, like the market recording.
+        self.scoring = self.source.optional("scoring") or {}
+        self.notes = live.scorecard(self.scoring)
+        self.tape, self.listings, self.samples = markets.recorded(self.source, self.teams, self.scoring)
         self.is_final = self.status["gameData"]["status"]["abstractGameState"] == "Final"
         self.reset()
 
@@ -74,6 +78,7 @@ class ReplayEngine:
         self.book = live.Book(
             self.pk, self.teams["away"]["abbr"], self.teams["home"]["abbr"],
             self.depth, self.mode, self.publisher, verbose=self.verbose, team_info=self.teams)
+        self.book.set_scoring(self.notes)
         self.book.set_markets(self.tape, self.samples, self.listings)
         return self
 
@@ -97,7 +102,7 @@ class ReplayEngine:
         play = self.plays[self.cursor]
         b = self._bend(count)
         idx = play["about"]["atBatIndex"]
-        row = self.book.add(idx, b, play, self.wp.get(idx))
+        row = self.book.add(idx, b, play, self.wp.get(idx), self.codes[self.cursor])
         self._last_bend = b
         self.cursor = count
         return row

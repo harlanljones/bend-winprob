@@ -1,0 +1,4272 @@
+{
+ "allPlays": [
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Shohei Ohtani grounds out to first baseman Tim Tawa."
+   },
+   "about": {
+    "atBatIndex": 0,
+    "startTime": "2026-08-09T00:10:52.248Z",
+    "endTime": "2026-08-09T00:11:01.610Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 660271,
+     "fullName": "Shohei Ohtani"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 660271,
+       "fullName": "Shohei Ohtani"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 0
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Andy Pages walks."
+   },
+   "about": {
+    "atBatIndex": 1,
+    "startTime": "2026-08-09T00:11:24.696Z",
+    "endTime": "2026-08-09T00:12:38.755Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 681624,
+     "fullName": "Andy Pages"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 681624,
+       "fullName": "Andy Pages"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 1
+  },
+  {
+   "result": {
+    "event": "Grounded Into DP",
+    "eventType": "grounded_into_double_play",
+    "description": "Freddie Freeman grounds into a double play, third baseman Nolan Arenado to shortstop Geraldo Perdomo to first baseman Tim Tawa. Andy Pages out at 2nd. Freddie Freeman out at 1st."
+   },
+   "about": {
+    "atBatIndex": 2,
+    "startTime": "2026-08-09T00:12:48.190Z",
+    "endTime": "2026-08-09T00:13:57.119Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 518692,
+     "fullName": "Freddie Freeman"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Grounded Into DP",
+      "eventType": "grounded_into_double_play",
+      "movementReason": "r_force_out",
+      "runner": {
+       "id": 681624,
+       "fullName": "Andy Pages"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Grounded Into DP",
+      "eventType": "grounded_into_double_play",
+      "movementReason": null,
+      "runner": {
+       "id": 518692,
+       "fullName": "Freddie Freeman"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 2
+  },
+  {
+   "result": {
+    "event": "Lineout",
+    "eventType": "field_out",
+    "description": "Geraldo Perdomo lines out to shortstop Mookie Betts."
+   },
+   "about": {
+    "atBatIndex": 3,
+    "startTime": "2026-08-09T00:15:53.895Z",
+    "endTime": "2026-08-09T00:17:02.958Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 672695,
+     "fullName": "Geraldo Perdomo"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Lineout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 672695,
+       "fullName": "Geraldo Perdomo"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 3
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Corbin Carroll flies out to left fielder Teoscar Hern\u00e1ndez."
+   },
+   "about": {
+    "atBatIndex": 4,
+    "startTime": "2026-08-09T00:17:23.537Z",
+    "endTime": "2026-08-09T00:17:37.516Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 682998,
+     "fullName": "Corbin Carroll"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 682998,
+       "fullName": "Corbin Carroll"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 4
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Gabriel Moreno singles on a ground ball to third baseman Max Muncy."
+   },
+   "about": {
+    "atBatIndex": 5,
+    "startTime": "2026-08-09T00:18:01.934Z",
+    "endTime": "2026-08-09T00:20:05.091Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 672515,
+     "fullName": "Gabriel Moreno"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 672515,
+       "fullName": "Gabriel Moreno"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 5
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Ketel Marte walks. Gabriel Moreno to 2nd."
+   },
+   "about": {
+    "atBatIndex": 6,
+    "startTime": "2026-08-09T00:20:20.054Z",
+    "endTime": "2026-08-09T00:23:14.399Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 606466,
+     "fullName": "Ketel Marte"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 672515,
+       "fullName": "Gabriel Moreno"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 606466,
+       "fullName": "Ketel Marte"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 6
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Lars Nootbaar grounds out, second baseman Tommy Edman to first baseman Freddie Freeman."
+   },
+   "about": {
+    "atBatIndex": 7,
+    "startTime": "2026-08-09T00:23:28.664Z",
+    "endTime": "2026-08-09T00:23:54.153Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 663457,
+     "fullName": "Lars Nootbaar"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 663457,
+       "fullName": "Lars Nootbaar"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 7
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Max Muncy strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 8,
+    "startTime": "2026-08-09T00:25:46.454Z",
+    "endTime": "2026-08-09T00:27:11.150Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 571970,
+     "fullName": "Max Muncy"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 571970,
+       "fullName": "Max Muncy"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 8
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Mookie Betts grounds out, shortstop Geraldo Perdomo to first baseman Tim Tawa."
+   },
+   "about": {
+    "atBatIndex": 9,
+    "startTime": "2026-08-09T00:27:23.156Z",
+    "endTime": "2026-08-09T00:28:13.307Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 605141,
+     "fullName": "Mookie Betts"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 605141,
+       "fullName": "Mookie Betts"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 9
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Kyle Tucker grounds out, second baseman Ketel Marte to first baseman Tim Tawa."
+   },
+   "about": {
+    "atBatIndex": 10,
+    "startTime": "2026-08-09T00:28:31.728Z",
+    "endTime": "2026-08-09T00:29:55.555Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 663656,
+     "fullName": "Kyle Tucker"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 663656,
+       "fullName": "Kyle Tucker"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 10
+  },
+  {
+   "result": {
+    "event": "Pop Out",
+    "eventType": "field_out",
+    "description": "Nolan Arenado pops out to first baseman Freddie Freeman in foul territory."
+   },
+   "about": {
+    "atBatIndex": 11,
+    "startTime": "2026-08-09T00:31:46.917Z",
+    "endTime": "2026-08-09T00:32:53.474Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 571448,
+     "fullName": "Nolan Arenado"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Pop Out",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 571448,
+       "fullName": "Nolan Arenado"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 11
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Tim Tawa strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 12,
+    "startTime": "2026-08-09T00:33:03.579Z",
+    "endTime": "2026-08-09T00:34:16.194Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 694374,
+     "fullName": "Tim Tawa"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 694374,
+       "fullName": "Tim Tawa"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 12
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "James McCann strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 13,
+    "startTime": "2026-08-09T00:34:24.192Z",
+    "endTime": "2026-08-09T00:35:22.716Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 543510,
+     "fullName": "James McCann"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 543510,
+       "fullName": "James McCann"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 13
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Tommy Edman grounds out, first baseman Tim Tawa to pitcher Brandon Pfaadt."
+   },
+   "about": {
+    "atBatIndex": 14,
+    "startTime": "2026-08-09T00:37:28.756Z",
+    "endTime": "2026-08-09T00:38:14.062Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 669242,
+     "fullName": "Tommy Edman"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 669242,
+       "fullName": "Tommy Edman"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "1"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 14
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Teoscar Hern\u00e1ndez grounds out, third baseman Nolan Arenado to first baseman Tim Tawa."
+   },
+   "about": {
+    "atBatIndex": 15,
+    "startTime": "2026-08-09T00:38:35.506Z",
+    "endTime": "2026-08-09T00:39:00.902Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 606192,
+     "fullName": "Teoscar Hern\u00e1ndez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 606192,
+       "fullName": "Teoscar Hern\u00e1ndez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 15
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Hunter Feduccia flies out to right fielder Corbin Carroll."
+   },
+   "about": {
+    "atBatIndex": 16,
+    "startTime": "2026-08-09T00:39:13.613Z",
+    "endTime": "2026-08-09T00:40:50.072Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 676439,
+     "fullName": "Hunter Feduccia"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 676439,
+       "fullName": "Hunter Feduccia"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 16
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Ryan Waldschmidt called out on strikes."
+   },
+   "about": {
+    "atBatIndex": 17,
+    "startTime": "2026-08-09T00:42:54.275Z",
+    "endTime": "2026-08-09T00:45:20.308Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 814439,
+     "fullName": "Ryan Waldschmidt"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 814439,
+       "fullName": "Ryan Waldschmidt"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 17
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Geraldo Perdomo grounds out, second baseman Tommy Edman to first baseman Freddie Freeman."
+   },
+   "about": {
+    "atBatIndex": 18,
+    "startTime": "2026-08-09T00:45:33.676Z",
+    "endTime": "2026-08-09T00:47:03.143Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 672695,
+     "fullName": "Geraldo Perdomo"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 672695,
+       "fullName": "Geraldo Perdomo"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 18
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Corbin Carroll walks."
+   },
+   "about": {
+    "atBatIndex": 19,
+    "startTime": "2026-08-09T00:47:13.041Z",
+    "endTime": "2026-08-09T00:48:22.821Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 682998,
+     "fullName": "Corbin Carroll"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 682998,
+       "fullName": "Corbin Carroll"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 19
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Gabriel Moreno grounds out, second baseman Tommy Edman to first baseman Freddie Freeman."
+   },
+   "about": {
+    "atBatIndex": 20,
+    "startTime": "2026-08-09T00:48:38.318Z",
+    "endTime": "2026-08-09T00:50:06.630Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 672515,
+     "fullName": "Gabriel Moreno"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 672515,
+       "fullName": "Gabriel Moreno"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 20
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Shohei Ohtani flies out to right fielder Corbin Carroll."
+   },
+   "about": {
+    "atBatIndex": 21,
+    "startTime": "2026-08-09T00:52:05.867Z",
+    "endTime": "2026-08-09T00:53:36.823Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 660271,
+     "fullName": "Shohei Ohtani"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 660271,
+       "fullName": "Shohei Ohtani"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 21
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Andy Pages singles on a ground ball to third baseman Nolan Arenado."
+   },
+   "about": {
+    "atBatIndex": 22,
+    "startTime": "2026-08-09T00:53:48.091Z",
+    "endTime": "2026-08-09T00:56:06.610Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 681624,
+     "fullName": "Andy Pages"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 681624,
+       "fullName": "Andy Pages"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 22
+  },
+  {
+   "result": {
+    "event": "Double Play",
+    "eventType": "double_play",
+    "description": "Freddie Freeman lines into a double play, third baseman Nolan Arenado to first baseman Tim Tawa. Andy Pages out at 1st."
+   },
+   "about": {
+    "atBatIndex": 23,
+    "startTime": "2026-08-09T00:56:21.482Z",
+    "endTime": "2026-08-09T00:59:40.768Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 518692,
+     "fullName": "Freddie Freeman"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Double Play",
+      "eventType": "double_play",
+      "movementReason": null,
+      "runner": {
+       "id": 518692,
+       "fullName": "Freddie Freeman"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Double Play",
+      "eventType": "double_play",
+      "movementReason": "r_doubled_off",
+      "runner": {
+       "id": 681624,
+       "fullName": "Andy Pages"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 23
+  },
+  {
+   "result": {
+    "event": "Pop Out",
+    "eventType": "field_out",
+    "description": "Ketel Marte pops out to third baseman Max Muncy."
+   },
+   "about": {
+    "atBatIndex": 24,
+    "startTime": "2026-08-09T01:03:20.475Z",
+    "endTime": "2026-08-09T01:03:45.440Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 606466,
+     "fullName": "Ketel Marte"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Pop Out",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 606466,
+       "fullName": "Ketel Marte"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 24
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Lars Nootbaar strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 25,
+    "startTime": "2026-08-09T01:03:47.022Z",
+    "endTime": "2026-08-09T01:05:18.220Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 663457,
+     "fullName": "Lars Nootbaar"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 663457,
+       "fullName": "Lars Nootbaar"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 25
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Nolan Arenado flies out to center fielder Andy Pages."
+   },
+   "about": {
+    "atBatIndex": 26,
+    "startTime": "2026-08-09T01:05:24.274Z",
+    "endTime": "2026-08-09T01:07:21.488Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 571448,
+     "fullName": "Nolan Arenado"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 571448,
+       "fullName": "Nolan Arenado"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 26
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Max Muncy grounds out, first baseman Tim Tawa to pitcher Brandon Pfaadt."
+   },
+   "about": {
+    "atBatIndex": 27,
+    "startTime": "2026-08-09T01:09:14.829Z",
+    "endTime": "2026-08-09T01:10:11.861Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 571970,
+     "fullName": "Max Muncy"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 571970,
+       "fullName": "Max Muncy"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "1"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 27
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Mookie Betts flies out to left fielder Lars Nootbaar."
+   },
+   "about": {
+    "atBatIndex": 28,
+    "startTime": "2026-08-09T01:10:23.013Z",
+    "endTime": "2026-08-09T01:12:21.594Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 605141,
+     "fullName": "Mookie Betts"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 605141,
+       "fullName": "Mookie Betts"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 28
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Kyle Tucker flies out to left fielder Lars Nootbaar."
+   },
+   "about": {
+    "atBatIndex": 29,
+    "startTime": "2026-08-09T01:12:24.922Z",
+    "endTime": "2026-08-09T01:13:57.644Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 663656,
+     "fullName": "Kyle Tucker"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 663656,
+       "fullName": "Kyle Tucker"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 29
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Tim Tawa singles on a fly ball to left fielder Teoscar Hern\u00e1ndez."
+   },
+   "about": {
+    "atBatIndex": 30,
+    "startTime": "2026-08-09T01:16:05.492Z",
+    "endTime": "2026-08-09T01:17:42.572Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 694374,
+     "fullName": "Tim Tawa"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 694374,
+       "fullName": "Tim Tawa"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 30
+  },
+  {
+   "result": {
+    "event": "Lineout",
+    "eventType": "field_out",
+    "description": "James McCann lines out to left fielder Teoscar Hern\u00e1ndez."
+   },
+   "about": {
+    "atBatIndex": 31,
+    "startTime": "2026-08-09T01:17:52.854Z",
+    "endTime": "2026-08-09T01:20:07.442Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 543510,
+     "fullName": "James McCann"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Lineout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 543510,
+       "fullName": "James McCann"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 31
+  },
+  {
+   "result": {
+    "event": "Hit By Pitch",
+    "eventType": "hit_by_pitch",
+    "description": "Ryan Waldschmidt hit by pitch. Tim Tawa to 2nd."
+   },
+   "about": {
+    "atBatIndex": 32,
+    "startTime": "2026-08-09T01:20:22.444Z",
+    "endTime": "2026-08-09T01:23:00.747Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 814439,
+     "fullName": "Ryan Waldschmidt"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Hit By Pitch",
+      "eventType": "hit_by_pitch",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 694374,
+       "fullName": "Tim Tawa"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Hit By Pitch",
+      "eventType": "hit_by_pitch",
+      "movementReason": null,
+      "runner": {
+       "id": 814439,
+       "fullName": "Ryan Waldschmidt"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 32
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Geraldo Perdomo called out on strikes."
+   },
+   "about": {
+    "atBatIndex": 33,
+    "startTime": "2026-08-09T01:24:27.144Z",
+    "endTime": "2026-08-09T01:28:19.486Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 672695,
+     "fullName": "Geraldo Perdomo"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 672695,
+       "fullName": "Geraldo Perdomo"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 33
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Corbin Carroll called out on strikes."
+   },
+   "about": {
+    "atBatIndex": 34,
+    "startTime": "2026-08-09T01:28:30.332Z",
+    "endTime": "2026-08-09T01:30:24.893Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 682998,
+     "fullName": "Corbin Carroll"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 682998,
+       "fullName": "Corbin Carroll"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 34
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Tommy Edman flies out to center fielder Ryan Waldschmidt."
+   },
+   "about": {
+    "atBatIndex": 35,
+    "startTime": "2026-08-09T01:32:25.088Z",
+    "endTime": "2026-08-09T01:34:13.759Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 669242,
+     "fullName": "Tommy Edman"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 669242,
+       "fullName": "Tommy Edman"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 35
+  },
+  {
+   "result": {
+    "event": "Pop Out",
+    "eventType": "field_out",
+    "description": "Teoscar Hern\u00e1ndez pops out to third baseman Nolan Arenado in foul territory."
+   },
+   "about": {
+    "atBatIndex": 36,
+    "startTime": "2026-08-09T01:34:20.464Z",
+    "endTime": "2026-08-09T01:34:47.101Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 606192,
+     "fullName": "Teoscar Hern\u00e1ndez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Pop Out",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 606192,
+       "fullName": "Teoscar Hern\u00e1ndez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 36
+  },
+  {
+   "result": {
+    "event": "Lineout",
+    "eventType": "field_out",
+    "description": "Hunter Feduccia lines out sharply to center fielder Ryan Waldschmidt."
+   },
+   "about": {
+    "atBatIndex": 37,
+    "startTime": "2026-08-09T01:34:54.952Z",
+    "endTime": "2026-08-09T01:36:32.551Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 676439,
+     "fullName": "Hunter Feduccia"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Lineout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 676439,
+       "fullName": "Hunter Feduccia"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 37
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Gabriel Moreno singles on a line drive to left fielder Teoscar Hern\u00e1ndez."
+   },
+   "about": {
+    "atBatIndex": 38,
+    "startTime": "2026-08-09T01:38:36.295Z",
+    "endTime": "2026-08-09T01:40:28.485Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 672515,
+     "fullName": "Gabriel Moreno"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 672515,
+       "fullName": "Gabriel Moreno"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 38
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Ketel Marte walks. Gabriel Moreno to 2nd."
+   },
+   "about": {
+    "atBatIndex": 39,
+    "startTime": "2026-08-09T01:40:39.757Z",
+    "endTime": "2026-08-09T01:43:45.298Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 606466,
+     "fullName": "Ketel Marte"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 672515,
+       "fullName": "Gabriel Moreno"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 606466,
+       "fullName": "Ketel Marte"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 39
+  },
+  {
+   "result": {
+    "event": "Lineout",
+    "eventType": "field_out",
+    "description": "Lars Nootbaar lines out to second baseman Tommy Edman."
+   },
+   "about": {
+    "atBatIndex": 40,
+    "startTime": "2026-08-09T01:44:50.719Z",
+    "endTime": "2026-08-09T01:47:30.205Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 663457,
+     "fullName": "Lars Nootbaar"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Lineout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 663457,
+       "fullName": "Lars Nootbaar"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 40
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Nolan Arenado flies out to left fielder Teoscar Hern\u00e1ndez."
+   },
+   "about": {
+    "atBatIndex": 41,
+    "startTime": "2026-08-09T01:47:52.926Z",
+    "endTime": "2026-08-09T01:51:13.119Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 571448,
+     "fullName": "Nolan Arenado"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 571448,
+       "fullName": "Nolan Arenado"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 41
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Tim Tawa flies out to right fielder Kyle Tucker."
+   },
+   "about": {
+    "atBatIndex": 42,
+    "startTime": "2026-08-09T01:53:38.428Z",
+    "endTime": "2026-08-09T01:55:10.109Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 694374,
+     "fullName": "Tim Tawa"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 694374,
+       "fullName": "Tim Tawa"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 42
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Shohei Ohtani strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 43,
+    "startTime": "2026-08-09T01:57:21.922Z",
+    "endTime": "2026-08-09T01:58:38.710Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 660271,
+     "fullName": "Shohei Ohtani"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 660271,
+       "fullName": "Shohei Ohtani"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 43
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Andy Pages singles on a ground ball to third baseman Nolan Arenado."
+   },
+   "about": {
+    "atBatIndex": 44,
+    "startTime": "2026-08-09T01:58:46.148Z",
+    "endTime": "2026-08-09T02:00:22.091Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 681624,
+     "fullName": "Andy Pages"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 681624,
+       "fullName": "Andy Pages"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 44
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Freddie Freeman flies out to left fielder Lars Nootbaar."
+   },
+   "about": {
+    "atBatIndex": 45,
+    "startTime": "2026-08-09T02:00:36.360Z",
+    "endTime": "2026-08-09T02:01:12.579Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 518692,
+     "fullName": "Freddie Freeman"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 518692,
+       "fullName": "Freddie Freeman"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 45
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Max Muncy walks."
+   },
+   "about": {
+    "atBatIndex": 46,
+    "startTime": "2026-08-09T02:01:54.806Z",
+    "endTime": "2026-08-09T02:04:41.648Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 571970,
+     "fullName": "Max Muncy"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Stolen Base 2B",
+      "eventType": "stolen_base_2b",
+      "movementReason": "r_stolen_base_2b",
+      "runner": {
+       "id": 681624,
+       "fullName": "Andy Pages"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 571970,
+       "fullName": "Max Muncy"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 8
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 46
+  },
+  {
+   "result": {
+    "event": "Forceout",
+    "eventType": "force_out",
+    "description": "Mookie Betts grounds into a force out, shortstop Geraldo Perdomo to second baseman Ketel Marte. Max Muncy out at 2nd."
+   },
+   "about": {
+    "atBatIndex": 47,
+    "startTime": "2026-08-09T02:06:00.101Z",
+    "endTime": "2026-08-09T02:06:27.416Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 605141,
+     "fullName": "Mookie Betts"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Forceout",
+      "eventType": "force_out",
+      "movementReason": "r_force_out",
+      "runner": {
+       "id": 571970,
+       "fullName": "Max Muncy"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Forceout",
+      "eventType": "force_out",
+      "movementReason": null,
+      "runner": {
+       "id": 605141,
+       "fullName": "Mookie Betts"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 47
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "James McCann walks."
+   },
+   "about": {
+    "atBatIndex": 48,
+    "startTime": "2026-08-09T02:09:09.797Z",
+    "endTime": "2026-08-09T02:10:55.865Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 543510,
+     "fullName": "James McCann"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 543510,
+       "fullName": "James McCann"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 48
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Ryan Waldschmidt flies out to center fielder Andy Pages."
+   },
+   "about": {
+    "atBatIndex": 49,
+    "startTime": "2026-08-09T02:11:05.362Z",
+    "endTime": "2026-08-09T02:11:58.459Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 814439,
+     "fullName": "Ryan Waldschmidt"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 814439,
+       "fullName": "Ryan Waldschmidt"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 49
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Geraldo Perdomo walks. James McCann to 2nd."
+   },
+   "about": {
+    "atBatIndex": 50,
+    "startTime": "2026-08-09T02:12:11.148Z",
+    "endTime": "2026-08-09T02:13:58.618Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 672695,
+     "fullName": "Geraldo Perdomo"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 543510,
+       "fullName": "James McCann"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 672695,
+       "fullName": "Geraldo Perdomo"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 50
+  },
+  {
+   "result": {
+    "event": "Pop Out",
+    "eventType": "field_out",
+    "description": "Corbin Carroll pops out to third baseman Max Muncy in foul territory."
+   },
+   "about": {
+    "atBatIndex": 51,
+    "startTime": "2026-08-09T02:15:05.539Z",
+    "endTime": "2026-08-09T02:15:58.572Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 682998,
+     "fullName": "Corbin Carroll"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Pop Out",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 682998,
+       "fullName": "Corbin Carroll"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 51
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Gabriel Moreno strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 52,
+    "startTime": "2026-08-09T02:16:19.158Z",
+    "endTime": "2026-08-09T02:21:20.398Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 672515,
+     "fullName": "Gabriel Moreno"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 672515,
+       "fullName": "Gabriel Moreno"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 10
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 52
+  },
+  {
+   "result": {
+    "event": "Home Run",
+    "eventType": "home_run",
+    "description": "Kyle Tucker homers (11) on a fly ball to right field."
+   },
+   "about": {
+    "atBatIndex": 53,
+    "startTime": "2026-08-09T02:24:09.687Z",
+    "endTime": "2026-08-09T02:24:57.178Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 663656,
+     "fullName": "Kyle Tucker"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Home Run",
+      "eventType": "home_run",
+      "movementReason": null,
+      "runner": {
+       "id": 663656,
+       "fullName": "Kyle Tucker"
+      },
+      "responsiblePitcher": {
+       "id": 642528
+      },
+      "isScoringEvent": true,
+      "rbi": true,
+      "earned": true,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 53
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Tommy Edman flies out to shortstop Geraldo Perdomo."
+   },
+   "about": {
+    "atBatIndex": 54,
+    "startTime": "2026-08-09T02:25:02.372Z",
+    "endTime": "2026-08-09T02:25:32.548Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 669242,
+     "fullName": "Tommy Edman"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 669242,
+       "fullName": "Tommy Edman"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 54
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Teoscar Hern\u00e1ndez singles on a ground ball to left fielder Lars Nootbaar."
+   },
+   "about": {
+    "atBatIndex": 55,
+    "startTime": "2026-08-09T02:25:39.634Z",
+    "endTime": "2026-08-09T02:28:40.360Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 606192,
+     "fullName": "Teoscar Hern\u00e1ndez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 606192,
+       "fullName": "Teoscar Hern\u00e1ndez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 55
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Hunter Feduccia singles on a line drive to left fielder Lars Nootbaar. Teoscar Hern\u00e1ndez to 2nd."
+   },
+   "about": {
+    "atBatIndex": 56,
+    "startTime": "2026-08-09T02:28:47.933Z",
+    "endTime": "2026-08-09T02:31:12.810Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 676439,
+     "fullName": "Hunter Feduccia"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 676439,
+       "fullName": "Hunter Feduccia"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 606192,
+       "fullName": "Teoscar Hern\u00e1ndez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 56
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Shohei Ohtani strikes out on a foul tip."
+   },
+   "about": {
+    "atBatIndex": 57,
+    "startTime": "2026-08-09T02:32:25.570Z",
+    "endTime": "2026-08-09T02:36:39.843Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 660271,
+     "fullName": "Shohei Ohtani"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 660271,
+       "fullName": "Shohei Ohtani"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 11
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 57
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Andy Pages strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 58,
+    "startTime": "2026-08-09T02:36:59.218Z",
+    "endTime": "2026-08-09T02:39:18.796Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 681624,
+     "fullName": "Andy Pages"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 681624,
+       "fullName": "Andy Pages"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 58
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Ketel Marte grounds out, second baseman Tommy Edman to first baseman Freddie Freeman."
+   },
+   "about": {
+    "atBatIndex": 59,
+    "startTime": "2026-08-09T02:41:50.363Z",
+    "endTime": "2026-08-09T02:42:00.096Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 606466,
+     "fullName": "Ketel Marte"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 606466,
+       "fullName": "Ketel Marte"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 59
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Lars Nootbaar flies out to left fielder Teoscar Hern\u00e1ndez."
+   },
+   "about": {
+    "atBatIndex": 60,
+    "startTime": "2026-08-09T02:42:12.172Z",
+    "endTime": "2026-08-09T02:42:53.950Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 663457,
+     "fullName": "Lars Nootbaar"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 663457,
+       "fullName": "Lars Nootbaar"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 60
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Nolan Arenado singles on a line drive to left fielder Teoscar Hern\u00e1ndez."
+   },
+   "about": {
+    "atBatIndex": 61,
+    "startTime": "2026-08-09T02:43:31.847Z",
+    "endTime": "2026-08-09T02:44:00.802Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 571448,
+     "fullName": "Nolan Arenado"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 571448,
+       "fullName": "Nolan Arenado"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 61
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Tim Tawa walks. Ildemaro Vargas to 2nd."
+   },
+   "about": {
+    "atBatIndex": 62,
+    "startTime": "2026-08-09T02:44:39.190Z",
+    "endTime": "2026-08-09T02:45:40.832Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 694374,
+     "fullName": "Tim Tawa"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 545121,
+       "fullName": "Ildemaro Vargas"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 694374,
+       "fullName": "Tim Tawa"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 62
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "James McCann walks. Ildemaro Vargas to 3rd. Tim Tawa to 2nd."
+   },
+   "about": {
+    "atBatIndex": 63,
+    "startTime": "2026-08-09T02:47:10.378Z",
+    "endTime": "2026-08-09T02:49:03.759Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 543510,
+     "fullName": "James McCann"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 545121,
+       "fullName": "Ildemaro Vargas"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 694374,
+       "fullName": "Tim Tawa"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 543510,
+       "fullName": "James McCann"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 63
+  },
+  {
+   "result": {
+    "event": "Lineout",
+    "eventType": "field_out",
+    "description": "Ryan Waldschmidt lines out to center fielder Andy Pages."
+   },
+   "about": {
+    "atBatIndex": 64,
+    "startTime": "2026-08-09T02:51:50.834Z",
+    "endTime": "2026-08-09T02:53:01.660Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 814439,
+     "fullName": "Ryan Waldschmidt"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Lineout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 814439,
+       "fullName": "Ryan Waldschmidt"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 64
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Freddie Freeman flies out sharply to center fielder Ryan Waldschmidt."
+   },
+   "about": {
+    "atBatIndex": 65,
+    "startTime": "2026-08-09T02:55:53.310Z",
+    "endTime": "2026-08-09T02:56:21.575Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 518692,
+     "fullName": "Freddie Freeman"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 518692,
+       "fullName": "Freddie Freeman"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 65
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Max Muncy strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 66,
+    "startTime": "2026-08-09T02:56:34.292Z",
+    "endTime": "2026-08-09T02:58:02.122Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 571970,
+     "fullName": "Max Muncy"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 571970,
+       "fullName": "Max Muncy"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 66
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Mookie Betts walks."
+   },
+   "about": {
+    "atBatIndex": 67,
+    "startTime": "2026-08-09T02:58:10.010Z",
+    "endTime": "2026-08-09T03:00:24.542Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 605141,
+     "fullName": "Mookie Betts"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 605141,
+       "fullName": "Mookie Betts"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 67
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Kyle Tucker grounds out, first baseman Tim Tawa to pitcher Gerardo Carrillo."
+   },
+   "about": {
+    "atBatIndex": 68,
+    "startTime": "2026-08-09T03:00:50.890Z",
+    "endTime": "2026-08-09T03:03:34.849Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 663656,
+     "fullName": "Kyle Tucker"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 663656,
+       "fullName": "Kyle Tucker"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "1"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 68
+  },
+  {
+   "result": {
+    "event": "Triple",
+    "eventType": "triple",
+    "description": "Geraldo Perdomo triples (6) on a line drive to right fielder Kyle Tucker."
+   },
+   "about": {
+    "atBatIndex": 69,
+    "startTime": "2026-08-09T03:06:08.873Z",
+    "endTime": "2026-08-09T03:08:14.548Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 672695,
+     "fullName": "Geraldo Perdomo"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Triple",
+      "eventType": "triple",
+      "movementReason": null,
+      "runner": {
+       "id": 672695,
+       "fullName": "Geraldo Perdomo"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 8
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 69
+  },
+  {
+   "result": {
+    "event": "Triple",
+    "eventType": "triple",
+    "description": "Corbin Carroll triples (13) on a line drive to left fielder Teoscar Hern\u00e1ndez. Geraldo Perdomo scores."
+   },
+   "about": {
+    "atBatIndex": 70,
+    "startTime": "2026-08-09T03:08:34.406Z",
+    "endTime": "2026-08-09T03:09:12.889Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 682998,
+     "fullName": "Corbin Carroll"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Triple",
+      "eventType": "triple",
+      "movementReason": null,
+      "runner": {
+       "id": 682998,
+       "fullName": "Corbin Carroll"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Triple",
+      "eventType": "triple",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 672695,
+       "fullName": "Geraldo Perdomo"
+      },
+      "responsiblePitcher": {
+       "id": 621242
+      },
+      "isScoringEvent": true,
+      "rbi": true,
+      "earned": true,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 70
+  },
+  {
+   "result": {
+    "event": "Lineout",
+    "eventType": "field_out",
+    "description": "Gabriel Moreno lines out sharply to third baseman Max Muncy."
+   },
+   "about": {
+    "atBatIndex": 71,
+    "startTime": "2026-08-09T03:09:32.756Z",
+    "endTime": "2026-08-09T03:11:52.834Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 672515,
+     "fullName": "Gabriel Moreno"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Lineout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 672515,
+       "fullName": "Gabriel Moreno"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 71
+  },
+  {
+   "result": {
+    "event": "Pop Out",
+    "eventType": "field_out",
+    "description": "Ketel Marte pops out to shortstop Mookie Betts."
+   },
+   "about": {
+    "atBatIndex": 72,
+    "startTime": "2026-08-09T03:12:09.484Z",
+    "endTime": "2026-08-09T03:13:20.302Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 606466,
+     "fullName": "Ketel Marte"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Pop Out",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 606466,
+       "fullName": "Ketel Marte"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 72
+  },
+  {
+   "result": {
+    "event": "Intent Walk",
+    "eventType": "intent_walk",
+    "description": "Edwin D\u00edaz intentionally walks Lars Nootbaar."
+   },
+   "about": {
+    "atBatIndex": 73,
+    "startTime": "2026-08-09T03:13:34.149Z",
+    "endTime": "2026-08-09T03:13:40.924Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 663457,
+     "fullName": "Lars Nootbaar"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Intent Walk",
+      "eventType": "intent_walk",
+      "movementReason": null,
+      "runner": {
+       "id": 663457,
+       "fullName": "Lars Nootbaar"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 73
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Ildemaro Vargas strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 74,
+    "startTime": "2026-08-09T03:14:48.561Z",
+    "endTime": "2026-08-09T03:16:35.398Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 545121,
+     "fullName": "Ildemaro Vargas"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Defensive Indiff",
+      "eventType": "defensive_indiff",
+      "movementReason": "r_defensive_indiff",
+      "runner": {
+       "id": 663457,
+       "fullName": "Lars Nootbaar"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 545121,
+       "fullName": "Ildemaro Vargas"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 8
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 74
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Tommy Edman flies out to center fielder Ryan Waldschmidt."
+   },
+   "about": {
+    "atBatIndex": 75,
+    "startTime": "2026-08-09T03:18:42.457Z",
+    "endTime": "2026-08-09T03:18:57.465Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 669242,
+     "fullName": "Tommy Edman"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 669242,
+       "fullName": "Tommy Edman"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 75
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Teoscar Hern\u00e1ndez flies out to right fielder Corbin Carroll."
+   },
+   "about": {
+    "atBatIndex": 76,
+    "startTime": "2026-08-09T03:19:36.170Z",
+    "endTime": "2026-08-09T03:21:10.011Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 606192,
+     "fullName": "Teoscar Hern\u00e1ndez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 606192,
+       "fullName": "Teoscar Hern\u00e1ndez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 76
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Hunter Feduccia walks. Kyle Tucker to 3rd. Wild pitch by pitcher Gerardo Carrillo. Kyle Tucker to 3rd."
+   },
+   "about": {
+    "atBatIndex": 77,
+    "startTime": "2026-08-09T03:21:17.551Z",
+    "endTime": "2026-08-09T03:23:42.783Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 676439,
+     "fullName": "Hunter Feduccia"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Wild Pitch",
+      "eventType": "wild_pitch",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 663656,
+       "fullName": "Kyle Tucker"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 676439,
+       "fullName": "Hunter Feduccia"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 77
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Shohei Ohtani singles on a ground ball to first baseman Tim Tawa. Kyle Tucker scores. Hunter Feduccia to 2nd."
+   },
+   "about": {
+    "atBatIndex": 78,
+    "startTime": "2026-08-09T03:26:23.111Z",
+    "endTime": "2026-08-09T03:27:23.718Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 660271,
+     "fullName": "Shohei Ohtani"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 660271,
+       "fullName": "Shohei Ohtani"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 663656,
+       "fullName": "Kyle Tucker"
+      },
+      "responsiblePitcher": {
+       "id": 672629
+      },
+      "isScoringEvent": true,
+      "rbi": true,
+      "earned": false,
+      "teamUnearned": true,
+      "playIndex": 5
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 676439,
+       "fullName": "Hunter Feduccia"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 78
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Andy Pages flies out to left fielder Lars Nootbaar."
+   },
+   "about": {
+    "atBatIndex": 79,
+    "startTime": "2026-08-09T03:27:42.795Z",
+    "endTime": "2026-08-09T03:29:51.676Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 681624,
+     "fullName": "Andy Pages"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 681624,
+       "fullName": "Andy Pages"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 79
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Tim Tawa strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 80,
+    "startTime": "2026-08-09T03:32:21.772Z",
+    "endTime": "2026-08-09T03:34:00.390Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 694374,
+     "fullName": "Tim Tawa"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 694374,
+       "fullName": "Tim Tawa"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 80
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Dodgers challenged (play at 1st), call on the field was upheld: James McCann singles on a ground ball to second baseman Tommy Edman. Ildemaro Vargas to 3rd."
+   },
+   "about": {
+    "atBatIndex": 81,
+    "startTime": "2026-08-09T03:34:10.370Z",
+    "endTime": "2026-08-09T03:37:12.916Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 543510,
+     "fullName": "James McCann"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 543510,
+       "fullName": "James McCann"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 545121,
+       "fullName": "Ildemaro Vargas"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 81
+  },
+  {
+   "result": {
+    "event": "Grounded Into DP",
+    "eventType": "grounded_into_double_play",
+    "description": "Ryan Waldschmidt grounds into a double play, pitcher Jack Dreyer to second baseman Tommy Edman to first baseman Freddie Freeman. Jorge Barrosa out at 2nd. Ryan Waldschmidt out at 1st."
+   },
+   "about": {
+    "atBatIndex": 82,
+    "startTime": "2026-08-09T03:39:34.355Z",
+    "endTime": "2026-08-09T03:40:27.272Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 814439,
+     "fullName": "Ryan Waldschmidt"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Grounded Into DP",
+      "eventType": "grounded_into_double_play",
+      "movementReason": "r_force_out",
+      "runner": {
+       "id": 678489,
+       "fullName": "Jorge Barrosa"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "1"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Grounded Into DP",
+      "eventType": "grounded_into_double_play",
+      "movementReason": null,
+      "runner": {
+       "id": 814439,
+       "fullName": "Ryan Waldschmidt"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 82
+  }
+ ]
+}

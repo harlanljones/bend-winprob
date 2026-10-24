@@ -1,0 +1,3236 @@
+{
+ "allPlays": [
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Christian Yelich grounds out, second baseman Nick Allen to first baseman Christian Walker."
+   },
+   "about": {
+    "atBatIndex": 0,
+    "startTime": "2026-05-31T18:10:39.541Z",
+    "endTime": "2026-05-31T18:12:21.219Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 592885,
+     "fullName": "Christian Yelich"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 592885,
+       "fullName": "Christian Yelich"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 8
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 0
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Garrett Mitchell grounds out, shortstop Jeremy Pe\u00f1a to first baseman Christian Walker."
+   },
+   "about": {
+    "atBatIndex": 1,
+    "startTime": "2026-05-31T18:12:25.730Z",
+    "endTime": "2026-05-31T18:13:33.056Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 669003,
+     "fullName": "Garrett Mitchell"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 669003,
+       "fullName": "Garrett Mitchell"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 1
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Brice Turang flies out to center fielder Jake Meyers."
+   },
+   "about": {
+    "atBatIndex": 2,
+    "startTime": "2026-05-31T18:13:48.249Z",
+    "endTime": "2026-05-31T18:15:17.120Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 668930,
+     "fullName": "Brice Turang"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 668930,
+       "fullName": "Brice Turang"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 2
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Jeremy Pe\u00f1a strikes out on a foul tip."
+   },
+   "about": {
+    "atBatIndex": 3,
+    "startTime": "2026-05-31T18:17:13.800Z",
+    "endTime": "2026-05-31T18:19:35.398Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 665161,
+     "fullName": "Jeremy Pe\u00f1a"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 665161,
+       "fullName": "Jeremy Pe\u00f1a"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 3
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Yordan Alvarez strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 4,
+    "startTime": "2026-05-31T18:19:39.019Z",
+    "endTime": "2026-05-31T18:20:48.676Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 670541,
+     "fullName": "Yordan Alvarez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 670541,
+       "fullName": "Yordan Alvarez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 4
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Christian Walker grounds out, second baseman Brice Turang to first baseman Andrew Vaughn."
+   },
+   "about": {
+    "atBatIndex": 5,
+    "startTime": "2026-05-31T18:20:59.448Z",
+    "endTime": "2026-05-31T18:22:52.044Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 572233,
+     "fullName": "Christian Walker"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 572233,
+       "fullName": "Christian Walker"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 5
+  },
+  {
+   "result": {
+    "event": "Lineout",
+    "eventType": "field_out",
+    "description": "Andrew Vaughn lines out to right fielder Cam Smith."
+   },
+   "about": {
+    "atBatIndex": 6,
+    "startTime": "2026-05-31T18:24:42.341Z",
+    "endTime": "2026-05-31T18:26:30.442Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 683734,
+     "fullName": "Andrew Vaughn"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Lineout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 683734,
+       "fullName": "Andrew Vaughn"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 6
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Jake Bauers called out on strikes."
+   },
+   "about": {
+    "atBatIndex": 7,
+    "startTime": "2026-05-31T18:26:37.946Z",
+    "endTime": "2026-05-31T18:28:22.862Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 641343,
+     "fullName": "Jake Bauers"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 641343,
+       "fullName": "Jake Bauers"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 7
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Gary S\u00e1nchez strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 8,
+    "startTime": "2026-05-31T18:28:33.297Z",
+    "endTime": "2026-05-31T18:29:35.202Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 596142,
+     "fullName": "Gary S\u00e1nchez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 596142,
+       "fullName": "Gary S\u00e1nchez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 8
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Taylor Trammell called out on strikes."
+   },
+   "about": {
+    "atBatIndex": 9,
+    "startTime": "2026-05-31T18:31:41.835Z",
+    "endTime": "2026-05-31T18:34:32.829Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 666211,
+     "fullName": "Taylor Trammell"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 666211,
+       "fullName": "Taylor Trammell"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 8
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 9
+  },
+  {
+   "result": {
+    "event": "Lineout",
+    "eventType": "field_out",
+    "description": "Isaac Paredes lines out to left fielder Jake Bauers."
+   },
+   "about": {
+    "atBatIndex": 10,
+    "startTime": "2026-05-31T18:34:45.098Z",
+    "endTime": "2026-05-31T18:35:23.142Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 670623,
+     "fullName": "Isaac Paredes"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Lineout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 670623,
+       "fullName": "Isaac Paredes"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 10
+  },
+  {
+   "result": {
+    "event": "Lineout",
+    "eventType": "field_out",
+    "description": "Cam Smith lines out to left fielder Jake Bauers."
+   },
+   "about": {
+    "atBatIndex": 11,
+    "startTime": "2026-05-31T18:35:28.261Z",
+    "endTime": "2026-05-31T18:36:20.147Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 701358,
+     "fullName": "Cam Smith"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Lineout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 701358,
+       "fullName": "Cam Smith"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 11
+  },
+  {
+   "result": {
+    "event": "Lineout",
+    "eventType": "field_out",
+    "description": "Sal Frelick lines out to center fielder Jake Meyers."
+   },
+   "about": {
+    "atBatIndex": 12,
+    "startTime": "2026-05-31T18:38:12.714Z",
+    "endTime": "2026-05-31T18:39:19.430Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 686217,
+     "fullName": "Sal Frelick"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Lineout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 686217,
+       "fullName": "Sal Frelick"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 12
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "David Hamilton singles on a sharp line drive to center fielder Jake Meyers."
+   },
+   "about": {
+    "atBatIndex": 13,
+    "startTime": "2026-05-31T18:39:20.006Z",
+    "endTime": "2026-05-31T18:40:31.397Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 666152,
+     "fullName": "David Hamilton"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 666152,
+       "fullName": "David Hamilton"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 13
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Joey Ortiz walks. David Hamilton to 3rd. David Hamilton steals (12) 3rd base. David Hamilton to 3rd."
+   },
+   "about": {
+    "atBatIndex": 14,
+    "startTime": "2026-05-31T18:40:34.721Z",
+    "endTime": "2026-05-31T18:43:47.736Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 687401,
+     "fullName": "Joey Ortiz"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Stolen Base 2B",
+      "eventType": "stolen_base_2b",
+      "movementReason": "r_stolen_base_2b",
+      "runner": {
+       "id": 666152,
+       "fullName": "David Hamilton"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Stolen Base 3B",
+      "eventType": "stolen_base_3b",
+      "movementReason": "r_stolen_base_3b",
+      "runner": {
+       "id": 666152,
+       "fullName": "David Hamilton"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 687401,
+       "fullName": "Joey Ortiz"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 14
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Christian Yelich strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 15,
+    "startTime": "2026-05-31T18:43:57.688Z",
+    "endTime": "2026-05-31T18:45:58.661Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 592885,
+     "fullName": "Christian Yelich"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 592885,
+       "fullName": "Christian Yelich"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 15
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Garrett Mitchell grounds out, second baseman Nick Allen to first baseman Christian Walker."
+   },
+   "about": {
+    "atBatIndex": 16,
+    "startTime": "2026-05-31T18:46:05.138Z",
+    "endTime": "2026-05-31T18:46:58.594Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 669003,
+     "fullName": "Garrett Mitchell"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 669003,
+       "fullName": "Garrett Mitchell"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 16
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Jake Meyers singles on a ground ball to center fielder Garrett Mitchell."
+   },
+   "about": {
+    "atBatIndex": 17,
+    "startTime": "2026-05-31T18:48:59.378Z",
+    "endTime": "2026-05-31T18:49:31.888Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 676694,
+     "fullName": "Jake Meyers"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 676694,
+       "fullName": "Jake Meyers"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 17
+  },
+  {
+   "result": {
+    "event": "Bunt Pop Out",
+    "eventType": "field_out",
+    "description": "Nick Allen bunt pops out softly to first baseman Andrew Vaughn."
+   },
+   "about": {
+    "atBatIndex": 18,
+    "startTime": "2026-05-31T18:49:36.785Z",
+    "endTime": "2026-05-31T18:50:08.790Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 669397,
+     "fullName": "Nick Allen"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Bunt Pop Out",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 669397,
+       "fullName": "Nick Allen"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 18
+  },
+  {
+   "result": {
+    "event": "Pop Out",
+    "eventType": "field_out",
+    "description": "Christian V\u00e1zquez pops out to first baseman Andrew Vaughn in foul territory."
+   },
+   "about": {
+    "atBatIndex": 19,
+    "startTime": "2026-05-31T18:50:21.374Z",
+    "endTime": "2026-05-31T18:50:48.409Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 543877,
+     "fullName": "Christian V\u00e1zquez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Pop Out",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 543877,
+       "fullName": "Christian V\u00e1zquez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 19
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Jeremy Pe\u00f1a singles on a line drive to right fielder Sal Frelick. Jake Meyers to 2nd."
+   },
+   "about": {
+    "atBatIndex": 20,
+    "startTime": "2026-05-31T18:50:56.277Z",
+    "endTime": "2026-05-31T18:52:59.526Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 665161,
+     "fullName": "Jeremy Pe\u00f1a"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 665161,
+       "fullName": "Jeremy Pe\u00f1a"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 676694,
+       "fullName": "Jake Meyers"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 20
+  },
+  {
+   "result": {
+    "event": "Hit By Pitch",
+    "eventType": "hit_by_pitch",
+    "description": "Yordan Alvarez hit by pitch. Jake Meyers to 3rd. Jeremy Pe\u00f1a to 2nd."
+   },
+   "about": {
+    "atBatIndex": 21,
+    "startTime": "2026-05-31T18:53:01.528Z",
+    "endTime": "2026-05-31T18:54:53.433Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 670541,
+     "fullName": "Yordan Alvarez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Hit By Pitch",
+      "eventType": "hit_by_pitch",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 676694,
+       "fullName": "Jake Meyers"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Hit By Pitch",
+      "eventType": "hit_by_pitch",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 665161,
+       "fullName": "Jeremy Pe\u00f1a"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Hit By Pitch",
+      "eventType": "hit_by_pitch",
+      "movementReason": null,
+      "runner": {
+       "id": 670541,
+       "fullName": "Yordan Alvarez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 21
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Christian Walker grounds out to first baseman Andrew Vaughn."
+   },
+   "about": {
+    "atBatIndex": 22,
+    "startTime": "2026-05-31T18:56:32.434Z",
+    "endTime": "2026-05-31T18:57:03.526Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 572233,
+     "fullName": "Christian Walker"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 572233,
+       "fullName": "Christian Walker"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 22
+  },
+  {
+   "result": {
+    "event": "Lineout",
+    "eventType": "field_out",
+    "description": "Brice Turang lines out sharply to center fielder Jake Meyers."
+   },
+   "about": {
+    "atBatIndex": 23,
+    "startTime": "2026-05-31T18:59:04.952Z",
+    "endTime": "2026-05-31T18:59:56.191Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 668930,
+     "fullName": "Brice Turang"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Lineout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 668930,
+       "fullName": "Brice Turang"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 23
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Andrew Vaughn singles on a ground ball to right fielder Cam Smith."
+   },
+   "about": {
+    "atBatIndex": 24,
+    "startTime": "2026-05-31T19:00:02.834Z",
+    "endTime": "2026-05-31T19:03:18.703Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 683734,
+     "fullName": "Andrew Vaughn"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 683734,
+       "fullName": "Andrew Vaughn"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 24
+  },
+  {
+   "result": {
+    "event": "Home Run",
+    "eventType": "home_run",
+    "description": "Jake Bauers homers (9) on a fly ball to left field. Andrew Vaughn scores."
+   },
+   "about": {
+    "atBatIndex": 25,
+    "startTime": "2026-05-31T19:03:33.421Z",
+    "endTime": "2026-05-31T19:07:27.704Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 641343,
+     "fullName": "Jake Bauers"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Home Run",
+      "eventType": "home_run",
+      "movementReason": null,
+      "runner": {
+       "id": 641343,
+       "fullName": "Jake Bauers"
+      },
+      "responsiblePitcher": {
+       "id": 837227
+      },
+      "isScoringEvent": true,
+      "rbi": true,
+      "earned": true,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Home Run",
+      "eventType": "home_run",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 683734,
+       "fullName": "Andrew Vaughn"
+      },
+      "responsiblePitcher": {
+       "id": 837227
+      },
+      "isScoringEvent": true,
+      "rbi": true,
+      "earned": true,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 25
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Gary S\u00e1nchez grounds out, third baseman Isaac Paredes to first baseman Christian Walker."
+   },
+   "about": {
+    "atBatIndex": 26,
+    "startTime": "2026-05-31T19:07:18.649Z",
+    "endTime": "2026-05-31T19:09:09.857Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 596142,
+     "fullName": "Gary S\u00e1nchez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 596142,
+       "fullName": "Gary S\u00e1nchez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 26
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Sal Frelick grounds out, second baseman Nick Allen to first baseman Christian Walker."
+   },
+   "about": {
+    "atBatIndex": 27,
+    "startTime": "2026-05-31T19:09:13.720Z",
+    "endTime": "2026-05-31T19:10:20.504Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 686217,
+     "fullName": "Sal Frelick"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 686217,
+       "fullName": "Sal Frelick"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 27
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Taylor Trammell strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 28,
+    "startTime": "2026-05-31T19:12:25.518Z",
+    "endTime": "2026-05-31T19:14:20.554Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 666211,
+     "fullName": "Taylor Trammell"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 666211,
+       "fullName": "Taylor Trammell"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 28
+  },
+  {
+   "result": {
+    "event": "Double",
+    "eventType": "double",
+    "description": "Isaac Paredes doubles (10) on a sharp line drive to left fielder Jake Bauers."
+   },
+   "about": {
+    "atBatIndex": 29,
+    "startTime": "2026-05-31T19:14:22.481Z",
+    "endTime": "2026-05-31T19:15:19.148Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 670623,
+     "fullName": "Isaac Paredes"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Double",
+      "eventType": "double",
+      "movementReason": null,
+      "runner": {
+       "id": 670623,
+       "fullName": "Isaac Paredes"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 29
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Cam Smith grounds out, shortstop Joey Ortiz to first baseman Andrew Vaughn. Isaac Paredes to 3rd."
+   },
+   "about": {
+    "atBatIndex": 30,
+    "startTime": "2026-05-31T19:15:19.767Z",
+    "endTime": "2026-05-31T19:17:03.353Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 701358,
+     "fullName": "Cam Smith"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 701358,
+       "fullName": "Cam Smith"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 670623,
+       "fullName": "Isaac Paredes"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 30
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Jake Meyers flies out to right fielder Sal Frelick."
+   },
+   "about": {
+    "atBatIndex": 31,
+    "startTime": "2026-05-31T19:17:14.707Z",
+    "endTime": "2026-05-31T19:17:38.646Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 676694,
+     "fullName": "Jake Meyers"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 676694,
+       "fullName": "Jake Meyers"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 31
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "David Hamilton walks."
+   },
+   "about": {
+    "atBatIndex": 32,
+    "startTime": "2026-05-31T19:19:45.131Z",
+    "endTime": "2026-05-31T19:21:10.147Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 666152,
+     "fullName": "David Hamilton"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 666152,
+       "fullName": "David Hamilton"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 32
+  },
+  {
+   "result": {
+    "event": "Sac Bunt",
+    "eventType": "sac_bunt",
+    "description": "Astros challenged (play at 1st), call on the field was overturned: Joey Ortiz out on a sacrifice bunt, second baseman Nick Allen to first baseman Christian Walker. David Hamilton to 3rd."
+   },
+   "about": {
+    "atBatIndex": 33,
+    "startTime": "2026-05-31T19:21:13.403Z",
+    "endTime": "2026-05-31T19:22:43.375Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 687401,
+     "fullName": "Joey Ortiz"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Stolen Base 2B",
+      "eventType": "stolen_base_2b",
+      "movementReason": "r_stolen_base_2b",
+      "runner": {
+       "id": 666152,
+       "fullName": "David Hamilton"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Sac Bunt",
+      "eventType": "sac_bunt",
+      "movementReason": null,
+      "runner": {
+       "id": 687401,
+       "fullName": "Joey Ortiz"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Sac Bunt",
+      "eventType": "sac_bunt",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 666152,
+       "fullName": "David Hamilton"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 33
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Christian Yelich strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 34,
+    "startTime": "2026-05-31T19:24:50.586Z",
+    "endTime": "2026-05-31T19:26:29.417Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 592885,
+     "fullName": "Christian Yelich"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 592885,
+       "fullName": "Christian Yelich"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 34
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Garrett Mitchell flies out to left fielder Taylor Trammell."
+   },
+   "about": {
+    "atBatIndex": 35,
+    "startTime": "2026-05-31T19:26:32.041Z",
+    "endTime": "2026-05-31T19:27:56.850Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 669003,
+     "fullName": "Garrett Mitchell"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 669003,
+       "fullName": "Garrett Mitchell"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 35
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Nick Allen flies out to center fielder Garrett Mitchell."
+   },
+   "about": {
+    "atBatIndex": 36,
+    "startTime": "2026-05-31T19:29:56.148Z",
+    "endTime": "2026-05-31T19:31:10.052Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 669397,
+     "fullName": "Nick Allen"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 669397,
+       "fullName": "Nick Allen"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 36
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Christian V\u00e1zquez strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 37,
+    "startTime": "2026-05-31T19:31:11.446Z",
+    "endTime": "2026-05-31T19:33:52.482Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 543877,
+     "fullName": "Christian V\u00e1zquez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 543877,
+       "fullName": "Christian V\u00e1zquez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 37
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Jeremy Pe\u00f1a strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 38,
+    "startTime": "2026-05-31T19:33:56.273Z",
+    "endTime": "2026-05-31T19:35:26.710Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 665161,
+     "fullName": "Jeremy Pe\u00f1a"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 665161,
+       "fullName": "Jeremy Pe\u00f1a"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 38
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Brice Turang grounds out sharply, third baseman Isaac Paredes to first baseman Christian Walker."
+   },
+   "about": {
+    "atBatIndex": 39,
+    "startTime": "2026-05-31T19:37:23.957Z",
+    "endTime": "2026-05-31T19:40:14.633Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 668930,
+     "fullName": "Brice Turang"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 668930,
+       "fullName": "Brice Turang"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 39
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Andrew Vaughn called out on strikes."
+   },
+   "about": {
+    "atBatIndex": 40,
+    "startTime": "2026-05-31T19:40:18.827Z",
+    "endTime": "2026-05-31T19:43:40.871Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 683734,
+     "fullName": "Andrew Vaughn"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 683734,
+       "fullName": "Andrew Vaughn"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 40
+  },
+  {
+   "result": {
+    "event": "Lineout",
+    "eventType": "field_out",
+    "description": "Jake Bauers lines out sharply to left fielder Taylor Trammell."
+   },
+   "about": {
+    "atBatIndex": 41,
+    "startTime": "2026-05-31T19:43:44.066Z",
+    "endTime": "2026-05-31T19:47:37.351Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 641343,
+     "fullName": "Jake Bauers"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Lineout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 641343,
+       "fullName": "Jake Bauers"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 9
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 41
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Yordan Alvarez strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 42,
+    "startTime": "2026-05-31T19:49:39.406Z",
+    "endTime": "2026-05-31T19:52:04.946Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 670541,
+     "fullName": "Yordan Alvarez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 670541,
+       "fullName": "Yordan Alvarez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 42
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Christian Walker grounds out, shortstop Joey Ortiz to first baseman Andrew Vaughn."
+   },
+   "about": {
+    "atBatIndex": 43,
+    "startTime": "2026-05-31T19:52:07.452Z",
+    "endTime": "2026-05-31T19:53:00.024Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 572233,
+     "fullName": "Christian Walker"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 572233,
+       "fullName": "Christian Walker"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 43
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Taylor Trammell called out on strikes."
+   },
+   "about": {
+    "atBatIndex": 44,
+    "startTime": "2026-05-31T19:53:05.635Z",
+    "endTime": "2026-05-31T19:54:54.969Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 666211,
+     "fullName": "Taylor Trammell"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 666211,
+       "fullName": "Taylor Trammell"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 44
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Gary S\u00e1nchez grounds out, third baseman Isaac Paredes to first baseman Christian Walker."
+   },
+   "about": {
+    "atBatIndex": 45,
+    "startTime": "2026-05-31T19:57:10.709Z",
+    "endTime": "2026-05-31T19:57:21.967Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 596142,
+     "fullName": "Gary S\u00e1nchez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 596142,
+       "fullName": "Gary S\u00e1nchez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 45
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Sal Frelick grounds out, second baseman Nick Allen to first baseman Christian Walker."
+   },
+   "about": {
+    "atBatIndex": 46,
+    "startTime": "2026-05-31T19:57:25.137Z",
+    "endTime": "2026-05-31T19:58:26.263Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 686217,
+     "fullName": "Sal Frelick"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 686217,
+       "fullName": "Sal Frelick"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 46
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "David Hamilton flies out to center fielder Jake Meyers."
+   },
+   "about": {
+    "atBatIndex": 47,
+    "startTime": "2026-05-31T19:58:30.082Z",
+    "endTime": "2026-05-31T20:00:45.191Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 666152,
+     "fullName": "David Hamilton"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 666152,
+       "fullName": "David Hamilton"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 47
+  },
+  {
+   "result": {
+    "event": "Lineout",
+    "eventType": "field_out",
+    "description": "Isaac Paredes lines out sharply to left fielder Jake Bauers."
+   },
+   "about": {
+    "atBatIndex": 48,
+    "startTime": "2026-05-31T20:04:22.849Z",
+    "endTime": "2026-05-31T20:06:15.584Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 670623,
+     "fullName": "Isaac Paredes"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Lineout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 670623,
+       "fullName": "Isaac Paredes"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 48
+  },
+  {
+   "result": {
+    "event": "Lineout",
+    "eventType": "field_out",
+    "description": "Cam Smith lines out sharply to center fielder Garrett Mitchell."
+   },
+   "about": {
+    "atBatIndex": 49,
+    "startTime": "2026-05-31T20:06:19.189Z",
+    "endTime": "2026-05-31T20:07:12.229Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 701358,
+     "fullName": "Cam Smith"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Lineout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 701358,
+       "fullName": "Cam Smith"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 49
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Jake Meyers grounds out, third baseman David Hamilton to first baseman Andrew Vaughn."
+   },
+   "about": {
+    "atBatIndex": 50,
+    "startTime": "2026-05-31T20:07:53.349Z",
+    "endTime": "2026-05-31T20:08:20.274Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 676694,
+     "fullName": "Jake Meyers"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 676694,
+       "fullName": "Jake Meyers"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 50
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Joey Ortiz flies out to right fielder Cam Smith."
+   },
+   "about": {
+    "atBatIndex": 51,
+    "startTime": "2026-05-31T20:10:15.168Z",
+    "endTime": "2026-05-31T20:11:26.277Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 687401,
+     "fullName": "Joey Ortiz"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 687401,
+       "fullName": "Joey Ortiz"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 51
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Christian Yelich strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 52,
+    "startTime": "2026-05-31T20:11:26.918Z",
+    "endTime": "2026-05-31T20:13:08.366Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 592885,
+     "fullName": "Christian Yelich"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 592885,
+       "fullName": "Christian Yelich"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 52
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Garrett Mitchell called out on strikes."
+   },
+   "about": {
+    "atBatIndex": 53,
+    "startTime": "2026-05-31T20:13:11.285Z",
+    "endTime": "2026-05-31T20:14:22.891Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 669003,
+     "fullName": "Garrett Mitchell"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 669003,
+       "fullName": "Garrett Mitchell"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 53
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Nick Allen grounds out, shortstop Joey Ortiz to first baseman Andrew Vaughn."
+   },
+   "about": {
+    "atBatIndex": 54,
+    "startTime": "2026-05-31T20:16:47.560Z",
+    "endTime": "2026-05-31T20:18:49.476Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 669397,
+     "fullName": "Nick Allen"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 669397,
+       "fullName": "Nick Allen"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 54
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Zach Dezenzo strikes out swinging, catcher Gary S\u00e1nchez to first baseman Andrew Vaughn."
+   },
+   "about": {
+    "atBatIndex": 55,
+    "startTime": "2026-05-31T20:19:31.220Z",
+    "endTime": "2026-05-31T20:20:19.507Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 701305,
+     "fullName": "Zach Dezenzo"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 701305,
+       "fullName": "Zach Dezenzo"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 55
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Jeremy Pe\u00f1a grounds out, shortstop Joey Ortiz to first baseman Andrew Vaughn."
+   },
+   "about": {
+    "atBatIndex": 56,
+    "startTime": "2026-05-31T20:20:22.212Z",
+    "endTime": "2026-05-31T20:21:49.664Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 665161,
+     "fullName": "Jeremy Pe\u00f1a"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 665161,
+       "fullName": "Jeremy Pe\u00f1a"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 56
+  },
+  {
+   "result": {
+    "event": "Lineout",
+    "eventType": "field_out",
+    "description": "Brice Turang lines out to left fielder Taylor Trammell."
+   },
+   "about": {
+    "atBatIndex": 57,
+    "startTime": "2026-05-31T20:24:03.654Z",
+    "endTime": "2026-05-31T20:25:08.243Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 668930,
+     "fullName": "Brice Turang"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Lineout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 668930,
+       "fullName": "Brice Turang"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 57
+  },
+  {
+   "result": {
+    "event": "Double",
+    "eventType": "double",
+    "description": "Andrew Vaughn doubles (7) on a line drive to left fielder Taylor Trammell."
+   },
+   "about": {
+    "atBatIndex": 58,
+    "startTime": "2026-05-31T20:25:17.741Z",
+    "endTime": "2026-05-31T20:26:20.265Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 683734,
+     "fullName": "Andrew Vaughn"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Double",
+      "eventType": "double",
+      "movementReason": null,
+      "runner": {
+       "id": 683734,
+       "fullName": "Andrew Vaughn"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 58
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Jake Bauers flies out to center fielder Jake Meyers."
+   },
+   "about": {
+    "atBatIndex": 59,
+    "startTime": "2026-05-31T20:27:13.019Z",
+    "endTime": "2026-05-31T20:29:14.270Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 641343,
+     "fullName": "Jake Bauers"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Caught Stealing 3B",
+      "eventType": "caught_stealing_3b",
+      "movementReason": "r_caught_stealing_3b",
+      "runner": {
+       "id": 663368,
+       "fullName": "Blake Perkins"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "1"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 641343,
+       "fullName": "Jake Bauers"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 59
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Yordan Alvarez strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 60,
+    "startTime": "2026-05-31T20:32:20.730Z",
+    "endTime": "2026-05-31T20:34:14.687Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 670541,
+     "fullName": "Yordan Alvarez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 670541,
+       "fullName": "Yordan Alvarez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 8
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 60
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Christian Walker strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 61,
+    "startTime": "2026-05-31T20:34:28.017Z",
+    "endTime": "2026-05-31T20:36:39.125Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 572233,
+     "fullName": "Christian Walker"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 572233,
+       "fullName": "Christian Walker"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 61
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Taylor Trammell grounds out, second baseman Brice Turang to first baseman Jake Bauers."
+   },
+   "about": {
+    "atBatIndex": 62,
+    "startTime": "2026-05-31T20:36:42.991Z",
+    "endTime": "2026-05-31T20:37:13.696Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 666211,
+     "fullName": "Taylor Trammell"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 666211,
+       "fullName": "Taylor Trammell"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 62
+  }
+ ]
+}

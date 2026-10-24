@@ -1,0 +1,3429 @@
+{
+ "allPlays": [
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Kevin McGonigle flies out to center fielder Evan Carter."
+   },
+   "about": {
+    "atBatIndex": 0,
+    "startTime": "2026-07-04T20:08:15.192Z",
+    "endTime": "2026-07-04T20:08:27.694Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 805808,
+     "fullName": "Kevin McGonigle"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 805808,
+       "fullName": "Kevin McGonigle"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 0
+  },
+  {
+   "result": {
+    "event": "Pop Out",
+    "eventType": "field_out",
+    "description": "Dillon Dingler pops out to shortstop Ezequiel Duran."
+   },
+   "about": {
+    "atBatIndex": 1,
+    "startTime": "2026-07-04T20:08:32.637Z",
+    "endTime": "2026-07-04T20:09:36.938Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 693307,
+     "fullName": "Dillon Dingler"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Pop Out",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 693307,
+       "fullName": "Dillon Dingler"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 1
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Kerry Carpenter singles on a sharp line drive to center fielder Evan Carter."
+   },
+   "about": {
+    "atBatIndex": 2,
+    "startTime": "2026-07-04T20:09:38.803Z",
+    "endTime": "2026-07-04T20:11:28.466Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 681481,
+     "fullName": "Kerry Carpenter"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 681481,
+       "fullName": "Kerry Carpenter"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 2
+  },
+  {
+   "result": {
+    "event": "Home Run",
+    "eventType": "home_run",
+    "description": "Riley Greene homers (12) on a fly ball to right field. Kerry Carpenter scores."
+   },
+   "about": {
+    "atBatIndex": 3,
+    "startTime": "2026-07-04T20:11:29.129Z",
+    "endTime": "2026-07-04T20:14:12.351Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 682985,
+     "fullName": "Riley Greene"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Home Run",
+      "eventType": "home_run",
+      "movementReason": null,
+      "runner": {
+       "id": 682985,
+       "fullName": "Riley Greene"
+      },
+      "responsiblePitcher": {
+       "id": 615698
+      },
+      "isScoringEvent": true,
+      "rbi": true,
+      "earned": true,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Home Run",
+      "eventType": "home_run",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 681481,
+       "fullName": "Kerry Carpenter"
+      },
+      "responsiblePitcher": {
+       "id": 615698
+      },
+      "isScoringEvent": true,
+      "rbi": true,
+      "earned": true,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 3
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Spencer Torkelson called out on strikes."
+   },
+   "about": {
+    "atBatIndex": 4,
+    "startTime": "2026-07-04T20:14:05.381Z",
+    "endTime": "2026-07-04T20:15:34.792Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 679529,
+     "fullName": "Spencer Torkelson"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 679529,
+       "fullName": "Spencer Torkelson"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 4
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Joc Pederson singles on a ground ball to center fielder James Outman."
+   },
+   "about": {
+    "atBatIndex": 5,
+    "startTime": "2026-07-04T20:18:01.518Z",
+    "endTime": "2026-07-04T20:20:16.794Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 592626,
+     "fullName": "Joc Pederson"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 592626,
+       "fullName": "Joc Pederson"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 5
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Josh Smith flies out sharply to center fielder James Outman."
+   },
+   "about": {
+    "atBatIndex": 6,
+    "startTime": "2026-07-04T20:20:31.045Z",
+    "endTime": "2026-07-04T20:21:31.171Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 669701,
+     "fullName": "Josh Smith"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 669701,
+       "fullName": "Josh Smith"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 6
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Josh Jung called out on strikes."
+   },
+   "about": {
+    "atBatIndex": 7,
+    "startTime": "2026-07-04T20:21:41.219Z",
+    "endTime": "2026-07-04T20:23:17.717Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 673962,
+     "fullName": "Josh Jung"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 673962,
+       "fullName": "Josh Jung"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 7
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Brandon Nimmo grounds out to first baseman Spencer Torkelson."
+   },
+   "about": {
+    "atBatIndex": 8,
+    "startTime": "2026-07-04T20:23:19.701Z",
+    "endTime": "2026-07-04T20:24:03.381Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 607043,
+     "fullName": "Brandon Nimmo"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 607043,
+       "fullName": "Brandon Nimmo"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 8
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Colt Keith singles on a line drive to center fielder Evan Carter."
+   },
+   "about": {
+    "atBatIndex": 9,
+    "startTime": "2026-07-04T20:26:01.383Z",
+    "endTime": "2026-07-04T20:26:27.395Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 690993,
+     "fullName": "Colt Keith"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 690993,
+       "fullName": "Colt Keith"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 9
+  },
+  {
+   "result": {
+    "event": "Field Error",
+    "eventType": "field_error",
+    "description": "Zach McKinstry reaches on a fielding error by left fielder Alejandro Osuna. Colt Keith to 3rd. Zach McKinstry to 2nd."
+   },
+   "about": {
+    "atBatIndex": 10,
+    "startTime": "2026-07-04T20:26:28.049Z",
+    "endTime": "2026-07-04T20:27:07.329Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 656716,
+     "fullName": "Zach McKinstry"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Field Error",
+      "eventType": "field_error",
+      "movementReason": null,
+      "runner": {
+       "id": 656716,
+       "fullName": "Zach McKinstry"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_fielding_error"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Field Error",
+      "eventType": "field_error",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 656716,
+       "fullName": "Zach McKinstry"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Field Error",
+      "eventType": "field_error",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 690993,
+       "fullName": "Colt Keith"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 10
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Ben Malgeri grounds out, shortstop Ezequiel Duran to first baseman Josh Smith. Colt Keith scores. Zach McKinstry to 3rd."
+   },
+   "about": {
+    "atBatIndex": 11,
+    "startTime": "2026-07-04T20:27:40.415Z",
+    "endTime": "2026-07-04T20:28:10.521Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 701162,
+     "fullName": "Ben Malgeri"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 701162,
+       "fullName": "Ben Malgeri"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 690993,
+       "fullName": "Colt Keith"
+      },
+      "responsiblePitcher": {
+       "id": 615698
+      },
+      "isScoringEvent": true,
+      "rbi": true,
+      "earned": false,
+      "teamUnearned": true,
+      "playIndex": 1
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 656716,
+       "fullName": "Zach McKinstry"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 11
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "James Outman grounds out, first baseman Josh Smith to pitcher Cal Quantrill."
+   },
+   "about": {
+    "atBatIndex": 12,
+    "startTime": "2026-07-04T20:28:26.603Z",
+    "endTime": "2026-07-04T20:29:31.591Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 681546,
+     "fullName": "James Outman"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 681546,
+       "fullName": "James Outman"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "1"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 12
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Kevin McGonigle walks."
+   },
+   "about": {
+    "atBatIndex": 13,
+    "startTime": "2026-07-04T20:29:32.164Z",
+    "endTime": "2026-07-04T20:31:22.805Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 805808,
+     "fullName": "Kevin McGonigle"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 805808,
+       "fullName": "Kevin McGonigle"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 13
+  },
+  {
+   "result": {
+    "event": "Hit By Pitch",
+    "eventType": "hit_by_pitch",
+    "description": "Dillon Dingler hit by pitch. Kevin McGonigle to 2nd."
+   },
+   "about": {
+    "atBatIndex": 14,
+    "startTime": "2026-07-04T20:31:23.715Z",
+    "endTime": "2026-07-04T20:32:56.111Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 693307,
+     "fullName": "Dillon Dingler"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Hit By Pitch",
+      "eventType": "hit_by_pitch",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 805808,
+       "fullName": "Kevin McGonigle"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Hit By Pitch",
+      "eventType": "hit_by_pitch",
+      "movementReason": null,
+      "runner": {
+       "id": 693307,
+       "fullName": "Dillon Dingler"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 14
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Kerry Carpenter flies out to center fielder Evan Carter."
+   },
+   "about": {
+    "atBatIndex": 15,
+    "startTime": "2026-07-04T20:34:12.855Z",
+    "endTime": "2026-07-04T20:35:35.444Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 681481,
+     "fullName": "Kerry Carpenter"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 681481,
+       "fullName": "Kerry Carpenter"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 15
+  },
+  {
+   "result": {
+    "event": "Lineout",
+    "eventType": "field_out",
+    "description": "Alejandro Osuna lines out to center fielder James Outman."
+   },
+   "about": {
+    "atBatIndex": 16,
+    "startTime": "2026-07-04T20:37:27.283Z",
+    "endTime": "2026-07-04T20:38:29.406Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 696030,
+     "fullName": "Alejandro Osuna"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Lineout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 696030,
+       "fullName": "Alejandro Osuna"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 16
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Ezequiel Duran grounds out softly, shortstop Kevin McGonigle to first baseman Spencer Torkelson."
+   },
+   "about": {
+    "atBatIndex": 17,
+    "startTime": "2026-07-04T20:38:28.777Z",
+    "endTime": "2026-07-04T20:39:53.259Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 677649,
+     "fullName": "Ezequiel Duran"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 677649,
+       "fullName": "Ezequiel Duran"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 17
+  },
+  {
+   "result": {
+    "event": "Hit By Pitch",
+    "eventType": "hit_by_pitch",
+    "description": "Evan Carter hit by pitch."
+   },
+   "about": {
+    "atBatIndex": 18,
+    "startTime": "2026-07-04T20:39:54.988Z",
+    "endTime": "2026-07-04T20:41:23.188Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 694497,
+     "fullName": "Evan Carter"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Hit By Pitch",
+      "eventType": "hit_by_pitch",
+      "movementReason": null,
+      "runner": {
+       "id": 694497,
+       "fullName": "Evan Carter"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 18
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Elias D\u00edaz grounds out, shortstop Kevin McGonigle to first baseman Spencer Torkelson."
+   },
+   "about": {
+    "atBatIndex": 19,
+    "startTime": "2026-07-04T20:41:20.528Z",
+    "endTime": "2026-07-04T20:42:38.286Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 553869,
+     "fullName": "Elias D\u00edaz"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 553869,
+       "fullName": "Elias D\u00edaz"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 19
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Riley Greene flies out to center fielder Evan Carter."
+   },
+   "about": {
+    "atBatIndex": 20,
+    "startTime": "2026-07-04T20:44:36.421Z",
+    "endTime": "2026-07-04T20:46:05.084Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 682985,
+     "fullName": "Riley Greene"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 682985,
+       "fullName": "Riley Greene"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 20
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Spencer Torkelson flies out to right fielder Brandon Nimmo."
+   },
+   "about": {
+    "atBatIndex": 21,
+    "startTime": "2026-07-04T20:46:05.440Z",
+    "endTime": "2026-07-04T20:47:51.831Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 679529,
+     "fullName": "Spencer Torkelson"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 679529,
+       "fullName": "Spencer Torkelson"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 21
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Colt Keith strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 22,
+    "startTime": "2026-07-04T20:47:58.328Z",
+    "endTime": "2026-07-04T20:50:12.096Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 690993,
+     "fullName": "Colt Keith"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 690993,
+       "fullName": "Colt Keith"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 22
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Nicky Lopez grounds out, first baseman Spencer Torkelson to pitcher Jack Flaherty."
+   },
+   "about": {
+    "atBatIndex": 23,
+    "startTime": "2026-07-04T20:51:58.909Z",
+    "endTime": "2026-07-04T20:54:22.261Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 670032,
+     "fullName": "Nicky Lopez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 670032,
+       "fullName": "Nicky Lopez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "1"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 23
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Joc Pederson grounds out, first baseman Spencer Torkelson to pitcher Jack Flaherty."
+   },
+   "about": {
+    "atBatIndex": 24,
+    "startTime": "2026-07-04T20:54:28.005Z",
+    "endTime": "2026-07-04T20:55:01.574Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 592626,
+     "fullName": "Joc Pederson"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 592626,
+       "fullName": "Joc Pederson"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "1"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 24
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Josh Smith called out on strikes."
+   },
+   "about": {
+    "atBatIndex": 25,
+    "startTime": "2026-07-04T20:55:05.234Z",
+    "endTime": "2026-07-04T20:56:50.142Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 669701,
+     "fullName": "Josh Smith"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 669701,
+       "fullName": "Josh Smith"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 25
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Zach McKinstry grounds out to first baseman Josh Smith."
+   },
+   "about": {
+    "atBatIndex": 26,
+    "startTime": "2026-07-04T20:58:45.554Z",
+    "endTime": "2026-07-04T20:59:24.843Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 656716,
+     "fullName": "Zach McKinstry"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 656716,
+       "fullName": "Zach McKinstry"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 26
+  },
+  {
+   "result": {
+    "event": "Pop Out",
+    "eventType": "field_out",
+    "description": "Ben Malgeri pops out to first baseman Josh Smith in foul territory."
+   },
+   "about": {
+    "atBatIndex": 27,
+    "startTime": "2026-07-04T20:59:26.074Z",
+    "endTime": "2026-07-04T21:00:29.875Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 701162,
+     "fullName": "Ben Malgeri"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Pop Out",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 701162,
+       "fullName": "Ben Malgeri"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 27
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "James Outman flies out to center fielder Evan Carter."
+   },
+   "about": {
+    "atBatIndex": 28,
+    "startTime": "2026-07-04T21:00:36.604Z",
+    "endTime": "2026-07-04T21:01:24.877Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 681546,
+     "fullName": "James Outman"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 681546,
+       "fullName": "James Outman"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 28
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Josh Jung flies out to right fielder Ben Malgeri."
+   },
+   "about": {
+    "atBatIndex": 29,
+    "startTime": "2026-07-04T21:02:54.040Z",
+    "endTime": "2026-07-04T21:06:26.422Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 673962,
+     "fullName": "Josh Jung"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 673962,
+       "fullName": "Josh Jung"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 29
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Brandon Nimmo strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 30,
+    "startTime": "2026-07-04T21:06:26.872Z",
+    "endTime": "2026-07-04T21:08:13.337Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 607043,
+     "fullName": "Brandon Nimmo"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 607043,
+       "fullName": "Brandon Nimmo"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 30
+  },
+  {
+   "result": {
+    "event": "Pop Out",
+    "eventType": "field_out",
+    "description": "Alejandro Osuna pops out to third baseman Colt Keith in foul territory."
+   },
+   "about": {
+    "atBatIndex": 31,
+    "startTime": "2026-07-04T21:08:13.236Z",
+    "endTime": "2026-07-04T21:09:20.019Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 696030,
+     "fullName": "Alejandro Osuna"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Pop Out",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 696030,
+       "fullName": "Alejandro Osuna"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 31
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Kevin McGonigle flies out to left fielder Alejandro Osuna."
+   },
+   "about": {
+    "atBatIndex": 32,
+    "startTime": "2026-07-04T21:11:29.174Z",
+    "endTime": "2026-07-04T21:11:39.202Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 805808,
+     "fullName": "Kevin McGonigle"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 805808,
+       "fullName": "Kevin McGonigle"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "7"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 32
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Dillon Dingler grounds out, pitcher Cal Quantrill to first baseman Josh Smith."
+   },
+   "about": {
+    "atBatIndex": 33,
+    "startTime": "2026-07-04T21:11:40.232Z",
+    "endTime": "2026-07-04T21:12:29.534Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 693307,
+     "fullName": "Dillon Dingler"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 693307,
+       "fullName": "Dillon Dingler"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "1"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 33
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Kerry Carpenter grounds out, second baseman Nicky Lopez to first baseman Josh Smith."
+   },
+   "about": {
+    "atBatIndex": 34,
+    "startTime": "2026-07-04T21:12:29.901Z",
+    "endTime": "2026-07-04T21:13:28.945Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 681481,
+     "fullName": "Kerry Carpenter"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 681481,
+       "fullName": "Kerry Carpenter"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 34
+  },
+  {
+   "result": {
+    "event": "Lineout",
+    "eventType": "field_out",
+    "description": "Ezequiel Duran lines out to center fielder James Outman."
+   },
+   "about": {
+    "atBatIndex": 35,
+    "startTime": "2026-07-04T21:15:56.800Z",
+    "endTime": "2026-07-04T21:17:50.072Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 677649,
+     "fullName": "Ezequiel Duran"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Lineout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 677649,
+       "fullName": "Ezequiel Duran"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 35
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Evan Carter singles on a line drive to center fielder James Outman."
+   },
+   "about": {
+    "atBatIndex": 36,
+    "startTime": "2026-07-04T21:17:49.643Z",
+    "endTime": "2026-07-04T21:18:44.850Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 694497,
+     "fullName": "Evan Carter"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 694497,
+       "fullName": "Evan Carter"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 36
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Elias D\u00edaz strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 37,
+    "startTime": "2026-07-04T21:18:40.778Z",
+    "endTime": "2026-07-04T21:22:07.716Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 553869,
+     "fullName": "Elias D\u00edaz"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 553869,
+       "fullName": "Elias D\u00edaz"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 37
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Nicky Lopez grounds out to first baseman Spencer Torkelson."
+   },
+   "about": {
+    "atBatIndex": 38,
+    "startTime": "2026-07-04T21:22:49.619Z",
+    "endTime": "2026-07-04T21:23:43.096Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 670032,
+     "fullName": "Nicky Lopez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 670032,
+       "fullName": "Nicky Lopez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 38
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Riley Greene called out on strikes."
+   },
+   "about": {
+    "atBatIndex": 39,
+    "startTime": "2026-07-04T21:25:58.480Z",
+    "endTime": "2026-07-04T21:27:11.511Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 682985,
+     "fullName": "Riley Greene"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 682985,
+       "fullName": "Riley Greene"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 39
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Spencer Torkelson strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 40,
+    "startTime": "2026-07-04T21:27:10.723Z",
+    "endTime": "2026-07-04T21:28:11.320Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 679529,
+     "fullName": "Spencer Torkelson"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 679529,
+       "fullName": "Spencer Torkelson"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 40
+  },
+  {
+   "result": {
+    "event": "Lineout",
+    "eventType": "field_out",
+    "description": "Colt Keith lines out sharply to center fielder Evan Carter."
+   },
+   "about": {
+    "atBatIndex": 41,
+    "startTime": "2026-07-04T21:28:11.677Z",
+    "endTime": "2026-07-04T21:29:51.717Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 690993,
+     "fullName": "Colt Keith"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Lineout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 690993,
+       "fullName": "Colt Keith"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 41
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Joc Pederson strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 42,
+    "startTime": "2026-07-04T21:31:42.758Z",
+    "endTime": "2026-07-04T21:34:10.580Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 592626,
+     "fullName": "Joc Pederson"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 592626,
+       "fullName": "Joc Pederson"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 7
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 42
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Josh Smith flies out to right fielder Ben Malgeri."
+   },
+   "about": {
+    "atBatIndex": 43,
+    "startTime": "2026-07-04T21:34:26.049Z",
+    "endTime": "2026-07-04T21:35:43.021Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 669701,
+     "fullName": "Josh Smith"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 669701,
+       "fullName": "Josh Smith"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 43
+  },
+  {
+   "result": {
+    "event": "Double",
+    "eventType": "double",
+    "description": "Josh Jung doubles (22) on a sharp line drive to center fielder James Outman."
+   },
+   "about": {
+    "atBatIndex": 44,
+    "startTime": "2026-07-04T21:35:41.025Z",
+    "endTime": "2026-07-04T21:37:11.824Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 673962,
+     "fullName": "Josh Jung"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Double",
+      "eventType": "double",
+      "movementReason": null,
+      "runner": {
+       "id": 673962,
+       "fullName": "Josh Jung"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 44
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Brandon Nimmo grounds out, second baseman Zach McKinstry to first baseman Spencer Torkelson."
+   },
+   "about": {
+    "atBatIndex": 45,
+    "startTime": "2026-07-04T21:39:50.268Z",
+    "endTime": "2026-07-04T21:41:15.391Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 607043,
+     "fullName": "Brandon Nimmo"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 607043,
+       "fullName": "Brandon Nimmo"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 45
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Zach McKinstry grounds out, shortstop Ezequiel Duran to first baseman Josh Smith."
+   },
+   "about": {
+    "atBatIndex": 46,
+    "startTime": "2026-07-04T21:43:34.530Z",
+    "endTime": "2026-07-04T21:44:35.111Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 656716,
+     "fullName": "Zach McKinstry"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 656716,
+       "fullName": "Zach McKinstry"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 4
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 46
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Ben Malgeri singles on a ground ball to shortstop Ezequiel Duran."
+   },
+   "about": {
+    "atBatIndex": 47,
+    "startTime": "2026-07-04T21:44:38.240Z",
+    "endTime": "2026-07-04T21:46:01.509Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 701162,
+     "fullName": "Ben Malgeri"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 701162,
+       "fullName": "Ben Malgeri"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 47
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "James Outman strikes out swinging."
+   },
+   "about": {
+    "atBatIndex": 48,
+    "startTime": "2026-07-04T21:46:08.904Z",
+    "endTime": "2026-07-04T21:49:06.478Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 681546,
+     "fullName": "James Outman"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 681546,
+       "fullName": "James Outman"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 6
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 48
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Kevin McGonigle grounds out, second baseman Nicky Lopez to first baseman Josh Smith."
+   },
+   "about": {
+    "atBatIndex": 49,
+    "startTime": "2026-07-04T21:49:10.021Z",
+    "endTime": "2026-07-04T21:49:47.328Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 805808,
+     "fullName": "Kevin McGonigle"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 805808,
+       "fullName": "Kevin McGonigle"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 49
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Alejandro Osuna flies out to right fielder Ben Malgeri."
+   },
+   "about": {
+    "atBatIndex": 50,
+    "startTime": "2026-07-04T21:54:06.890Z",
+    "endTime": "2026-07-04T21:54:33.827Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 696030,
+     "fullName": "Alejandro Osuna"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 696030,
+       "fullName": "Alejandro Osuna"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 50
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Ezequiel Duran grounds out, shortstop Kevin McGonigle to first baseman Spencer Torkelson."
+   },
+   "about": {
+    "atBatIndex": 51,
+    "startTime": "2026-07-04T21:54:33.711Z",
+    "endTime": "2026-07-04T21:55:44.349Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 677649,
+     "fullName": "Ezequiel Duran"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 677649,
+       "fullName": "Ezequiel Duran"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 51
+  },
+  {
+   "result": {
+    "event": "Walk",
+    "eventType": "walk",
+    "description": "Evan Carter walks."
+   },
+   "about": {
+    "atBatIndex": 52,
+    "startTime": "2026-07-04T21:55:49.993Z",
+    "endTime": "2026-07-04T21:57:13.723Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 694497,
+     "fullName": "Evan Carter"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Walk",
+      "eventType": "walk",
+      "movementReason": null,
+      "runner": {
+       "id": 694497,
+       "fullName": "Evan Carter"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 52
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Elias D\u00edaz grounds out, second baseman Zach McKinstry to first baseman Spencer Torkelson."
+   },
+   "about": {
+    "atBatIndex": 53,
+    "startTime": "2026-07-04T21:57:29.879Z",
+    "endTime": "2026-07-04T21:58:37.217Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 553869,
+     "fullName": "Elias D\u00edaz"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 553869,
+       "fullName": "Elias D\u00edaz"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 53
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Dillon Dingler flies out to right fielder Brandon Nimmo."
+   },
+   "about": {
+    "atBatIndex": 54,
+    "startTime": "2026-07-04T22:00:37.695Z",
+    "endTime": "2026-07-04T22:01:24.343Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 693307,
+     "fullName": "Dillon Dingler"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 693307,
+       "fullName": "Dillon Dingler"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 54
+  },
+  {
+   "result": {
+    "event": "Lineout",
+    "eventType": "field_out",
+    "description": "Kerry Carpenter lines out to right fielder Brandon Nimmo."
+   },
+   "about": {
+    "atBatIndex": 55,
+    "startTime": "2026-07-04T22:01:23.784Z",
+    "endTime": "2026-07-04T22:02:42.637Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 681481,
+     "fullName": "Kerry Carpenter"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Lineout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 681481,
+       "fullName": "Kerry Carpenter"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "9"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 55
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Riley Greene singles on a fly ball to second baseman Nicky Lopez."
+   },
+   "about": {
+    "atBatIndex": 56,
+    "startTime": "2026-07-04T22:02:47.382Z",
+    "endTime": "2026-07-04T22:04:49.826Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 682985,
+     "fullName": "Riley Greene"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 682985,
+       "fullName": "Riley Greene"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 56
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Spencer Torkelson flies out sharply to center fielder Evan Carter."
+   },
+   "about": {
+    "atBatIndex": 57,
+    "startTime": "2026-07-04T22:05:03.526Z",
+    "endTime": "2026-07-04T22:06:17.717Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 679529,
+     "fullName": "Spencer Torkelson"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 679529,
+       "fullName": "Spencer Torkelson"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 57
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Nicky Lopez grounds out, first baseman Spencer Torkelson to pitcher Keider Montero."
+   },
+   "about": {
+    "atBatIndex": 58,
+    "startTime": "2026-07-04T22:08:18.238Z",
+    "endTime": "2026-07-04T22:09:06.506Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 670032,
+     "fullName": "Nicky Lopez"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 670032,
+       "fullName": "Nicky Lopez"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "1"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 58
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Joc Pederson grounds out, first baseman Spencer Torkelson to pitcher Keider Montero."
+   },
+   "about": {
+    "atBatIndex": 59,
+    "startTime": "2026-07-04T22:09:09.973Z",
+    "endTime": "2026-07-04T22:11:09.331Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 592626,
+     "fullName": "Joc Pederson"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 592626,
+       "fullName": "Joc Pederson"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "1"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 59
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Josh Smith grounds out, second baseman Zach McKinstry to first baseman Spencer Torkelson."
+   },
+   "about": {
+    "atBatIndex": 60,
+    "startTime": "2026-07-04T22:11:10.287Z",
+    "endTime": "2026-07-04T22:12:31.410Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 669701,
+     "fullName": "Josh Smith"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 669701,
+       "fullName": "Josh Smith"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 2
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 60
+  },
+  {
+   "result": {
+    "event": "Strikeout",
+    "eventType": "strikeout",
+    "description": "Colt Keith called out on strikes."
+   },
+   "about": {
+    "atBatIndex": 61,
+    "startTime": "2026-07-04T22:14:56.422Z",
+    "endTime": "2026-07-04T22:17:40.762Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 690993,
+     "fullName": "Colt Keith"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Strikeout",
+      "eventType": "strikeout",
+      "movementReason": null,
+      "runner": {
+       "id": 690993,
+       "fullName": "Colt Keith"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 9
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "2"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 61
+  },
+  {
+   "result": {
+    "event": "Single",
+    "eventType": "single",
+    "description": "Zach McKinstry singles on a sharp line drive to center fielder Evan Carter."
+   },
+   "about": {
+    "atBatIndex": 62,
+    "startTime": "2026-07-04T22:17:45.525Z",
+    "endTime": "2026-07-04T22:18:16.143Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 656716,
+     "fullName": "Zach McKinstry"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Single",
+      "eventType": "single",
+      "movementReason": null,
+      "runner": {
+       "id": 656716,
+       "fullName": "Zach McKinstry"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 0
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_fielded_ball"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 62
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Ben Malgeri grounds out, second baseman Nicky Lopez to first baseman Josh Smith. Zach McKinstry to 2nd."
+   },
+   "about": {
+    "atBatIndex": 63,
+    "startTime": "2026-07-04T22:18:13.303Z",
+    "endTime": "2026-07-04T22:19:08.988Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 701162,
+     "fullName": "Ben Malgeri"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 701162,
+       "fullName": "Ben Malgeri"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "4"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    },
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": "r_adv_force",
+      "runner": {
+       "id": 656716,
+       "fullName": "Zach McKinstry"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": []
+    }
+   ],
+   "atBatIndex": 63
+  },
+  {
+   "result": {
+    "event": "Lineout",
+    "eventType": "field_out",
+    "description": "James Outman lines out to shortstop Ezequiel Duran."
+   },
+   "about": {
+    "atBatIndex": 64,
+    "startTime": "2026-07-04T22:19:13.634Z",
+    "endTime": "2026-07-04T22:22:32.275Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 681546,
+     "fullName": "James Outman"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Wild Pitch",
+      "eventType": "wild_pitch",
+      "movementReason": "r_adv_play",
+      "runner": {
+       "id": 656716,
+       "fullName": "Zach McKinstry"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 5
+     },
+     "credits": []
+    },
+    {
+     "details": {
+      "event": "Lineout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 681546,
+       "fullName": "James Outman"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 8
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 64
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Josh Jung grounds out, third baseman Colt Keith to first baseman Spencer Torkelson."
+   },
+   "about": {
+    "atBatIndex": 65,
+    "startTime": "2026-07-04T22:24:42.960Z",
+    "endTime": "2026-07-04T22:28:08.619Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 673962,
+     "fullName": "Josh Jung"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 673962,
+       "fullName": "Josh Jung"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 9
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "5"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 65
+  },
+  {
+   "result": {
+    "event": "Flyout",
+    "eventType": "field_out",
+    "description": "Brandon Nimmo flies out sharply to center fielder James Outman."
+   },
+   "about": {
+    "atBatIndex": 66,
+    "startTime": "2026-07-04T22:28:11.131Z",
+    "endTime": "2026-07-04T22:28:59.259Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 607043,
+     "fullName": "Brandon Nimmo"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Flyout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 607043,
+       "fullName": "Brandon Nimmo"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 1
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "8"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 66
+  },
+  {
+   "result": {
+    "event": "Groundout",
+    "eventType": "field_out",
+    "description": "Alejandro Osuna grounds out, shortstop Kevin McGonigle to first baseman Spencer Torkelson."
+   },
+   "about": {
+    "atBatIndex": 67,
+    "startTime": "2026-07-04T22:29:08.409Z",
+    "endTime": "2026-07-04T22:30:33.055Z",
+    "isComplete": true
+   },
+   "matchup": {
+    "batter": {
+     "id": 696030,
+     "fullName": "Alejandro Osuna"
+    }
+   },
+   "runners": [
+    {
+     "details": {
+      "event": "Groundout",
+      "eventType": "field_out",
+      "movementReason": null,
+      "runner": {
+       "id": 696030,
+       "fullName": "Alejandro Osuna"
+      },
+      "responsiblePitcher": null,
+      "isScoringEvent": false,
+      "rbi": false,
+      "earned": false,
+      "teamUnearned": false,
+      "playIndex": 3
+     },
+     "credits": [
+      {
+       "position": {
+        "code": "6"
+       },
+       "credit": "f_assist"
+      },
+      {
+       "position": {
+        "code": "3"
+       },
+       "credit": "f_putout"
+      }
+     ]
+    }
+   ],
+   "atBatIndex": 67
+  }
+ ]
+}

@@ -1,0 +1,86 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>A · The Book</title>
+<link rel="stylesheet" href="book.css">
+<script src="book.js"></script>
+<style>
+  /* One page per team, as today; the printed hit checklist in each box and the batting line at the row's end. */
+  .tabs { display: flex; gap: 6px; margin-top: 14px; align-items: flex-end; }
+  .tabs span { padding: 5px 12px 4px; border: 1px solid var(--print-rule); border-bottom: 0; background: var(--print-tint); font: 700 13px/1.2 var(--narrow); text-transform: uppercase; letter-spacing: 0.06em; color: var(--print); }
+  .tabs span.on { background: var(--stock); color: var(--graphite); border-color: var(--print); box-shadow: inset 0 -2px 0 var(--stock), inset 0 -5px 0 var(--red); }
+  .tabs em { margin-left: auto; font: 400 12px/1.4 var(--narrow); font-style: normal; text-transform: uppercase; letter-spacing: 0.06em; color: var(--print); }
+  table { border-collapse: separate; border-spacing: 0; border: 1px solid var(--print); }
+  th, td { border-right: 1px solid var(--print-rule); border-bottom: 1px solid var(--print-rule); padding: 0; }
+  thead th { height: 24px; background: var(--print-tint); font: 700 12px/1 var(--narrow); color: var(--print); }
+  thead th.l { text-align: left; padding-left: 6px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; }
+  thead th.stat { width: 30px; font-size: 11px; letter-spacing: 0.04em; }
+  thead th.sw { width: 58px; font-size: 11px; letter-spacing: 0.04em; border-left: 1px solid var(--print); }
+  th.slot { width: 118px; padding: 5px 6px; text-align: left; vertical-align: top; background: var(--print-tint); }
+  th.slot .no { display: block; font: 700 12px/1 var(--narrow); color: var(--print); }
+  th.slot .who { display: block; margin-top: 2px; font: 500 18px/1.05 var(--hand); }
+  th.slot .who + .who { font-size: 15px; color: var(--graphite-soft); }
+  td.box { width: 92px; height: 92px; position: relative; vertical-align: top; }
+  td.box .dia { position: absolute; left: 8px; top: 8px; width: 44px; height: 44px; }
+  td.box .play { position: absolute; left: 8px; width: 44px; top: 22px; }
+  td.box .play.two { top: 20px; }
+  td.box .out { position: absolute; left: 3px; top: 3px; }
+  td.box .dots { position: absolute; left: 6px; top: 58px; }
+  /* the printed result checklist down the right edge of every box; the scorer circles one */
+  td.box ul { position: absolute; right: 0; top: 0; bottom: 22px; width: 26px; margin: 0; padding: 2px 0; list-style: none; border-left: 1px solid var(--print-rule);
+              display: grid; grid-template-rows: repeat(6, 1fr); font: 700 9px/1 var(--narrow); color: var(--print); letter-spacing: 0.02em; text-align: center; }
+  td.box li { display: flex; align-items: center; justify-content: center; position: relative; }
+  td.box li.hit::after { content: ""; position: absolute; inset: 0 2px; border: 1.6px solid var(--graphite); border-radius: 50%; transform: rotate(-8deg); }
+  td.box .band { position: absolute; left: 0; right: 0; bottom: 0; height: 22px; display: grid; grid-template-columns: 36px 1fr 1fr; border-top: 1px solid var(--print-rule); }
+  td.box .band span { display: flex; align-items: center; justify-content: center; border-left: 1px solid var(--print-rule); font: 400 11px/1 var(--narrow); color: var(--print); }
+  td.box .band .b { border-left: 0; font: 700 15px/1 var(--hand); color: var(--graphite); }
+  td.stat { text-align: center; vertical-align: middle; font: 500 19px/1 var(--hand); }
+  td.sw { text-align: center; vertical-align: middle; font: 700 18px/1 var(--hand); border-left: 1px solid var(--print); }
+  td.sw small { display: block; font: 400 10px/1.2 var(--narrow); color: var(--print); letter-spacing: 0.04em; }
+  tfoot tr:first-child > * { border-top: 1px solid var(--print); }
+  tfoot th { height: 24px; padding: 0 6px; text-align: left; background: var(--print-tint); font: 700 11px/1 var(--narrow); text-transform: uppercase; letter-spacing: 0.08em; color: var(--print); }
+  tfoot td { text-align: center; font: 500 17px/1 var(--hand); }
+  .key { display: inline-grid; grid-template-columns: 34px 30px 30px; height: 18px; vertical-align: -4px; border: 1px solid var(--print-rule); }
+  .key span { display: flex; align-items: center; justify-content: center; border-left: 1px solid var(--print-rule); font: 400 10px/1 var(--narrow); color: var(--print); }
+  .key .b { border-left: 0; font: 700 14px/1 var(--hand); color: var(--graphite); }
+</style>
+<div class="page">
+  <div class="mast"><h1>Official Scorebook</h1><span class="meta">A · The Book · LAD @ MIL · NLCS Game 1 · gamePk 849809</span></div>
+  <div class="tabs"><span class="on">LAD · page 1</span><span>MIL · page 2</span><em>page 1 of 2 · flips with the half-inning</em></div>
+  <table id="sheet"></table>
+  <p class="foot-note">Each box: <span class="hand">the play</span> pencilled in the diamond, the batter's trip traced (shaded when he scores), his out circled, a dot per run; the printed checklist down the right edge with the result circled, as a scorer would; along the foot <span class="key"><span class="b">50.4</span><span>54.8</span><span>51.5</span></span> Bend, MLB, market median after the play. At the row's end, the batting line (AB R H RBI BB K) and <span class="hand">Bend's swing</span>: how many points of win probability the batter added for his team across the game.</p>
+</div>
+<script>
+Book.load().then(({ plays, halves, lines }) => {
+  const side = "away", innings = 9;
+  const mark = { "1B": "1B", "2B": "2B", "3B": "3B", HR: "HR", BB: "BB", IBB: "BB", HBP: "HP" };
+  const cells = new Map();
+  for (const p of plays) if (p.side === side) cells.set(`${p.slot}/${p.inning}`, p);
+  const stats = ["AB", "R", "H", "RBI", "BB", "K"];
+  let html = `<thead><tr><th class="l">Batter</th>${Array.from({ length: innings }, (_, i) => `<th>${i + 1}</th>`).join("")}`
+    + stats.map(s => `<th class="stat">${s}</th>`).join("") + `<th class="sw">Swing</th></tr></thead><tbody>`;
+  for (let s = 1; s <= 9; s++) {
+    const line = lines[side].get(s);
+    html += `<tr><th class="slot"><span class="no">${s}</span>${line.names.map(n => `<span class="who">${Book.esc(n)}</span>`).join("")}</th>`;
+    for (let i = 1; i <= innings; i++) {
+      const p = cells.get(`${s}/${i}`);
+      if (!p) { html += `<td class="box"></td>`; continue; }
+      const res = mark[p.play];
+      html += `<td class="box${p === plays[plays.length - 1] ? " pen" : ""}">${Book.diamond(p.reached)}`
+        + `<span class="play${Book.playClass(p.play)}">${Book.playHtml(p.play)}</span>`
+        + (p.outNo ? `<span class="out${p.outNo === 3 ? " three" : ""}">${p.outNo}</span>` : "")
+        + (p.runs ? `<span class="dots">${"<i></i>".repeat(p.runs)}</span>` : "")
+        + `<ul>${["1B", "2B", "3B", "HR", "BB", "HP"].map(k => `<li class="${k === res ? "hit" : ""}">${k}</li>`).join("")}</ul>`
+        + `<span class="band"><span class="b">${Book.f1(p.bend)}</span><span>${Book.f1(p.mlb)}</span><span>${Book.f1(p.mk)}</span></span></td>`;
+    }
+    html += [line.ab, line.r, line.h, line.rbi, line.bb, line.k].map(v => `<td class="stat">${v}</td>`).join("")
+      + `<td class="sw">${Book.signed(line.swing)}<small>pts, Bend</small></td></tr>`;
+  }
+  html += `</tbody><tfoot>`;
+  for (const [label, get] of [["R", h => h.r], ["H", h => h.h], ["LOB", h => h.lob ?? ""]]) {
+    html += `<tr><th>${label}</th>${Array.from({ length: innings }, (_, i) => {
+      const h = halves.find(x => x.side === side && x.inning === i + 1);
+      return `<td>${h ? get(h) : ""}</td>`;
+    }).join("")}<td colspan="7"></td></tr>`;
+  }
+  document.getElementById("sheet").innerHTML = html + `</tfoot>`;
+});
+</script>
+</html>

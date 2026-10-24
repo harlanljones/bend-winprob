@@ -248,7 +248,7 @@ class Tape:
         return values[i]
 
 
-def sample_times(times):
+def sample_times(scoring):
     """{at_bat_index: (instant its market price is read, instant the price must postdate)}.
 
     A completed play reads LAG seconds after it ended, or when the next completed
@@ -256,7 +256,7 @@ def sample_times(times):
     pregame row (-1) reads at the first play's start, or the latest observation
     (None) before the game begins.
     """
-    plays = [p["about"] for p in (times or {}).get("allPlays", [])
+    plays = [p["about"] for p in (scoring or {}).get("allPlays", [])
              if p.get("about", {}).get("isComplete") and p["about"].get("endTime")]
     ends = [stamp(p["endTime"]) for p in plays]
     out = {-1: (stamp(plays[0]["startTime"]) if plays and plays[0].get("startTime") else None, None)}
@@ -290,18 +290,18 @@ def tape_of(recording):
     return tape, listings
 
 
-def recorded(source, teams):
+def recorded(source, teams, scoring):
     """(tape, listings, samples) for a replay from fixtures/<pk>/markets.json.
 
-    The recording is fetched once when the source may fetch, then frozen like
-    every other fixture; without one the market columns stay empty.
+    `scoring` is the game's play-by-play with each play's start and end time. The
+    recording is fetched once when the source may fetch, then frozen like every
+    other fixture; without one the market columns stay empty.
     """
     path = source.dir / "markets.json"
     if not path.exists() and not source.allow_fetch:
         return Tape(), [], {}
-    times = source.get("times")
     if not path.exists():
-        plays = [p["about"] for p in times.get("allPlays", []) if p.get("about", {}).get("endTime")]
+        plays = [p["about"] for p in scoring.get("allPlays", []) if p.get("about", {}).get("endTime")]
         if not plays:
             return Tape(), [], {}
         game = game_of(source.get("schedule"), teams)
@@ -309,7 +309,7 @@ def recorded(source, teams):
         rec = record(game, t0, stamp(plays[-1]["endTime"]) + TAIL)
         path.write_text(json.dumps(rec, separators=(",", ":")))
     tape, listings = tape_of(json.loads(path.read_text()))
-    return tape, listings, sample_times(times)
+    return tape, listings, sample_times(scoring)
 
 
 class LiveFeed:
