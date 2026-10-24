@@ -30,7 +30,7 @@ ROOT = Path(__file__).resolve().parent
 API = "https://statsapi.mlb.com/api"
 URLS = {
     "status": API + "/v1.1/game/{pk}/feed/live?fields=metaData,wait,gameData,status,"
-    "abstractGameState,detailedState,teams,away,home,id,abbreviation",
+    "abstractGameState,detailedState,teams,away,home,id,abbreviation,teamName",
     "plays": API + "/v1/game/{pk}/playByPlay?fields=allPlays,result,eventType,awayScore,"
     "homeScore,about,atBatIndex,inning,isTopInning,isComplete,count,outs,runners,movement,"
     "originBase,start,end,isOut,details,runner,matchup,postOnFirst,postOnSecond,postOnThird,id",
@@ -39,6 +39,12 @@ URLS = {
     "atBats,baseOnBalls,hitByPitch,sacBunts,sacFlies,catchersInterference,runs,putOuts",
     "linescore": API + "/v1/game/{pk}/linescore?fields=teams,home,away,runs,leftOnBase",
     "teamstats": API + "/v1/teams/{id}/stats?stats=season&group=hitting,pitching&season=2026",
+}
+
+TEAM_NAMES = {
+    119: "Los Angeles Dodgers",
+    139: "Tampa Bay Rays",
+    158: "Milwaukee Brewers",
 }
 
 # 2025 MLB per-plate-appearance rates (Baseball-Reference league totals, PA 182,926).
@@ -355,7 +361,7 @@ class Publisher:
 class Book:
     """Rows keyed by at_bat_index (-1: pregame), rewritten to runs/<pk>.csv (and published)."""
 
-    def __init__(self, pk, away, home, depth, mode, publisher=None, verbose=True):
+    def __init__(self, pk, away, home, depth, mode, publisher=None, verbose=True, team_info=None):
         self.pk, self.away, self.home, self.depth, self.mode = pk, away, home, depth, mode
         self.publisher = publisher
         self.verbose = verbose
@@ -364,6 +370,10 @@ class Book:
         runs.mkdir(exist_ok=True)
         self.csv = runs / f"{pk}.csv"
         self.meta = {"pk": pk, "away": away, "home": home}
+        if team_info is not None:
+            for side in ("away", "home"):
+                self.meta[f"{side}_name"] = team_info[side]["name"]
+                self.meta[f"{side}_logo"] = team_info[side]["logo"]
         (runs / f"{pk}-meta.json").write_text(json.dumps(self.meta))
 
     def add(self, idx, b, play, mlb):
@@ -403,10 +413,13 @@ class Book:
             else round(r["bend_home_wp"] - r["mlb_home_wp"], 2)
 
     def backfill(self, wp):
+        """Refresh MLB WP, including revisions to earlier at-bats."""
         for idx, r in self.rows.items():
-            if r["mlb_home_wp"] == "" and idx in wp:
-                r["mlb_home_wp"] = round(wp[idx], 2)
-                self.fill_delta(idx)
+            if idx in wp:
+                value = round(wp[idx], 2)
+                if r["mlb_home_wp"] != value:
+                    r["mlb_home_wp"] = value
+                    self.fill_delta(idx)
 
     def print_row(self, idx):
         r = self.rows[idx]
@@ -475,7 +488,18 @@ def box_check(box, ls, b):
 
 def teams_of(status):
     t = status["gameData"]["teams"]
-    return {s: {"id": t[s]["id"], "abbr": t[s]["abbreviation"]} for s in ("away", "home")}
+    result = {}
+    for side in ("away", "home"):
+        team = t[side]
+        team_id = team["id"]
+        abbr = team["abbreviation"]
+        result[side] = {
+            "id": team_id,
+            "abbr": abbr,
+            "name": team.get("teamName") or TEAM_NAMES.get(team_id, abbr),
+            "logo": f"https://www.mlbstatic.com/team-logos/{team_id}.svg",
+        }
+    return result
 
 
 def replay(args):
@@ -525,7 +549,7 @@ def live(args):
     away, home = teams["away"]["abbr"], teams["home"]["abbr"]
     print(f"{away} @ {home}  awayCum {away_cum}  homeCum {home_cum}  depth {args.depth}  {args.mode}",
           flush=True)
-    book = Book(args.pk, away, home, args.depth, args.mode, args.publisher)
+    book = Book(args.pk, away, home, args.depth, args.mode, args.publisher, team_info=teams)
     done = []  # codes whose complete suffix succeeded
     last_wait = 0.0
     try:

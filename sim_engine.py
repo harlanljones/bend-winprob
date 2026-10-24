@@ -69,7 +69,7 @@ class ReplayEngine:
         self._finalized = False
         self.book = live.Book(
             self.pk, self.teams["away"]["abbr"], self.teams["home"]["abbr"],
-            self.depth, self.mode, self.publisher, verbose=self.verbose)
+            self.depth, self.mode, self.publisher, verbose=self.verbose, team_info=self.teams)
         return self
 
     def _bend(self, count):

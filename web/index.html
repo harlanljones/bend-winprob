@@ -57,6 +57,8 @@
   .state .score { font-size: 14px; font-weight: 600; }
   .state .score span { font-variant-numeric: tabular-nums; }
   .state .score .sep { color: var(--muted); font-weight: 300; padding: 0 8px; }
+  .state .score .team { display: inline-flex; align-items: center; gap: 6px; }
+  .team-logo { width: 26px; height: 26px; object-fit: contain; vertical-align: middle; }
   .state .inning { font-size: 12px; color: var(--muted); }
   .state .inning b { color: var(--text); font-weight: 600; }
   .bases { display: grid; grid-template-columns: repeat(3, 16px);
@@ -133,7 +135,11 @@
           <div></div>
         </div>
         <div>
-          <div class="score" id="score">–</div>
+          <div class="score" id="score">
+            <span class="team away"><img id="away-logo" class="team-logo" alt="" hidden><span id="away-name">AWAY</span> <b id="away-runs">0</b></span>
+            <span class="sep">–</span>
+            <span class="team home"><b id="home-runs">0</b> <span id="home-name">HOME</span><img id="home-logo" class="team-logo" alt="" hidden></span>
+          </div>
           <div class="inning" id="inning">–</div>
         </div>
       </div>
@@ -325,6 +331,29 @@ function updateFreshness() {
 }
 setInterval(updateFreshness, 1000);
 
+function teamName(side) {
+  return meta[`${side}_name`] || meta[side];
+}
+
+function updateTeams() {
+  for (const side of ["away", "home"]) {
+    const name = teamName(side);
+    document.getElementById(`${side}-name`).textContent = meta[side];
+    const image = document.getElementById(`${side}-logo`);
+    const url = meta[`${side}_logo`];
+    if (url) {
+      image.src = url;
+      image.alt = `${name} logo`;
+      image.hidden = false;
+    } else {
+      image.hidden = true;
+      image.removeAttribute("src");
+      image.alt = "";
+    }
+  }
+  document.getElementById("title").textContent = `${teamName("away")} @ ${teamName("home")} — Bend vs MLB`;
+}
+
 // Team names: fetched until the first publish has them (a page opened early shows AWAY @ HOME).
 let metaLoaded = false;
 async function loadMeta() {
@@ -333,7 +362,7 @@ async function loadMeta() {
     if (!res.ok) return;
     meta = await res.json();
     metaLoaded = true;
-    document.getElementById("title").textContent = `${meta.away} @ ${meta.home} — Bend vs MLB`;
+    updateTeams();
   } catch (e) {}
 }
 
@@ -357,16 +386,14 @@ async function tick() {
     document.getElementById("bend-hint").textContent = `${Number(last.sims || 0).toLocaleString()} sims · ${last.seconds || 0}s ${last.mode || ""}`;
     const halfLabel = (last.half === "T" ? "Top" : last.half === "B" ? "Bottom" : "") + " " + (last.inning || "");
     document.getElementById("inning").textContent = halfLabel.trim();
-    document.getElementById("score").innerHTML =
-      `<span>${meta.away} <b>${last.away_runs || 0}</b></span>` +
-      `<span class="sep">–</span>` +
-      `<span><b>${last.home_runs || 0}</b> ${meta.home}</span>`;
+    document.getElementById("away-runs").textContent = last.away_runs || 0;
+    document.getElementById("home-runs").textContent = last.home_runs || 0;
     markBases(last.bases || "---");
     markOuts(Number(last.outs || 0));
     document.getElementById("modechip").textContent = `state ${last.state_check || "–"}`;
     draw(rows);
   } catch (e) {
-    document.getElementById("score").textContent = "waiting for feed";
+    document.getElementById("modechip").textContent = "feed unavailable";
   } finally {
     updateFreshness();
     setTimeout(tick, 5000);

@@ -49,7 +49,11 @@ export default {
         return text("need {meta: {away, home}, csv}\n", 400);
       }
       const pk = push[1];
-      await feed.put(pk, JSON.stringify({ pk: Number(pk), away: meta.away, home: meta.home }), csv);
+      const clean = { pk: Number(pk), away: meta.away, home: meta.home };
+      for (const key of ["away_name", "home_name", "away_logo", "home_logo"]) {
+        if (typeof meta[key] === "string") clean[key] = meta[key];
+      }
+      await feed.put(pk, JSON.stringify(clean), csv);
       return text("ok\n", 200);
     }
 
