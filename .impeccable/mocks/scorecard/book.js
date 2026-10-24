@@ -41,13 +41,14 @@ window.Book = (() => {
       const runs = Math.max(0, Number(r[`${side}_runs`]) - Number(prev[`${side}_runs`]));
       const bend = num(r.bend_home_wp), before = num(prev.bend_home_wp);
       const mkt = VENUES.map(v => num(r[`${v}_home_wp`])).filter(x => x !== null);
+      const pa = !r.code || r.code[3] !== "-";   // a caught stealing or pickoff is not the batter's turn
       const p = {
-        idx: Number(r.at_bat_index), side, inning, half, slot: (count[side]++ % 9) + 1,
+        idx: Number(r.at_bat_index), side, inning, half, slot: pa ? (count[side]++ % 9) + 1 : null,
         batter: r.batter, play: r.play, code: r.code, reached: 0, outNo: 0, runs,
         bend, mlb: num(r.mlb_home_wp), mk: median(mkt), mkt,
         // Bend's swing for the batting team: what this plate appearance did to their chances.
         swing: bend !== null && before !== null ? (side === "home" ? bend - before : before - bend) : null,
-        basesAfter: r.bases, outsAfter: Number(r.outs), pa: r.code && r.code[3] !== "-",
+        basesAfter: r.bases, outsAfter: Number(r.outs), pa,
       };
       advance(half, p);
       half.plays.push(p);
@@ -62,6 +63,7 @@ window.Book = (() => {
     // Batting lines per slot: AB R H RBI BB K and Bend's swing, the way a box score adds them up.
     const lines = { away: new Map(), home: new Map() };
     for (const p of plays) {
+      if (!p.pa) continue;
       const line = lines[p.side].get(p.slot) || { names: [], pa: 0, ab: 0, r: 0, h: 0, rbi: 0, bb: 0, k: 0, swing: 0 };
       if (p.batter && !line.names.includes(p.batter)) line.names.push(p.batter);
       if (p.pa) {

@@ -144,6 +144,8 @@
   .cell .dots { position: absolute; left: 5px; bottom: 7px; display: flex; gap: 3px; }
   .cell .dots i { width: 5px; height: 5px; border-radius: 50%; background: var(--graphite); }
   .cell .more { position: absolute; right: 4px; top: 5px; font: 400 10px/1 var(--narrow); color: var(--print); }
+  /* a play made on him as a runner (CS, PO, SB), written beside his trip */
+  .cell .note { position: absolute; right: 4px; top: 17px; font: 700 13px/1 var(--hand); color: var(--graphite); }
   /* Bend's number pencilled after the play, MLB's printed beside it */
   .cell .nums { position: absolute; right: 4px; bottom: 3px; display: flex; align-items: baseline; gap: 4px; }
   .cell .nums b { position: relative; font: 700 15px/1 var(--hand); color: var(--graphite); }
@@ -183,7 +185,14 @@
   .figure h2 { margin: 0; font: 700 12px/1.4 var(--narrow); text-transform: uppercase; letter-spacing: 0.1em; color: var(--print); }
   .figure figcaption { font: 400 12px/1.5 var(--text); color: var(--graphite-soft); margin-top: 4px; max-width: 90ch; }
   #chart { min-height: 260px; }
-  #chart .pele-legend { display: none; }
+  #chart .pele-legend { display: none; }   /* replaced by the printed legend, which can show each line's stroke */
+  /* The printed legend: a drawn sample of each line, its name, and where its numbers come from */
+  .legend { display: flex; flex-wrap: wrap; gap: 4px 20px; margin: 6px 0 2px; padding: 0; list-style: none; }
+  .legend li { display: inline-flex; align-items: center; gap: 6px; font: 400 12px/1.4 var(--text); color: var(--graphite-soft); }
+  .legend b { font: 700 12px/1 var(--narrow); text-transform: uppercase; letter-spacing: 0.06em; color: var(--graphite); }
+  .legend svg { width: 30px; height: 10px; flex: none; overflow: visible; }
+  .legend svg line { stroke-width: 2; }
+  .legend svg circle { stroke: none; }
   /* Market reference lines: quieter strengths of the two inks, no point marks */
   #chart .pele-line:is([data-id="Kalshi"], [data-id="Polymarket"], [data-id="Polymarket US"]) path { stroke-width: 1.5; }
   #chart .pele-line:is([data-id="Kalshi"], [data-id="Polymarket"], [data-id="Polymarket US"]) circle { display: none; }
@@ -324,10 +333,11 @@
       </aside>
     </div>
 
-    <figure class="figure">
-      <h2>Figure 1</h2>
-      <div id="chart" aria-label="Win probability chart"></div>
-      <figcaption id="chart-cap">Home-team win probability after each completed play. Graphite: Bend. Teal: MLB official.</figcaption>
+    <figure class="figure" aria-labelledby="fig1-h">
+      <h2 id="fig1-h">Figure 1 · Win probability, play by play</h2>
+      <ul class="legend" id="legend" aria-label="Lines in Figure 1"></ul>
+      <div id="chart" aria-describedby="chart-cap"></div>
+      <figcaption id="chart-cap">How likely the home team was to win after each completed play.</figcaption>
     </figure>
   </section>
 
@@ -359,7 +369,7 @@ def step(+s: State, p: Play) -&gt; State:
       tally_add(a, b)</code></pre>
           <figure class="diagram">
             <div class="pele-src" data-diagram="tree"></div>
-            <figcaption>Figure 2. <code>tree</code> at depth 3: each level halves the index range, the leaves (pencilled) each play one game with <code>step</code>, and the tallies add back up the tree. At depth 20 the same shape holds 1,048,576 games.</figcaption>
+            <figcaption>Figure 2. How one play's games are split, read top to bottom. Each box is a call of <code>tree</code> with its depth <code>d</code> and the game numbers it owns; it halves its range and hands each half down a level. Each leaf (pencilled) plays one game with <code>step</code> from the position after the play, and its tally of home wins, away wins and unfinished games adds back up the branches to the top. Shown at depth 3 (8 games); a live game runs depth 20 (1,048,576 games a play), the same shape spread across the GPU.</figcaption>
           </figure>
         </div>
       </li>
@@ -369,7 +379,7 @@ def step(+s: State, p: Play) -&gt; State:
           <p><code>LAWS.bend</code> states what must hold for every input; <code>PROOF.bend</code> proves each one by induction and case analysis, and <code>bend PROOF.bend</code> must print <code>ALL PROOFS CHECK</code> before any commit. The four laws are tabled under <a href="#proof">Proof of box score</a>.</p>
           <figure class="diagram">
             <div class="pele-src" data-diagram="gate"></div>
-            <figcaption>Figure 3. The commit gate. Nothing reaches the repository, the benchmark, or this page without the proofs checking.</figcaption>
+            <figcaption>Figure 3. The commit gate, read left to right. <code>LAWS.bend</code> states what must hold, <code>PROOF.bend</code> proves it, and <code>bend PROOF.bend</code> checks the proofs. Only the pencilled path, <code>ALL PROOFS CHECK</code>, lets a change reach the repository, the benchmark or this page; any other output stops it.</figcaption>
           </figure>
         </div>
       </li>
@@ -381,7 +391,7 @@ def step(+s: State, p: Play) -&gt; State:
 #   K 23.7%  O 44.3%  W 11.6%  S 13.4%  D 3.7%  T 0.2%  H 3.0%</code></pre>
           <figure class="diagram">
             <div class="pele-src" data-diagram="pipeline"></div>
-            <figcaption>Figure 4. One play's path from the MLB feed to this card.</figcaption>
+            <figcaption>Figure 4. One play's path to this card, read left to right. <code>live.py</code> takes the play, its scoring, MLB's official win probability and the season rates from MLB's Stats API, and each market's price from Kalshi, Polymarket and Polymarket US (<code>markets.py</code>). It turns the rates into seven integer thresholds out of 10,000 and the play into four destinations (r3, r2, r1, batter), and runs <code>wp</code> (pencilled: Bend's <code>step</code>, then 2<sup>d</sup> simulated games). Each play becomes a row of <code>runs/&lt;gamePk&gt;.csv</code>, POSTed to the Worker; this page fetches it every 5 s.</figcaption>
           </figure>
         </div>
       </li>
@@ -530,9 +540,9 @@ const teamName = side => meta[`${side}_name`] || meta[side];
 // Prediction-market reference prices: one optional CSV column per venue, in display order.
 // The chart line style for each lives in CSS under its series data-id (the venue name).
 const VENUES = [
-  { key: "kalshi", name: "Kalshi", ink: "dashed soft graphite" },
-  { key: "polymarket", name: "Polymarket", ink: "dashed light teal" },
-  { key: "polymarket_us", name: "Polymarket US", ink: "dotted soft graphite" },
+  { key: "kalshi", name: "Kalshi", stroke: "var(--graphite-soft)", dash: "6 4" },
+  { key: "polymarket", name: "Polymarket", stroke: "var(--print-rule)", dash: "6 4" },
+  { key: "polymarket_us", name: "Polymarket US", stroke: "var(--graphite-soft)", dash: "1.5 3.5" },
 ];
 const venueCol = v => `${v.key}_home_wp`;
 // Venues with at least one price in the feed; none when the columns are absent.
@@ -573,8 +583,11 @@ function book(rows) {
     const runs = Math.max(0, Number(r[`${side}_runs`]) - Number(prev[`${side}_runs`]));
     const mkt = VENUES.map(v => [v, num(r[venueCol(v)])]).filter(([, x]) => x !== null);
     const bend = num(r.bend_home_wp), before = num(prev.bend_home_wp);
-    const p = { r, idx, side, slot: (count[side]++ % SLOTS) + 1, inning, half: prev.half, runs,
-      play: r.play || "", batter: r.batter || "", reached: 0, outNo: 0,
+    // A play the batter never finished (caught stealing, pickoff, steal) takes no slot and no box:
+    // he bats again next time; the play is written in the runner's box.
+    const pa = !r.code || r.code[3] !== "-";
+    const p = { r, idx, side, slot: pa ? (count[side]++ % SLOTS) + 1 : null, inning, half: prev.half, runs,
+      play: r.play || "", batter: r.batter || "", reached: 0, outNo: 0, note: "", runner: null,
       bend, mlb: num(r.mlb_home_wp), mkt, mk: median(mkt.map(([, x]) => x)),
       swing: bend !== null && before !== null ? bend - before : null };
     advance(half, p, r.code);
@@ -584,15 +597,14 @@ function book(rows) {
     if (half.outs >= 3 && tot.lob === null) tot.lob = half.on.filter(Boolean).length;
     Object.assign(tot, { bend: p.bend, mlb: p.mlb, mk: p.mk });
     halves.set(key, tot);
-    // The batter's line: a plate appearance unless he never batted (a pickoff or steal ended it).
-    const line = lines[side].get(p.slot) || { names: [], ab: 0, h: 0, rbi: 0 };
-    if (p.batter && !line.names.includes(p.batter)) line.names.push(p.batter);
-    if (r.code && r.code[3] !== "-") {
+    if (pa) {
+      const line = lines[side].get(p.slot) || { names: [], ab: 0, h: 0, rbi: 0 };
+      if (p.batter && !line.names.includes(p.batter)) line.names.push(p.batter);
       if (!/^(BB|IBB|HBP|CI)$/.test(p.play) && !/^(SAC|SF)/.test(p.play)) line.ab++;
       if (HIT.has(p.play)) line.h++;
       if (!/DP/.test(p.play) && !/^E/.test(p.play)) line.rbi += runs;   // no RBI on a double play or an error
+      lines[side].set(p.slot, line);
     }
-    lines[side].set(p.slot, line);
     plays.push(p);
     runsBy[side].set(inning, (runsBy[side].get(inning) || 0) + runs);
     prev = r;
@@ -607,7 +619,8 @@ function advance(half, p, code) {
   if (!code || code.length !== 4) return;
   const next = [null, null, null];
   const move = (who, c, from) => {
-    if (c === "-") { if (from) next[from - 1] = who; return; }   // a batter "-" did not bat (pickoff, steal)
+    if (c === "-") { if (from) next[from - 1] = who; return; }   // stays; a batter "-" did not bat
+    if (!p.slot && from) { who.note = p.play; p.runner = p.runner || who; }   // CS, PO, SB: the runner's box
     if (c === "X") { who.outNo = ++half.outs; return; }
     if (c === "R") { who.reached = 4; return; }
     who.reached = Math.max(who.reached, Number(c));
@@ -688,11 +701,14 @@ function renderSheet(bk) {
   head.insertAdjacentHTML("beforeend", `<th scope="col" class="tot">H–AB</th>`);
   const cells = new Map();   // "side/slot/inning" -> plays
   for (const p of bk.plays) {
+    if (!p.slot) continue;   // no plate appearance: written in the runner's box instead
     const key = `${p.side}/${p.slot}/${p.inning}`;
     if (!cells.has(key)) cells.set(key, []);
     cells.get(key).push(p);
   }
-  const nowPlay = bk.plays[bk.plays.length - 1];
+  // The red pencil marks the newest play's box, or the runner's when the play had no batter.
+  const newest = bk.plays[bk.plays.length - 1];
+  const nowPlay = newest && (newest.slot ? newest : newest.runner);
   const last = bk.last || {};
   const body = $("grid-body");
   body.replaceChildren();
@@ -746,13 +762,14 @@ function boxCell(ps, s, nowPlay) {
   cell.className = "cell" + (isNow ? " now" : "");
   cell.title = [p.batter, playWords(p.play), ...[["Bend", p.bend], ["MLB", p.mlb], ...p.mkt.map(([v, x]) => [v.name, x])]
     .map(([k, x]) => `${k} ${fmt(x)}`)].filter(Boolean).join(" · ");
-  const said = [p.batter || `slot ${s}`, playWords(p.play), REACHED[p.reached], p.outNo ? `out ${p.outNo}` : "",
-    p.runs ? `${p.runs} run${p.runs > 1 ? "s" : ""} scored` : ""].filter(Boolean).join(", ");
+  const said = [p.batter || `slot ${s}`, playWords(p.play), REACHED[p.reached], p.note ? `then ${p.note}` : "",
+    p.outNo ? `out ${p.outNo}` : "", p.runs ? `${p.runs} run${p.runs > 1 ? "s" : ""} scored` : ""].filter(Boolean).join(", ");
   cell.innerHTML = diamondSvg(p.reached)
     + (p.play ? `<span class="play${playClass(p.play)}">${playHtml(p.play)}</span>` : "")
     + (p.outNo ? `<span class="out${p.outNo === 3 ? " three" : ""}">${p.outNo}</span>` : "")
     + (p.runs ? `<span class="dots">${"<i></i>".repeat(Math.min(p.runs, 4))}</span>` : "")
     + (ps.length > 1 ? `<span class="more">×${ps.length}</span>` : "")
+    + (p.note ? `<span class="note">${esc(p.note)}</span>` : "")
     + `<span class="nums"><b${big ? ' class="swing"' : ""}>${wp(p.bend)}</b><span>${wp(p.mlb)}</span></span>`
     + `<span class="sr">${halfArrow(p.half)}${p.inning}: ${esc(said)}. Bend ${fmt(p.bend)}${big ? `, a swing of ${Math.abs(p.swing).toFixed(1)} points` : ""}, MLB ${fmt(p.mlb)}${p.mkt.length ? `, market median ${fmt(p.mk)} (${p.mkt.map(([v, x]) => `${v.name} ${fmt(x)}`).join(", ")})` : ""}.</span>`
     + (isNow ? `<svg class="pen" aria-hidden="true"><rect x="1" y="1" width="calc(100% - 2px)" height="calc(100% - 2px)" pathLength="1"/></svg>` : "");
@@ -793,22 +810,40 @@ config:
     height: ${$("chart").clientWidth < 640 ? 250 : 320}
 ---
 xychart
-  accTitle: Home-team win probability per completed play
+  accTitle: ${esc(teamName("home"))} win probability after each completed play
   accDescr: ${names.length === 2 ? "Two" : names.length === 3 ? "Three" : names.length === 4 ? "Four" : "Five"} lines over ${xs.length} plays: ${names.slice(0, -1).join(", ")}, and ${names[names.length - 1]}.
-  x-axis "play" [${xs.join(",")}]
-  y-axis "home win %" 0 --> 100
+  x-axis "play, in order" [${xs.join(",")}]
+  y-axis "${esc(teamName("home"))} win %" 0 --> 100
   line "Bend" [${bend.join(",")}]
   line "MLB" [${mlb.join(",")}]` + drawn.map(d => `
   line "${d.v.name}" [${d.data.join(",")}]`).join("");
   return { src, carried, n: xs.length, drawn };
 }
 
+// The printed legend: a drawn sample of each line as the chart strokes it, its name, its source.
+function legendItem(name, note, stroke, dash, dot) {
+  return `<li><svg viewBox="0 0 30 10" aria-hidden="true"><line x1="1" y1="5" x2="29" y2="5" stroke="${stroke}"`
+    + (dash ? ` stroke-dasharray="${dash}" stroke-width="1.5"` : "") + `/>`
+    + (dot ? `<circle cx="15" cy="5" r="2.6" fill="${stroke}"/>` : "") + `</svg><b>${name}</b>${note}</li>`;
+}
+
 function renderChart(rows) {
   const { src, carried, n, drawn } = chartSource(rows);
-  if (!n) { $("chart").textContent = "No plays yet."; chart = null; return; }
+  if (!n) { $("chart").textContent = "No plays yet."; $("legend").replaceChildren(); chart = null; return; }
   if (chart) chart.update(src); else chart = pele.mount($("chart"), src, { zoom: false, fontSize: 11 });
-  $("chart-cap").textContent = `Home-team win probability after each of ${n} completed plays, numbered from the first. Graphite: Bend. Teal: MLB official.`
-    + (drawn.length ? ` Market prices, as a reference: ${drawn.map(d => `${d.v.ink}, ${d.v.name}`).join("; ")}.` : "")
+  const sim = lastSim(rows);
+  $("legend").innerHTML = legendItem("Bend", sim ? `${Number(sim.sims).toLocaleString()} simulated games a play` : "simulated games",
+      "var(--graphite)", "", true)
+    + legendItem("MLB", "official win probability", "var(--print)", "", true)
+    + drawn.map(d => legendItem(esc(d.v.name), "market price", d.v.stroke, d.v.dash, false)).join("");
+  const home = teamName("home"), away = teamName("away");
+  const gaps = rows.map(r => num(r.delta)).filter(x => x !== null).map(Math.abs);
+  $("chart-cap").textContent = `How likely the ${home} were to win, from 0 to 100%, after each of the ${n} completed plays, `
+    + `left to right from the first; up favours the ${home}, down the ${away}. Bend's line is the share of its simulated games `
+    + `the ${home} won from the position after the play; MLB's is its official win probability for the same moment`
+    + (gaps.length ? `, on average ${(gaps.reduce((a, b) => a + b, 0) / gaps.length).toFixed(2)} pp from Bend's.` : ".")
+    + (drawn.length ? ` Each market line is that venue's price, read within a minute after the play; a play with no price carries `
+      + `the last one. Markets are shown as a reference, not as ground truth.` : "")
     + (carried ? ` ${carried} play${carried > 1 ? "s" : ""} without an MLB value carried the previous one.` : "");
 }
 
@@ -956,7 +991,7 @@ const DIAGRAMS = {
   a2 --> g2["one(2)"] & g3["one(3)"]
   b1 --> g4["one(4)"] & g5["one(5)"]
   b2 --> g6["one(6)"] & g7["one(7)"]
-  classDef pencil fill:#e6dbc2,stroke:#1d1d1b,color:#1d1d1b,stroke-width:1.6px
+  classDef pencil fill:#efe6d2,stroke:#1d1d1b,color:#1d1d1b,stroke-width:1.6px
   class g0,g1,g2,g3,g4,g5,g6,g7 pencil`,
   gate: `flowchart LR
   accTitle: The commit gate
@@ -964,16 +999,17 @@ const DIAGRAMS = {
   proof --> run{{"bend PROOF.bend"}}
   run --> ok["ALL PROOFS CHECK"] --> commit[commit · bench.py · this page]
   run --> other["anything else"] --> stop[nothing ships]
-  classDef pencil fill:#e6dbc2,stroke:#1d1d1b,color:#1d1d1b,stroke-width:1.6px
+  classDef pencil fill:#efe6d2,stroke:#1d1d1b,color:#1d1d1b,stroke-width:1.6px
   class ok,commit pencil`,
   pipeline: `flowchart LR
   accTitle: One play's path from the MLB feed to this card
-  api[MLB Stats API<br/>plays · official WP · season batting] --> live[live.py]
+  api[MLB Stats API<br/>play · scoring · official WP · season rates] --> live[live.py]
+  mk[Kalshi · Polymarket · Polymarket US<br/>markets.py] --> live
   live --> enc["7 thresholds / 10,000<br/>play as r3 r2 r1 batter"] --> wp[wp<br/>step → tree 2^d]
   wp --> csv[("runs/&lt;gamePk&gt;.csv")]
   csv -->|POST| worker[Worker + Durable Object]
   worker -->|GET every 5 s| page[this card]
-  classDef pencil fill:#e6dbc2,stroke:#1d1d1b,color:#1d1d1b,stroke-width:1.6px
+  classDef pencil fill:#efe6d2,stroke:#1d1d1b,color:#1d1d1b,stroke-width:1.6px
   class wp pencil`,
 };
 for (const node of document.querySelectorAll(".pele-src")) {

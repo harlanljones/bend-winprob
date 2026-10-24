@@ -281,10 +281,13 @@ Each 72×66px box is one plate appearance, filed under the half-inning it starte
 The latest play carries the red pencil rectangle; when it moves to a new box (`.drawn`) the rectangle draws itself over 900ms with `cubic-bezier(0.16, 1, 0.3, 1)`, disabled under `prefers-reduced-motion`.
 
 ### Keeper's Margin
-A stacked aside under a 1px teal rule (14px gaps): the actions row; a 12px teal uppercase `h2`; the tally (Caveat 500 23px with the 44px 700 Bend number on its own line, a 12px soft-graphite Archivo sub-line for MLB and Δ, and a market reference line with each venue linked); then the "Now" note. Figure 1 (the Pele xychart of Bend, MLB and each market venue, legend hidden, 12px caption naming every line) sits outside the margin, full width below the spread.
+A stacked aside under a 1px teal rule (14px gaps): the actions row; a 12px teal uppercase `h2`; the tally (Caveat 500 23px with the 44px 700 Bend number on its own line, a 12px soft-graphite Archivo sub-line for MLB and Δ, and a market reference line with each venue linked); then the "Now" note. Figure 1 sits outside the margin, full width below the spread.
+
+### Figure 1
+The Pele xychart of the home team's win probability after each play: Bend (graphite, 2px, points), MLB (teal, 2px, points) and each market venue that priced the game (1.5px, no points: Kalshi dashed soft graphite, Polymarket dashed teal rule, Polymarket US dotted soft graphite). The y-axis is named for the home team ("Brewers win %"), the x-axis "play, in order". Pele's own legend is hidden because it cannot show the dash patterns; a printed legend sits between the heading and the chart, one item per drawn line: a 30px sample stroked exactly as the line (with a point where the line has points), the name (Archivo Narrow 700 12px uppercase, graphite) and its source in 12px soft graphite ("65,536 simulated games a play", "official win probability", "market price"). The caption (12px soft graphite, 90ch) says what is plotted and which way favours whom, where each line's numbers come from, the mean gap between Bend and MLB, how a missing price or MLB value is carried, and that markets are a reference.
 
 ### Pele diagrams
-Themed via `.pele` custom properties: stock background and surface, teal foreground/line/border/muted, 9% tint alt surface, graphite accent and series 1, teal series 2, red critical/error, Archivo Narrow at 700 for titles and headings, mono stack for code, radius 0. Wrapped in `figure.diagram` (14px top margin) with a 12px soft-graphite caption.
+Themed via `.pele` custom properties: stock background and surface, teal foreground/line/border/muted, 9% tint alt surface, graphite accent and series 1, teal series 2, red critical/error, Archivo Narrow at 700 for titles and headings, mono stack for code, radius 0. Pencilled nodes (what Bend computes or what the proof gate lets through) are stock with a 1.6px graphite stroke. Wrapped in `figure.diagram` (14px top margin) with a 12px soft-graphite caption that says which way to read the diagram and what each mark means.
 
 ## Do's and Don'ts
 

@@ -52,7 +52,7 @@ Book.load().then(({ plays, halves }) => {
       + h.plays.map(p => {
         const outs = Math.min(p.half.plays.slice(0, p.half.plays.indexOf(p) + 1).reduce((n, q) => Math.max(n, q.outNo), 0), 3);
         const big = p.swing !== null && Math.abs(p.swing) >= 8;
-        return `<tr class="${p === last ? "now" : ""}"><td class="no">${p.slot}</td><td class="bat">${Book.esc(p.batter)}</td>`
+        return `<tr class="${p === last ? "now" : ""}"><td class="no">${p.slot ?? ""}</td><td class="bat">${Book.esc(p.batter)}</td>`
           + `<td class="box">${Book.diamond(p.reached)}<span class="play${Book.playClass(p.play)}">${Book.playHtml(p.play).replace("<br>", " ")}</span></td>`
           + `<td class="sit">${Book.bases(outs >= 3 ? "---" : p.basesAfter)}<span class="outs">${[1, 2, 3].map(k => `<i class="${k <= outs ? "on" : ""}"></i>`).join("")}</span></td>`
           + `<td class="n b">${Book.f1(p.bend)}</td><td class="n">${Book.f1(p.mlb)}</td><td class="n">${Book.f1(p.mk)}</td>`
