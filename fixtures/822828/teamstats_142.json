@@ -1,0 +1,139 @@
+{
+ "copyright": "Copyright 2026 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt",
+ "stats": [
+  {
+   "type": {
+    "displayName": "season"
+   },
+   "group": {
+    "displayName": "hitting"
+   },
+   "exemptions": [],
+   "splits": [
+    {
+     "season": "2026",
+     "stat": {
+      "gamesPlayed": 162,
+      "groundOuts": 1275,
+      "airOuts": 1618,
+      "runs": 739,
+      "doubles": 256,
+      "triples": 26,
+      "homeRuns": 187,
+      "strikeOuts": 1297,
+      "baseOnBalls": 507,
+      "intentionalWalks": 10,
+      "hits": 1337,
+      "hitByPitch": 92,
+      "avg": ".245",
+      "atBats": 5468,
+      "obp": ".317",
+      "slg": ".403",
+      "ops": ".720",
+      "caughtStealing": 37,
+      "stolenBases": 91,
+      "stolenBasePercentage": ".711",
+      "caughtStealingPercentage": ".289",
+      "groundIntoDoublePlay": 108,
+      "numberOfPitches": 23634,
+      "plateAppearances": 6127,
+      "totalBases": 2206,
+      "rbi": 707,
+      "leftOnBase": 1092,
+      "sacBunts": 11,
+      "sacFlies": 47,
+      "babip": ".285",
+      "groundOutsToAirouts": "0.79",
+      "catchersInterference": 1,
+      "atBatsPerHomeRun": "29.24"
+     },
+     "team": {
+      "id": 142,
+      "name": "Minnesota Twins",
+      "link": "/api/v1/teams/142"
+     }
+    }
+   ]
+  },
+  {
+   "type": {
+    "displayName": "season"
+   },
+   "group": {
+    "displayName": "pitching"
+   },
+   "exemptions": [],
+   "splits": [
+    {
+     "season": "2026",
+     "stat": {
+      "gamesPlayed": 162,
+      "gamesStarted": 162,
+      "groundOuts": 1254,
+      "airOuts": 1573,
+      "runs": 797,
+      "doubles": 282,
+      "triples": 19,
+      "homeRuns": 186,
+      "strikeOuts": 1381,
+      "baseOnBalls": 581,
+      "intentionalWalks": 20,
+      "hits": 1368,
+      "hitByPitch": 73,
+      "avg": ".249",
+      "atBats": 5502,
+      "obp": ".326",
+      "slg": ".408",
+      "ops": ".734",
+      "caughtStealing": 22,
+      "stolenBases": 137,
+      "stolenBasePercentage": ".862",
+      "caughtStealingPercentage": ".138",
+      "groundIntoDoublePlay": 96,
+      "numberOfPitches": 24277,
+      "era": "4.56",
+      "inningsPitched": "1435.2",
+      "wins": 77,
+      "losses": 85,
+      "saves": 45,
+      "saveOpportunities": 66,
+      "holds": 110,
+      "blownSaves": 21,
+      "earnedRuns": 727,
+      "whip": "1.36",
+      "battersFaced": 6234,
+      "outs": 4307,
+      "gamesPitched": 162,
+      "completeGames": 1,
+      "shutouts": 5,
+      "strikes": 15434,
+      "strikePercentage": ".640",
+      "hitBatsmen": 73,
+      "balks": 7,
+      "wildPitches": 45,
+      "pickoffs": 10,
+      "totalBases": 2246,
+      "groundOutsToAirouts": "0.80",
+      "winPercentage": ".475",
+      "pitchesPerInning": "16.91",
+      "gamesFinished": 161,
+      "strikeoutWalkRatio": "2.38",
+      "strikeoutsPer9Inn": "8.66",
+      "walksPer9Inn": "3.64",
+      "hitsPer9Inn": "8.58",
+      "runsScoredPer9": "5.00",
+      "homeRunsPer9": "1.17",
+      "catchersInterference": 4,
+      "sacBunts": 28,
+      "sacFlies": 46
+     },
+     "team": {
+      "id": 142,
+      "name": "Minnesota Twins",
+      "link": "/api/v1/teams/142"
+     }
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,23 @@
+{
+ "metaData": {
+  "wait": 10
+ },
+ "gameData": {
+  "status": {
+   "abstractGameState": "Final",
+   "detailedState": "Final"
+  },
+  "teams": {
+   "away": {
+    "id": 147,
+    "abbreviation": "NYY",
+    "teamName": "Yankees"
+   },
+   "home": {
+    "id": 140,
+    "abbreviation": "TEX",
+    "teamName": "Rangers"
+   }
+  }
+ }
+}

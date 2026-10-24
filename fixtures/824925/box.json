@@ -1,0 +1,1976 @@
+{
+ "teams": {
+  "away": {
+   "team": {},
+   "teamStats": {
+    "batting": {
+     "runs": 2,
+     "baseOnBalls": 4,
+     "hitByPitch": 1,
+     "atBats": 33,
+     "sacBunts": 0,
+     "sacFlies": 0,
+     "catchersInterference": 0
+    },
+    "fielding": {
+     "putOuts": 27
+    }
+   },
+   "players": {
+    "ID575929": {
+     "person": {},
+     "jerseyNumber": "40",
+     "position": {},
+     "status": {},
+     "parentTeamId": 111,
+     "battingOrder": "400",
+     "stats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 4,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 8,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 19,
+       "baseOnBalls": 20,
+       "hitByPitch": 8,
+       "atBats": 147,
+       "sacBunts": 0,
+       "sacFlies": 3,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 309,
+       "fielding": "1.000"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {}
+     ]
+    },
+    "ID813349": {
+     "person": {},
+     "jerseyNumber": "71",
+     "position": {},
+     "status": {},
+     "parentTeamId": 111,
+     "stats": {
+      "batting": {},
+      "fielding": {
+       "putOuts": 0,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 0,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 5,
+       "fielding": "1.000"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {}
+     ]
+    },
+    "ID669711": {
+     "person": {},
+     "jerseyNumber": "57",
+     "position": {},
+     "status": {},
+     "parentTeamId": 111,
+     "stats": {
+      "batting": {},
+      "fielding": {
+       "putOuts": 0,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 0,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 0,
+       "fielding": "1.000"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {}
+     ]
+    },
+    "ID657136": {
+     "person": {},
+     "jerseyNumber": "12",
+     "position": {},
+     "status": {},
+     "parentTeamId": 111,
+     "stats": {
+      "batting": {},
+      "fielding": {}
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 3,
+       "baseOnBalls": 4,
+       "hitByPitch": 2,
+       "atBats": 49,
+       "sacBunts": 2,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 121,
+       "fielding": ".985"
+      }
+     },
+     "gameStatus": {}
+    },
+    "ID677161": {
+     "person": {},
+     "jerseyNumber": "76",
+     "position": {},
+     "status": {},
+     "parentTeamId": 111,
+     "stats": {
+      "batting": {},
+      "fielding": {}
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 0,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 4,
+       "fielding": "1.000"
+      }
+     },
+     "gameStatus": {}
+    },
+    "ID678394": {
+     "person": {},
+     "jerseyNumber": "66",
+     "position": {},
+     "status": {},
+     "parentTeamId": 111,
+     "stats": {
+      "batting": {},
+      "fielding": {}
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 0,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 6,
+       "fielding": "1.000"
+      }
+     },
+     "gameStatus": {}
+    },
+    "ID677800": {
+     "person": {},
+     "jerseyNumber": "52",
+     "position": {},
+     "status": {},
+     "parentTeamId": 111,
+     "battingOrder": "300",
+     "stats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 4,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 1,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 20,
+       "baseOnBalls": 20,
+       "hitByPitch": 0,
+       "atBats": 162,
+       "sacBunts": 0,
+       "sacFlies": 1,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 91,
+       "fielding": ".989"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {}
+     ]
+    },
+    "ID676477": {
+     "person": {},
+     "jerseyNumber": "22",
+     "position": {},
+     "status": {},
+     "parentTeamId": 111,
+     "stats": {
+      "batting": {},
+      "fielding": {}
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 0,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 3,
+       "fielding": "1.000"
+      }
+     },
+     "gameStatus": {}
+    },
+    "ID543243": {
+     "person": {},
+     "jerseyNumber": "54",
+     "position": {},
+     "status": {},
+     "parentTeamId": 111,
+     "stats": {
+      "batting": {},
+      "fielding": {}
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 0,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 8,
+       "fielding": "1.000"
+      }
+     },
+     "gameStatus": {}
+    },
+    "ID655316": {
+     "person": {},
+     "jerseyNumber": "32",
+     "position": {},
+     "status": {},
+     "parentTeamId": 111,
+     "battingOrder": "700",
+     "stats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 4,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 1,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 8,
+       "baseOnBalls": 5,
+       "hitByPitch": 0,
+       "atBats": 66,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 32,
+       "fielding": ".980"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {}
+     ]
+    },
+    "ID643396": {
+     "person": {},
+     "jerseyNumber": "2",
+     "position": {},
+     "status": {},
+     "parentTeamId": 111,
+     "battingOrder": "902",
+     "stats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 1,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 0,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 5,
+       "baseOnBalls": 3,
+       "hitByPitch": 0,
+       "atBats": 41,
+       "sacBunts": 1,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 14,
+       "fielding": "1.000"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {}
+     ]
+    },
+    "ID686580": {
+     "person": {},
+     "jerseyNumber": "63",
+     "position": {},
+     "status": {},
+     "parentTeamId": 111,
+     "stats": {
+      "batting": {},
+      "fielding": {}
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 0,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 1,
+       "fielding": "1.000"
+      }
+     },
+     "gameStatus": {}
+    },
+    "ID681508": {
+     "person": {},
+     "jerseyNumber": "30",
+     "position": {},
+     "status": {},
+     "parentTeamId": 111,
+     "battingOrder": "200",
+     "stats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 5,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 0,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 1,
+       "baseOnBalls": 0,
+       "hitByPitch": 1,
+       "atBats": 17,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 13,
+       "fielding": "1.000"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {}
+     ]
+    },
+    "ID702332": {
+     "person": {},
+     "jerseyNumber": "5",
+     "position": {},
+     "status": {},
+     "parentTeamId": 111,
+     "battingOrder": "900",
+     "stats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 2,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 0,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 14,
+       "baseOnBalls": 11,
+       "hitByPitch": 4,
+       "atBats": 136,
+       "sacBunts": 1,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 25,
+       "fielding": ".964"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {}
+     ]
+    },
+    "ID624133": {
+     "person": {},
+     "jerseyNumber": "55",
+     "position": {},
+     "status": {},
+     "parentTeamId": 111,
+     "stats": {
+      "batting": {},
+      "fielding": {}
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 0,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 3,
+       "fielding": "1.000"
+      }
+     },
+     "gameStatus": {}
+    },
+    "ID665966": {
+     "person": {},
+     "jerseyNumber": "75",
+     "position": {},
+     "status": {},
+     "parentTeamId": 111,
+     "battingOrder": "800",
+     "stats": {
+      "batting": {
+       "runs": 1,
+       "baseOnBalls": 1,
+       "hitByPitch": 0,
+       "atBats": 3,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 10,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 10,
+       "baseOnBalls": 6,
+       "hitByPitch": 2,
+       "atBats": 87,
+       "sacBunts": 1,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 239,
+       "fielding": ".988"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {}
+     ]
+    },
+    "ID680776": {
+     "person": {},
+     "jerseyNumber": "16",
+     "position": {},
+     "status": {},
+     "parentTeamId": 111,
+     "battingOrder": "100",
+     "stats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 1,
+       "hitByPitch": 1,
+       "atBats": 3,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 3,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 19,
+       "baseOnBalls": 11,
+       "hitByPitch": 2,
+       "atBats": 155,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 60,
+       "fielding": "1.000"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {}
+     ]
+    },
+    "ID701719": {
+     "person": {},
+     "jerseyNumber": "78",
+     "position": {},
+     "status": {},
+     "parentTeamId": 111,
+     "stats": {
+      "batting": {},
+      "fielding": {
+       "putOuts": 0,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 0,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 1,
+       "fielding": "1.000"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {}
+     ]
+    },
+    "ID801139": {
+     "person": {},
+     "jerseyNumber": "70",
+     "position": {},
+     "status": {},
+     "parentTeamId": 111,
+     "stats": {
+      "batting": {},
+      "fielding": {}
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 0,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 1,
+       "fielding": "1.000"
+      }
+     },
+     "gameStatus": {}
+    },
+    "ID678882": {
+     "person": {},
+     "jerseyNumber": "3",
+     "position": {},
+     "status": {},
+     "parentTeamId": 111,
+     "battingOrder": "500",
+     "stats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 1,
+       "hitByPitch": 0,
+       "atBats": 3,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 2,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 18,
+       "baseOnBalls": 9,
+       "hitByPitch": 6,
+       "atBats": 141,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 97,
+       "fielding": "1.000"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {}
+     ]
+    },
+    "ID663558": {
+     "person": {},
+     "jerseyNumber": "47",
+     "position": {},
+     "status": {},
+     "parentTeamId": 111,
+     "stats": {
+      "batting": {},
+      "fielding": {
+       "putOuts": 0,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 0,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 1,
+       "fielding": "1.000"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {}
+     ]
+    },
+    "ID807799": {
+     "person": {},
+     "jerseyNumber": "7",
+     "position": {},
+     "status": {},
+     "parentTeamId": 111,
+     "battingOrder": "901",
+     "stats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 1,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 0,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 8,
+       "baseOnBalls": 12,
+       "hitByPitch": 2,
+       "atBats": 74,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 5,
+       "fielding": "1.000"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {}
+     ]
+    },
+    "ID691785": {
+     "person": {},
+     "jerseyNumber": "11",
+     "position": {},
+     "status": {},
+     "parentTeamId": 111,
+     "battingOrder": "600",
+     "stats": {
+      "batting": {
+       "runs": 1,
+       "baseOnBalls": 1,
+       "hitByPitch": 0,
+       "atBats": 3,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 2,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 10,
+       "baseOnBalls": 10,
+       "hitByPitch": 2,
+       "atBats": 116,
+       "sacBunts": 0,
+       "sacFlies": 1,
+       "catchersInterference": 1
+      },
+      "fielding": {
+       "putOuts": 57,
+       "fielding": ".985"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {}
+     ]
+    },
+    "ID547973": {
+     "person": {},
+     "jerseyNumber": "44",
+     "position": {},
+     "status": {},
+     "parentTeamId": 111,
+     "stats": {
+      "batting": {},
+      "fielding": {
+       "putOuts": 0,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 0,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 0,
+       "fielding": ".000"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {}
+     ]
+    },
+    "ID670245": {
+     "person": {},
+     "jerseyNumber": "56",
+     "position": {},
+     "status": {},
+     "parentTeamId": 111,
+     "stats": {
+      "batting": {},
+      "fielding": {}
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 0,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 1,
+       "fielding": "1.000"
+      }
+     },
+     "gameStatus": {}
+    }
+   },
+   "batters": [
+    680776,
+    681508,
+    677800,
+    575929,
+    678882,
+    691785,
+    655316,
+    665966,
+    702332,
+    807799,
+    643396,
+    813349,
+    669711,
+    663558,
+    547973,
+    701719
+   ],
+   "pitchers": [
+    813349,
+    669711,
+    663558,
+    547973,
+    701719
+   ],
+   "bench": [
+    657136
+   ],
+   "bullpen": [
+    678394,
+    543243,
+    677161,
+    686580,
+    624133,
+    801139,
+    670245,
+    676477
+   ],
+   "battingOrder": [
+    680776,
+    681508,
+    677800,
+    575929,
+    678882,
+    691785,
+    655316,
+    665966,
+    643396
+   ],
+   "info": [
+    {},
+    {},
+    {}
+   ],
+   "note": [
+    {}
+   ]
+  },
+  "home": {
+   "team": {},
+   "teamStats": {
+    "batting": {
+     "runs": 3,
+     "baseOnBalls": 0,
+     "hitByPitch": 1,
+     "atBats": 35,
+     "sacBunts": 0,
+     "sacFlies": 0,
+     "catchersInterference": 0
+    },
+    "fielding": {
+     "putOuts": 30
+    }
+   },
+   "players": {
+    "ID640492": {
+     "person": {},
+     "jerseyNumber": "38",
+     "position": {},
+     "status": {},
+     "parentTeamId": 144,
+     "battingOrder": "900",
+     "stats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 2,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 1,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 7,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 5,
+       "fielding": "1.000"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {}
+     ]
+    },
+    "ID675911": {
+     "person": {},
+     "jerseyNumber": "99",
+     "position": {},
+     "status": {},
+     "parentTeamId": 144,
+     "stats": {
+      "batting": {},
+      "fielding": {
+       "putOuts": 0,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 0,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 1,
+       "fielding": "1.000"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {}
+     ]
+    },
+    "ID669276": {
+     "person": {},
+     "jerseyNumber": "52",
+     "position": {},
+     "status": {},
+     "parentTeamId": 144,
+     "stats": {
+      "batting": {},
+      "fielding": {
+       "putOuts": 0,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 0,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 1,
+       "fielding": "1.000"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {}
+     ]
+    },
+    "ID663158": {
+     "person": {},
+     "jerseyNumber": "75",
+     "position": {},
+     "status": {},
+     "parentTeamId": 144,
+     "battingOrder": "802",
+     "stats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 0,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 1,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 0,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 2,
+       "fielding": "1.000"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {}
+     ]
+    },
+    "ID671739": {
+     "person": {},
+     "jerseyNumber": "23",
+     "position": {},
+     "status": {},
+     "parentTeamId": 144,
+     "battingOrder": "600",
+     "stats": {
+      "batting": {
+       "runs": 1,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 4,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 1,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 17,
+       "baseOnBalls": 6,
+       "hitByPitch": 0,
+       "atBats": 143,
+       "sacBunts": 0,
+       "sacFlies": 1,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 83,
+       "fielding": "1.000"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {}
+     ]
+    },
+    "ID622761": {
+     "person": {},
+     "jerseyNumber": "2",
+     "position": {},
+     "status": {},
+     "parentTeamId": 144,
+     "stats": {
+      "batting": {},
+      "fielding": {}
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 15,
+       "baseOnBalls": 3,
+       "hitByPitch": 0,
+       "atBats": 55,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 23,
+       "fielding": ".982"
+      }
+     },
+     "gameStatus": {}
+    },
+    "ID643289": {
+     "person": {},
+     "jerseyNumber": "14",
+     "position": {},
+     "status": {},
+     "parentTeamId": 144,
+     "battingOrder": "100",
+     "stats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 4,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 3,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 19,
+       "baseOnBalls": 11,
+       "hitByPitch": 2,
+       "atBats": 160,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 75,
+       "fielding": ".986"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {}
+     ]
+    },
+    "ID800311": {
+     "person": {},
+     "jerseyNumber": "72",
+     "position": {},
+     "status": {},
+     "parentTeamId": 144,
+     "battingOrder": "805",
+     "stats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 0,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 0,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 0,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 0,
+       "fielding": "1.000"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {}
+     ]
+    },
+    "ID686948": {
+     "person": {},
+     "jerseyNumber": "30",
+     "position": {},
+     "status": {},
+     "parentTeamId": 144,
+     "battingOrder": "200",
+     "stats": {
+      "batting": {
+       "runs": 1,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 4,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 3,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 38,
+       "baseOnBalls": 20,
+       "hitByPitch": 3,
+       "atBats": 181,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 246,
+       "fielding": ".996"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {},
+      {}
+     ]
+    },
+    "ID519242": {
+     "person": {},
+     "jerseyNumber": "51",
+     "position": {},
+     "status": {},
+     "parentTeamId": 144,
+     "stats": {
+      "batting": {},
+      "fielding": {}
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 0,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 9,
+       "fielding": "1.000"
+      }
+     },
+     "gameStatus": {}
+    },
+    "ID621566": {
+     "person": {},
+     "jerseyNumber": "28",
+     "position": {},
+     "status": {},
+     "parentTeamId": 144,
+     "battingOrder": "400",
+     "stats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 4,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 7,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 36,
+       "baseOnBalls": 22,
+       "hitByPitch": 0,
+       "atBats": 174,
+       "sacBunts": 0,
+       "sacFlies": 2,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 312,
+       "fielding": ".994"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {}
+     ]
+    },
+    "ID702275": {
+     "person": {},
+     "jerseyNumber": "60",
+     "position": {},
+     "status": {},
+     "parentTeamId": 144,
+     "stats": {
+      "batting": {},
+      "fielding": {}
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 0,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 1,
+       "fielding": ".667"
+      }
+     },
+     "gameStatus": {}
+    },
+    "ID642086": {
+     "person": {},
+     "jerseyNumber": "8",
+     "position": {},
+     "status": {},
+     "parentTeamId": 144,
+     "battingOrder": "801",
+     "stats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 1,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 0,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 13,
+       "baseOnBalls": 4,
+       "hitByPitch": 1,
+       "atBats": 86,
+       "sacBunts": 1,
+       "sacFlies": 2,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 0,
+       "fielding": ".000"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {}
+     ]
+    },
+    "ID571657": {
+     "person": {},
+     "jerseyNumber": "15",
+     "position": {},
+     "status": {},
+     "parentTeamId": 144,
+     "battingOrder": "804",
+     "stats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 1,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 0,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 2,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 14,
+       "sacBunts": 0,
+       "sacFlies": 1,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 0,
+       "fielding": "1.000"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {}
+     ]
+    },
+    "ID641755": {
+     "person": {},
+     "jerseyNumber": "45",
+     "position": {},
+     "status": {},
+     "parentTeamId": 144,
+     "stats": {
+      "batting": {},
+      "fielding": {
+       "putOuts": 0,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 0,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 1,
+       "fielding": "1.000"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {}
+     ]
+    },
+    "ID607481": {
+     "person": {},
+     "jerseyNumber": "49",
+     "position": {},
+     "status": {},
+     "parentTeamId": 144,
+     "stats": {
+      "batting": {},
+      "fielding": {}
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 0,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 0,
+       "fielding": "1.000"
+      }
+     },
+     "gameStatus": {}
+    },
+    "ID625643": {
+     "person": {},
+     "jerseyNumber": "40",
+     "position": {},
+     "status": {},
+     "parentTeamId": 144,
+     "stats": {
+      "batting": {},
+      "fielding": {}
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 0,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 1,
+       "fielding": "1.000"
+      }
+     },
+     "gameStatus": {}
+    },
+    "ID645277": {
+     "person": {},
+     "jerseyNumber": "1",
+     "position": {},
+     "status": {},
+     "parentTeamId": 144,
+     "battingOrder": "300",
+     "stats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 1,
+       "atBats": 3,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 2,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 30,
+       "baseOnBalls": 14,
+       "hitByPitch": 2,
+       "atBats": 173,
+       "sacBunts": 0,
+       "sacFlies": 3,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 54,
+       "fielding": ".994"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {}
+     ]
+    },
+    "ID628452": {
+     "person": {},
+     "jerseyNumber": "26",
+     "position": {},
+     "status": {},
+     "parentTeamId": 144,
+     "battingOrder": "803",
+     "stats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 0,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 0,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 0,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 1,
+       "fielding": "1.000"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {}
+     ]
+    },
+    "ID663586": {
+     "person": {},
+     "jerseyNumber": "27",
+     "position": {},
+     "status": {},
+     "parentTeamId": 144,
+     "battingOrder": "500",
+     "stats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 4,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 4,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 22,
+       "baseOnBalls": 14,
+       "hitByPitch": 3,
+       "atBats": 169,
+       "sacBunts": 0,
+       "sacFlies": 1,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 36,
+       "fielding": ".971"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {}
+     ]
+    },
+    "ID656550": {
+     "person": {},
+     "jerseyNumber": "66",
+     "position": {},
+     "status": {},
+     "parentTeamId": 144,
+     "stats": {
+      "batting": {},
+      "fielding": {}
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 0,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 8,
+       "fielding": "1.000"
+      }
+     },
+     "gameStatus": {}
+    },
+    "ID506702": {
+     "person": {},
+     "jerseyNumber": "9",
+     "position": {},
+     "status": {},
+     "parentTeamId": 144,
+     "battingOrder": "800",
+     "stats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 2,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 6,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 4,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 16,
+       "fielding": "1.000"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {}
+     ]
+    },
+    "ID573262": {
+     "person": {},
+     "jerseyNumber": "18",
+     "position": {},
+     "status": {},
+     "parentTeamId": 144,
+     "battingOrder": "901",
+     "stats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 2,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 0,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 17,
+       "baseOnBalls": 9,
+       "hitByPitch": 2,
+       "atBats": 122,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 68,
+       "fielding": ".973"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {},
+      {}
+     ]
+    },
+    "ID673490": {
+     "person": {},
+     "jerseyNumber": "7",
+     "position": {},
+     "status": {},
+     "parentTeamId": 144,
+     "battingOrder": "700",
+     "stats": {
+      "batting": {
+       "runs": 1,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 4,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 2,
+       "fielding": ".000"
+      }
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 1,
+       "baseOnBalls": 1,
+       "hitByPitch": 0,
+       "atBats": 13,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 5,
+       "fielding": ".941"
+      }
+     },
+     "gameStatus": {},
+     "allPositions": [
+      {}
+     ]
+    },
+    "ID693821": {
+     "person": {},
+     "jerseyNumber": "55",
+     "position": {},
+     "status": {},
+     "parentTeamId": 144,
+     "stats": {
+      "batting": {},
+      "fielding": {}
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 0,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 6,
+       "fielding": ".909"
+      }
+     },
+     "gameStatus": {}
+    },
+    "ID527048": {
+     "person": {},
+     "jerseyNumber": "33",
+     "position": {},
+     "status": {},
+     "parentTeamId": 144,
+     "stats": {
+      "batting": {},
+      "fielding": {}
+     },
+     "seasonStats": {
+      "batting": {
+       "runs": 0,
+       "baseOnBalls": 0,
+       "hitByPitch": 0,
+       "atBats": 0,
+       "sacBunts": 0,
+       "sacFlies": 0,
+       "catchersInterference": 0
+      },
+      "fielding": {
+       "putOuts": 3,
+       "fielding": "1.000"
+      }
+     },
+     "gameStatus": {}
+    }
+   },
+   "batters": [
+    643289,
+    686948,
+    645277,
+    621566,
+    663586,
+    671739,
+    673490,
+    506702,
+    642086,
+    663158,
+    628452,
+    571657,
+    800311,
+    640492,
+    573262,
+    675911,
+    669276,
+    641755
+   ],
+   "pitchers": [
+    675911,
+    669276,
+    641755,
+    663158,
+    628452,
+    800311
+   ],
+   "bench": [
+    622761
+   ],
+   "bullpen": [
+    607481,
+    693821,
+    656550,
+    625643,
+    527048,
+    702275,
+    519242
+   ],
+   "battingOrder": [
+    643289,
+    686948,
+    645277,
+    621566,
+    663586,
+    671739,
+    673490,
+    800311,
+    573262
+   ],
+   "info": [
+    {},
+    {}
+   ],
+   "note": [
+    {},
+    {},
+    {}
+   ]
+  }
+ }
+}

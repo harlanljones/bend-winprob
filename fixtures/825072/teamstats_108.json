@@ -1,0 +1,139 @@
+{
+ "copyright": "Copyright 2026 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt",
+ "stats": [
+  {
+   "type": {
+    "displayName": "season"
+   },
+   "group": {
+    "displayName": "hitting"
+   },
+   "exemptions": [],
+   "splits": [
+    {
+     "season": "2026",
+     "stat": {
+      "gamesPlayed": 162,
+      "groundOuts": 1242,
+      "airOuts": 1417,
+      "runs": 655,
+      "doubles": 238,
+      "triples": 15,
+      "homeRuns": 154,
+      "strikeOuts": 1550,
+      "baseOnBalls": 511,
+      "intentionalWalks": 18,
+      "hits": 1266,
+      "hitByPitch": 100,
+      "avg": ".234",
+      "atBats": 5414,
+      "obp": ".310",
+      "slg": ".369",
+      "ops": ".679",
+      "caughtStealing": 27,
+      "stolenBases": 93,
+      "stolenBasePercentage": ".775",
+      "caughtStealingPercentage": ".225",
+      "groundIntoDoublePlay": 120,
+      "numberOfPitches": 23826,
+      "plateAppearances": 6089,
+      "totalBases": 1996,
+      "rbi": 627,
+      "leftOnBase": 1106,
+      "sacBunts": 29,
+      "sacFlies": 32,
+      "babip": ".297",
+      "groundOutsToAirouts": "0.88",
+      "catchersInterference": 3,
+      "atBatsPerHomeRun": "35.16"
+     },
+     "team": {
+      "id": 108,
+      "name": "Los Angeles Angels",
+      "link": "/api/v1/teams/108"
+     }
+    }
+   ]
+  },
+  {
+   "type": {
+    "displayName": "season"
+   },
+   "group": {
+    "displayName": "pitching"
+   },
+   "exemptions": [],
+   "splits": [
+    {
+     "season": "2026",
+     "stat": {
+      "gamesPlayed": 162,
+      "gamesStarted": 162,
+      "groundOuts": 1328,
+      "airOuts": 1407,
+      "runs": 752,
+      "doubles": 232,
+      "triples": 22,
+      "homeRuns": 164,
+      "strikeOuts": 1439,
+      "baseOnBalls": 639,
+      "intentionalWalks": 28,
+      "hits": 1298,
+      "hitByPitch": 81,
+      "avg": ".240",
+      "atBats": 5407,
+      "obp": ".327",
+      "slg": ".382",
+      "ops": ".709",
+      "caughtStealing": 31,
+      "stolenBases": 121,
+      "stolenBasePercentage": ".796",
+      "caughtStealingPercentage": ".204",
+      "groundIntoDoublePlay": 102,
+      "numberOfPitches": 24667,
+      "era": "4.29",
+      "inningsPitched": "1430.1",
+      "wins": 62,
+      "losses": 100,
+      "saves": 25,
+      "saveOpportunities": 55,
+      "holds": 92,
+      "blownSaves": 30,
+      "earnedRuns": 682,
+      "whip": "1.35",
+      "battersFaced": 6195,
+      "outs": 4291,
+      "gamesPitched": 162,
+      "completeGames": 1,
+      "shutouts": 11,
+      "strikes": 15557,
+      "strikePercentage": ".630",
+      "hitBatsmen": 81,
+      "balks": 6,
+      "wildPitches": 65,
+      "pickoffs": 11,
+      "totalBases": 2066,
+      "groundOutsToAirouts": "0.94",
+      "winPercentage": ".383",
+      "pitchesPerInning": "17.25",
+      "gamesFinished": 161,
+      "strikeoutWalkRatio": "2.25",
+      "strikeoutsPer9Inn": "9.05",
+      "walksPer9Inn": "4.02",
+      "hitsPer9Inn": "8.17",
+      "runsScoredPer9": "4.73",
+      "homeRunsPer9": "1.03",
+      "catchersInterference": 3,
+      "sacBunts": 16,
+      "sacFlies": 49
+     },
+     "team": {
+      "id": 108,
+      "name": "Los Angeles Angels",
+      "link": "/api/v1/teams/108"
+     }
+    }
+   ]
+  }
+ ]
+}

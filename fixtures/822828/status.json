@@ -1,0 +1,23 @@
+{
+ "metaData": {
+  "wait": 10
+ },
+ "gameData": {
+  "status": {
+   "abstractGameState": "Final",
+   "detailedState": "Final"
+  },
+  "teams": {
+   "away": {
+    "id": 142,
+    "abbreviation": "MIN",
+    "teamName": "Twins"
+   },
+   "home": {
+    "id": 141,
+    "abbreviation": "TOR",
+    "teamName": "Blue Jays"
+   }
+  }
+ }
+}

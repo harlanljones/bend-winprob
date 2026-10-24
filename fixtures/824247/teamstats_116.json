@@ -1,0 +1,139 @@
+{
+ "copyright": "Copyright 2026 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt",
+ "stats": [
+  {
+   "type": {
+    "displayName": "season"
+   },
+   "group": {
+    "displayName": "hitting"
+   },
+   "exemptions": [],
+   "splits": [
+    {
+     "season": "2026",
+     "stat": {
+      "gamesPlayed": 162,
+      "groundOuts": 1190,
+      "airOuts": 1598,
+      "runs": 723,
+      "doubles": 260,
+      "triples": 34,
+      "homeRuns": 181,
+      "strikeOuts": 1411,
+      "baseOnBalls": 585,
+      "intentionalWalks": 11,
+      "hits": 1315,
+      "hitByPitch": 69,
+      "avg": ".241",
+      "atBats": 5461,
+      "obp": ".320",
+      "slg": ".400",
+      "ops": ".720",
+      "caughtStealing": 23,
+      "stolenBases": 58,
+      "stolenBasePercentage": ".716",
+      "caughtStealingPercentage": ".284",
+      "groundIntoDoublePlay": 96,
+      "numberOfPitches": 24295,
+      "plateAppearances": 6174,
+      "totalBases": 2186,
+      "rbi": 683,
+      "leftOnBase": 1155,
+      "sacBunts": 9,
+      "sacFlies": 44,
+      "babip": ".290",
+      "groundOutsToAirouts": "0.74",
+      "catchersInterference": 6,
+      "atBatsPerHomeRun": "30.17"
+     },
+     "team": {
+      "id": 116,
+      "name": "Detroit Tigers",
+      "link": "/api/v1/teams/116"
+     }
+    }
+   ]
+  },
+  {
+   "type": {
+    "displayName": "season"
+   },
+   "group": {
+    "displayName": "pitching"
+   },
+   "exemptions": [],
+   "splits": [
+    {
+     "season": "2026",
+     "stat": {
+      "gamesPlayed": 162,
+      "gamesStarted": 162,
+      "groundOuts": 1433,
+      "airOuts": 1435,
+      "runs": 652,
+      "doubles": 241,
+      "triples": 21,
+      "homeRuns": 167,
+      "strikeOuts": 1312,
+      "baseOnBalls": 507,
+      "intentionalWalks": 9,
+      "hits": 1240,
+      "hitByPitch": 79,
+      "avg": ".232",
+      "atBats": 5355,
+      "obp": ".306",
+      "slg": ".378",
+      "ops": ".684",
+      "caughtStealing": 32,
+      "stolenBases": 94,
+      "stolenBasePercentage": ".746",
+      "caughtStealingPercentage": ".254",
+      "groundIntoDoublePlay": 121,
+      "numberOfPitches": 23042,
+      "era": "3.67",
+      "inningsPitched": "1434.0",
+      "wins": 76,
+      "losses": 86,
+      "saves": 32,
+      "saveOpportunities": 64,
+      "holds": 71,
+      "blownSaves": 32,
+      "earnedRuns": 584,
+      "whip": "1.22",
+      "battersFaced": 6006,
+      "outs": 4302,
+      "gamesPitched": 162,
+      "completeGames": 0,
+      "shutouts": 15,
+      "strikes": 14812,
+      "strikePercentage": ".640",
+      "hitBatsmen": 79,
+      "balks": 4,
+      "wildPitches": 39,
+      "pickoffs": 9,
+      "totalBases": 2024,
+      "groundOutsToAirouts": "1.00",
+      "winPercentage": ".469",
+      "pitchesPerInning": "16.07",
+      "gamesFinished": 162,
+      "strikeoutWalkRatio": "2.59",
+      "strikeoutsPer9Inn": "8.23",
+      "walksPer9Inn": "3.18",
+      "hitsPer9Inn": "7.78",
+      "runsScoredPer9": "4.09",
+      "homeRunsPer9": "1.05",
+      "catchersInterference": 0,
+      "sacBunts": 32,
+      "sacFlies": 33
+     },
+     "team": {
+      "id": 116,
+      "name": "Detroit Tigers",
+      "link": "/api/v1/teams/116"
+     }
+    }
+   ]
+  }
+ ]
+}
