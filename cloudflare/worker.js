@@ -8,6 +8,7 @@
 import { DurableObject } from "cloudflare:workers";
 
 const MAX_CSV = 512 * 1024;
+// The venues markets.py publishes (web/js/series.js gives each its chart line); anything else is dropped.
 const MARKET_KEYS = ["kalshi", "polymarket", "polymarket_us"];
 
 // Prediction-market listings shown on the page: known venues, https links only.

@@ -1,0 +1,175 @@
+/* The scorebook page (web/index.html): the sheet, the margin, Figure 1 and the back of the card. Loaded after book.css. */
+  :root { --cell-w: 72px; --cell-h: 66px; --name-w: 76px; }
+
+  .fields dd.stale { color: var(--red); }
+  .fields dd.dead { color: var(--red); text-decoration: line-through; text-decoration-thickness: 2px; }
+
+  /* Line score */
+  .linescore { margin-top: 14px; overflow-x: auto; scrollbar-color: var(--print) var(--stock); }
+  .linescore table { border-collapse: collapse; width: 100%; }
+  .linescore th, .linescore td { border: 1px solid var(--print-rule); text-align: center; padding: 3px 6px; font: 400 13px/1.4 var(--narrow); color: var(--print); }
+  .linescore thead th { font-weight: 700; background: var(--print-tint); }
+  .linescore th.team { text-align: left; font: 700 15px/1.3 var(--narrow); color: var(--graphite); width: 180px; padding-left: 8px; }
+  .linescore th.team img { width: 20px; height: 20px; vertical-align: -5px; margin-right: 6px; }
+  .linescore td { font: 500 19px/1 var(--hand); color: var(--graphite); }
+  .linescore td.r { font-weight: 700; background: var(--print-tint); }
+  .linescore td.live { color: var(--red); }
+
+  /* The spread: the card page and the keeper's margin. The margin's last area, the season and the
+     key, runs the sheet's full height so it can stay in view beside the sheet. */
+  .spread { display: grid; grid-template-columns: minmax(0, 1fr) 360px; grid-template-rows: auto auto 1fr; grid-template-areas: "sheet lead" "sheet rest" "sheet guide"; gap: 14px 28px; margin-top: 14px; align-items: start; }
+  .sheet { grid-area: sheet; min-width: 0; }
+  .lead { grid-area: lead; }
+  .rest { grid-area: rest; }
+  .guide { grid-area: guide; display: grid; gap: 14px; }
+  @media (min-width: 1161px) and (min-height: 860px) { .guide { position: sticky; top: 12px; } }
+  @media (max-width: 1160px) {
+    .spread { grid-template-columns: 1fr; grid-template-rows: none; grid-template-areas: "lead" "standings" "key" "sheet" "rest"; }
+    .guide { display: contents; }
+    .standings { grid-area: standings; }
+    .key { grid-area: key; }
+  }
+
+  .grid-scroll { overflow-x: auto; border: 1px solid var(--print); scrollbar-color: var(--print) var(--stock); }
+  .grid { border-collapse: separate; border-spacing: 0; table-layout: fixed; width: max-content; }
+  .grid th, .grid td { border-right: 1px solid var(--print-rule); border-bottom: 1px solid var(--print-rule); padding: 0; }
+  .grid tr > :last-child { border-right: 0; }
+  .grid tbody tr:last-child > * { border-bottom: 0; }
+  .grid thead th { height: 24px; font: 700 12px/1 var(--narrow); color: var(--print); background: var(--print-tint); }
+  .grid thead th:first-child { width: var(--name-w); text-align: left; padding-left: 6px; text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; }
+  /* The batting order, written in by the keeper: slot number printed, names penciled */
+  .grid th.slot { width: var(--name-w); padding: 4px 6px; text-align: left; vertical-align: top; background: var(--print-tint); }
+  .grid th.slot .no { font: 700 11px/1 var(--narrow); color: var(--print); margin-right: 4px; }
+  .grid th.slot .who { font: 500 17px/1 var(--hand); color: var(--graphite); }
+  .grid th.slot .sub { display: block; margin: 1px 0 0 14px; font: 500 14px/1 var(--hand); color: var(--graphite-soft); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  /* Each team's block opens with its name, printed across the sheet */
+  .grid tr.team th { height: 26px; padding: 0; text-align: left; border-top: 1px solid var(--print); background: var(--print-tint); }
+  .grid tr.team th > span { position: sticky; left: 0; display: inline-flex; align-items: center; gap: 6px; padding: 0 8px; font: 700 13px/1 var(--narrow); text-transform: uppercase; letter-spacing: 0.08em; color: var(--graphite); }
+  .grid tr.team img { width: 18px; height: 18px; }
+  .grid tr.team small { font: 400 12px/1 var(--narrow); letter-spacing: 0.06em; color: var(--print); }
+  /* Each batter's day at the end of his row: hits for at-bats, runs batted in */
+  .grid thead th.tot { width: 50px; }
+  .grid td.tot { width: 50px; height: auto; text-align: center; vertical-align: middle; font: 500 18px/1 var(--hand); color: var(--graphite); }
+  .grid td.tot small { display: block; margin-top: 2px; font: 400 11px/1.2 var(--narrow); color: var(--print); }
+  /* After each half-inning, one printed row per number: R · H · LOB penciled, then Bend's number
+     penciled and MLB's and the market median printed, each as it stood when the half ended */
+  .grid tr.half th { padding: 3px 6px; text-align: left; vertical-align: middle; background: var(--print-tint); font: 700 11px/1.25 var(--narrow); text-transform: uppercase; letter-spacing: 0.08em; color: var(--print); white-space: nowrap; }
+  .grid tr.half td { height: 22px; text-align: center; vertical-align: middle; font: 400 13px/1 var(--narrow); color: var(--print); }
+  .grid tr.half.end:not(:last-child) > * { border-bottom: 1px solid var(--print); }
+  .grid tr.half .tally { font: 500 15px/1 var(--hand); color: var(--graphite); }
+  .grid tr.half td.b { font: 700 15px/1 var(--hand); color: var(--graphite); }
+  .grid td { width: var(--cell-w); height: var(--cell-h); position: relative; vertical-align: top; }
+  /* One box per plate appearance, kept the way a scorer keeps it. The marks are drawn the same in
+     a box and in the key; a box places them. */
+  .cell { position: absolute; inset: 0; }
+  svg.dia { overflow: visible; }
+  svg.dia .line { fill: none; stroke: var(--print); stroke-width: 1; }
+  svg.dia .run { fill: var(--graphite); fill-opacity: 0.3; stroke: none; }
+  svg.dia .path { fill: none; stroke: var(--graphite); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+  :is(.cell, .key) .play { font: 700 16px/1 var(--hand); color: var(--graphite); white-space: nowrap; }
+  :is(.cell, .key) .play .kc { display: inline-block; transform: scaleX(-1); }
+  :is(.cell, .key) .out { display: inline-block; width: 18px; height: 18px; border: 1.5px solid var(--graphite); border-radius: 50%; font: 700 13px/15px var(--hand); text-align: center; color: var(--graphite); transform: rotate(-6deg); }
+  :is(.cell, .key) .out.three { background: var(--graphite); color: var(--stock); }
+  /* the runs scored on the play: one dot each, stacked up the box's left edge */
+  :is(.cell, .key) .dots { display: flex; flex-direction: column-reverse; gap: 3px; }
+  :is(.cell, .key) .dots i { width: 5px; height: 5px; border-radius: 50%; background: var(--graphite); }
+  :is(.cell, .key) .more { font: 400 11px/1 var(--narrow); color: var(--print); }
+  /* Bend's number penciled after the play, MLB's printed beside it */
+  :is(.cell, .key) .nums { display: inline-flex; align-items: baseline; gap: 5px; }
+  :is(.cell, .key) .nums b { position: relative; font: 700 15px/1 var(--hand); color: var(--graphite); }
+  :is(.cell, .key) .nums span { font: 400 12px/1 var(--narrow); color: var(--print); }
+  /* a play that moved Bend's number 8 points or more: the scorer circles it */
+  :is(.cell, .key) .nums b.swing::after { content: ""; position: absolute; inset: -3px -4px -2px; border: 1.5px solid var(--graphite); border-radius: 50%; transform: rotate(-6deg); }
+  .cell svg.dia { position: absolute; left: 17px; top: 4px; width: 38px; height: 38px; }
+  .cell .play { position: absolute; left: 17px; width: 38px; top: 15px; text-align: center; }
+  .cell .play.long { font-size: 13px; top: 17px; }
+  .cell .play.two { font-size: 13px; line-height: 1; top: 10px; }
+  .cell .out { position: absolute; left: 4px; top: 4px; }
+  .cell .dots { position: absolute; left: 5px; bottom: 7px; }
+  .cell .more { position: absolute; right: 4px; top: 5px; }
+  /* a play made on him as a runner (CS, PO, SB), written beside his trip */
+  .cell .note { position: absolute; right: 4px; top: 17px; font: 700 13px/1 var(--hand); color: var(--graphite); }
+  .cell .nums { position: absolute; right: 4px; bottom: 3px; }
+  .cell svg.pen { position: absolute; inset: -1px; width: calc(100% + 2px); height: calc(100% + 2px); pointer-events: none; overflow: visible; }
+  .cell svg.pen rect { fill: none; stroke: var(--red); stroke-width: 2.4; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 0; }
+  .cell.drawn svg.pen rect { animation: draw 900ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+  @keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+  @media (prefers-reduced-motion: reduce) { .cell.drawn svg.pen rect { animation: none; } }
+
+  /* The printed key: each mark as it is drawn on the sheet, then what it means */
+  .guide > section { border-top: 1px solid var(--print); padding-top: 8px; }
+  .key p { margin: 6px 0 0; font: 400 13px/1.5 var(--text); max-width: 68ch; }
+  .key dl { margin: 8px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 5px 24px; }
+  .key dl > div { display: grid; grid-template-columns: 58px minmax(0, 1fr); column-gap: 10px; align-items: start; }
+  .key dt { display: flex; align-items: center; gap: 7px; min-height: 20px; }
+  .key dd { margin: 0; font: 400 13px/1.5 var(--text); }
+  .key svg.dia { width: 22px; height: 22px; }
+  .key svg.dia .path { stroke-width: 4; }
+  .key .tally { font: 500 15px/1 var(--hand); color: var(--graphite); white-space: nowrap; }
+  .key .hab { font: 500 17px/1 var(--hand); color: var(--graphite); }
+  .key .hab small { margin-left: 4px; font: 400 11px/1 var(--narrow); color: var(--print); }
+
+  /* The season, printed in the margin as standings */
+  table.stand { border-collapse: collapse; width: 100%; max-width: 440px; margin-top: 4px; }
+  table.stand caption { caption-side: top; text-align: left; padding: 0 0 4px; font: 400 13px/1.45 var(--text); color: var(--graphite-soft); }
+  table.stand th, table.stand td { padding: 4px 0 4px 10px; text-align: right; vertical-align: top; border-bottom: 1px solid var(--print-rule); }
+  table.stand thead th { font: 700 11px/1.3 var(--narrow); text-transform: uppercase; letter-spacing: 0.1em; color: var(--print); border-bottom-color: var(--print); }
+  table.stand :is(th, td):first-child { padding-left: 0; text-align: left; }
+  table.stand tbody th { font: 700 15px/1.25 var(--narrow); color: var(--graphite); }
+  table.stand tbody th a { color: inherit; }
+  table.stand small { display: block; font: 400 12px/1.4 var(--text); color: var(--graphite-soft); white-space: nowrap; }
+  table.stand td { font: 400 15px/1.25 var(--narrow); color: var(--graphite); }
+  table.stand tbody tr:has(+ tr.verdict) > * { border-bottom: 0; }
+  table.stand tr.verdict td { padding-top: 0; text-align: left; font: 400 13px/1.45 var(--text); }
+  table.stand tr.verdict.win td { font-weight: 600; }
+  .standings p { margin: 6px 0 0; font: 400 13px/1.5 var(--text); color: var(--graphite-soft); max-width: 68ch; }
+
+  /* The keeper's margin */
+  .margin { border-top: 1px solid var(--print); padding-top: 8px; display: grid; gap: 14px; }
+  .rest { border-top: 1px solid var(--print-rule); }
+  :is(.margin, .guide) h2 { margin: 0; font: 700 12px/1.4 var(--narrow); text-transform: uppercase; letter-spacing: 0.1em; color: var(--print); }
+  .actions { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: baseline; }
+  .actions a.primary { display: inline-block; padding: 7px 14px; background: var(--print); color: var(--stock); font: 700 13px/1 var(--narrow); text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; }
+  .actions a.primary:hover { background: var(--graphite); }
+  .actions a.quiet { font: 700 12px/1 var(--narrow); text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; border-bottom: 1px solid var(--print); padding-bottom: 2px; }
+  .tally { font: 500 23px/1.25 var(--hand); color: var(--graphite); }
+  .tally b { font-weight: 700; font-size: 44px; line-height: 1; display: block; }
+  .tally .delta.up { color: var(--print); }
+  .tally .delta.down { color: var(--graphite); }
+  .tally small { display: block; font: 400 12px/1.5 var(--text); color: var(--graphite-soft); margin-top: 2px; }
+  .now { font: 400 14px/1.5 var(--text); }
+  .now .hand { font-size: 20px; }
+  /* Figure 1: printed full width across the page, below the scorecard */
+  #chart { min-height: 260px; }
+  /* Figure 1's data lines are inked by web/js/series.js (lineCss), from the same marks the legend draws:
+     told apart by mark rather than hue (two inks only). Only the two helper series are styled here. */
+  /* the 50% rule: a quiet printed line under the others, no points, not in the legend */
+  #chart .pele-line[data-id="50%"] path { stroke: var(--print-rule); stroke-width: 1; stroke-linecap: butt; }
+  #chart .pele-line[data-id="50%"] circle { display: none; }
+  /* innings printed across the top: Pele sets each mark as a point label on a line it never draws */
+  #chart .pele-line[data-id="innings"] { display: none; }
+  #chart .pele-point-labels { font: 700 12px var(--narrow); letter-spacing: 0.04em; fill: var(--print); }
+  .tally small.mkt[hidden] { display: none; }
+  .tally small.mkt a { color: var(--graphite-soft); }
+  .tally small.mkt a:hover { color: var(--graphite); }
+
+  .steps { margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 22px; counter-reset: step; }
+  .steps li { display: grid; grid-template-columns: 28px minmax(0, 1fr); column-gap: 10px; counter-increment: step; }
+  .steps li::before { content: counter(step) "."; font: 700 22px/1.1 var(--hand); color: var(--print); }
+  .steps h3 { margin: 0; font: 700 18px/1.25 var(--narrow); color: var(--graphite); }
+  .steps p { margin: 6px 0 0; max-width: 72ch; }
+  .steps .body { min-width: 0; }
+
+  .balance { display: grid; grid-template-columns: auto auto; gap: 2px 18px; margin: 12px 0 0; width: max-content; max-width: 100%; }
+  .balance dt { font: 700 12px/1.6 var(--narrow); text-transform: uppercase; letter-spacing: 0.08em; color: var(--print); }
+  .balance dd { margin: 0; font: 400 14px/1.6 var(--text); max-width: 72ch; }
+
+  @media (max-width: 720px) {
+    :root { --name-w: 84px; }
+    .linescore th, .linescore td { padding: 3px 2px; font-size: 12px; }
+    .linescore th.team { width: 84px; padding-left: 4px; font-size: 14px; }
+    .linescore td { font-size: 17px; }
+    .grid th.slot, .grid thead th:first-child, .grid tr.half th { position: sticky; left: 0; z-index: 2; background: var(--stock); box-shadow: inset -1px 0 0 var(--print-rule); }
+    .grid th.slot::before, .grid thead th:first-child::before, .grid tr.half th::before { content: ""; position: absolute; inset: 0; background: var(--print-tint); z-index: -1; }
+    .tally b { font-size: 38px; }
+  }

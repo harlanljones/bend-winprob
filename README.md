@@ -145,8 +145,8 @@ Betfair (credentials), Smarkets (its API refuses non-browser clients), Manifold
 | `sim_engine.py` | offline replay engine over a cached fixture (no network) |
 | `bench.py` | benchmark: seeded random draw (`--draw`), replay at depth 20, pooled Brier / log loss / calibration, game-bootstrap intervals vs MLB and the markets |
 | `tune.py` | model development on the 2,315 non-test games: an exact solver of the simulated game, measured advancement, rate-model variants, a Bend agreement check |
-| `tests/` | Python unit tests for the replay engine, CSV encoding and market pricing |
-| `web/` | the hosted pages: the scorebook (`index.html`) and the benchmark (`bench/index.html`, data in `bench/data.json`) sharing `book.css`, self-hosted fonts in `web/fonts/`, a bundled replay of World Series Game 1 in `web/demo/`; diagrams and charts are Mermaid rendered by [Pele](https://pele.run) |
+| `tests/` | Python unit tests for the replay engine, CSV encoding and market pricing; `tests/web/` runs the pages' scorebook, chart and formatting modules under `node --test` |
+| `web/` | the hosted pages: the scorebook (`index.html`, styles `scorebook.css`, script `js/main.js`) and the benchmark (`bench/index.html`, styles `bench/bench.css`, script `bench/bench.js`, data in `bench/data.json`) sharing `book.css` and the ES modules in `web/js/` (`common.js` formatting and verdicts, `series.js` line marks and venues, which also ink the charts, `scorebook.js` and `chart.js` pure logic tested by `tests/web/`, `diagrams.js`), no build step; self-hosted fonts in `web/fonts/`, a bundled replay of World Series Game 1 in `web/demo/`; diagrams and charts are Mermaid rendered by [Pele](https://pele.run) |
 | `cloudflare/` | Worker + Durable Object serving the page and the feed |
 
 ## Quick start
@@ -159,6 +159,7 @@ python3 bench.py --draw 9999 --season 2025 --manifest fixtures-bench/pks-2025.js
 python3 bench.py --manifest fixtures-bench/pks-2025.json --label 2025 --no-markets \
   --sim-jobs 4 --web web/bench/data-2025.json   # every 2025 game, ~3 h
 python3 -m unittest discover -s tests -v
+node --test tests/web/                     # the pages' scorebook, chart and format logic
 ```
 
 Fixtures are cached under `fixtures/`; nothing is fetched unless `--fetch` (or

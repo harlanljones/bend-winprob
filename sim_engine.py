@@ -214,8 +214,7 @@ def main(argv=None):
     except (FileNotFoundError, RuntimeError, ValueError) as e:
         ap.error(str(e))
     if args.serve:
-        live.serve(args.port)
-        print(f"chart: http://127.0.0.1:{args.port}/web/?pk={args.pk}", flush=True)
+        print(f"chart: {live.serve(args.port)}?pk={args.pk}", flush=True)
     rc = engine.run(delay=args.delay, limit=args.limit,
                     stream=args.serve or args.publish or args.delay > 0)
     if args.serve:

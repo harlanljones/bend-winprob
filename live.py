@@ -25,6 +25,7 @@ import subprocess
 import sys
 import threading
 import time
+import urllib.parse
 import urllib.request
 from datetime import date, timedelta
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -721,12 +722,23 @@ def replay(args):
 
 
 def serve(port):
-    class Quiet(SimpleHTTPRequestHandler):
+    """The hosted layout on localhost, as the Worker serves it: web/ at "/" and the CSV and meta
+    this harness writes to runs/ under /runs/<file>. Returns the chart's base URL."""
+    web, runs = ROOT / "web", ROOT / "runs"
+
+    class Local(SimpleHTTPRequestHandler):
+        def translate_path(self, path):
+            if path.startswith("/runs/"):   # a file directly in runs/, never a path out of it
+                target = (runs / urllib.parse.unquote(path.split("?", 1)[0].split("#", 1)[0])[len("/runs/"):]).resolve()
+                return str(target if target.parent == runs.resolve() else runs / ".refused" / ".refused")
+            return super().translate_path(path)
+
         def log_message(self, *a):
             pass
 
-    httpd = ThreadingHTTPServer(("127.0.0.1", port), functools.partial(Quiet, directory=str(ROOT)))
+    httpd = ThreadingHTTPServer(("127.0.0.1", port), functools.partial(Local, directory=str(web)))
     threading.Thread(target=httpd.serve_forever, daemon=True).start()
+    return f"http://127.0.0.1:{port}/"
 
 
 def live_setup(src, pk):
@@ -764,8 +776,7 @@ def read_scoring(src, book, feed, started):
 def live(args):
     src = Source(args.pk, cache=False)
     if not args.no_serve:
-        serve(args.port)
-        print(f"chart: http://127.0.0.1:{args.port}/web/?pk={args.pk}", flush=True)
+        print(f"chart: {serve(args.port)}?pk={args.pk}", flush=True)
     while True:
         try:
             teams, away_cum, home_cum, ghost = live_setup(src, args.pk)
