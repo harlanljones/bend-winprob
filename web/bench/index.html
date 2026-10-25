@@ -13,21 +13,73 @@
 <link rel="preload" href="/fonts/Caveat.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/book.css">
 <style>
-  .verdicts { margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; max-width: 90ch; }
-  b.v { display: inline-block; margin-right: 6px; padding: 1px 6px; border: 1px solid; font: 700 11px/1.4 var(--narrow); text-transform: uppercase; letter-spacing: 0.1em; }
-  .v.win { color: var(--print); border-color: var(--print); }
-  .v.loss { color: var(--graphite); border-color: var(--graphite); font-weight: 700; }
+  /* The result line under the lede: Bend against MLB, stated once, from the loaded run */
+  .mast .result { margin: 10px 0 0; font: 400 16px/1.5 var(--text); color: var(--graphite); max-width: 72ch; }
+  .mast .result .k { font: 700 13px/1 var(--narrow); text-transform: uppercase; letter-spacing: 0.08em; color: var(--print); margin-right: 4px; }
+  .mast .result b.v { font-size: 13px; vertical-align: 1px; }
+  .mast .result .nw, #games-sum .nw { white-space: nowrap; }
+  .mast .lede a { white-space: nowrap; }
+  .verdicts { margin: 12px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 10px; max-width: 90ch; }
+  .verdicts li { display: grid; grid-column: 1 / -1; grid-template-columns: subgrid; align-items: baseline; }
+  .verdicts li:not(:has(.v)) { display: block; }
+  /* Verdict stamps: a clear result is a filled stamp (teal win, graphite loss); no clear difference stays an outline */
+  b.v { display: inline-block; padding: 1px 7px; border: 1px solid; font: 700 12px/1.4 var(--narrow); text-transform: uppercase; letter-spacing: 0.1em; white-space: nowrap; }
+  .v.win { color: var(--stock); background: var(--print); border-color: var(--print); }
+  .v.loss { color: var(--stock); background: var(--graphite); border-color: var(--graphite); }
   .v.even { color: var(--graphite-soft); border-color: var(--print-rule); }
-  #cal { min-height: 260px; }
+  table.bench td.vcol { white-space: nowrap; }
+  .ph { display: none; }   /* shown only below 720px, where it stands in for a hidden column */
+
+  /* Figure 1: a near-square plot so the diagonal reads at 45°, legend and caption beside it */
+  #calibration .figure { display: grid; grid-template-columns: minmax(0, 520px) minmax(0, 1fr); grid-template-rows: auto auto 1fr; column-gap: 28px; align-items: start; }
+  #calibration .figure > h2 { grid-column: 1 / -1; }
+  #cal { grid-column: 1; grid-row: 2 / 4; min-height: 260px; }
+  #cal-legend { grid-column: 2; grid-row: 2; flex-direction: column; margin-top: 10px; }
+  #cal-cap { grid-column: 2; grid-row: 3; }
   #cal .pele-legend { display: none; }   /* replaced by the printed legend */
+  #cal .pele-line[data-id="MLB"] circle { fill: var(--stock); stroke: var(--print); stroke-width: 1.5; }   /* open points, as on the scorebook's Figure 1 */
   #cal .pele-line[data-id="Ideal"] path { stroke: var(--print-rule); stroke-dasharray: 6 4; stroke-width: 1.5; }
   #cal .pele-line[data-id="Ideal"] circle { display: none; }
   .pele { --pele-series-3: var(--print-rule); }
+
   tr.group th { background: var(--print-tint); font: 700 11px/1.3 var(--narrow); text-transform: uppercase; letter-spacing: 0.1em; color: var(--print); }
-  table.bench caption { max-width: calc(100vw - 2 * clamp(12px, 3vw, 32px)); }   /* stays in view when a wide table scrolls */
-  table.bench td.nw { white-space: nowrap; }
-  table.bench td.na { color: var(--graphite-soft); overflow-wrap: anywhere; }
+  tr.group th span { position: sticky; left: 10px; display: inline-block; }
+  table.bench caption { max-width: min(90ch, calc(100vw - 2 * clamp(12px, 3vw, 32px))); }   /* stays in view when a wide table scrolls */
+  table.bench td.nw, table.bench tbody td:first-child { white-space: nowrap; }
+  #verdict thead th { white-space: normal; }   /* nine columns: the heads wrap so the row fits 1196px */
+  table.bench caption.sr { padding: 0; }
+  .scroll-cue { margin: 4px 0 0; font: 700 11px/1.4 var(--narrow); text-transform: uppercase; letter-spacing: 0.1em; color: var(--print); }
+  .scroll-cue[hidden] { display: none; }
   #f-runs a[aria-current] { color: var(--graphite); font-weight: 600; text-decoration: none; }
+
+  /* Every game: a summary, then one fold per month; the column heads stay in view inside an open fold */
+  #games details.month { margin-top: 0; border-bottom: 1px solid var(--print-rule); padding: 6px 0; }
+  #games details.month:first-of-type { border-top: 1px solid var(--print-rule); margin-top: 14px; }
+  #games summary .n { font: 400 13px/1.5 var(--text); text-transform: none; letter-spacing: 0; color: var(--graphite-soft); margin-left: 8px; }
+  /* top/left -1px: under border-collapse a cell's background stops short of its shared rule, so a stuck cell sits 1px past the edge to close the gap */
+  #games thead th { position: sticky; top: -1px; z-index: 2; background: linear-gradient(var(--print-tint), var(--print-tint)) var(--stock); box-shadow: inset 0 -1px 0 var(--print-rule); }
+  @media (min-width: 721px) {
+    #games .tablewrap { overflow: visible; }   /* the page scrolls, so the sticky heads hold to the viewport */
+  }
+
+  @media (max-width: 720px) {
+    #calibration .figure { display: block; }
+    .verdicts { display: block; }
+    .verdicts li { display: block; margin: 0 0 8px; }
+    .verdicts b.v { margin-right: 6px; }
+    #cal-legend { flex-direction: row; }
+    /* Phone tables: the row name stays put on opaque stock while the rest scrolls under it */
+    table.bench tr:not(.group) > :first-child { position: sticky; left: -1px; z-index: 1; background: var(--stock); white-space: nowrap; box-shadow: inset -1px 0 0 var(--print-rule); }
+    table.bench thead tr > :first-child { background: linear-gradient(var(--print-tint), var(--print-tint)) var(--stock); }
+    #games thead tr > :first-child { z-index: 3; box-shadow: inset -1px 0 0 var(--print-rule), inset 0 -1px 0 var(--print-rule); }
+    table.bench .vcol { display: none; }
+    .ph { display: inline; }
+    .ph.vm { display: block; margin-top: 4px; }
+    #games .tablewrap { max-height: 75vh; overflow: auto; }
+  }
+  @media (max-width: 1100px) {
+    table.bench .ci { display: block; }   /* the interval drops under its Δ once the row runs short of room */
+  }
 </style>
 </head>
 <body>
@@ -36,7 +88,8 @@
     <div class="mast">
       <div>
         <h1>Benchmark</h1>
-        <p class="lede">Bend against <span id="lede-who">MLB's official win probability and three prediction markets</span>, scored play by play against how each game ended. <span id="lede-games"><span id="n-games">100</span> games drawn at random from the 2026 regular season</span>; 2<sup>20</sup> simulated games a play; no setting tuned on these games.</p>
+        <p class="lede" id="lede">Bend against <span id="lede-who">MLB's official win probability and three prediction markets</span>, scored play by play against how each game ended. <span id="lede-games">100 games drawn at random from the 2026 regular season</span>; 2<sup>20</sup> simulated games a play; no setting tuned on these games.</p>
+        <p class="result" id="result" hidden></p>
       </div>
       <nav aria-label="Sections">
         <a href="/">Scorebook</a>
@@ -65,8 +118,8 @@
     <ul class="verdicts" id="verdicts"><li>Loading the benchmark…</li></ul>
     <div class="tablewrap">
     <table class="bench">
-      <caption>Δ is Bend minus the other source on the same plays; negative favours Bend. Intervals resample whole games. A clear win means the whole interval is below zero, a statement about these plays, not about MLB's model in general.</caption>
-      <thead><tr><th scope="col">Against</th><th scope="col" class="num">Paired plays</th><th scope="col" class="num">Bend Brier</th><th scope="col" class="num">Their Brier</th><th scope="col" class="num">Δ Brier (95% CI)</th><th scope="col" class="num">Δ log loss (95% CI)</th><th scope="col" class="num">Bend closer (plays)</th><th scope="col" class="num">Bend better (games)</th><th scope="col">Verdict</th></tr></thead>
+      <caption>Δ is Bend minus the other source on the same plays; negative favors Bend. Intervals resample whole games. A clear win means the whole interval is below zero, a statement about these plays, not about MLB's model in general.</caption>
+      <thead><tr><th scope="col">Against<span class="ph"> · verdict</span></th><th scope="col" class="vcol">Verdict</th><th scope="col" class="num">Δ Brier (95% CI)</th><th scope="col" class="num">Bend Brier</th><th scope="col" class="num">Their Brier</th><th scope="col" class="num">Paired plays</th><th scope="col" class="num">Δ log loss (95% CI)</th><th scope="col" class="num">Bend closer (plays)</th><th scope="col" class="num">Bend better (games)</th></tr></thead>
       <tbody id="paired"></tbody>
     </table>
     </div>
@@ -114,7 +167,7 @@
     <div class="tablewrap">
     <table class="bench">
       <caption>Paired plays only. Inning and run margin are the state after the play; a pregame row would be its own bucket, but MLB publishes no pregame number, so none is paired. Intervals resample whole games within each segment.</caption>
-      <thead><tr><th scope="col">Segment</th><th scope="col" class="num">Paired plays</th><th scope="col" class="num">Bend Brier</th><th scope="col" class="num">MLB Brier</th><th scope="col" class="num">Δ (95% CI)</th><th scope="col">Verdict</th></tr></thead>
+      <thead><tr><th scope="col">Segment<span class="ph"> · verdict</span></th><th scope="col" class="vcol">Verdict</th><th scope="col" class="num">Δ (95% CI)</th><th scope="col" class="num">Bend Brier</th><th scope="col" class="num">MLB Brier</th><th scope="col" class="num">Paired plays</th></tr></thead>
       <tbody id="segs"></tbody>
     </table>
     </div>
@@ -122,13 +175,8 @@
 
   <section class="back" id="games" aria-labelledby="games-h">
     <h2 id="games-h">Every game <span class="hand" id="games-hand">100 games</span></h2>
-    <div class="tablewrap">
-    <table class="bench">
-      <caption>Bend and MLB Brier on each game's paired plays. Δ is Bend minus MLB; negative means Bend was closer.</caption>
-      <thead><tr><th scope="col">Date</th><th scope="col">Game</th><th scope="col">Final</th><th scope="col" class="num">Scored</th><th scope="col" class="num">Unscored</th><th scope="col" class="num">Bend Brier</th><th scope="col" class="num">MLB Brier</th><th scope="col" class="num">Δ</th></tr></thead>
-      <tbody id="pergame"></tbody>
-    </table>
-    </div>
+    <ul class="notes" id="games-sum"><li>Loading the games…</li></ul>
+    <div id="months"></div>
   </section>
 
   <section class="back" id="method" aria-labelledby="method-h">
@@ -140,7 +188,7 @@
       <li><b>Chosen elsewhere, scored once.</b> <span id="m-chosen">Every setting above was chosen on the other 2,315 Final 2026 games (<code>tune.py</code>), where the model's Brier is 0.1554 against MLB's 0.1571 on the same plays (Δ −0.0017, 95% CI −0.0028 to −0.0006; in-sample for those choices). These games were then scored once. This is the second model scored on them: the first (team batting and pitching to date, a simpler simulator) scored 0.1653 against MLB's 0.1670 on the 93 games it completed; this one scores 0.1662 against 0.1671 on those same 93.</span></li>
       <li><b>The metrics.</b> All pooled over plays. Brier is the mean squared error of the home win probability against the result (0 or 1); log loss clips forecasts to [0.0001, 0.9999]; skill is 1 − Brier divided by the Brier of always forecasting the observed home win rate; right side of 50% counts a forecast of exactly 50% as half.</li>
       <li><b>The intervals.</b> 10,000 bootstrap resamples of whole games (seed 2026), so plays from one game move together. A clear win or loss means the 95% interval excludes zero; otherwise no clear difference. The games column adds an exact two-sided sign test on per-game Brier.</li>
-      <li id="m-markets"><b>Market prices are a reference.</b> Each venue's bid/ask midpoint from minute history, read up to 60 s after the play ended (Kalshi's home and away markets normalised to sum to 100); no fee adjustment, books wider than 10 points dropped.</li>
+      <li id="m-markets"><b>Market prices are a reference.</b> Each venue's bid/ask midpoint from minute history, read up to 60 s after the play ended (Kalshi's home and away markets normalized to sum to 100); no fee adjustment, books wider than 10 points dropped. Polymarket and Polymarket US are separate exchanges: Polymarket (<code>polymarket.com</code>) is international and crypto-based; Polymarket US (<code>polymarket.us</code>) is CFTC-regulated, trades in US dollars and is for US residents. Each has its own market and order book for a game, so their prices, and their scores here, can differ.</li>
       <li><b>A benchmark, not a claim of superiority.</b> MLB's win probability is a production model with far more information than this proof of concept uses.</li>
     </ul>
   </section>
@@ -177,7 +225,6 @@ const label = v => { const [cls, text] = VERDICT[v] || VERDICT["no clear differe
 const deltaClass = v => v === "clear win" ? "num up" : v === "clear loss" ? "num down" : "num";
 
 function renderHead(d) {
-  $("n-games").textContent = count(d.games.requested);
   $("f-when").textContent = d.when;
   $("f-commit").textContent = d.commit;
   $("f-games").textContent = `${count(d.games.scored)} / ${count(d.games.requested)}`;
@@ -191,19 +238,25 @@ function renderVerdict(d) {
     const p = d.paired[o];
     if (!p) continue;
     const name = esc(d.names[o]);
-    items.push(`<li>${label(p.verdict)} against ${name}: Brier ${f4(p.bend_brier)} vs ${f4(p.other_brier)} on ${count(p.plays)} paired plays in ${count(p.games)} games; Bend lower in ${(100 * p.p_better).toFixed(1)}% of 10,000 resamples of the games.</li>`);
-    rows.push(`<tr><td>${name}</td><td class="num">${count(p.plays)}</td><td class="num">${f4(p.bend_brier)}</td><td class="num">${f4(p.other_brier)}</td>`
-      + `<td class="${deltaClass(p.verdict)}">${signed(p.d_brier)} ${ci(p.d_brier_ci)}</td>`
-      + `<td class="num">${signed(p.d_logloss)} ${ci(p.d_logloss_ci)}</td>`
-      + `<td class="num">${pct(p.plays_closer)}</td><td class="num">${count(p.games_better)}–${count(p.games_worse)}, p ${pval(p.sign_p)}</td>`
-      + `<td>${label(p.verdict)}</td></tr>`);
+    items.push(`<li>${label(p.verdict)}<span>against ${name}: Bend's Brier lower in ${(100 * p.p_better).toFixed(1)}% of 10,000 resamples of the games.</span></li>`);
+    rows.push(`<tr><td>${name}<span class="ph vm">${label(p.verdict)}</span></td><td class="vcol">${label(p.verdict)}</td>`
+      + `<td class="${deltaClass(p.verdict)}">${signed(p.d_brier)} <span class="ci">${ci(p.d_brier_ci)}</span></td>`
+      + `<td class="num">${f4(p.bend_brier)}</td><td class="num">${f4(p.other_brier)}</td><td class="num">${count(p.plays)}</td>`
+      + `<td class="num">${signed(p.d_logloss)} <span class="ci">${ci(p.d_logloss_ci)}</span></td>`
+      + `<td class="num">${pct(p.plays_closer)}</td><td class="num">${count(p.games_better)}–${count(p.games_worse)}, p ${pval(p.sign_p)}</td></tr>`);
   }
   $("verdicts").innerHTML = items.join("");
   $("paired").innerHTML = rows.join("");
+  const m = d.paired.mlb;
+  if (m) {
+    $("result").innerHTML = `<span class="k">Against MLB</span> ${label(m.verdict)} <span class="nw">Δ Brier ${signed(m.d_brier)}</span> <span class="nw">(95% CI ${signed(m.d_brier_ci[0])} to ${signed(m.d_brier_ci[1])});</span> Bend better in ${count(m.games_better)} of ${count(m.games)} games.`;
+    $("result").hidden = false;
+  }
 }
 
 function renderScores(d) {
-  $("scores-cap").textContent = `Each source on every scored play where it had a number. Base rate: the home side won on ${d.home_win_rate.toFixed(1)}% of scored plays; skill is the improvement in Brier over always forecasting that rate. Lower Brier, log loss and calibration error are better.`;
+  const scored = Object.keys(d.names).filter(s => d.sources[s]).map(s => `${d.names[s]} ${count(d.sources[s].plays)}`).join(", ");
+  $("scores-cap").textContent = `Not paired: each row scores one source on every play where it had a number (${scored} plays), so its Brier can differ from Head to head, which scores Bend and each source on the same plays. Base rate: the home side won on ${d.home_win_rate.toFixed(1)}% of scored plays; skill is the improvement in Brier over always forecasting that rate. Lower Brier, log loss and calibration error are better.`;
   $("sources").innerHTML = Object.keys(d.names).filter(s => d.sources[s]).map(s => {
     const x = d.sources[s];
     return `<tr><td>${esc(d.names[s])}</td><td class="num">${count(x.plays)}</td><td class="num">${count(x.games)}</td>`
@@ -214,10 +267,13 @@ function renderScores(d) {
 }
 
 // The printed legend: a drawn sample of each line as the chart strokes it, its name, its source.
+// dot is "filled", "open" (stock fill, 1.5px ring, as #cal draws MLB) or false.
 function legendItem(name, note, stroke, dash, dot) {
   return `<li><svg viewBox="0 0 30 10" aria-hidden="true"><line x1="1" y1="5" x2="29" y2="5" stroke="${stroke}"`
     + (dash ? ` stroke-dasharray="${dash}" stroke-width="1.5"` : "") + `/>`
-    + (dot ? `<circle cx="15" cy="5" r="2.6" fill="${stroke}"/>` : "") + `</svg><b>${name}</b>${note}</li>`;
+    + (dot === "filled" ? `<circle cx="15" cy="5" r="2.6" fill="${stroke}"/>` : "")
+    + (dot === "open" ? `<circle cx="15" cy="5" r="2.6" fill="var(--stock)" stroke="${stroke}" stroke-width="1.5"/>` : "")
+    + `</svg><b>${name}</b>${note}</li>`;
 }
 
 const MIN_BIN = 20;
@@ -226,12 +282,12 @@ let calData = null, calChart = null;
 function calSource(d) {
   const b = d.sources.bend.calibration, m = d.sources.mlb.calibration;
   const keep = b.map((_, k) => k).filter(k => b[k].n >= MIN_BIN && m[k].n >= MIN_BIN);
-  const w = $("cal").clientWidth;
+  const w = Math.max(280, Math.min(520, $("cal").clientWidth));   // near square, so a calibrated source runs at 45°
   const src = `---
 config:
   xyChart:
-    width: ${Math.max(280, w)}
-    height: ${w < 640 ? 250 : 320}
+    width: ${w}
+    height: ${w}
 ---
 xychart
   accTitle: Calibration
@@ -248,12 +304,12 @@ function drawCal() {
   if (!calData || !window.pele) return;
   const { src, n } = calSource(calData);
   if (!n) { $("cal").textContent = "Too few plays per bin to plot."; return; }
-  if (calChart) calChart.update(src); else calChart = pele.mount($("cal"), src, { zoom: false, fontSize: 11 });
+  if (calChart) calChart.update(src); else calChart = pele.mount($("cal"), src, { zoom: false, fontSize: 14 });   // ticks at 0.875 × 14 = 12px
 }
 
 function renderCalibration(d) {
-  $("cal-legend").innerHTML = legendItem("Bend", `${count(d.sims_per_play)} simulated games a play`, "var(--graphite)", "", true)
-    + legendItem("MLB", "official win probability", "var(--print)", "", true)
+  $("cal-legend").innerHTML = legendItem("Bend", `${count(d.sims_per_play)} simulated games a play`, "var(--graphite)", "", "filled")
+    + legendItem("MLB", "official win probability", "var(--print)", "", "open")
     + legendItem("Ideal", "said = won", "var(--print-rule)", "6 4", false);
   $("cal-cap").textContent += ` Bins with fewer than ${MIN_BIN} plays from Bend or MLB are left off.`;
   calData = d;
@@ -278,28 +334,84 @@ function renderSegments(d) {
   for (const g of Object.keys(GROUP)) {
     const segs = d.segments.filter(s => s.group === g);
     if (!segs.length) continue;
-    out.push(`<tr class="group"><th scope="rowgroup" colspan="6">${GROUP[g]}</th></tr>`);
+    out.push(`<tr class="group"><th scope="rowgroup" colspan="6"><span>${GROUP[g]}</span></th></tr>`);
     for (const s of segs) {
-      out.push(`<tr><td>${esc(SEGMENT[s.key] || s.key)}</td><td class="num">${count(s.plays)}</td>`
-        + `<td class="num">${f4(s.bend_brier)}</td><td class="num">${f4(s.mlb_brier)}</td>`
-        + `<td class="${deltaClass(s.verdict)}">${signed(s.d_brier)} ${ci(s.d_brier_ci)}</td><td>${label(s.verdict)}</td></tr>`);
+      out.push(`<tr><td>${esc(SEGMENT[s.key] || s.key)}<span class="ph vm">${label(s.verdict)}</span></td><td class="vcol">${label(s.verdict)}</td>`
+        + `<td class="${deltaClass(s.verdict)}">${signed(s.d_brier)} <span class="ci">${ci(s.d_brier_ci)}</span></td>`
+        + `<td class="num">${f4(s.bend_brier)}</td><td class="num">${f4(s.mlb_brier)}</td><td class="num">${count(s.plays)}</td></tr>`);
     }
   }
   $("segs").innerHTML = out.join("");
 }
 
+const monthName = k => new Date(`${k}-01T12:00:00Z`).toLocaleString("en-US", { month: "long", year: "numeric", timeZone: "UTC" });
+
+// Every game: a summary from the run, then one fold per month whose table is built when first opened.
 function renderGames(d) {
-  $("games-hand").textContent = `${d.games.scored} games`;
-  const rows = d.per_game.map(g => {
-    const cls = g.d_brier === null ? "num" : g.d_brier < 0 ? "num up" : g.d_brier > 0 ? "num down" : "num";
-    return `<tr><td class="nw">${esc(g.date)}</td><td class="nw">${esc(g.away)} @ ${esc(g.home)}</td><td class="nw">${esc(g.final)}</td>`
-      + `<td class="num">${count(g.scored)}</td><td class="num">${count(g.unscored)}</td>`
-      + `<td class="num">${f4(g.bend_brier)}</td><td class="num">${f4(g.mlb_brier)}</td><td class="${cls}">${signed(g.d_brier)}</td></tr>`;
-  });
-  for (const f of d.games.failed) {
-    rows.push(`<tr><td class="na">—</td><td>${esc(f.gamePk)}</td><td class="na" colspan="6">failed: ${esc(f.error)}</td></tr>`);
+  $("games-hand").textContent = `${count(d.games.scored)} games`;
+  const p = d.paired.mlb, sum = [];
+  if (p) sum.push(`<li>Bend's Brier was lower than MLB's in ${count(p.games_better)} of ${count(p.games)} games and higher in ${count(p.games_worse)}. In each game's table, Δ is Bend minus MLB on that game's paired plays; negative means Bend was closer.</li>`);
+  const priced = d.per_game.filter(g => typeof g.d_brier === "number");
+  if (priced.length) {
+    const best = priced.reduce((a, g) => g.d_brier < a.d_brier ? g : a), worst = priced.reduce((a, g) => g.d_brier > a.d_brier ? g : a);
+    const game = g => `<span class="nw">${esc(g.away)} @ ${esc(g.home)}</span>, ${esc(g.date)} <span class="nw">(Δ ${signed(g.d_brier)})</span>`;
+    sum.push(`<li>Bend furthest ahead of MLB: ${game(best)}. Furthest behind: ${game(worst)}.</li>`);
   }
-  $("pergame").innerHTML = rows.join("");
+  const failed = d.games.failed;
+  if (failed.length) {
+    sum.push(`<li>${count(failed.length)} game${failed.length > 1 ? "s" : ""} failed to replay and ${failed.length > 1 ? "are" : "is"} reported, not replaced: `
+      + failed.map(f => `${esc(f.gamePk)} (<code>${esc(f.error)}</code>)`).join("; ") + `.</li>`);
+  }
+  $("games-sum").innerHTML = sum.join("");
+
+  const unscored = d.per_game.some(g => g.unscored > 0);   // the column only earns its place when a game has unscored rows
+  const months = new Map();
+  for (const g of d.per_game) {
+    const k = String(g.date).slice(0, 7);
+    if (!months.has(k)) months.set(k, []);
+    months.get(k).push(g);
+  }
+  const head = `<thead><tr><th scope="col">Game</th><th scope="col">Date</th><th scope="col" class="num">Δ</th><th scope="col" class="num">Bend Brier</th>`
+    + `<th scope="col" class="num">MLB Brier</th><th scope="col">Final</th><th scope="col" class="num">Scored</th>`
+    + (unscored ? `<th scope="col" class="num">Unscored</th>` : "") + `</tr></thead>`;
+  const row = g => {
+    const cls = typeof g.d_brier !== "number" ? "num" : g.d_brier < 0 ? "num up" : g.d_brier > 0 ? "num down" : "num";
+    return `<tr><td class="nw">${esc(g.away)} @ ${esc(g.home)}</td><td class="nw">${esc(g.date)}</td><td class="${cls}">${signed(g.d_brier)}</td>`
+      + `<td class="num">${f4(g.bend_brier)}</td><td class="num">${f4(g.mlb_brier)}</td><td class="nw">${esc(g.final)}</td><td class="num">${count(g.scored)}</td>`
+      + (unscored ? `<td class="num">${count(g.unscored)}</td>` : "") + `</tr>`;
+  };
+  const keys = [...months.keys()].sort();
+  $("months").innerHTML = keys.map(k => `<details class="month" data-month="${esc(k)}"><summary>${monthName(k)}`
+    + `<span class="n">${count(months.get(k).length)} games</span></summary></details>`).join("");
+  for (const el of $("months").querySelectorAll("details")) {
+    el.addEventListener("toggle", () => {
+      if (!el.open || el.querySelector("table")) return;
+      const k = el.dataset.month;
+      el.insertAdjacentHTML("beforeend", `<div class="tablewrap"><table class="bench"><caption class="sr">Games in ${monthName(k)}</caption>`
+        + `${head}<tbody>${months.get(k).map(row).join("")}</tbody></table></div>`);
+      cue(el.querySelector(".tablewrap"));
+    });
+  }
+}
+
+// A table wider than its column says so beneath it, and counts the columns still out of view.
+const cues = [];
+function cue(wrap) {
+  const p = document.createElement("p");
+  p.className = "scroll-cue";
+  p.setAttribute("aria-hidden", "true");
+  wrap.after(p);
+  const update = () => {
+    const over = wrap.scrollWidth - wrap.clientWidth > 1;
+    p.hidden = !over;
+    if (!over) return;
+    const edge = wrap.getBoundingClientRect().right + 1;
+    const n = [...wrap.querySelector("thead tr").cells].filter(c => c.getBoundingClientRect().right > edge).length;
+    p.textContent = n ? `Swipe the table for ${n} more column${n > 1 ? "s" : ""}` : "End of the table";
+  };
+  wrap.addEventListener("scroll", update, { passive: true });
+  cues.push(update);
+  update();
 }
 
 function renderMethod(d) {
@@ -332,27 +444,40 @@ function renderRun(d) {
   }
 }
 
+function render(d) {
+  renderHead(d);
+  renderRun(d);
+  renderVerdict(d);
+  renderScores(d);
+  renderCalibration(d);
+  renderSegments(d);
+  renderGames(d);
+  renderMethod(d);
+  for (const wrap of document.querySelectorAll(".tablewrap")) cue(wrap);
+}
+
+// No run to show: say which, point to the runs on file, and drop the sections that would sit empty.
+function unavailable(err) {
+  const runs = [...$("f-runs").querySelectorAll("a")].map(a => `<a href="${esc(a.getAttribute("href"))}">${esc(a.textContent)}</a> (${esc(a.title)})`);
+  $("lede").innerHTML = (err.message === "404" && RUN ? `There is no ${esc(RUN)} benchmark run.` : "The benchmark data did not load.")
+    + ` Runs on file: ${runs.join(" and ")}.`;
+  for (const id of ["verdict", "scores", "calibration", "segments", "games"]) $(id).hidden = true;
+  for (const a of document.querySelectorAll('.mast nav a[href^="#"]')) a.hidden = $(a.hash.slice(1)).hidden;
+}
+
 const RUN = new URLSearchParams(location.search).get("run");
 const FILE = /^\d{4}$/.test(RUN || "") ? `data-${RUN}.json` : "data.json";
 fetch(FILE, { cache: "no-store" })
-  .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
-  .then(d => {
-    renderHead(d);
-    renderRun(d);
-    renderVerdict(d);
-    renderScores(d);
-    renderCalibration(d);
-    renderSegments(d);
-    renderGames(d);
-    renderMethod(d);
-  })
-  .catch(() => {
-    $("n-games").textContent = "Benchmark data unavailable.";
-    $("verdicts").innerHTML = "<li>Benchmark data unavailable.</li>";
-  });
+  .then(r => { if (!r.ok) throw new Error(String(r.status)); return r.json(); })
+  .then(render, unavailable);
 
 let resizeTimer = null;
-addEventListener("resize", () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(drawCal, 150); });
+addEventListener("resize", () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => { drawCal(); for (const update of cues) update(); }, 150);
+});
+// toggle does not bubble: catch it on the way down, so a table in a fold measures once it opens
+document.addEventListener("toggle", () => { for (const update of cues) update(); }, true);
 </script>
 </body>
 </html>

@@ -52,7 +52,7 @@
   .mast nav a { text-decoration: none; color: var(--print); border-bottom: 1px solid transparent; }
   .mast nav a:hover, .mast nav a:focus-visible { border-bottom-color: var(--print); }
 
-  /* Fields: Date, Game, Scorer... printed labels, pencilled values */
+  /* Fields: Date, Game, Scorer... printed labels, penciled values */
   .fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); border-bottom: 1px solid var(--print); }
   .fields div { padding: 8px 10px 6px 0; border-right: 1px solid var(--print-rule); margin-right: 10px; min-width: 0; }
   .fields div:last-child { border-right: 0; }
@@ -62,7 +62,7 @@
 
   .figure { margin: 22px 0 0; border-top: 1px solid var(--print); padding-top: 8px; }
   .figure h2 { margin: 0; font: 700 12px/1.4 var(--narrow); text-transform: uppercase; letter-spacing: 0.1em; color: var(--print); }
-  .figure figcaption { font: 400 12px/1.5 var(--text); color: var(--graphite-soft); margin-top: 4px; max-width: 90ch; }
+  .figure figcaption { font: 400 13px/1.55 var(--text); color: var(--graphite-soft); margin-top: 4px; max-width: 68ch; }
   /* The printed legend: a drawn sample of each line, its name, and where its numbers come from */
   .legend { display: flex; flex-wrap: wrap; gap: 4px 20px; margin: 6px 0 2px; padding: 0; list-style: none; }
   .legend li { display: inline-flex; align-items: center; gap: 6px; font: 400 12px/1.4 var(--text); color: var(--graphite-soft); }
@@ -80,7 +80,10 @@
     --pele-title-weight: 700; --pele-heading-weight: 700;
   }
   .diagram { margin: 14px 0 0; }
-  .diagram figcaption { font: 400 12px/1.5 var(--text); color: var(--graphite-soft); margin-top: 4px; }
+  /* A diagram keeps its smallest label at 10px or more (min-width set by the page) and scrolls inside its figure */
+  .diagram .pele-src { overflow-x: auto; scrollbar-color: var(--print) var(--stock); }
+  .diagram .pele-src > svg { min-width: var(--legible-w, 0); }
+  .diagram figcaption { font: 400 13px/1.55 var(--text); color: var(--graphite-soft); margin-top: 4px; max-width: 68ch; }
 
   /* The back of the card: printed instructions */
   section.back { margin-top: 44px; }
@@ -96,7 +99,7 @@
   table.laws td.mark, table.bench td.num, table.bench th.num { text-align: right; white-space: nowrap; }
   td.mark .hand { font-size: 21px; }
   td.up { color: var(--print); } td.down { color: var(--graphite); font-weight: 600; }
-  table.bench caption { caption-side: top; text-align: left; padding: 0 0 6px; font: 400 13px/1.5 var(--text); color: var(--graphite-soft); }
+  table.bench caption { caption-side: top; text-align: left; padding: 0 0 6px; font: 400 13px/1.5 var(--text); color: var(--graphite-soft); max-width: 90ch; }
   .tablewrap { overflow-x: auto; scrollbar-color: var(--print) var(--stock); }
   details { margin-top: 12px; }
   summary { cursor: pointer; font: 700 13px/1.5 var(--narrow); text-transform: uppercase; letter-spacing: 0.08em; color: var(--print); }

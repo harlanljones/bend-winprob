@@ -31,12 +31,20 @@
   .linescore td.r { font-weight: 700; background: var(--print-tint); }
   .linescore td.live { color: var(--red); }
 
-  /* The spread: the card page and the keeper's margin */
-  .spread { display: grid; grid-template-columns: minmax(0, 1fr) 360px; grid-template-rows: auto 1fr; grid-template-areas: "sheet lead" "sheet rest"; gap: 14px 28px; margin-top: 14px; align-items: start; }
+  /* The spread: the card page and the keeper's margin. The margin's last area, the season and the
+     key, runs the sheet's full height so it can stay in view beside the sheet. */
+  .spread { display: grid; grid-template-columns: minmax(0, 1fr) 360px; grid-template-rows: auto auto 1fr; grid-template-areas: "sheet lead" "sheet rest" "sheet guide"; gap: 14px 28px; margin-top: 14px; align-items: start; }
   .sheet { grid-area: sheet; min-width: 0; }
   .lead { grid-area: lead; }
   .rest { grid-area: rest; }
-  @media (max-width: 1160px) { .spread { grid-template-columns: 1fr; grid-template-rows: auto auto auto; grid-template-areas: "lead" "sheet" "rest"; } }
+  .guide { grid-area: guide; display: grid; gap: 14px; }
+  @media (min-width: 1161px) and (min-height: 860px) { .guide { position: sticky; top: 12px; } }
+  @media (max-width: 1160px) {
+    .spread { grid-template-columns: 1fr; grid-template-rows: none; grid-template-areas: "lead" "standings" "key" "sheet" "rest"; }
+    .guide { display: contents; }
+    .standings { grid-area: standings; }
+    .key { grid-area: key; }
+  }
 
   .grid-scroll { overflow-x: auto; border: 1px solid var(--print); scrollbar-color: var(--print) var(--stock); }
   .grid { border-collapse: separate; border-spacing: 0; table-layout: fixed; width: max-content; }
@@ -45,7 +53,7 @@
   .grid tbody tr:last-child > * { border-bottom: 0; }
   .grid thead th { height: 24px; font: 700 12px/1 var(--narrow); color: var(--print); background: var(--print-tint); }
   .grid thead th:first-child { width: var(--name-w); text-align: left; padding-left: 6px; text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; }
-  /* The batting order, written in by the keeper: slot number printed, names pencilled */
+  /* The batting order, written in by the keeper: slot number printed, names penciled */
   .grid th.slot { width: var(--name-w); padding: 4px 6px; text-align: left; vertical-align: top; background: var(--print-tint); }
   .grid th.slot .no { font: 700 11px/1 var(--narrow); color: var(--print); margin-right: 4px; }
   .grid th.slot .who { font: 500 17px/1 var(--hand); color: var(--graphite); }
@@ -58,56 +66,84 @@
   /* Each batter's day at the end of his row: hits for at-bats, runs batted in */
   .grid thead th.tot { width: 50px; }
   .grid td.tot { width: 50px; height: auto; text-align: center; vertical-align: middle; font: 500 18px/1 var(--hand); color: var(--graphite); }
-  .grid td.tot small { display: block; margin-top: 2px; font: 400 10px/1.2 var(--narrow); color: var(--print); }
-  /* After each half-inning: R · H · LOB pencilled, then everyone's number when the half ended */
-  .grid tr.half th { padding: 4px 6px; text-align: left; vertical-align: top; background: var(--print-tint); border-bottom: 1px solid var(--print); font: 700 10px/1.3 var(--narrow); text-transform: uppercase; letter-spacing: 0.08em; color: var(--print); }
-  .grid tr.half td { height: 52px; vertical-align: top; border-bottom: 1px solid var(--print); }
-  .grid tr.half .tally { display: block; padding: 5px 0 3px; text-align: center; font: 500 15px/1 var(--hand); color: var(--graphite); }
-  .grid tr.half .band { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); height: 22px; margin: 0 3px; border: 1px solid var(--print-rule); }
-  .grid.priced tr.half .band { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1fr); }
-  .grid tr.half .band span { display: flex; align-items: center; justify-content: center; min-width: 0; overflow: hidden; border-left: 1px solid var(--print-rule); font: 400 10px/1 var(--narrow); color: var(--print); }
-  .grid tr.half .band .b { border-left: 0; font: 700 14px/1 var(--hand); color: var(--graphite); }
+  .grid td.tot small { display: block; margin-top: 2px; font: 400 11px/1.2 var(--narrow); color: var(--print); }
+  /* After each half-inning, one printed row per number: R · H · LOB penciled, then Bend's number
+     penciled and MLB's and the market median printed, each as it stood when the half ended */
+  .grid tr.half th { padding: 3px 6px; text-align: left; vertical-align: middle; background: var(--print-tint); font: 700 11px/1.25 var(--narrow); text-transform: uppercase; letter-spacing: 0.08em; color: var(--print); white-space: nowrap; }
+  .grid tr.half td { height: 22px; text-align: center; vertical-align: middle; font: 400 13px/1 var(--narrow); color: var(--print); }
+  .grid tr.half.end:not(:last-child) > * { border-bottom: 1px solid var(--print); }
+  .grid tr.half .tally { font: 500 15px/1 var(--hand); color: var(--graphite); }
+  .grid tr.half td.b { font: 700 15px/1 var(--hand); color: var(--graphite); }
   .grid td { width: var(--cell-w); height: var(--cell-h); position: relative; vertical-align: top; }
-  /* One box per plate appearance, kept the way a scorer keeps it */
+  /* One box per plate appearance, kept the way a scorer keeps it. The marks are drawn the same in
+     a box and in the key; a box places them. */
   .cell { position: absolute; inset: 0; }
-  .cell svg.dia { position: absolute; left: 17px; top: 4px; width: 38px; height: 38px; overflow: visible; }
-  .cell svg.dia .line { fill: none; stroke: var(--print); stroke-width: 1; }
-  .cell svg.dia .run { fill: var(--graphite); fill-opacity: 0.3; stroke: none; }
-  .cell svg.dia .path { fill: none; stroke: var(--graphite); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
-  .cell .play { position: absolute; left: 17px; width: 38px; top: 15px; text-align: center; font: 700 16px/1 var(--hand); color: var(--graphite); white-space: nowrap; }
+  svg.dia { overflow: visible; }
+  svg.dia .line { fill: none; stroke: var(--print); stroke-width: 1; }
+  svg.dia .run { fill: var(--graphite); fill-opacity: 0.3; stroke: none; }
+  svg.dia .path { fill: none; stroke: var(--graphite); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+  :is(.cell, .key) .play { font: 700 16px/1 var(--hand); color: var(--graphite); white-space: nowrap; }
+  :is(.cell, .key) .play .kc { display: inline-block; transform: scaleX(-1); }
+  :is(.cell, .key) .out { display: inline-block; width: 18px; height: 18px; border: 1.5px solid var(--graphite); border-radius: 50%; font: 700 13px/15px var(--hand); text-align: center; color: var(--graphite); transform: rotate(-6deg); }
+  :is(.cell, .key) .out.three { background: var(--graphite); color: var(--stock); }
+  /* the runs scored on the play: one dot each, stacked up the box's left edge */
+  :is(.cell, .key) .dots { display: flex; flex-direction: column-reverse; gap: 3px; }
+  :is(.cell, .key) .dots i { width: 5px; height: 5px; border-radius: 50%; background: var(--graphite); }
+  :is(.cell, .key) .more { font: 400 11px/1 var(--narrow); color: var(--print); }
+  /* Bend's number penciled after the play, MLB's printed beside it */
+  :is(.cell, .key) .nums { display: inline-flex; align-items: baseline; gap: 5px; }
+  :is(.cell, .key) .nums b { position: relative; font: 700 15px/1 var(--hand); color: var(--graphite); }
+  :is(.cell, .key) .nums span { font: 400 12px/1 var(--narrow); color: var(--print); }
+  /* a play that moved Bend's number 8 points or more: the scorer circles it */
+  :is(.cell, .key) .nums b.swing::after { content: ""; position: absolute; inset: -3px -4px -2px; border: 1.5px solid var(--graphite); border-radius: 50%; transform: rotate(-6deg); }
+  .cell svg.dia { position: absolute; left: 17px; top: 4px; width: 38px; height: 38px; }
+  .cell .play { position: absolute; left: 17px; width: 38px; top: 15px; text-align: center; }
   .cell .play.long { font-size: 13px; top: 17px; }
-  .cell .play.two { font-size: 11.5px; line-height: 1; top: 12px; }
-  .cell .play .kc { display: inline-block; transform: scaleX(-1); }
-  .cell .out { position: absolute; left: 4px; top: 4px; width: 18px; height: 18px; border: 1.5px solid var(--graphite); border-radius: 50%; font: 700 13px/15px var(--hand); text-align: center; color: var(--graphite); transform: rotate(-6deg); }
-  .cell .out.three { background: var(--graphite); color: var(--stock); }
-  .cell .dots { position: absolute; left: 5px; bottom: 7px; display: flex; gap: 3px; }
-  .cell .dots i { width: 5px; height: 5px; border-radius: 50%; background: var(--graphite); }
-  .cell .more { position: absolute; right: 4px; top: 5px; font: 400 10px/1 var(--narrow); color: var(--print); }
+  .cell .play.two { font-size: 13px; line-height: 1; top: 10px; }
+  .cell .out { position: absolute; left: 4px; top: 4px; }
+  .cell .dots { position: absolute; left: 5px; bottom: 7px; }
+  .cell .more { position: absolute; right: 4px; top: 5px; }
   /* a play made on him as a runner (CS, PO, SB), written beside his trip */
   .cell .note { position: absolute; right: 4px; top: 17px; font: 700 13px/1 var(--hand); color: var(--graphite); }
-  /* Bend's number pencilled after the play, MLB's printed beside it */
-  .cell .nums { position: absolute; right: 4px; bottom: 3px; display: flex; align-items: baseline; gap: 4px; }
-  .cell .nums b { position: relative; font: 700 15px/1 var(--hand); color: var(--graphite); }
-  .cell .nums span { font: 400 10px/1 var(--narrow); color: var(--print); letter-spacing: 0.02em; }
-  /* a play that moved Bend's number 8 points or more: the scorer circles it */
-  .cell .nums b.swing::after { content: ""; position: absolute; inset: -3px -4px -2px; border: 1.5px solid var(--graphite); border-radius: 50%; transform: rotate(-6deg); }
+  .cell .nums { position: absolute; right: 4px; bottom: 3px; }
   .cell svg.pen { position: absolute; inset: -1px; width: calc(100% + 2px); height: calc(100% + 2px); pointer-events: none; overflow: visible; }
   .cell svg.pen rect { fill: none; stroke: var(--red); stroke-width: 2.4; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 0; }
   .cell.drawn svg.pen rect { animation: draw 900ms cubic-bezier(0.16, 1, 0.3, 1) both; }
   @keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
   @media (prefers-reduced-motion: reduce) { .cell.drawn svg.pen rect { animation: none; } }
-  .sheet-foot { margin-top: 6px; font: 400 12px/1.5 var(--text); color: var(--graphite-soft); max-width: 90ch; }
-  .sheet-foot .hand { font-size: 17px; }
-  /* the foot of a box, printed small as a key */
-  .keyband { display: inline-grid; grid-template-columns: 34px 30px 30px; height: 18px; vertical-align: -4px; border: 1px solid var(--print-rule); }
-  .keyband.two { grid-template-columns: 34px 30px; }
-  .keyband span { display: flex; align-items: center; justify-content: center; border-left: 1px solid var(--print-rule); font: 400 10px/1 var(--narrow); color: var(--print); }
-  .keyband .b { border-left: 0; font: 700 14px/1 var(--hand); color: var(--graphite); }
+
+  /* The printed key: each mark as it is drawn on the sheet, then what it means */
+  .guide > section { border-top: 1px solid var(--print); padding-top: 8px; }
+  .key p { margin: 6px 0 0; font: 400 13px/1.5 var(--text); max-width: 68ch; }
+  .key dl { margin: 8px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 5px 24px; }
+  .key dl > div { display: grid; grid-template-columns: 58px minmax(0, 1fr); column-gap: 10px; align-items: start; }
+  .key dt { display: flex; align-items: center; gap: 7px; min-height: 20px; }
+  .key dd { margin: 0; font: 400 13px/1.5 var(--text); }
+  .key svg.dia { width: 22px; height: 22px; }
+  .key svg.dia .path { stroke-width: 4; }
+  .key .tally { font: 500 15px/1 var(--hand); color: var(--graphite); white-space: nowrap; }
+  .key .hab { font: 500 17px/1 var(--hand); color: var(--graphite); }
+  .key .hab small { margin-left: 4px; font: 400 11px/1 var(--narrow); color: var(--print); }
+
+  /* The season, printed in the margin as standings */
+  table.stand { border-collapse: collapse; width: 100%; max-width: 440px; margin-top: 4px; }
+  table.stand caption { caption-side: top; text-align: left; padding: 0 0 4px; font: 400 13px/1.45 var(--text); color: var(--graphite-soft); }
+  table.stand th, table.stand td { padding: 4px 0 4px 10px; text-align: right; vertical-align: top; border-bottom: 1px solid var(--print-rule); }
+  table.stand thead th { font: 700 11px/1.3 var(--narrow); text-transform: uppercase; letter-spacing: 0.1em; color: var(--print); border-bottom-color: var(--print); }
+  table.stand :is(th, td):first-child { padding-left: 0; text-align: left; }
+  table.stand tbody th { font: 700 15px/1.25 var(--narrow); color: var(--graphite); }
+  table.stand tbody th a { color: inherit; }
+  table.stand small { display: block; font: 400 12px/1.4 var(--text); color: var(--graphite-soft); white-space: nowrap; }
+  table.stand td { font: 400 15px/1.25 var(--narrow); color: var(--graphite); }
+  table.stand tbody tr:has(+ tr.verdict) > * { border-bottom: 0; }
+  table.stand tr.verdict td { padding-top: 0; text-align: left; font: 400 13px/1.45 var(--text); }
+  table.stand tr.verdict.win td { font-weight: 600; }
+  .standings p { margin: 6px 0 0; font: 400 13px/1.5 var(--text); color: var(--graphite-soft); max-width: 68ch; }
 
   /* The keeper's margin */
   .margin { border-top: 1px solid var(--print); padding-top: 8px; display: grid; gap: 14px; }
   .rest { border-top: 1px solid var(--print-rule); }
-  .margin h2 { margin: 0; font: 700 12px/1.4 var(--narrow); text-transform: uppercase; letter-spacing: 0.1em; color: var(--print); }
+  :is(.margin, .guide) h2 { margin: 0; font: 700 12px/1.4 var(--narrow); text-transform: uppercase; letter-spacing: 0.1em; color: var(--print); }
   .actions { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: baseline; }
   .actions a.primary { display: inline-block; padding: 7px 14px; background: var(--print); color: var(--stock); font: 700 13px/1 var(--narrow); text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; }
   .actions a.primary:hover { background: var(--graphite); }
@@ -121,11 +157,20 @@
   .now .hand { font-size: 20px; }
   /* Figure 1: printed full width across the page, below the scorecard */
   #chart { min-height: 260px; }
-  #chart .pele-legend { display: none; }   /* replaced by the printed legend, which can show each line's stroke */
   /* Figure 1's lines, told apart by mark rather than hue (two inks only): Bend solid graphite with
      filled points, MLB solid teal with open points, and each market venue its own stroke pattern,
-     1.5px, no points. Keep in step with SERIES / VENUES in the script, which draw the legend. */
+     1.5px, no points. Keep in step with SERIES / VENUES in the script, which draw the legend.
+     Pele colors series by position and the 50% rule is drawn first, so every line is inked here. */
+  #chart .pele-line[data-id="Bend"] { fill: var(--graphite); }
+  #chart .pele-line[data-id="Bend"] path { stroke: var(--graphite); }
+  #chart .pele-line[data-id="MLB"] path { stroke: var(--print); }
   #chart .pele-line[data-id="MLB"] circle { fill: var(--stock); stroke: var(--print); stroke-width: 1.5; }
+  /* the 50% rule: a quiet printed line under the others, no points, not in the legend */
+  #chart .pele-line[data-id="50%"] path { stroke: var(--print-rule); stroke-width: 1; stroke-linecap: butt; }
+  #chart .pele-line[data-id="50%"] circle { display: none; }
+  /* innings printed across the top: Pele sets each mark as a point label on a line it never draws */
+  #chart .pele-line[data-id="innings"] { display: none; }
+  #chart .pele-point-labels { font: 700 12px var(--narrow); letter-spacing: 0.04em; fill: var(--print); }
   #chart .pele-line:is([data-id="Kalshi"], [data-id="Polymarket"], [data-id="Polymarket US"]) path { stroke-width: 1.5; stroke-linecap: butt; }
   #chart .pele-line:is([data-id="Kalshi"], [data-id="Polymarket"], [data-id="Polymarket US"]) circle { display: none; }
   #chart .pele-line[data-id="Kalshi"] path { stroke: var(--graphite-soft); stroke-dasharray: 8 3; }
@@ -144,7 +189,7 @@
 
   .balance { display: grid; grid-template-columns: auto auto; gap: 2px 18px; margin: 12px 0 0; width: max-content; max-width: 100%; }
   .balance dt { font: 700 12px/1.6 var(--narrow); text-transform: uppercase; letter-spacing: 0.08em; color: var(--print); }
-  .balance dd { margin: 0; font: 400 14px/1.6 var(--text); }
+  .balance dd { margin: 0; font: 400 14px/1.6 var(--text); max-width: 72ch; }
 
   @media (max-width: 720px) {
     :root { --name-w: 84px; }
@@ -202,7 +247,6 @@
             <tbody id="grid-body"></tbody>
           </table>
         </div>
-        <p class="sheet-foot">The whole game on one sheet, visitors over home; each box is one plate appearance, kept the way a scorer keeps it and replayed through Bend's <code>step</code>: <span class="hand">the play</span> pencilled in the diamond (6-3, F8, K, a backwards K for a called third strike, 1B, BB), the batter's trip around the bases traced and shaded when he scores, his out circled, a dot for each run scored on the play, and <span class="hand">Bend's home-win number</span> after it beside <span class="print-ink">MLB's</span>. A circled number marks a play that moved Bend's by 8 points or more. Under each team, after every half-inning: R · H · LOB, then <span class="keyband" id="key" aria-hidden="true"><span class="b">50.4</span><span>54.8</span><span>51.5</span></span> Bend, MLB and the median of the <span class="print-ink">prediction markets</span> when the half ended (each venue's price per play is on each box's hover and in Figure 1). At the right, each batter's hits for at-bats. The red pencil marks the play that just happened. Batting-order slot is inferred from the plate-appearance count, not from the lineup card.</p>
       </div>
 
       <aside class="margin lead" aria-label="Keeper's margin">
@@ -223,6 +267,42 @@
           <span class="hand" id="now-line">–</span>
           <div id="now-check"></div>
         </div>
+      </aside>
+      <aside class="guide" aria-label="The season and the key to the sheet">
+        <section class="standings" aria-labelledby="stand-h">
+          <h2 id="stand-h">Bend vs MLB, by season</h2>
+          <table class="stand">
+            <caption>Brier score: lower is better.</caption>
+            <thead><tr><th scope="col">Games</th><th scope="col">Bend</th><th scope="col">MLB</th><th scope="col">Δ, 95% CI</th></tr></thead>
+            <tbody id="stand-body"><tr><td colspan="4">The <a href="/bench/">benchmark</a> has its own page.</td></tr></tbody>
+          </table>
+          <p>Brier is the mean squared error of the home-win probability against the result (0 or 1). Δ is Bend minus MLB on the same plays; negative favors Bend. <a href="#season">Season benchmark</a></p>
+        </section>
+        <section class="key" aria-labelledby="key-h">
+          <h2 id="key-h">Key to the sheet</h2>
+          <p>The whole game on one sheet, visitors over home. Each box is one plate appearance, kept the way a scorer keeps it and replayed through Bend's <code>step</code>.</p>
+          <dl>
+            <div><dt><span class="play" aria-hidden="true">F8</span><span class="play" aria-hidden="true"><span class="kc">K</span></span><span class="sr">Play</span></dt>
+              <dd>The play, penciled in the diamond: 6-3, F8, K, 1B, BB. A backwards K is a called third strike.</dd></div>
+            <div><dt><svg class="dia" viewBox="0 0 44 44" aria-hidden="true"><path class="line" d="M22 42 L42 22 L22 2 L2 22 Z"/><path class="path" d="M22 42 L42 22 L22 2"/></svg><svg class="dia" viewBox="0 0 44 44" aria-hidden="true"><path class="run" d="M22 42 L42 22 L22 2 L2 22 Z"/><path class="line" d="M22 42 L42 22 L22 2 L2 22 Z"/><path class="path" d="M22 42 L42 22 L22 2 L2 22 L22 42"/></svg><span class="sr">Diamond</span></dt>
+              <dd>The batter's trip around the bases, traced; shaded when he scores.</dd></div>
+            <div><dt><span class="out" aria-hidden="true">2</span><span class="sr">Circle</span></dt>
+              <dd>His out, circled and numbered.</dd></div>
+            <div><dt><span class="dots" aria-hidden="true"><i></i><i></i></span><span class="sr">Dots</span></dt>
+              <dd>One dot for each run scored on the play.</dd></div>
+            <div><dt><span class="nums" aria-hidden="true"><b>62.6</b><span>58.1</span></span><span class="sr">Two numbers</span></dt>
+              <dd>After the play: Bend's home-win number, penciled, then MLB's, printed.</dd></div>
+            <div><dt><span class="nums" aria-hidden="true"><b class="swing">71.0</b></span><span class="sr">Circled number</span></dt>
+              <dd>The play moved Bend's number 8 points or more.</dd></div>
+            <div><dt><span class="more" aria-hidden="true">×2</span><span class="sr">Times two</span></dt>
+              <dd>The order batted around; the box shows the later appearance.</dd></div>
+            <div><dt><span class="hab" aria-hidden="true">2–4<small>1 RBI</small></span><span class="sr">H–AB</span></dt>
+              <dd>At the row's end: hits for at-bats, runs batted in beneath.</dd></div>
+            <div><dt><span class="tally" aria-hidden="true">1 · 2 · 0</span><span class="sr">After the half</span></dt>
+              <dd>After each half-inning: R · H · LOB, then Bend's, MLB's and the prediction markets' median home-win number as the half ended. Figure 1 draws each venue's price per play.</dd></div>
+          </dl>
+          <p>Red pencil outlines the play that just happened. Batting-order slot is inferred from the plate-appearance count, not from the lineup card.</p>
+        </section>
       </aside>
     </div>
 
@@ -262,7 +342,7 @@ def step(+s: State, p: Play) -&gt; State:
       tally_add(a, b)</code></pre>
           <figure class="diagram">
             <div class="pele-src" data-diagram="tree"></div>
-            <figcaption>Figure 2. How one play's games are split, read top to bottom. Each box is a call of <code>tree</code> with its depth <code>d</code> and the game numbers it owns; it halves its range and hands each half down a level. Each leaf (pencilled) plays one game with <code>step</code> from the position after the play, and its tally of home wins, away wins and unfinished games adds back up the branches to the top. Shown at depth 3 (8 games); a live game runs depth 20 (1,048,576 games a play), the same shape spread across the GPU.</figcaption>
+            <figcaption>Figure 2. How one play's games are split, read top to bottom. Each box is a call of <code>tree</code> with its depth <code>d</code> and the game numbers it owns; it halves its range and hands each half down a level. Each leaf (penciled) plays one game with <code>step</code> from the position after the play, and its tally of home wins, away wins and unfinished games adds back up the branches to the top. Shown at depth 3 (8 games); a live game runs depth 20 (1,048,576 games a play), the same shape spread across the GPU.</figcaption>
           </figure>
         </div>
       </li>
@@ -272,7 +352,7 @@ def step(+s: State, p: Play) -&gt; State:
           <p><code>LAWS.bend</code> states what must hold for every input; <code>PROOF.bend</code> proves each one by induction and case analysis, and <code>bend PROOF.bend</code> must print <code>ALL PROOFS CHECK</code> before any commit. The four laws are tabled under <a href="#proof">Proof of box score</a>.</p>
           <figure class="diagram">
             <div class="pele-src" data-diagram="gate"></div>
-            <figcaption>Figure 3. The commit gate, read left to right. <code>LAWS.bend</code> states what must hold, <code>PROOF.bend</code> proves it, and <code>bend PROOF.bend</code> checks the proofs. Only the pencilled path, <code>ALL PROOFS CHECK</code>, lets a change reach the repository, the benchmark or this page; any other output stops it.</figcaption>
+            <figcaption>Figure 3. The commit gate, read left to right. <code>LAWS.bend</code> states what must hold, <code>PROOF.bend</code> proves it, and <code>bend PROOF.bend</code> checks the proofs. Only the penciled path, <code>ALL PROOFS CHECK</code>, lets a change reach the repository, the benchmark or this page; any other output stops it.</figcaption>
           </figure>
         </div>
       </li>
@@ -284,7 +364,7 @@ def step(+s: State, p: Play) -&gt; State:
 #   K 29.5%  O 43.3%  W 8.9%  S 12.5%  D 3.0%  T 0.2%  H 2.6%</code></pre>
           <figure class="diagram">
             <div class="pele-src" data-diagram="pipeline"></div>
-            <figcaption>Figure 4. One play's path to this card, read left to right. <code>live.py</code> takes the play, its scoring, MLB's official win probability and each team's rates to date from MLB's Stats API, and each market's price from Kalshi, Polymarket and Polymarket US (<code>markets.py</code>). It turns the rates into seven integer thresholds out of 10,000 and the play into four destinations (r3, r2, r1, batter), and runs <code>wp</code> (pencilled: Bend's <code>step</code>, then 2<sup>d</sup> simulated games). Each play becomes a row of <code>runs/&lt;gamePk&gt;.csv</code>, POSTed to the Worker; this page fetches it every 5 s.</figcaption>
+            <figcaption>Figure 4. One play's path to this card, read left to right. <code>live.py</code> takes the play, its scoring, MLB's official win probability and each team's rates to date from MLB's Stats API, and each market's price from Kalshi, Polymarket and Polymarket US (<code>markets.py</code>). It turns the rates into seven integer thresholds out of 10,000 and the play into four destinations (r3, r2, r1, batter), and runs <code>wp</code> (penciled: Bend's <code>step</code>, then 2<sup>d</sup> simulated games). Each play becomes a row of <code>runs/&lt;gamePk&gt;.csv</code>, POSTed to the Worker; this page fetches it every 5 s.</figcaption>
           </figure>
         </div>
       </li>
@@ -311,8 +391,14 @@ def step(+s: State, p: Play) -&gt; State:
 
   <section class="back" id="season" aria-labelledby="season-h">
     <h2 id="season-h">Season benchmark <span class="hand" id="season-hand">its own page</span></h2>
-    <p id="season-2025">The benchmark has its own page.</p>
-    <p id="season-sum"></p>
+    <p id="season-intro">The benchmark has its own page.</p>
+    <div class="tablewrap" id="season-wrap" hidden>
+    <table class="bench">
+      <caption>Brier score, lower is better: the mean squared error of the home win probability against the result (0 or 1). Δ is Bend minus MLB on the same plays; negative favors Bend. A clear win means the whole 95% interval is below zero.</caption>
+      <thead><tr><th scope="col">Games</th><th scope="col" class="num">Paired plays</th><th scope="col" class="num">Bend Brier</th><th scope="col" class="num">MLB Brier</th><th scope="col" class="num">Δ Brier (95% CI)</th><th scope="col" class="num">Bend closer (plays)</th><th scope="col" class="num">Bend better (games)</th><th scope="col">Verdict</th></tr></thead>
+      <tbody id="season-body"></tbody>
+    </table>
+    </div>
     <p><a href="/bench/?run=2025">Every 2025 game</a> · <a href="/bench/">the 100-game 2026 sample</a>: head to head with confidence intervals, calibration, where Bend wins, every game</p>
   </section>
 
@@ -334,6 +420,7 @@ python3 -m unittest discover -s tests -v</code></pre>
       <li><b>A four-slot play encoding.</b> A play is four destinations (r3, r2, r1, batter); one the encoding cannot carry is refused and counted: 47 rows in 2 of 2,424 scored 2025 games, none in the 2026 sample. Bend places the regular season's automatic runner on second in extra innings itself.</li>
       <li><b>Sample size.</b> Against MLB, every 2025 regular-season game; the markets only on the 100-game 2026 sample, where no comparison is settled. Intervals on the benchmark page say how settled each one is.</li>
       <li><b>A benchmark, not a claim of superiority.</b> MLB's win probability is a production model with far more information than this proof of concept uses.</li>
+      <li><b>Two Polymarkets.</b> Polymarket (<code>polymarket.com</code>) is the international, crypto-based exchange; Polymarket US (<code>polymarket.us</code>) is a separate exchange for US residents, regulated by the CFTC and trading in US dollars. Each lists its own market for the game with its own order book and traders, so their prices can differ. The card reads Polymarket's displayed price and the midpoint of Polymarket US's best bid and ask.</li>
       <li><b>Not a betting tool.</b> It is a demonstration that a proven, parallel scorebook can track a production model on real data. Where a prediction market lists the game, its price is shown as a reference, not as ground truth.</li>
     </ul>
   </section>
@@ -407,9 +494,9 @@ const SERIES = {
 // Prediction-market reference prices: one optional CSV column per venue, in display order.
 // Each venue's chart line is keyed in CSS by its series data-id (the venue name).
 const VENUES = [
-  { key: "kalshi", name: "Kalshi", stroke: "var(--graphite-soft)", dash: "8 3", width: 1.5 },
-  { key: "polymarket", name: "Polymarket", stroke: "var(--print)", dash: "8 3 1.5 3", width: 1.5 },
-  { key: "polymarket_us", name: "Polymarket US", stroke: "var(--graphite-soft)", dash: "0 4", width: 2, cap: "round" },
+  { key: "kalshi", name: "Kalshi", note: "market price", stroke: "var(--graphite-soft)", dash: "8 3", width: 1.5 },
+  { key: "polymarket", name: "Polymarket", note: "international market price", stroke: "var(--print)", dash: "8 3 1.5 3", width: 1.5 },
+  { key: "polymarket_us", name: "Polymarket US", note: "US-regulated market price", stroke: "var(--graphite-soft)", dash: "0 4", width: 2, cap: "round" },
 ];
 const venueCol = v => `${v.key}_home_wp`;
 // Venues with at least one price in the feed; none when the columns are absent.
@@ -505,7 +592,7 @@ function median(xs) {
   return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2;
 }
 
-// The box's diamond: printed base lines, the batter's path pencilled from home, shaded if he scored.
+// The box's diamond: printed base lines, the batter's path penciled from home, shaded if he scored.
 const CORNERS = [[22, 42], [42, 22], [22, 2], [2, 22], [22, 42]];   // home, 1st, 2nd, 3rd, home
 function diamondSvg(reached) {
   const path = reached ? "M" + CORNERS.slice(0, reached + 1).map(c => c.join(" ")).join(" L") : "";
@@ -579,9 +666,6 @@ function renderSheet(bk) {
   const last = bk.last || {};
   const body = $("grid-body");
   body.replaceChildren();
-  $("grid").classList.toggle("priced", bk.priced);
-  $("key").classList.toggle("two", !bk.priced);
-  $("key").lastElementChild.hidden = !bk.priced;
   for (const side of ["away", "home"]) {
     // The team's name across the sheet, then its nine slots, then the half-inning strip.
     const team = document.createElement("tr"); team.className = "team";
@@ -606,17 +690,25 @@ function renderSheet(bk) {
         ? `<td class="tot">${line.h}–${line.ab}<small>${line.rbi ? `${line.rbi} RBI` : ""}</small></td>` : `<td class="tot"></td>`);
       body.append(tr);
     }
-    const strip = document.createElement("tr"); strip.className = "half";
-    strip.innerHTML = `<th scope="row">After the half<br>R · H · LOB<br>Win %</th>`;
-    for (let i = 1; i <= bk.innings; i++) {
-      const h = bk.halves.get(`${side}/${i}`);
-      strip.insertAdjacentHTML("beforeend", !h ? "<td></td>" : `<td><span class="tally">${h.r} · ${h.h} · ${h.lob ?? "–"}</span>`
-        + `<span class="band"><span class="b">${wp(h.bend)}</span><span>${wp(h.mlb)}</span>`
-        + (bk.priced ? `<span>${wp(h.mk)}</span>` : "") + `</span>`
-        + `<span class="sr">${side === "away" ? "Top" : "Bottom"} ${i}: ${h.r} runs, ${h.h} hits, ${h.lob ?? "no"} left on base; Bend ${fmt(h.bend)}, MLB ${fmt(h.mlb)}${bk.priced ? `, market median ${fmt(h.mk)}` : ""}.</span></td>`);
-    }
-    strip.insertAdjacentHTML("beforeend", `<td class="tot"></td>`);
-    body.append(strip);
+    // After the half: one printed row per number, each as it stood when the half ended.
+    const strip = [
+      ["tallies", "After the half<br>R · H · LOB", (h, i) => `<td><span class="tally" aria-hidden="true">${h.r} · ${h.h} · ${h.lob ?? "–"}</span>`
+        + `<span class="sr">${side === "away" ? "Top" : "Bottom"} ${i}: ${h.r} runs, ${h.h} hits, ${h.lob ?? "no"} left on base</span></td>`],
+      ["bend", "Bend", h => `<td class="b">${wp(h.bend)}</td>`],
+      ["mlb", "MLB", h => `<td>${wp(h.mlb)}</td>`],
+    ];
+    if (bk.priced) strip.push(["mkt", "Mkt median", h => `<td>${wp(h.mk)}</td>`]);
+    strip.forEach(([name, label, cell], j) => {
+      const tr = document.createElement("tr");
+      tr.className = `half ${name}` + (j === strip.length - 1 ? " end" : "");
+      let html = `<th scope="row">${label}</th>`;
+      for (let i = 1; i <= bk.innings; i++) {
+        const h = bk.halves.get(`${side}/${i}`);
+        html += h ? cell(h, i) : "<td></td>";
+      }
+      tr.innerHTML = html + `<td class="tot"></td>`;
+      body.append(tr);
+    });
   }
 }
 
@@ -645,10 +737,13 @@ function boxCell(ps, s, nowPlay) {
 
 function chartSource(rows) {
   const venues = venuesIn(rows);
-  const xs = [], bend = [], mlb = [];
+  const xs = [], bend = [], mlb = [], starts = [];
   const mk = venues.map(() => []), lastMk = venues.map(() => null);
-  let carried = 0, lastMlb = null;
+  let carried = 0, lastMlb = null, prev = null;
   for (const r of rows) {
+    // a row carries the state after its play, so the play belongs to the previous row's half-inning
+    const before = prev || r;
+    prev = r;
     const b = num(r.bend_home_wp);
     if (b === null) continue;
     venues.forEach((v, i) => { const x = num(r[venueCol(v)]); if (x !== null) lastMk[i] = x; });
@@ -658,6 +753,8 @@ function chartSource(rows) {
       m = lastMlb; carried++;
     }
     lastMlb = m;
+    const last = starts[starts.length - 1];
+    if (!last || last.half !== before.half || last.inning !== before.inning) starts.push({ at: xs.length, half: before.half, inning: before.inning });
     xs.push(`"${xs.length + 1}"`);
     bend.push(b.toFixed(2));
     mlb.push(m.toFixed(2));
@@ -670,21 +767,37 @@ function chartSource(rows) {
     .filter(d => d.data[0] !== null && d.data[0] !== undefined)
     .map(d => ({ v: d.v, data: d.data.map(x => x.toFixed(2)) }));
   const names = ["Bend", "MLB official", ...drawn.map(d => d.v.name)];
+  // Innings printed along the top, each mark at the first play of its half-inning (▲ top, ▼ bottom);
+  // where the halves are too close to letter, only each inning's number, at its first play.
+  const width = Math.max(280, $("chart").clientWidth);
+  const perPlay = (width - 80) / Math.max(xs.length, 1);
+  const halves = starts.every((s, k) => !k || (s.at - starts[k - 1].at) * perPlay >= 24);
+  const marks = xs.map(() => "");
+  let markedAt = -Infinity;
+  for (const s of starts) {
+    if (!halves && s.half !== "T") continue;
+    if ((s.at - markedAt) * perPlay < 16) continue;   // never print two marks over each other
+    marks[s.at] = halves ? `${halfArrow(s.half)}${s.inning}` : `${s.inning}`;
+    markedAt = s.at;
+  }
   const src = `---
 config:
   xyChart:
-    width: ${Math.max(280, $("chart").clientWidth)}
+    width: ${width}
     height: ${$("chart").clientWidth < 640 ? 250 : 320}
+    showLegend: false
 ---
 xychart
   accTitle: ${esc(teamName("home"))} win probability after each completed play
-  accDescr: ${names.length === 2 ? "Two" : names.length === 3 ? "Three" : names.length === 4 ? "Four" : "Five"} lines over ${xs.length} plays: ${names.slice(0, -1).join(", ")}, and ${names[names.length - 1]}.
-  x-axis "play, in order" [${xs.join(",")}]
+  accDescr: ${names.length === 2 ? "Two" : names.length === 3 ? "Three" : names.length === 4 ? "Four" : "Five"} lines over ${xs.length} plays: ${names.slice(0, -1).join(", ")}, and ${names[names.length - 1]}. A rule marks 50%; innings are marked along the top.
+  x-axis "play, in order (innings along the top)" [${xs.join(",")}]
   y-axis "${esc(teamName("home"))} win %" 0 --> 100
+  line "50%" [${xs.map(() => 50).join(",")}]
+  line "innings" [${marks.map(t => (t ? `100 "${t}"` : "100")).join(",")}]
   line "Bend" [${bend.join(",")}]
   line "MLB" [${mlb.join(",")}]` + drawn.map(d => `
   line "${d.v.name}" [${d.data.join(",")}]`).join("");
-  return { src, carried, n: xs.length, drawn };
+  return { src, carried, n: xs.length, drawn, halves };
 }
 
 // The printed legend: a drawn sample of each line as the chart strokes it, its name, its source.
@@ -698,18 +811,19 @@ function legendItem(name, note, { stroke, dash, width, cap, dot }) {
 }
 
 function renderChart(rows) {
-  const { src, carried, n, drawn } = chartSource(rows);
+  const { src, carried, n, drawn, halves } = chartSource(rows);
   if (!n) { $("chart").textContent = "No plays yet."; $("legend").replaceChildren(); chart = null; return; }
-  if (chart) chart.update(src); else chart = pele.mount($("chart"), src, { zoom: false, fontSize: 11 });
+  if (chart) chart.update(src); else chart = pele.mount($("chart"), src, { zoom: false, fontSize: 14 });
   const sim = lastSim(rows);
   $("legend").innerHTML = legendItem("Bend", sim ? `${Number(sim.sims).toLocaleString()} simulated games a play` : "simulated games",
       SERIES.bend)
     + legendItem("MLB", "official win probability", SERIES.mlb)
-    + drawn.map(d => legendItem(esc(d.v.name), "market price", d.v)).join("");
+    + drawn.map(d => legendItem(esc(d.v.name), d.v.note, d.v)).join("");
   const home = teamName("home"), away = teamName("away");
   const gaps = rows.map(r => num(r.delta)).filter(x => x !== null).map(Math.abs);
   $("chart-cap").textContent = `How likely the ${home} were to win, from 0 to 100%, after each of the ${n} completed plays, `
-    + `left to right from the first; up favours the ${home}, down the ${away}. Bend's line is the share of its simulated games `
+    + `left to right from the first; up favors the ${home}, down the ${away}, and a rule marks 50%. `
+    + `Innings are marked along the top${halves ? ", ▲ for the top half and ▼ for the bottom" : ""}. Bend's line is the share of its simulated games `
     + `the ${home} won from the position after the play; MLB's is its official win probability for the same moment`
     + (gaps.length ? `, on average ${(gaps.reduce((a, b) => a + b, 0) / gaps.length).toFixed(2)} pp from Bend's.` : ".")
     + (drawn.length ? ` Each market line is that venue's price, read within a minute after the play; a play with no price carries `
@@ -882,26 +996,57 @@ const DIAGRAMS = {
   classDef pencil fill:#efe6d2,stroke:#1d1d1b,color:#1d1d1b,stroke-width:1.6px
   class wp pencil`,
 };
+// On a narrow screen a diagram keeps its smallest label at 10px and scrolls inside its figure:
+// the least width at which the SVG, scaled to fit, still sets that label at 10px. Pele lays a
+// diagram out again when its box resizes, so the width is measured again on every new drawing;
+// a top-to-bottom diagram opens scrolled to its middle, where its root is.
+function keepLegible(node) {
+  const svg = node.querySelector(":scope > svg");
+  const sizes = svg ? [...svg.querySelectorAll("text")].map(t => parseFloat(getComputedStyle(t).fontSize)).filter(x => x > 0) : [];
+  if (!sizes.length) return;
+  node.style.setProperty("--legible-w", `${Math.ceil(svg.viewBox.baseVal.width * 10 / Math.min(...sizes))}px`);
+  if (/^flowchart TB/.test(DIAGRAMS[node.dataset.diagram])) node.scrollLeft = (node.scrollWidth - node.clientWidth) / 2;
+}
 for (const node of document.querySelectorAll(".pele-src")) {
   pele.mount(node, DIAGRAMS[node.dataset.diagram], { zoom: false, fontSize: 12.5 });
+  keepLegible(node);
+  new MutationObserver(() => keepLegible(node)).observe(node, { childList: true });
 }
 
-// The season benchmark's headlines, from the benchmark page's data.
+// The season benchmark, from the benchmark page's data: standings in the keeper's margin and the
+// comparison table on the back of the card.
 function loadSeason() {
-  const minus = x => (x < 0 ? "\u2212" : "+") + Math.abs(x).toFixed(4);
-  const words = { "clear win": "a clear win for Bend", "clear loss": "a clear loss for Bend",
-                  "no clear difference": "no clear difference" };
-  const against = m => `Against MLB's official win probability, Bend's Brier is ${m.bend_brier.toFixed(4)} vs ${m.other_brier.toFixed(4)} `
-    + `(Δ ${minus(m.d_brier)}, 95% CI ${minus(m.d_brier_ci[0])} to ${minus(m.d_brier_ci[1])}): ${words[m.verdict] || m.verdict}. `
-    + `Bend was closer to the result on ${m.plays_closer.toFixed(1)}% of plays and better in ${m.games_better.toLocaleString()} of ${m.games.toLocaleString()} games.`;
+  const signed = x => (x < 0 ? "\u2212" : "+") + Math.abs(x).toFixed(4);
+  const ci = ([lo, hi]) => `${signed(lo)} to ${signed(hi)}`;
+  const words = { "clear win": "A clear win for Bend", "clear loss": "A clear loss for Bend", "no clear difference": "No clear difference" };
   const load = file => fetch(file, { cache: "no-store" }).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); });
-  load("/bench/data-2025.json").then(d => {
-    $("season-hand").innerHTML = `${d.games.scored.toLocaleString()} games · ${d.scored_plays.toLocaleString()} plays · 2<sup>${esc(d.depth)}</sup> sims a play`;
-    $("season-2025").textContent = `Every Final game of the 2025 regular season, which no setting was chosen on: ${d.games.scored.toLocaleString()} of ${d.games.requested.toLocaleString()} replayed and scored. ` + against(d.paired.mlb);
-  }).catch(() => {});
-  load("/bench/data.json").then(d => {
-    $("season-sum").textContent = `Of ${d.games.requested} games drawn at random from the 2026 regular season, ${d.games.scored} replayed and scored. ` + against(d.paired.mlb);
-  }).catch(() => {});
+  const runs = [
+    { file: "/bench/data-2025.json", href: "/bench/?run=2025", year: "2025", label: () => "2025, every game",
+      intro: d => `Every Final game of the 2025 regular season, which no setting was chosen on: ${d.games.scored.toLocaleString()} of ${d.games.requested.toLocaleString()} replayed and scored.` },
+    { file: "/bench/data.json", href: "/bench/", year: "2026", label: d => `2026, ${d.games.requested} at random`,
+      intro: d => `Of ${d.games.requested} games drawn at random from the 2026 regular season, ${d.games.scored} replayed and scored.` },
+  ];
+  Promise.allSettled(runs.map(r => load(r.file))).then(results => {
+    const got = runs.map((r, i) => ({ ...r, d: results[i].value })).filter(r => r.d?.paired?.mlb);
+    if (!got.length) return;   // the printed fallback points to the benchmark page
+    const season = got.find(r => r.year === "2025");
+    if (season) $("season-hand").innerHTML = `${season.d.games.scored.toLocaleString()} games · ${season.d.scored_plays.toLocaleString()} plays · 2<sup>${esc(season.d.depth)}</sup> sims a play`;
+    $("season-intro").textContent = got.map(r => r.intro(r.d)).join(" ");
+    $("stand-body").innerHTML = got.map(({ d, href, year }) => {
+      const m = d.paired.mlb;
+      return `<tr><th scope="row"><a href="${href}">${year}</a><small>${d.games.scored.toLocaleString()} games</small></th>`
+        + `<td>${m.bend_brier.toFixed(4)}</td><td>${m.other_brier.toFixed(4)}</td><td>${signed(m.d_brier)}<small>${ci(m.d_brier_ci)}</small></td></tr>`
+        + `<tr class="verdict${m.verdict === "clear win" ? " win" : ""}"><td colspan="4">${esc(words[m.verdict] || m.verdict)}.</td></tr>`;
+    }).join("");
+    $("season-body").innerHTML = got.map(({ d, href, label }) => {
+      const m = d.paired.mlb;
+      return `<tr><td><a href="${href}">${esc(label(d))}</a></td><td class="num">${m.plays.toLocaleString()}</td>`
+        + `<td class="num">${m.bend_brier.toFixed(4)}</td><td class="num">${m.other_brier.toFixed(4)}</td>`
+        + `<td class="num">${signed(m.d_brier)} (${ci(m.d_brier_ci)})</td><td class="num">${m.plays_closer.toFixed(1)}%</td>`
+        + `<td class="num">${m.games_better.toLocaleString()} of ${m.games.toLocaleString()}</td><td>${esc(words[m.verdict] || m.verdict)}</td></tr>`;
+    }).join("");
+    $("season-wrap").hidden = false;
+  });
 }
 loadSeason();
 

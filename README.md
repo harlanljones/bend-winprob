@@ -111,6 +111,11 @@ win %, empty when unknown). All three publish market data without credentials.
 | Polymarket | `mlb-<away>-<home>-<date>` moneyline | official date, Polymarket abbreviations (`ari`, `oak`) | the home token's price |
 | Polymarket US | `aec-mlb-<away>-<home>-<date>` | official date and MLB abbreviations | bid/ask midpoint of the long side, turned to the home team |
 
+Polymarket and Polymarket US are separate exchanges with separate books: Polymarket
+is the international, crypto-based one; Polymarket US is a CFTC-regulated exchange
+for US residents that trades in US dollars
+([Polymarket US docs](https://docs.polymarket.us/getting-started/what-is-polymarket-us)).
+
 A play's price is read 60 s after it ended (minute bars need that long to be sure
 the play is priced in), or when the next play ended if that came first, and only
 from an observation taken after the play ended: a play followed too quickly by the
