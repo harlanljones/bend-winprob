@@ -1,0 +1,116 @@
+  @font-face { font-family: "Archivo"; src: url(/fonts/Archivo.woff2) format("woff2"); font-weight: 400 600; font-display: swap; }
+  @font-face { font-family: "Archivo Narrow"; src: url(/fonts/ArchivoNarrow.woff2) format("woff2"); font-weight: 400 700; font-display: swap; }
+  @font-face { font-family: "Caveat"; src: url(/fonts/Caveat.woff2) format("woff2"); font-weight: 400 700; font-display: swap; }
+
+  :root {
+    --stock: #efe6d2;
+    --print: #275f55;
+    --print-tint: rgba(39, 95, 85, 0.09);
+    --print-rule: rgba(39, 95, 85, 0.55);
+    --graphite: #1d1d1b;
+    --graphite-soft: #55544c;
+    --red: #b3362b;
+    --narrow: "Archivo Narrow", "Arial Narrow", sans-serif;
+    --text: "Archivo", system-ui, sans-serif;
+    --hand: "Caveat", "Segoe Print", cursive;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    color-scheme: light;
+  }
+
+  * { box-sizing: border-box; }
+  html { background: var(--stock); }
+  body {
+    margin: 0; color: var(--graphite); background: var(--stock);
+    font: 15px/1.5 var(--text); font-variant-numeric: tabular-nums;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--print); color: var(--stock); }
+  :focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+  a { color: var(--print); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { color: var(--graphite); }
+  b, strong { font-weight: 600; }
+  sup { font-size: 0.72em; line-height: 0; }
+  code { font-family: var(--mono); font-size: 0.86em; }
+  pre {
+    margin: 10px 0 0; padding: 10px 14px; overflow-x: auto;
+    border: 1px solid var(--print-rule); border-left-width: 1px; background: var(--print-tint);
+    font: 12.5px/1.5 var(--mono); color: var(--graphite);
+    scrollbar-color: var(--print) var(--stock);
+  }
+  pre code { font-size: inherit; }
+  .hand { font-family: var(--hand); font-weight: 500; color: var(--graphite); }
+  .print-ink { color: var(--print); }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  .book { max-width: 1260px; margin: 0 auto; padding: 22px clamp(12px, 3vw, 32px) 56px; }
+
+  /* Masthead: the printed head of the card */
+  .mast { border-top: 3px solid var(--print); border-bottom: 1px solid var(--print); padding: 10px 0 8px; display: grid; grid-template-columns: 1fr auto; gap: 8px 24px; align-items: end; }
+  .mast h1 { margin: 0; font: 700 clamp(30px, 4.4vw, 46px)/1 var(--narrow); color: var(--print); letter-spacing: 0.02em; text-transform: uppercase; }
+  .mast .lede { margin: 8px 0 0; font: 400 15px/1.4 var(--text); color: var(--graphite); max-width: 72ch; }
+  .mast nav { display: flex; flex-wrap: wrap; gap: 4px 18px; font: 700 12.5px/1.6 var(--narrow); text-transform: uppercase; letter-spacing: 0.08em; }
+  .mast nav a { text-decoration: none; color: var(--print); border-bottom: 1px solid transparent; }
+  .mast nav a:hover, .mast nav a:focus-visible { border-bottom-color: var(--print); }
+
+  /* Fields: Date, Game, Scorer... printed labels, pencilled values */
+  .fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); border-bottom: 1px solid var(--print); }
+  .fields div { padding: 8px 10px 6px 0; border-right: 1px solid var(--print-rule); margin-right: 10px; min-width: 0; }
+  .fields div:last-child { border-right: 0; }
+  .fields dt { font: 700 11px/1.2 var(--narrow); text-transform: uppercase; letter-spacing: 0.1em; color: var(--print); }
+  .fields dd { margin: 2px 0 0; font: 500 21px/1.1 var(--hand); color: var(--graphite); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .fields dd.print { font: 400 14px/1.4 var(--text); }
+
+  .figure { margin: 22px 0 0; border-top: 1px solid var(--print); padding-top: 8px; }
+  .figure h2 { margin: 0; font: 700 12px/1.4 var(--narrow); text-transform: uppercase; letter-spacing: 0.1em; color: var(--print); }
+  .figure figcaption { font: 400 12px/1.5 var(--text); color: var(--graphite-soft); margin-top: 4px; max-width: 90ch; }
+  /* The printed legend: a drawn sample of each line, its name, and where its numbers come from */
+  .legend { display: flex; flex-wrap: wrap; gap: 4px 20px; margin: 6px 0 2px; padding: 0; list-style: none; }
+  .legend li { display: inline-flex; align-items: center; gap: 6px; font: 400 12px/1.4 var(--text); color: var(--graphite-soft); }
+  .legend b { font: 700 12px/1 var(--narrow); text-transform: uppercase; letter-spacing: 0.06em; color: var(--graphite); }
+  .legend svg { width: 30px; height: 10px; flex: none; overflow: visible; }
+  .legend svg line { stroke-width: 2; }
+  .legend svg circle { stroke: none; }
+
+  /* Pele, printed on the stock */
+  .pele {
+    --pele-bg: var(--stock); --pele-fg: var(--print); --pele-muted: var(--print); --pele-line: var(--print);
+    --pele-surface: var(--stock); --pele-surface-alt: var(--print-tint); --pele-border: var(--print);
+    --pele-accent: var(--graphite); --pele-critical: var(--red); --pele-error: var(--red);
+    --pele-font: var(--narrow); --pele-font-mono: var(--mono); --pele-radius: 0;
+    --pele-series-1: var(--graphite); --pele-series-2: var(--print);
+    --pele-title-weight: 700; --pele-heading-weight: 700;
+  }
+  .diagram { margin: 14px 0 0; }
+  .diagram figcaption { font: 400 12px/1.5 var(--text); color: var(--graphite-soft); margin-top: 4px; }
+
+  /* The back of the card: printed instructions */
+  section.back { margin-top: 44px; }
+  section.back > h2 { margin: 0; padding: 6px 0 4px; border-top: 2px solid var(--print); border-bottom: 1px solid var(--print-rule); font: 700 24px/1.2 var(--narrow); text-transform: uppercase; letter-spacing: 0.08em; color: var(--print); display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  section.back > h2 .hand { font-size: 20px; text-transform: none; letter-spacing: 0; font-weight: 500; }
+  section.back > p { margin: 12px 0 0; max-width: 72ch; }
+
+  table.laws, table.bench { border-collapse: collapse; width: 100%; margin-top: 12px; }
+  table.laws th, table.laws td, table.bench th, table.bench td { border: 1px solid var(--print-rule); padding: 6px 10px; text-align: left; vertical-align: top; font-size: 14px; }
+  table.laws thead th, table.bench thead th { font: 700 11px/1.3 var(--narrow); text-transform: uppercase; letter-spacing: 0.1em; color: var(--print); background: var(--print-tint); }
+  table.laws td.law { font: 700 14px/1.4 var(--narrow); white-space: nowrap; }
+  table.laws td.law code, .laws td code { font-size: 12.5px; }
+  table.laws td.mark, table.bench td.num, table.bench th.num { text-align: right; white-space: nowrap; }
+  td.mark .hand { font-size: 21px; }
+  td.up { color: var(--print); } td.down { color: var(--graphite); font-weight: 600; }
+  table.bench caption { caption-side: top; text-align: left; padding: 0 0 6px; font: 400 13px/1.5 var(--text); color: var(--graphite-soft); }
+  .tablewrap { overflow-x: auto; scrollbar-color: var(--print) var(--stock); }
+  details { margin-top: 12px; }
+  summary { cursor: pointer; font: 700 13px/1.5 var(--narrow); text-transform: uppercase; letter-spacing: 0.08em; color: var(--print); }
+  summary:hover { color: var(--graphite); }
+  ul.notes { margin: 12px 0 0; padding-left: 18px; max-width: 72ch; }
+  ul.notes li { margin: 0 0 8px; }
+  ul.notes li::marker { color: var(--print); }
+
+  footer { margin-top: 44px; padding-top: 10px; border-top: 3px solid var(--print); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px 18px; font: 700 12px/1.6 var(--narrow); text-transform: uppercase; letter-spacing: 0.08em; color: var(--print); }
+  footer a { text-decoration: none; border-bottom: 1px solid var(--print); }
+
+  @media (max-width: 720px) {
+    .mast { grid-template-columns: 1fr; }
+    .fields dd { font-size: 19px; }
+    .fields dd.print { white-space: normal; overflow: visible; }
+  }

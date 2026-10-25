@@ -4,8 +4,21 @@
    "games": [
     {
      "gamePk": 849805,
+     "gameType": "W",
      "gameDate": "2026-10-24T00:00:00Z",
-     "officialDate": "2026-10-23"
+     "officialDate": "2026-10-23",
+     "teams": {
+      "away": {
+       "probablePitcher": {
+        "id": 607259
+       }
+      },
+      "home": {
+       "probablePitcher": {
+        "id": 694819
+       }
+      }
+     }
     }
    ]
   }

@@ -12,7 +12,7 @@ class RecoveryTest(unittest.TestCase):
         runs = live.ROOT / "runs"
         runs.mkdir(exist_ok=True)
         rates = [2222, 6860, 7806, 9234, 9657, 9691, 10000]
-        (runs / f"{pk}-rates.json").write_text(json.dumps({"away": rates, "home": rates}))
+        (runs / f"{pk}-rates.json").write_text(json.dumps({"away": rates, "home": rates, "ghost": False}))
         play = {
             "about": {"atBatIndex": 0, "isComplete": True, "inning": 1, "isTopInning": True},
             "result": {"awayScore": 0, "homeScore": 0, "eventType": "strikeout"},
@@ -48,7 +48,7 @@ class RecoveryTest(unittest.TestCase):
         source = FakeSource()
         calls = []
 
-        def fake_bend(depth, seed, away, home, codes, mode):
+        def fake_bend(depth, seed, away, home, codes, mode, ghost):
             calls.append(len(codes))
             if len(codes) == 1 and calls.count(1) in (1, 3):
                 raise live.BendError("transient test failure")

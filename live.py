@@ -26,6 +26,7 @@ import sys
 import threading
 import time
 import urllib.request
+from datetime import date, timedelta
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
@@ -43,8 +44,12 @@ URLS = {
     "box": API + "/v1/game/{pk}/boxscore?fields=teams,away,home,teamStats,batting,fielding,"
     "atBats,baseOnBalls,hitByPitch,sacBunts,sacFlies,catchersInterference,runs,putOuts",
     "linescore": API + "/v1/game/{pk}/linescore?fields=teams,home,away,runs,leftOnBase",
-    "teamstats": API + "/v1/teams/{id}/stats?stats=season&group=hitting,pitching&season=2026",
-    "schedule": API + "/v1/schedule?gamePk={pk}&fields=dates,games,gamePk,gameDate,officialDate",
+    "asof": API + "/v1/teams/{id}/stats?stats=byDateRange&group=pitching&season={season}"
+    "&startDate={season}-01-01&endDate={end}&gameType=R",
+    "starter": API + "/v1/people/{id}/stats?stats=byDateRange&group=pitching&season={season}"
+    "&startDate={season}-01-01&endDate={end}&gameType=R",
+    "schedule": API + "/v1/schedule?gamePk={pk}&hydrate=probablePitcher&fields=dates,games,gamePk,"
+    "gameDate,officialDate,gameType,teams,away,home,probablePitcher,id",
     "scoring": API + "/v1/game/{pk}/playByPlay?fields=allPlays,about,atBatIndex,startTime,endTime,"
     "isComplete,result,event,eventType,description,matchup,batter,id,fullName,runners,details,"
     "runner,credits,position,code,credit",
@@ -56,8 +61,28 @@ TEAM_NAMES = {
     158: "Milwaukee Brewers",
 }
 
-# 2025 MLB per-plate-appearance rates (Baseball-Reference league totals, PA 182,926).
-LEAGUE = {"K": .2222, "O": .4638, "W": .0946, "S": .1428, "D": .0423, "T": .0034, "H": .0309}
+# A game is played against the previous season's norms: the league's per-plate-appearance rates,
+# and each outcome's home or away rate over its overall rate (Stats API teams/stats, season totals
+# and statSplits sitCodes=h,a, regular season).
+NORMS = {
+    # 2025: 182,926 PA; 89,470 home, 93,456 away
+    2025: {"league": {"K": .2222, "O": .4638, "W": .0946, "S": .1428, "D": .0423, "T": .0034, "H": .0309},
+           "home": {"K": .976, "O": 1.0015, "W": 1.0277, "S": 1.0072, "D": 1.0121, "T": 1.0874, "H": 1.006},
+           "away": {"K": 1.023, "O": .9986, "W": .9735, "S": .9931, "D": .9884, "T": .9163, "H": .9943}},
+    # 2024: 182,449 PA; 89,100 home, 93,349 away
+    2024: {"league": {"K": .2258, "O": .463, "W": .0929, "S": .142, "D": .0426, "T": .0038, "H": .0299},
+           "home": {"K": .9821, "O": 1.0021, "W": 1.0289, "S": .9929, "D": 1.0111, "T": 1.0312, "H": 1.0274},
+           "away": {"K": 1.0171, "O": .998, "W": .9725, "S": 1.0067, "D": .9894, "T": .9702, "H": .9738}},
+}
+# Chosen on the development games (tune.py), never on the benchmark's test games: a team's
+# pitching to date, shrunk toward the league by PITCH_PRIOR batters faced; the probable
+# starter's to date, shrunk toward his team's by STARTER_PRIOR, weighted by the batters he is
+# expected to face (his batters per start to date, shrunk toward STARTER_BF by STARTER_STARTS
+# starts) out of PA_GAME. Team batting to date did not predict results there, so a side bats
+# at the league's rates against the other side's pitching.
+PITCH_PRIOR = 2000
+STARTER_PRIOR = 600
+STARTER_BF, STARTER_STARTS, PA_GAME = 22.0, 5, 38.0
 ORDER = "KOWSDTH"
 DEFAULT_MODE = "gpu"  # RTX 4070 Ti: 2^20 games 0.09 s (gpu) vs 0.15 s (24 threads)
 CSV_HEADER = ["wall_time", "at_bat_index", "inning", "half", "outs", "bases", "code", "batter",
@@ -89,10 +114,10 @@ def fetch(url):
 class Source:
     """Replay reads fixtures/<pk>/<name>.json, fetching and saving any missing one."""
 
-    def __init__(self, pk, cache, allow_fetch=True):
+    def __init__(self, pk, cache, allow_fetch=True, root=None):
         self.pk = pk
         self.allow_fetch = allow_fetch
-        self.dir = ROOT / "fixtures" / str(pk) if cache else None
+        self.dir = (root or ROOT / "fixtures") / str(pk) if cache else None
 
     def get(self, name, **kw):
         url = URLS[name.split("_")[0]].format(pk=self.pk, **kw)
@@ -212,13 +237,24 @@ def bases_after(play):
             if key in matchup}
 
 
-def encode_plays(plays):
-    """Encode a complete play list, carrying base state between plays."""
-    codes, before = [], set()
+def encode_plays(plays, ghost=False):
+    """Encode a complete play list, carrying base state between plays (with `ghost`, each
+    half from the tenth inning on starts with the automatic runner on second)."""
+    codes, before, half = [], set(), None
     for play in plays:
+        about = play["about"]
+        if (about.get("inning"), about.get("isTopInning")) != half:
+            half = (about.get("inning"), about.get("isTopInning"))
+            before = {2} if ghost and (about.get("inning") or 0) >= 10 else set()
         codes.append(encode_play(play, before))
         before = bases_after(play)
     return codes
+
+
+def automatic_runners(plays):
+    """{side: extra-inning halves batted}: one automatic runner each under the regular-season rule."""
+    halves = {(p["about"]["inning"], p["about"]["isTopInning"]) for p in plays if p["about"]["inning"] >= 10}
+    return {"away": sum(top for _, top in halves), "home": sum(not top for _, top in halves)}
 
 
 def complete_plays(pbp):
@@ -296,7 +332,7 @@ def scorecard(scoring):
         "play": notation(p)} for p in complete_plays(scoring or {})}
 
 
-def check_state(b, play):
+def check_state(b, play, ghost=False):
     """Field names where Bend's state after `play` differs from MLB's."""
     bad = []
     res, about, outs = play["result"], play["about"], play["count"]["outs"]
@@ -306,7 +342,9 @@ def check_state(b, play):
         bad.append("home_runs")
     top = about["isTopInning"]
     if outs == 3:
-        want = (about["inning"] + (0 if top else 1), not top, 0, "---")
+        inning = about["inning"] + (0 if top else 1)
+        goes_on = top or res["awayScore"] == res["homeScore"]
+        want = (inning, not top, 0, "-2-" if ghost and inning >= 10 and goes_on else "---")
     else:
         mu = play.get("matchup", {})
         bases = ("1" if "postOnFirst" in mu else "-") + ("2" if "postOnSecond" in mu else "-") \
@@ -324,25 +362,41 @@ def check_state(b, play):
 # Rates
 # -----
 
-def side_rates(stat, pa_key, hbp_key):
-    pa = stat[pa_key]
-    k, w = stat["strikeOuts"], stat["baseOnBalls"] + stat[hbp_key]
+def counts(stat):
+    """(batters faced, {outcome: count}) from a pitching line; (0, zeros) for None."""
+    if stat is None:
+        return 0, dict.fromkeys(ORDER, 0)
     d, t, h = stat["doubles"], stat["triples"], stat["homeRuns"]
-    s = stat["hits"] - d - t - h
-    o = pa - (k + w + s + d + t + h)
-    return {"K": k / pa, "O": o / pa, "W": w / pa, "S": s / pa, "D": d / pa, "T": t / pa, "H": h / pa}
+    n = {"K": stat["strikeOuts"], "W": stat["baseOnBalls"] + stat["hitBatsmen"],
+         "S": stat["hits"] - d - t - h, "D": d, "T": t, "H": h}
+    n["O"] = stat["battersFaced"] - sum(n.values())
+    return stat["battersFaced"], n
+
+
+def shrunk(stat, toward, prior):
+    """Per-batter outcome rates allowed, shrunk toward `toward` by `prior` batters."""
+    bf, n = counts(stat)
+    return {e: (n[e] + prior * toward[e]) / (bf + prior) for e in ORDER}
 
 
 def team_stat(ts, group):
+    """The group's stat line, or None before the first game of the range."""
     for st in ts["stats"]:
         if st["group"]["displayName"] == group:
-            return st["splits"][0]["stat"]
+            return st["splits"][0]["stat"] if st["splits"] else None
     raise ValueError(f"no {group} stats")
 
 
-def matchup(bat, pit):
-    """Generalized log5 against the league."""
-    w = {e: bat[e] * pit[e] / LEAGUE[e] for e in ORDER}
+def starter_share(stat):
+    """The share of a game's batters the starter is expected to face."""
+    starts = (stat or {}).get("gamesStarted", 0)
+    per = min(stat["battersFaced"] / starts, 30.0) if starts else STARTER_BF
+    return min(1.0, (starts * per + STARTER_STARTS * STARTER_BF) / (starts + STARTER_STARTS) / PA_GAME)
+
+
+def venue(p, factor):
+    """Rates scaled by home or away factors, renormalised."""
+    w = {e: p[e] * factor[e] for e in ORDER}
     tot = sum(w.values())
     return {e: w[e] / tot for e in ORDER}
 
@@ -356,23 +410,48 @@ def cumulative(p):
     return out
 
 
+def scheduled(src):
+    return src.get("schedule")["dates"][0]["games"][0]
+
+
+def automatic_runner(src):
+    """Regular-season extra innings start with a runner on second; the postseason's do not."""
+    return scheduled(src)["gameType"] == "R"
+
+
+def norms(season):
+    return NORMS[int(season) - 1]
+
+
 def game_rates(src, teams):
-    """(awayCum, homeCum): each side's batting against the other's pitching."""
-    away_ts = src.get(f"teamstats_{teams['away']['id']}", id=teams["away"]["id"])
-    home_ts = src.get(f"teamstats_{teams['home']['id']}", id=teams["home"]["id"])
-    bat = {s: side_rates(team_stat(ts, "hitting"), "plateAppearances", "hitByPitch")
-           for s, ts in (("away", away_ts), ("home", home_ts))}
-    pit = {s: side_rates(team_stat(ts, "pitching"), "battersFaced", "hitBatsmen")
-           for s, ts in (("away", away_ts), ("home", home_ts))}
-    return cumulative(matchup(bat["away"], pit["home"])), cumulative(matchup(bat["home"], pit["away"]))
+    """(awayCum, homeCum): each side bats at last season's league rates against the other side's
+    pitching through the day before the game (team and probable starter), adjusted for
+    home/away."""
+    game = scheduled(src)
+    season = game["officialDate"][:4]
+    end = (date.fromisoformat(game["officialDate"]) - timedelta(days=1)).isoformat()
+    norm = norms(season)
+    pit = {}
+    for s in ("away", "home"):
+        team = shrunk(team_stat(src.get(f"asof_{teams[s]['id']}", id=teams[s]["id"], season=season, end=end),
+                                "pitching"), norm["league"], PITCH_PRIOR)
+        sp = game["teams"][s].get("probablePitcher", {}).get("id")
+        if sp is None:
+            pit[s] = team
+            continue
+        st = team_stat(src.get(f"starter_{sp}", id=sp, season=season, end=end), "pitching")
+        w = starter_share(st)
+        own = shrunk(st, team, STARTER_PRIOR)
+        pit[s] = {e: w * own[e] + (1 - w) * team[e] for e in ORDER}
+    return cumulative(venue(pit["home"], norm["away"])), cumulative(venue(pit["away"], norm["home"]))
 
 
 # Bend
 # ----
 
-def run_bend(depth, seed, away_cum, home_cum, codes, mode):
+def run_bend(depth, seed, away_cum, home_cum, codes, mode, ghost=False):
     arg = "|".join([str(depth), str(seed), ",".join(map(str, away_cum)),
-                    ",".join(map(str, home_cum)), ";".join(codes), mode])
+                    ",".join(map(str, home_cum)), ";".join(codes), mode, "1" if ghost else "0"])
     rts = ["--threads", "24"] if mode == "cpu" else ["--gpu", "4GB"]
     t0 = time.monotonic()
     try:
@@ -449,10 +528,11 @@ class Publisher:
 class Book:
     """Rows keyed by at_bat_index (-1: pregame), rewritten to runs/<pk>.csv (and published)."""
 
-    def __init__(self, pk, away, home, depth, mode, publisher=None, verbose=True, team_info=None):
+    def __init__(self, pk, away, home, depth, mode, publisher=None, verbose=True, team_info=None, ghost=False):
         self.pk, self.away, self.home, self.depth, self.mode = pk, away, home, depth, mode
         self.publisher = publisher
         self.verbose = verbose
+        self.ghost = ghost
         self.rows = {}
         runs = ROOT / "runs"
         runs.mkdir(exist_ok=True)
@@ -468,7 +548,7 @@ class Book:
         self.notes = {}  # at_bat_index -> {"batter", "play"}: scorecard()
 
     def add(self, idx, b, play, mlb, code=""):
-        bad = check_state(b, play) if play is not None else []
+        bad = check_state(b, play, self.ghost) if play is not None else []
         if b["rejected"] > 0 and "rejected" not in bad:
             bad.append("rejected")
         decided = b["home_wins"] + b["away_wins"]
@@ -589,21 +669,26 @@ def wp_map(wp):
             if "homeTeamWinProbability" in e}
 
 
-def box_check(box, ls, b):
-    """OBR 9.03(c) on the official box score, and Bend's scorebook against it."""
+def box_check(box, ls, b, auto=None):
+    """OBR 9.03(c) on the official box score, and Bend's scorebook against it. `auto` counts each
+    side's automatic runners: they score, are stranded or put out without batting, and Bend
+    places each by a play whose batter goes to second."""
     ok = True
     for side, opp, at in (("away", "home", 0), ("home", "away", 4)):
         bat = box["teams"][side]["teamStats"]["batting"]
         supply = (bat["atBats"] + bat["baseOnBalls"] + bat["hitByPitch"] + bat["sacBunts"]
                   + bat["sacFlies"] + bat.get("catchersInterference", 0))
+        a = (auto or {}).get(side, 0)
         runs, lob = ls["teams"][side]["runs"], ls["teams"][side]["leftOnBase"]
         po = box["teams"][opp]["teamStats"]["fielding"]["putOuts"]
         b_bat, b_runs, b_outs, b_lob = b["line"][at:at + 4]
         batting_now = b["top"] == (side == "away")
         b_lob += (3 - b["bases"].count("-")) if batting_now else 0
-        good = (supply == runs + lob + po and (b_bat, b_runs, b_lob, b_outs) == (supply, runs, lob, po))
+        good = (supply + a == runs + lob + po
+                and (b_bat, b_runs, b_lob, b_outs) == (supply + a, runs, lob, po))
         ok &= good
-        print(f"BOX {side} official {supply}={runs}+{lob}+{po} "
+        extra = f"+{a}" if a else ""
+        print(f"BOX {side} official {supply}{extra}={runs}+{lob}+{po} "
               f"bend {b_bat}={b_runs}+{b_lob}+{b_outs} {'OK' if good else 'FAIL'}", flush=True)
     return ok
 
@@ -650,13 +735,12 @@ def live_setup(src, pk):
     teams = teams_of(status)
     rates_path = ROOT / "runs" / f"{pk}-rates.json"
     (ROOT / "runs").mkdir(exist_ok=True)
-    if rates_path.exists():
-        rates = json.loads(rates_path.read_text())
-        away_cum, home_cum = rates["away"], rates["home"]
-    else:
+    rates = json.loads(rates_path.read_text()) if rates_path.exists() else {}
+    if "ghost" not in rates:
         away_cum, home_cum = game_rates(src, teams)
-        rates_path.write_text(json.dumps({"away": away_cum, "home": home_cum}))
-    return teams, away_cum, home_cum
+        rates = {"away": away_cum, "home": home_cum, "ghost": automatic_runner(src)}
+        rates_path.write_text(json.dumps(rates))
+    return teams, rates["away"], rates["home"], rates["ghost"]
 
 
 def read_scoring(src, book, feed, started):
@@ -684,7 +768,7 @@ def live(args):
         print(f"chart: http://127.0.0.1:{args.port}/web/?pk={args.pk}", flush=True)
     while True:
         try:
-            teams, away_cum, home_cum = live_setup(src, args.pk)
+            teams, away_cum, home_cum, ghost = live_setup(src, args.pk)
             game = None if args.no_markets else markets.game_of(src.get("schedule"), teams)
             break
         except (RuntimeError, ValueError, KeyError, IndexError) as e:
@@ -693,7 +777,7 @@ def live(args):
     away, home = teams["away"]["abbr"], teams["home"]["abbr"]
     print(f"{away} @ {home}  awayCum {away_cum}  homeCum {home_cum}  depth {args.depth}  {args.mode}",
           flush=True)
-    book = Book(args.pk, away, home, args.depth, args.mode, args.publisher, team_info=teams)
+    book = Book(args.pk, away, home, args.depth, args.mode, args.publisher, team_info=teams, ghost=ghost)
     feed = None if game is None else markets.LiveFeed(game)
     done = []  # codes whose complete suffix succeeded
     last_wait = 0.0
@@ -710,7 +794,7 @@ def live(args):
             wait = max(10, status.get("metaData", {}).get("wait", 10))
             if -1 not in book.rows:
                 try:
-                    book.add(-1, run_bend(args.depth, seed_for(0), away_cum, home_cum, [], args.mode),
+                    book.add(-1, run_bend(args.depth, seed_for(0), away_cum, home_cum, [], args.mode, ghost),
                              None, None)
                     book.write()
                 except BendError as e:
@@ -726,7 +810,7 @@ def live(args):
                 continue
             try:
                 plays = complete_plays(src.get("plays"))
-                codes = encode_plays(plays)
+                codes = encode_plays(plays, ghost)
                 wp = wp_map(src.get("wp"))
             except (RuntimeError, ValueError) as e:
                 print(f"poll failed: {e}", flush=True)
@@ -741,7 +825,7 @@ def live(args):
                 for k in range(same + 1, len(codes) + 1):
                     idx = plays[k - 1]["about"]["atBatIndex"]
                     try:
-                        b = run_bend(args.depth, seed_for(k), away_cum, home_cum, codes[:k], args.mode)
+                        b = run_bend(args.depth, seed_for(k), away_cum, home_cum, codes[:k], args.mode, ghost)
                     except BendError as e:
                         complete = False
                         print(f"#{idx} bend error: {e}; will retry", flush=True)
@@ -754,9 +838,10 @@ def live(args):
             book.write()
             if state == "Final":
                 try:
-                    b = run_bend(args.depth, seed_for(len(codes)), away_cum, home_cum, codes, args.mode)
+                    b = run_bend(args.depth, seed_for(len(codes)), away_cum, home_cum, codes, args.mode, ghost)
                     book.final(b["home_runs"] > b["away_runs"])
-                    box_ok = box_check(src.get("box"), src.get("linescore"), b)
+                    box_ok = box_check(src.get("box"), src.get("linescore"), b,
+                                       automatic_runners(plays) if ghost else None)
                     book.backfill(wp_map(src.get("wp")))
                     if feed is not None:
                         feed.catch_up(max((t for t, _ in book.samples.values() if t is not None), default=0))

@@ -69,10 +69,21 @@ class EncodingRegressionTest(unittest.TestCase):
     def test_bend_accepts_runner_exchange(self):
         rates = "2222,6860,7806,9234,9657,9691,10000"
         result = subprocess.run(
-            [str(live.ROOT / "wp"), f"0|1|{rates}|{rates}|---1;--21;-12X|cpu"],
+            [str(live.ROOT / "wp"), f"0|1|{rates}|{rates}|---1;--21;-12X|cpu|0"],
             cwd=live.ROOT, capture_output=True, text=True, check=True)
         self.assertIn("STATE 1 T 1 12- 0 0 0", result.stdout)
         self.assertIn("LINE 3 0 1 0 0 0 0 0", result.stdout)
+
+    def test_bend_places_the_automatic_runner_in_extra_innings(self):
+        rates = "2222,6860,7806,9234,9657,9691,10000"
+        nine = ";".join(["---X"] * 54)   # nine scoreless innings
+        def state(ghost):
+            out = subprocess.run([str(live.ROOT / "wp"), f"0|1|{rates}|{rates}|{nine}|cpu|{ghost}"],
+                                 cwd=live.ROOT, capture_output=True, text=True, check=True).stdout
+            return [ln for ln in out.splitlines() if ln.startswith(("STATE", "LINE"))]
+        # The runner is placed by a batter-to-second play, so the away line counts 28 batters.
+        self.assertEqual(["STATE 10 T 0 -2- 0 0 0", "LINE 28 0 27 0 27 0 27 0"], state(1))
+        self.assertEqual(["STATE 10 T 0 --- 0 0 0", "LINE 27 0 27 0 27 0 27 0"], state(0))
 
 
 if __name__ == "__main__":

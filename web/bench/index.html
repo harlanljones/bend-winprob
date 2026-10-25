@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Benchmark · Bend vs MLB</title>
+<meta name="description" content="Bend's win probability against MLB's official number and three prediction markets, scored play by play on 100 randomly drawn 2026 games, with game-resampled confidence intervals and calibration.">
+<meta property="og:title" content="Benchmark · Bend vs MLB">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bend-winprob.harlanljones.workers.dev/bench/">
+<meta name="theme-color" content="#efe6d2">
+<link rel="preload" href="/fonts/ArchivoNarrow.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/Caveat.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/book.css">
+<style>
+  .verdicts { margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; max-width: 90ch; }
+  b.v { display: inline-block; margin-right: 6px; padding: 1px 6px; border: 1px solid; font: 700 11px/1.4 var(--narrow); text-transform: uppercase; letter-spacing: 0.1em; }
+  .v.win { color: var(--print); border-color: var(--print); }
+  .v.loss { color: var(--graphite); border-color: var(--graphite); font-weight: 700; }
+  .v.even { color: var(--graphite-soft); border-color: var(--print-rule); }
+  #cal { min-height: 260px; }
+  #cal .pele-legend { display: none; }   /* replaced by the printed legend */
+  #cal .pele-line[data-id="Ideal"] path { stroke: var(--print-rule); stroke-dasharray: 6 4; stroke-width: 1.5; }
+  #cal .pele-line[data-id="Ideal"] circle { display: none; }
+  .pele { --pele-series-3: var(--print-rule); }
+  tr.group th { background: var(--print-tint); font: 700 11px/1.3 var(--narrow); text-transform: uppercase; letter-spacing: 0.1em; color: var(--print); }
+  table.bench caption { max-width: calc(100vw - 2 * clamp(12px, 3vw, 32px)); }   /* stays in view when a wide table scrolls */
+  table.bench td.nw { white-space: nowrap; }
+  table.bench td.na { color: var(--graphite-soft); overflow-wrap: anywhere; }
+  #f-runs a[aria-current] { color: var(--graphite); font-weight: 600; text-decoration: none; }
+</style>
+</head>
+<body>
+<main class="book">
+  <header>
+    <div class="mast">
+      <div>
+        <h1>Benchmark</h1>
+        <p class="lede">Bend against <span id="lede-who">MLB's official win probability and three prediction markets</span>, scored play by play against how each game ended. <span id="lede-games"><span id="n-games">100</span> games drawn at random from the 2026 regular season</span>; 2<sup>20</sup> simulated games a play; no setting tuned on these games.</p>
+      </div>
+      <nav aria-label="Sections">
+        <a href="/">Scorebook</a>
+        <a href="#verdict">Verdict</a>
+        <a href="#scores">Scores</a>
+        <a href="#calibration">Calibration</a>
+        <a href="#segments">Where</a>
+        <a href="#games">Games</a>
+        <a href="#method">Method</a>
+        <a href="#reproduce">Reproduce</a>
+        <a href="https://github.com/harlanljones/bend-winprob">Source</a>
+      </nav>
+    </div>
+    <dl class="fields" aria-label="Benchmark run">
+      <div><dt>Run</dt><dd id="f-when">–</dd></div>
+      <div><dt>Runs</dt><dd class="print" id="f-runs"><a href="./" title="100 games drawn from the 2026 season">2026</a> · <a href="./?run=2025" title="every 2025 regular-season game">2025</a></dd></div>
+      <div><dt>Commit</dt><dd id="f-commit">–</dd></div>
+      <div><dt>Games</dt><dd id="f-games">–</dd></div>
+      <div><dt>Plays scored</dt><dd id="f-plays">–</dd></div>
+      <div><dt>Sims per play</dt><dd id="f-sims">–</dd></div>
+    </dl>
+  </header>
+
+  <section class="back" id="verdict" aria-labelledby="verdict-h">
+    <h2 id="verdict-h">Head to head <span class="hand">Bend vs each</span></h2>
+    <ul class="verdicts" id="verdicts"><li>Loading the benchmark…</li></ul>
+    <div class="tablewrap">
+    <table class="bench">
+      <caption>Δ is Bend minus the other source on the same plays; negative favours Bend. Intervals resample whole games. A clear win means the whole interval is below zero, a statement about these plays, not about MLB's model in general.</caption>
+      <thead><tr><th scope="col">Against</th><th scope="col" class="num">Paired plays</th><th scope="col" class="num">Bend Brier</th><th scope="col" class="num">Their Brier</th><th scope="col" class="num">Δ Brier (95% CI)</th><th scope="col" class="num">Δ log loss (95% CI)</th><th scope="col" class="num">Bend closer (plays)</th><th scope="col" class="num">Bend better (games)</th><th scope="col">Verdict</th></tr></thead>
+      <tbody id="paired"></tbody>
+    </table>
+    </div>
+  </section>
+
+  <section class="back" id="scores" aria-labelledby="scores-h">
+    <h2 id="scores-h">Scores <span class="hand">every play each source priced</span></h2>
+    <div class="tablewrap">
+    <table class="bench">
+      <caption id="scores-cap">Each source on every scored play where it had a number.</caption>
+      <thead><tr><th scope="col">Source</th><th scope="col" class="num">Plays</th><th scope="col" class="num">Games</th><th scope="col" class="num">Brier</th><th scope="col" class="num">Log loss</th><th scope="col" class="num">Skill vs base rate</th><th scope="col" class="num">Calibration error</th><th scope="col" class="num">Right side of 50%</th></tr></thead>
+      <tbody id="sources"></tbody>
+    </table>
+    </div>
+  </section>
+
+  <section class="back" id="calibration" aria-labelledby="calibration-h">
+    <h2 id="calibration-h">Calibration <span class="hand">said 70%, won 70%?</span></h2>
+    <figure class="figure">
+      <h2>Figure 1</h2>
+      <ul class="legend" id="cal-legend"></ul>
+      <div id="cal" role="img" aria-label="Calibration of Bend and MLB"></div>
+      <figcaption id="cal-cap">Plays grouped by forecast home win probability in 10-point bins; each point is how often the home side went on to win among the plays in that bin. The dashed line marks each bin's midpoint, where a calibrated source would sit; the Bins table below gives each source's mean forecast per bin.</figcaption>
+    </figure>
+    <div class="tablewrap">
+    <table class="bench">
+      <caption>Brier = reliability − resolution + uncertainty, over the same 10 bins. Calibration error is the play-weighted mean gap between forecast and observed, in percentage points.</caption>
+      <thead><tr><th scope="col">Source</th><th scope="col" class="num">Reliability (lower better)</th><th scope="col" class="num">Resolution (higher better)</th><th scope="col" class="num">Uncertainty</th><th scope="col" class="num">Calibration error (pp)</th></tr></thead>
+      <tbody id="decomp"></tbody>
+    </table>
+    </div>
+    <details>
+      <summary>Bins</summary>
+      <div class="tablewrap">
+      <table class="bench">
+        <thead><tr><th scope="col">Bin</th><th scope="col" class="num">Bend plays</th><th scope="col" class="num">Bend forecast</th><th scope="col" class="num">Bend observed</th><th scope="col" class="num">MLB plays</th><th scope="col" class="num">MLB forecast</th><th scope="col" class="num">MLB observed</th></tr></thead>
+        <tbody id="bins"></tbody>
+      </table>
+      </div>
+    </details>
+  </section>
+
+  <section class="back" id="segments" aria-labelledby="segments-h">
+    <h2 id="segments-h">Where Bend wins <span class="hand">Bend vs MLB by situation</span></h2>
+    <div class="tablewrap">
+    <table class="bench">
+      <caption>Paired plays only. Inning and run margin are the state after the play; a pregame row would be its own bucket, but MLB publishes no pregame number, so none is paired. Intervals resample whole games within each segment.</caption>
+      <thead><tr><th scope="col">Segment</th><th scope="col" class="num">Paired plays</th><th scope="col" class="num">Bend Brier</th><th scope="col" class="num">MLB Brier</th><th scope="col" class="num">Δ (95% CI)</th><th scope="col">Verdict</th></tr></thead>
+      <tbody id="segs"></tbody>
+    </table>
+    </div>
+  </section>
+
+  <section class="back" id="games" aria-labelledby="games-h">
+    <h2 id="games-h">Every game <span class="hand" id="games-hand">100 games</span></h2>
+    <div class="tablewrap">
+    <table class="bench">
+      <caption>Bend and MLB Brier on each game's paired plays. Δ is Bend minus MLB; negative means Bend was closer.</caption>
+      <thead><tr><th scope="col">Date</th><th scope="col">Game</th><th scope="col">Final</th><th scope="col" class="num">Scored</th><th scope="col" class="num">Unscored</th><th scope="col" class="num">Bend Brier</th><th scope="col" class="num">MLB Brier</th><th scope="col" class="num">Δ</th></tr></thead>
+      <tbody id="pergame"></tbody>
+    </table>
+    </div>
+  </section>
+
+  <section class="back" id="method" aria-labelledby="method-h">
+    <h2 id="method-h">Method <span class="hand">how it was scored</span></h2>
+    <ul class="notes">
+      <li><b>The draw.</b> <span id="m-draw">Games drawn at random from the Final 2026 regular-season games, stratified by month, after excluding the games inspected while the model was developed.</span> A game that fails to replay is reported, never replaced.</li>
+      <li><b>What is scored.</b> Every row Bend simulated whose scorebook state matches MLB's after the play. The final row, where the game is already decided, is excluded. A play the encoding refuses leaves every later row of that game unscored: <span id="m-unscored">–</span>.</li>
+      <li><b>The model.</b> Each side bats at the previous season's league rates against the other side's pitching through the day before the game: the team's, shrunk toward the league by 2,000 batters faced, blended with the probable starter's (shrunk toward his team's by 600) by the share of batters he is expected to face, with the previous season's home/away factors. In the simulated games, an out in play with a runner on first and fewer than two outs is a double play 21% of the time; otherwise a runner on third scores 61%, on second takes third 49%, on first takes second 21%; a single scores a runner from second 61% and sends one from first to third 35%; a double scores a runner from first 38%. Regular-season extra innings start with a runner on second.</li>
+      <li><b>Chosen elsewhere, scored once.</b> <span id="m-chosen">Every setting above was chosen on the other 2,315 Final 2026 games (<code>tune.py</code>), where the model's Brier is 0.1554 against MLB's 0.1571 on the same plays (Δ −0.0017, 95% CI −0.0028 to −0.0006; in-sample for those choices). These games were then scored once. This is the second model scored on them: the first (team batting and pitching to date, a simpler simulator) scored 0.1653 against MLB's 0.1670 on the 93 games it completed; this one scores 0.1662 against 0.1671 on those same 93.</span></li>
+      <li><b>The metrics.</b> All pooled over plays. Brier is the mean squared error of the home win probability against the result (0 or 1); log loss clips forecasts to [0.0001, 0.9999]; skill is 1 − Brier divided by the Brier of always forecasting the observed home win rate; right side of 50% counts a forecast of exactly 50% as half.</li>
+      <li><b>The intervals.</b> 10,000 bootstrap resamples of whole games (seed 2026), so plays from one game move together. A clear win or loss means the 95% interval excludes zero; otherwise no clear difference. The games column adds an exact two-sided sign test on per-game Brier.</li>
+      <li id="m-markets"><b>Market prices are a reference.</b> Each venue's bid/ask midpoint from minute history, read up to 60 s after the play ended (Kalshi's home and away markets normalised to sum to 100); no fee adjustment, books wider than 10 points dropped.</li>
+      <li><b>A benchmark, not a claim of superiority.</b> MLB's win probability is a production model with far more information than this proof of concept uses.</li>
+    </ul>
+  </section>
+
+  <section class="back" id="reproduce" aria-labelledby="reproduce-h">
+    <h2 id="reproduce-h">Reproduce <span class="hand">same seed, same games</span></h2>
+<pre><code>python3 bench.py --draw 100 --seed 2026   # fixtures-bench/pks.json
+python3 bench.py --web                    # replay, score, write web/bench/data.json
+python3 -m unittest discover -s tests -v</code></pre>
+    <p>Fixtures download on the first run into <code>fixtures-bench/cache/</code> and are reused after that. The model's settings come from the development games: <code>python3 tune.py fetch</code>, then <code>python3 tune.py advancement</code> (the simulator's runner advancement) and <code>python3 tune.py variants</code> (the rate model against the alternatives it was chosen over).</p>
+  </section>
+
+  <footer>
+    <span>Bend · live.py · <a href="https://statsapi.mlb.com" rel="noreferrer">MLB Stats API</a> · diagrams by <a href="https://pele.run" rel="noreferrer">Pele</a></span>
+    <span><a href="https://github.com/harlanljones/bend-winprob">harlanljones/bend-winprob</a></span>
+  </footer>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/pele@1.9.0/dist/pele.global.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+const MINUS = "\u2212";
+const f4 = x => x === null || x === undefined ? "—" : x.toFixed(4);
+const signed = (x, d = 4) => x === null || x === undefined ? "—" : (x < 0 ? MINUS : "+") + Math.abs(x).toFixed(d);
+const ci = c => `[${signed(c[0])}, ${signed(c[1])}]`;
+const pct = x => x === null || x === undefined ? "—" : `${x.toFixed(1)}%`;
+const pval = p => p < 0.001 ? "< 0.001" : p.toFixed(3);
+const count = x => Number(x).toLocaleString();
+const ORDER = ["mlb", "kalshi", "polymarket", "polymarket_us"];
+const VERDICT = { "clear win": ["win", "Clear win"], "clear loss": ["loss", "Clear loss"],
+                  "no clear difference": ["even", "No clear difference"] };
+const label = v => { const [cls, text] = VERDICT[v] || VERDICT["no clear difference"]; return `<b class="v ${cls}">${text}</b>`; };
+const deltaClass = v => v === "clear win" ? "num up" : v === "clear loss" ? "num down" : "num";
+
+function renderHead(d) {
+  $("n-games").textContent = count(d.games.requested);
+  $("f-when").textContent = d.when;
+  $("f-commit").textContent = d.commit;
+  $("f-games").textContent = `${count(d.games.scored)} / ${count(d.games.requested)}`;
+  $("f-plays").textContent = count(d.scored_plays);
+  $("f-sims").innerHTML = `2<sup>${esc(d.depth)}</sup> = ${count(d.sims_per_play)}`;
+}
+
+function renderVerdict(d) {
+  const items = [], rows = [];
+  for (const o of ORDER) {
+    const p = d.paired[o];
+    if (!p) continue;
+    const name = esc(d.names[o]);
+    items.push(`<li>${label(p.verdict)} against ${name}: Brier ${f4(p.bend_brier)} vs ${f4(p.other_brier)} on ${count(p.plays)} paired plays in ${count(p.games)} games; Bend lower in ${(100 * p.p_better).toFixed(1)}% of 10,000 resamples of the games.</li>`);
+    rows.push(`<tr><td>${name}</td><td class="num">${count(p.plays)}</td><td class="num">${f4(p.bend_brier)}</td><td class="num">${f4(p.other_brier)}</td>`
+      + `<td class="${deltaClass(p.verdict)}">${signed(p.d_brier)} ${ci(p.d_brier_ci)}</td>`
+      + `<td class="num">${signed(p.d_logloss)} ${ci(p.d_logloss_ci)}</td>`
+      + `<td class="num">${pct(p.plays_closer)}</td><td class="num">${count(p.games_better)}–${count(p.games_worse)}, p ${pval(p.sign_p)}</td>`
+      + `<td>${label(p.verdict)}</td></tr>`);
+  }
+  $("verdicts").innerHTML = items.join("");
+  $("paired").innerHTML = rows.join("");
+}
+
+function renderScores(d) {
+  $("scores-cap").textContent = `Each source on every scored play where it had a number. Base rate: the home side won on ${d.home_win_rate.toFixed(1)}% of scored plays; skill is the improvement in Brier over always forecasting that rate. Lower Brier, log loss and calibration error are better.`;
+  $("sources").innerHTML = Object.keys(d.names).filter(s => d.sources[s]).map(s => {
+    const x = d.sources[s];
+    return `<tr><td>${esc(d.names[s])}</td><td class="num">${count(x.plays)}</td><td class="num">${count(x.games)}</td>`
+      + `<td class="num">${f4(x.brier)}</td><td class="num">${f4(x.logloss)}</td>`
+      + `<td class="num">${x.bss === null ? "—" : pct(100 * x.bss)}</td><td class="num">${x.ece_pp.toFixed(2)} pp</td>`
+      + `<td class="num">${pct(x.accuracy)}</td></tr>`;
+  }).join("");
+}
+
+// The printed legend: a drawn sample of each line as the chart strokes it, its name, its source.
+function legendItem(name, note, stroke, dash, dot) {
+  return `<li><svg viewBox="0 0 30 10" aria-hidden="true"><line x1="1" y1="5" x2="29" y2="5" stroke="${stroke}"`
+    + (dash ? ` stroke-dasharray="${dash}" stroke-width="1.5"` : "") + `/>`
+    + (dot ? `<circle cx="15" cy="5" r="2.6" fill="${stroke}"/>` : "") + `</svg><b>${name}</b>${note}</li>`;
+}
+
+const MIN_BIN = 20;
+let calData = null, calChart = null;
+
+function calSource(d) {
+  const b = d.sources.bend.calibration, m = d.sources.mlb.calibration;
+  const keep = b.map((_, k) => k).filter(k => b[k].n >= MIN_BIN && m[k].n >= MIN_BIN);
+  const w = $("cal").clientWidth;
+  const src = `---
+config:
+  xyChart:
+    width: ${Math.max(280, w)}
+    height: ${w < 640 ? 250 : 320}
+---
+xychart
+  accTitle: Calibration
+  accDescr: Observed home win rate against forecast bin for Bend and MLB, beside the ideal diagonal.
+  x-axis "forecast home win %, bin" [${keep.map(k => `"${b[k].lo + 5}"`).join(",")}]
+  y-axis "observed home win %" 0 --> 100
+  line "Bend" [${keep.map(k => b[k].observed.toFixed(1)).join(",")}]
+  line "MLB" [${keep.map(k => m[k].observed.toFixed(1)).join(",")}]
+  line "Ideal" [${keep.map(k => b[k].lo + 5).join(",")}]`;
+  return { src, n: keep.length };
+}
+
+function drawCal() {
+  if (!calData || !window.pele) return;
+  const { src, n } = calSource(calData);
+  if (!n) { $("cal").textContent = "Too few plays per bin to plot."; return; }
+  if (calChart) calChart.update(src); else calChart = pele.mount($("cal"), src, { zoom: false, fontSize: 11 });
+}
+
+function renderCalibration(d) {
+  $("cal-legend").innerHTML = legendItem("Bend", `${count(d.sims_per_play)} simulated games a play`, "var(--graphite)", "", true)
+    + legendItem("MLB", "official win probability", "var(--print)", "", true)
+    + legendItem("Ideal", "said = won", "var(--print-rule)", "6 4", false);
+  $("cal-cap").textContent += ` Bins with fewer than ${MIN_BIN} plays from Bend or MLB are left off.`;
+  calData = d;
+  drawCal();
+  $("decomp").innerHTML = Object.keys(d.names).filter(s => d.sources[s]).map(s => {
+    const x = d.sources[s];
+    return `<tr><td>${esc(d.names[s])}</td><td class="num">${x.rel.toFixed(5)}</td><td class="num">${x.res.toFixed(5)}</td>`
+      + `<td class="num">${x.unc.toFixed(5)}</td><td class="num">${x.ece_pp.toFixed(2)}</td></tr>`;
+  }).join("");
+  const b = d.sources.bend.calibration, m = d.sources.mlb.calibration;
+  $("bins").innerHTML = b.map((x, k) => `<tr><td>${x.lo}–${x.hi}%</td>`
+    + `<td class="num">${count(x.n)}</td><td class="num">${pct(x.forecast)}</td><td class="num">${pct(x.observed)}</td>`
+    + `<td class="num">${count(m[k].n)}</td><td class="num">${pct(m[k].forecast)}</td><td class="num">${pct(m[k].observed)}</td></tr>`).join("");
+}
+
+const SEGMENT = { pregame: "Pregame", "1–3": "Innings 1–3", "4–6": "Innings 4–6", "7–9": "Innings 7–9",
+                  "10+": "Extra innings", tied: "Tied", "1": "1 run", "2–3": "2–3 runs", "4+": "4 or more runs" };
+const GROUP = { inning: "By inning", margin: "By run margin after the play" };
+
+function renderSegments(d) {
+  const out = [];
+  for (const g of Object.keys(GROUP)) {
+    const segs = d.segments.filter(s => s.group === g);
+    if (!segs.length) continue;
+    out.push(`<tr class="group"><th scope="rowgroup" colspan="6">${GROUP[g]}</th></tr>`);
+    for (const s of segs) {
+      out.push(`<tr><td>${esc(SEGMENT[s.key] || s.key)}</td><td class="num">${count(s.plays)}</td>`
+        + `<td class="num">${f4(s.bend_brier)}</td><td class="num">${f4(s.mlb_brier)}</td>`
+        + `<td class="${deltaClass(s.verdict)}">${signed(s.d_brier)} ${ci(s.d_brier_ci)}</td><td>${label(s.verdict)}</td></tr>`);
+    }
+  }
+  $("segs").innerHTML = out.join("");
+}
+
+function renderGames(d) {
+  $("games-hand").textContent = `${d.games.scored} games`;
+  const rows = d.per_game.map(g => {
+    const cls = g.d_brier === null ? "num" : g.d_brier < 0 ? "num up" : g.d_brier > 0 ? "num down" : "num";
+    return `<tr><td class="nw">${esc(g.date)}</td><td class="nw">${esc(g.away)} @ ${esc(g.home)}</td><td class="nw">${esc(g.final)}</td>`
+      + `<td class="num">${count(g.scored)}</td><td class="num">${count(g.unscored)}</td>`
+      + `<td class="num">${f4(g.bend_brier)}</td><td class="num">${f4(g.mlb_brier)}</td><td class="${cls}">${signed(g.d_brier)}</td></tr>`;
+  });
+  for (const f of d.games.failed) {
+    rows.push(`<tr><td class="na">—</td><td>${esc(f.gamePk)}</td><td class="na" colspan="6">failed: ${esc(f.error)}</td></tr>`);
+  }
+  $("pergame").innerHTML = rows.join("");
+}
+
+function renderMethod(d) {
+  const s = d.sample;
+  if (s) {
+    const strata = Object.entries(s.strata).map(([m, n]) => `${m}: ${n}`).join(", ");
+    const which = s.n >= s.population ? `All ${count(s.population)} Final ${s.season} regular-season games`
+      : `${s.n} games drawn with seed ${s.seed} from the ${count(s.population)} Final ${s.season} regular-season games`;
+    $("m-draw").textContent = `${which}, ${s.n >= s.population ? "by" : "stratified by"} month (${strata})`
+      + (s.excluded.length ? `; ${s.excluded.length} development games excluded.` : ".");
+    if (s.season !== 2026) {
+      $("m-chosen").textContent = `Every setting above was chosen on 2026 games (tune.py); no ${s.season} game was used, and a ${s.season} game is played against ${s.season - 1}'s league rates and home/away factors. Each game was scored once.`;
+    }
+  }
+  if (!["kalshi", "polymarket", "polymarket_us"].some(k => d.sources[k])) $("m-markets").hidden = true;
+  $("m-unscored").textContent = `${count(d.unscored_plays)} rows in ${d.games_with_unscored} of ${d.games.scored} games`;
+}
+
+function renderRun(d) {
+  const s = d.sample, markets = ["kalshi", "polymarket", "polymarket_us"].filter(k => d.paired[k]).length;
+  $("lede-who").textContent = "MLB's official win probability"
+    + (markets ? ` and ${["", "one", "two", "three"][markets]} prediction market${markets > 1 ? "s" : ""}` : "");
+  if (s) {
+    $("lede-games").textContent = s.n >= s.population ? `Every Final game of the ${s.season} regular season (${count(s.n)})`
+      : `${count(s.n)} games drawn at random from the ${s.season} regular season`;
+    document.title = `Benchmark ${s.season} · Bend vs MLB`;
+  }
+  for (const a of $("f-runs").querySelectorAll("a")) {
+    if (new URL(a.href).search === location.search) a.setAttribute("aria-current", "page");
+  }
+}
+
+const RUN = new URLSearchParams(location.search).get("run");
+const FILE = /^\d{4}$/.test(RUN || "") ? `data-${RUN}.json` : "data.json";
+fetch(FILE, { cache: "no-store" })
+  .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(d => {
+    renderHead(d);
+    renderRun(d);
+    renderVerdict(d);
+    renderScores(d);
+    renderCalibration(d);
+    renderSegments(d);
+    renderGames(d);
+    renderMethod(d);
+  })
+  .catch(() => {
+    $("n-games").textContent = "Benchmark data unavailable.";
+    $("verdicts").innerHTML = "<li>Benchmark data unavailable.</li>";
+  });
+
+let resizeTimer = null;
+addEventListener("resize", () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(drawCal, 150); });
+</script>
+</body>
+</html>

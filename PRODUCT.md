@@ -28,15 +28,15 @@ What a neighbouring project could not truthfully copy:
 
 - The scorebook's invariants are theorems, not tests. `bend PROOF.bend` prints `ALL PROOFS CHECK`; the four laws (tree plays and counts exactly 2^d games; never three outs; OBR 9.03(c) box-score balance; a play never removes a run) are proven by induction and case analysis.
 - Every one of the 2^20 simulated games per play is played by that same proven `step`. Integer draws only; no floating point in the engine. `tree!` runs the identical program on the GPU.
-- It tracks a production model on real data: Brier 0.1245 vs MLB's 0.1543 over 871 plays.
+- It tracks a production model on real data: over every 2025 regular-season game (no 2025 game used to choose any setting), Brier 0.1538 vs MLB's 0.1549 on 180,558 paired plays (Δ −0.0011, 95% CI −0.0022 to −0.0001: a clear win, Bend better in 1,415 of 2,424 games). On the 100-game 2026 sample, 0.1640 vs 0.1642 (no clear difference).
 
 ## Operating Context
 
 - `live.py --publish` POSTs each new per-play CSV to a Cloudflare Worker with one Durable Object; the page polls `/runs/<gamePk>.csv` and `/runs/<gamePk>-meta.json` every 5 s and falls back to the bundled replay in `web/demo/` when nothing is published. `?pk=<gamePk>` selects a game.
 - Per-play CSV columns used by the page: `at_bat_index, inning, half, bases, outs, code, batter, play, away_runs, home_runs, bend_home_wp, mlb_home_wp, kalshi_home_wp, polymarket_home_wp, polymarket_us_home_wp, delta, sims, seconds, mode, state_check, wall_time`. `code` is Bend's 4-character play code (the page follows each batter around the bases with it), `batter` the batter's surname and `play` the scorer's notation (K, Kc for a called third strike, 6-3, F8, 1B, BB, 4-6-3 DP), from MLB's play-by-play. The three market columns are optional and may be empty: each venue's home-win price in percent (bid/ask midpoint; Kalshi's two team markets normalised to 100), read within 60 s after the play ended; shown as a reference line, the market median in each scorecard box, and the readout only when present; `delta` stays Bend − MLB.
 - Meta JSON: `pk, away, home` plus optional `away_name, home_name, away_logo, home_logo`, and `markets`: `[{key, name, url, id}]` for venues listing the game (`key` ∈ `kalshi, polymarket, polymarket_us`; the page links the venue name to `url`).
-- The page is one static HTML file (`web/index.html`) served by the Worker; no build step, no framework.
-- Offline reproduction: `bend PROOF.bend`, `python3 sim_engine.py --pk 849805`, `python3 bench.py`, `python3 -m unittest discover -s tests -v`.
+- The pages are static HTML (`web/index.html`, `web/bench/index.html` rendered from `web/bench/data.json`) sharing `web/book.css`, served by the Worker; no build step, no framework.
+- Offline reproduction: `bend PROOF.bend`, `python3 sim_engine.py --pk 849805`, `python3 bench.py --web`, `python3 -m unittest discover -s tests -v`; model development: `python3 tune.py fetch|advancement|variants|check`.
 
 ## Capabilities and Constraints
 
@@ -54,9 +54,10 @@ What a neighbouring project could not truthfully copy:
 
 ## Evidence on Hand
 
-- Benchmark run of 2026-10-23 (README.md, web/index.html): 12 games, 871 plays scored (859 with an MLB value), 0 failures, depth 2^20 on GPU. Brier 0.1245 vs 0.1543 (19.3% better), log loss 0.3913 vs 0.4565 (14.3%), mean |error| 29.08 pp vs 32.97 pp (11.8%), scorebook mismatches 29/871 (3.3%), 0.099 s per play (≈10.6M sims/s). Bend's Brier lower in 9 of 12 games. Per-game table in web/index.html.
-- Second run at depth 2^16, one game, 75 plays: Brier 0.031 vs 0.048.
-- Bundled replay `web/demo/849805.csv` + `849805-meta.json` (World Series Game 1, TB @ MIL): 69 plays, mean |Δ| to MLB 2.19 pp, box score matches official under OBR 9.03(c), zero mismatches.
+- 2025 season run of 2026-10-24 (README.md, web/bench/data-2025.json, /bench/?run=2025): all 2,425 Final 2025 regular-season games, 2,424 scored (777680: feed not encodable), 182,982 plays, 47 rows unscored in 2 games; box proof holds in 2,420 games. Played against 2024 league rates and home/away factors; no markets recorded. Bend vs MLB: 0.1538 vs 0.1549, Δ −0.00115 [−0.00221, −0.00010], log loss Δ −0.0026 [−0.0053, +0.0002], closer on 68.4% of plays, calibration error 1.31 vs 2.56 pp; innings 1–3 Δ −0.0024 (clear win), later innings no clear difference.
+- Benchmark run of 2026-10-24 (README.md, web/bench/data.json, /bench/): 100 games drawn at random from the 2026 regular season (seed 2026, stratified by month, 12 first-model development games excluded), depth 2^20 on GPU, 0.103 s per play. All 100 scored, 7,467 plays, none unscored; all 200 box checks OK. Paired Brier, Bend vs: MLB 0.1640 vs 0.1642 (Δ −0.0002 [−0.0053, +0.0049]), Kalshi 0.1620 vs 0.1621, Polymarket 0.1647 vs 0.1684, Polymarket US 0.1751 vs 0.1815; every verdict "no clear difference". Bend better than MLB in 60 of 100 games, closer on 67.2% of plays.
+- Model chosen on the other 2,315 Final 2026 games (tune.py): pitching to date (team, probable starter) against league batting, measured runner advancement, automatic runner in regular-season extras. Second model scored on the test games; on the 93 the first completed: first 0.1653 vs MLB 0.1670, this one 0.1662 vs 0.1671.
+- Bundled replay `web/demo/849805.csv` + `849805-meta.json` (World Series Game 1, TB @ MIL): 69 plays, mean |Δ| to MLB 8.36 pp (2.04 pp to Kalshi), box score matches official under OBR 9.03(c), zero mismatches.
 - Code snippets in the page are verbatim from `game.bend`, `sim.bend`, and `live.py` output.
 - Team logos arrive via `meta.away_logo` / `home_logo` when published; none bundled.
 - No testimonials, press, or customer logos exist; none may be invented.

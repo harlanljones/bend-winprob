@@ -1,0 +1,1978 @@
+{
+ "when": "2026-10-24 00:12:37",
+ "commit": "483b220-dirty",
+ "bend": "bend 2.0.39",
+ "depth": 20,
+ "sims_per_play": 1048576,
+ "mode": "gpu",
+ "avg_sec_per_play": 0.103,
+ "sample": {
+  "season": 2026,
+  "seed": 2026,
+  "n": 100,
+  "population": 2415,
+  "excluded": [
+   823244,
+   822828,
+   822908,
+   824925,
+   824187,
+   825072,
+   822882,
+   824247,
+   825049,
+   823585,
+   824550,
+   823164
+  ],
+  "strata": {
+   "2026-03": 3,
+   "2026-04": 16,
+   "2026-05": 17,
+   "2026-06": 16,
+   "2026-07": 16,
+   "2026-08": 17,
+   "2026-09": 15
+  }
+ },
+ "games": {
+  "requested": 100,
+  "scored": 100,
+  "failed": []
+ },
+ "scored_plays": 7467,
+ "unscored_plays": 0,
+ "games_with_unscored": 0,
+ "home_win_rate": 56.194,
+ "names": {
+  "bend": "Bend",
+  "mlb": "MLB official",
+  "kalshi": "Kalshi",
+  "polymarket": "Polymarket",
+  "polymarket_us": "Polymarket US"
+ },
+ "sources": {
+  "bend": {
+   "plays": 7467,
+   "games": 100,
+   "brier": 0.16506,
+   "logloss": 0.47772,
+   "bss": 0.32946,
+   "accuracy": 72.358,
+   "rel": 0.00231,
+   "res": 0.0831,
+   "unc": 0.24616,
+   "ece_pp": 4.118,
+   "calibration": [
+    {
+     "lo": 0,
+     "hi": 10,
+     "n": 685,
+     "forecast": 3.452,
+     "observed": 0.146
+    },
+    {
+     "lo": 10,
+     "hi": 20,
+     "n": 380,
+     "forecast": 15.175,
+     "observed": 14.737
+    },
+    {
+     "lo": 20,
+     "hi": 30,
+     "n": 491,
+     "forecast": 25.227,
+     "observed": 34.623
+    },
+    {
+     "lo": 30,
+     "hi": 40,
+     "n": 630,
+     "forecast": 35.406,
+     "observed": 43.175
+    },
+    {
+     "lo": 40,
+     "hi": 50,
+     "n": 805,
+     "forecast": 45.363,
+     "observed": 48.82
+    },
+    {
+     "lo": 50,
+     "hi": 60,
+     "n": 1255,
+     "forecast": 54.731,
+     "observed": 52.51
+    },
+    {
+     "lo": 60,
+     "hi": 70,
+     "n": 637,
+     "forecast": 64.609,
+     "observed": 57.614
+    },
+    {
+     "lo": 70,
+     "hi": 80,
+     "n": 634,
+     "forecast": 75.188,
+     "observed": 73.817
+    },
+    {
+     "lo": 80,
+     "hi": 90,
+     "n": 675,
+     "forecast": 85.088,
+     "observed": 79.259
+    },
+    {
+     "lo": 90,
+     "hi": 100,
+     "n": 1275,
+     "forecast": 96.879,
+     "observed": 100.0
+    }
+   ]
+  },
+  "mlb": {
+   "plays": 7367,
+   "games": 100,
+   "brier": 0.16419,
+   "logloss": 0.47726,
+   "bss": 0.33309,
+   "accuracy": 72.499,
+   "rel": 0.00269,
+   "res": 0.0844,
+   "unc": 0.24619,
+   "ece_pp": 4.312,
+   "calibration": [
+    {
+     "lo": 0,
+     "hi": 10,
+     "n": 629,
+     "forecast": 3.509,
+     "observed": 0.0
+    },
+    {
+     "lo": 10,
+     "hi": 20,
+     "n": 358,
+     "forecast": 15.387,
+     "observed": 8.939
+    },
+    {
+     "lo": 20,
+     "hi": 30,
+     "n": 462,
+     "forecast": 25.123,
+     "observed": 34.416
+    },
+    {
+     "lo": 30,
+     "hi": 40,
+     "n": 709,
+     "forecast": 35.244,
+     "observed": 39.774
+    },
+    {
+     "lo": 40,
+     "hi": 50,
+     "n": 678,
+     "forecast": 44.061,
+     "observed": 50.737
+    },
+    {
+     "lo": 50,
+     "hi": 60,
+     "n": 1541,
+     "forecast": 53.575,
+     "observed": 53.926
+    },
+    {
+     "lo": 60,
+     "hi": 70,
+     "n": 576,
+     "forecast": 65.005,
+     "observed": 55.035
+    },
+    {
+     "lo": 70,
+     "hi": 80,
+     "n": 605,
+     "forecast": 75.233,
+     "observed": 79.669
+    },
+    {
+     "lo": 80,
+     "hi": 90,
+     "n": 628,
+     "forecast": 84.723,
+     "observed": 81.21
+    },
+    {
+     "lo": 90,
+     "hi": 100,
+     "n": 1181,
+     "forecast": 96.572,
+     "observed": 100.0
+    }
+   ]
+  },
+  "kalshi": {
+   "plays": 7107,
+   "games": 99,
+   "brier": 0.1621,
+   "logloss": 0.47166,
+   "bss": 0.34289,
+   "accuracy": 73.034,
+   "rel": 0.00207,
+   "res": 0.0866,
+   "unc": 0.24668,
+   "ece_pp": 4.317,
+   "calibration": [
+    {
+     "lo": 0,
+     "hi": 10,
+     "n": 677,
+     "forecast": 3.649,
+     "observed": 0.443
+    },
+    {
+     "lo": 10,
+     "hi": 20,
+     "n": 359,
+     "forecast": 15.52,
+     "observed": 12.813
+    },
+    {
+     "lo": 20,
+     "hi": 30,
+     "n": 467,
+     "forecast": 25.32,
+     "observed": 29.336
+    },
+    {
+     "lo": 30,
+     "hi": 40,
+     "n": 627,
+     "forecast": 34.981,
+     "observed": 41.946
+    },
+    {
+     "lo": 40,
+     "hi": 50,
+     "n": 758,
+     "forecast": 45.177,
+     "observed": 50.264
+    },
+    {
+     "lo": 50,
+     "hi": 60,
+     "n": 1003,
+     "forecast": 54.808,
+     "observed": 51.944
+    },
+    {
+     "lo": 60,
+     "hi": 70,
+     "n": 730,
+     "forecast": 64.678,
+     "observed": 60.137
+    },
+    {
+     "lo": 70,
+     "hi": 80,
+     "n": 555,
+     "forecast": 75.25,
+     "observed": 67.928
+    },
+    {
+     "lo": 80,
+     "hi": 90,
+     "n": 699,
+     "forecast": 84.87,
+     "observed": 80.83
+    },
+    {
+     "lo": 90,
+     "hi": 100,
+     "n": 1232,
+     "forecast": 96.376,
+     "observed": 99.919
+    }
+   ]
+  },
+  "polymarket": {
+   "plays": 6980,
+   "games": 100,
+   "brier": 0.16841,
+   "logloss": 0.51692,
+   "bss": 0.31763,
+   "accuracy": 72.049,
+   "rel": 0.0024,
+   "res": 0.08095,
+   "unc": 0.2468,
+   "ece_pp": 4.556,
+   "calibration": [
+    {
+     "lo": 0,
+     "hi": 10,
+     "n": 709,
+     "forecast": 3.389,
+     "observed": 6.206
+    },
+    {
+     "lo": 10,
+     "hi": 20,
+     "n": 351,
+     "forecast": 15.453,
+     "observed": 14.53
+    },
+    {
+     "lo": 20,
+     "hi": 30,
+     "n": 459,
+     "forecast": 25.133,
+     "observed": 27.669
+    },
+    {
+     "lo": 30,
+     "hi": 40,
+     "n": 615,
+     "forecast": 35.013,
+     "observed": 42.602
+    },
+    {
+     "lo": 40,
+     "hi": 50,
+     "n": 770,
+     "forecast": 45.294,
+     "observed": 51.429
+    },
+    {
+     "lo": 50,
+     "hi": 60,
+     "n": 962,
+     "forecast": 54.826,
+     "observed": 50.832
+    },
+    {
+     "lo": 60,
+     "hi": 70,
+     "n": 727,
+     "forecast": 64.767,
+     "observed": 59.422
+    },
+    {
+     "lo": 70,
+     "hi": 80,
+     "n": 531,
+     "forecast": 75.369,
+     "observed": 67.985
+    },
+    {
+     "lo": 80,
+     "hi": 90,
+     "n": 677,
+     "forecast": 84.936,
+     "observed": 80.355
+    },
+    {
+     "lo": 90,
+     "hi": 100,
+     "n": 1179,
+     "forecast": 96.458,
+     "observed": 100.0
+    }
+   ]
+  },
+  "polymarket_us": {
+   "plays": 6727,
+   "games": 100,
+   "brier": 0.18153,
+   "logloss": 0.54693,
+   "bss": 0.27061,
+   "accuracy": 70.083,
+   "rel": 0.0031,
+   "res": 0.0705,
+   "unc": 0.24888,
+   "ece_pp": 5.091,
+   "calibration": [
+    {
+     "lo": 0,
+     "hi": 10,
+     "n": 760,
+     "forecast": 3.462,
+     "observed": 10.526
+    },
+    {
+     "lo": 10,
+     "hi": 20,
+     "n": 365,
+     "forecast": 15.353,
+     "observed": 15.068
+    },
+    {
+     "lo": 20,
+     "hi": 30,
+     "n": 462,
+     "forecast": 25.286,
+     "observed": 25.974
+    },
+    {
+     "lo": 30,
+     "hi": 40,
+     "n": 611,
+     "forecast": 34.981,
+     "observed": 42.39
+    },
+    {
+     "lo": 40,
+     "hi": 50,
+     "n": 798,
+     "forecast": 45.132,
+     "observed": 52.632
+    },
+    {
+     "lo": 50,
+     "hi": 60,
+     "n": 993,
+     "forecast": 54.696,
+     "observed": 51.46
+    },
+    {
+     "lo": 60,
+     "hi": 70,
+     "n": 722,
+     "forecast": 64.712,
+     "observed": 59.972
+    },
+    {
+     "lo": 70,
+     "hi": 80,
+     "n": 537,
+     "forecast": 75.196,
+     "observed": 68.343
+    },
+    {
+     "lo": 80,
+     "hi": 90,
+     "n": 635,
+     "forecast": 84.976,
+     "observed": 79.055
+    },
+    {
+     "lo": 90,
+     "hi": 100,
+     "n": 844,
+     "forecast": 95.18,
+     "observed": 99.763
+    }
+   ]
+  }
+ },
+ "paired": {
+  "mlb": {
+   "plays": 7367,
+   "games": 100,
+   "bend_brier": 0.16398,
+   "other_brier": 0.16419,
+   "d_brier": -0.00021,
+   "d_brier_ci": [
+    -0.00532,
+    0.0049
+   ],
+   "p_better": 0.5408,
+   "d_logloss": -0.00233,
+   "d_logloss_ci": [
+    -0.01406,
+    0.00956
+   ],
+   "plays_closer": 67.151,
+   "plays_tied": 0.217,
+   "games_better": 60,
+   "games_worse": 40,
+   "sign_p": 0.05689,
+   "verdict": "no clear difference"
+  },
+  "kalshi": {
+   "plays": 7107,
+   "games": 99,
+   "bend_brier": 0.16204,
+   "other_brier": 0.1621,
+   "d_brier": -5e-05,
+   "d_brier_ci": [
+    -0.00544,
+    0.00532
+   ],
+   "p_better": 0.5068,
+   "d_logloss": -0.00076,
+   "d_logloss_ci": [
+    -0.01303,
+    0.01152
+   ],
+   "plays_closer": 54.847,
+   "plays_tied": 0.169,
+   "games_better": 49,
+   "games_worse": 50,
+   "sign_p": 1.0,
+   "verdict": "no clear difference"
+  },
+  "polymarket": {
+   "plays": 6980,
+   "games": 100,
+   "bend_brier": 0.16472,
+   "other_brier": 0.16841,
+   "d_brier": -0.00369,
+   "d_brier_ci": [
+    -0.01414,
+    0.00427
+   ],
+   "p_better": 0.774,
+   "d_logloss": -0.03986,
+   "d_logloss_ci": [
+    -0.12752,
+    0.00883
+   ],
+   "plays_closer": 53.954,
+   "plays_tied": 0.287,
+   "games_better": 51,
+   "games_worse": 49,
+   "sign_p": 0.92041,
+   "verdict": "no clear difference"
+  },
+  "polymarket_us": {
+   "plays": 6727,
+   "games": 100,
+   "bend_brier": 0.17507,
+   "other_brier": 0.18153,
+   "d_brier": -0.00646,
+   "d_brier_ci": [
+    -0.02523,
+    0.00588
+   ],
+   "p_better": 0.7549,
+   "d_logloss": -0.04089,
+   "d_logloss_ci": [
+    -0.13571,
+    0.01263
+   ],
+   "plays_closer": 52.416,
+   "plays_tied": 0.119,
+   "games_better": 46,
+   "games_worse": 54,
+   "sign_p": 0.48412,
+   "verdict": "no clear difference"
+  }
+ },
+ "segments": [
+  {
+   "group": "inning",
+   "key": "1–3",
+   "plays": 2430,
+   "bend_brier": 0.23205,
+   "mlb_brier": 0.23288,
+   "d_brier": -0.00083,
+   "d_brier_ci": [
+    -0.00947,
+    0.00787
+   ],
+   "verdict": "no clear difference"
+  },
+  {
+   "group": "inning",
+   "key": "4–6",
+   "plays": 2560,
+   "bend_brier": 0.17575,
+   "mlb_brier": 0.1746,
+   "d_brier": 0.00115,
+   "d_brier_ci": [
+    -0.00411,
+    0.00649
+   ],
+   "verdict": "no clear difference"
+  },
+  {
+   "group": "inning",
+   "key": "7–9",
+   "plays": 2335,
+   "bend_brier": 0.08014,
+   "mlb_brier": 0.08096,
+   "d_brier": -0.00082,
+   "d_brier_ci": [
+    -0.00302,
+    0.00136
+   ],
+   "verdict": "no clear difference"
+  },
+  {
+   "group": "inning",
+   "key": "10+",
+   "plays": 42,
+   "bend_brier": 0.16871,
+   "mlb_brier": 0.1825,
+   "d_brier": -0.0138,
+   "d_brier_ci": [
+    -0.02171,
+    0.00088
+   ],
+   "verdict": "no clear difference"
+  },
+  {
+   "group": "margin",
+   "key": "tied",
+   "plays": 1855,
+   "bend_brier": 0.24576,
+   "mlb_brier": 0.24948,
+   "d_brier": -0.00373,
+   "d_brier_ci": [
+    -0.01351,
+    0.00628
+   ],
+   "verdict": "no clear difference"
+  },
+  {
+   "group": "margin",
+   "key": "1",
+   "plays": 1979,
+   "bend_brier": 0.22344,
+   "mlb_brier": 0.22069,
+   "d_brier": 0.00275,
+   "d_brier_ci": [
+    -0.00678,
+    0.01203
+   ],
+   "verdict": "no clear difference"
+  },
+  {
+   "group": "margin",
+   "key": "2–3",
+   "plays": 2022,
+   "bend_brier": 0.14434,
+   "mlb_brier": 0.14356,
+   "d_brier": 0.00078,
+   "d_brier_ci": [
+    -0.00432,
+    0.00669
+   ],
+   "verdict": "no clear difference"
+  },
+  {
+   "group": "margin",
+   "key": "4+",
+   "plays": 1511,
+   "bend_brier": 0.01198,
+   "mlb_brier": 0.01309,
+   "d_brier": -0.00111,
+   "d_brier_ci": [
+    -0.00156,
+    -0.00072
+   ],
+   "verdict": "clear win"
+  }
+ ],
+ "per_game": [
+  {
+   "gamePk": 823163,
+   "date": "2026-03-26",
+   "away": "CLE",
+   "home": "SEA",
+   "final": "6-4",
+   "home_won": false,
+   "scored": 75,
+   "unscored": 0,
+   "bend_brier": 0.24809,
+   "mlb_brier": 0.23207,
+   "d_brier": 0.01602
+  },
+  {
+   "gamePk": 823893,
+   "date": "2026-03-27",
+   "away": "COL",
+   "home": "MIA",
+   "final": "1-2",
+   "home_won": true,
+   "scored": 69,
+   "unscored": 0,
+   "bend_brier": 0.08555,
+   "mlb_brier": 0.09965,
+   "d_brier": -0.0141
+  },
+  {
+   "gamePk": 824862,
+   "date": "2026-03-28",
+   "away": "MIN",
+   "home": "BAL",
+   "final": "4-1",
+   "home_won": false,
+   "scored": 74,
+   "unscored": 0,
+   "bend_brier": 0.18047,
+   "mlb_brier": 0.16909,
+   "d_brier": 0.01138
+  },
+  {
+   "gamePk": 825026,
+   "date": "2026-04-03",
+   "away": "HOU",
+   "home": "ATH",
+   "final": "4-11",
+   "home_won": true,
+   "scored": 80,
+   "unscored": 0,
+   "bend_brier": 0.06155,
+   "mlb_brier": 0.07202,
+   "d_brier": -0.01048
+  },
+  {
+   "gamePk": 824460,
+   "date": "2026-04-05",
+   "away": "CHC",
+   "home": "CLE",
+   "final": "5-6",
+   "home_won": true,
+   "scored": 77,
+   "unscored": 0,
+   "bend_brier": 0.30905,
+   "mlb_brier": 0.31278,
+   "d_brier": -0.00373
+  },
+  {
+   "gamePk": 825102,
+   "date": "2026-04-05",
+   "away": "ATL",
+   "home": "AZ",
+   "final": "5-6",
+   "home_won": true,
+   "scored": 81,
+   "unscored": 0,
+   "bend_brier": 0.18796,
+   "mlb_brier": 0.17926,
+   "d_brier": 0.0087
+  },
+  {
+   "gamePk": 824456,
+   "date": "2026-04-06",
+   "away": "KC",
+   "home": "CLE",
+   "final": "4-2",
+   "home_won": false,
+   "scored": 73,
+   "unscored": 0,
+   "bend_brier": 0.21237,
+   "mlb_brier": 0.19686,
+   "d_brier": 0.01551
+  },
+  {
+   "gamePk": 824051,
+   "date": "2026-04-07",
+   "away": "ATL",
+   "home": "LAA",
+   "final": "7-2",
+   "home_won": false,
+   "scored": 80,
+   "unscored": 0,
+   "bend_brier": 0.16091,
+   "mlb_brier": 0.16542,
+   "d_brier": -0.00451
+  },
+  {
+   "gamePk": 824617,
+   "date": "2026-04-08",
+   "away": "BAL",
+   "home": "CWS",
+   "final": "5-3",
+   "home_won": false,
+   "scored": 80,
+   "unscored": 0,
+   "bend_brier": 0.24169,
+   "mlb_brier": 0.2331,
+   "d_brier": 0.00859
+  },
+  {
+   "gamePk": 824779,
+   "date": "2026-04-08",
+   "away": "MIL",
+   "home": "BOS",
+   "final": "0-5",
+   "home_won": true,
+   "scored": 73,
+   "unscored": 0,
+   "bend_brier": 0.07108,
+   "mlb_brier": 0.07948,
+   "d_brier": -0.00841
+  },
+  {
+   "gamePk": 823480,
+   "date": "2026-04-11",
+   "away": "AZ",
+   "home": "PHI",
+   "final": "3-4",
+   "home_won": true,
+   "scored": 72,
+   "unscored": 0,
+   "bend_brier": 0.16908,
+   "mlb_brier": 0.16862,
+   "d_brier": 0.00046
+  },
+  {
+   "gamePk": 824126,
+   "date": "2026-04-12",
+   "away": "CWS",
+   "home": "KC",
+   "final": "6-5",
+   "home_won": false,
+   "scored": 80,
+   "unscored": 0,
+   "bend_brier": 0.25244,
+   "mlb_brier": 0.22967,
+   "d_brier": 0.02276
+  },
+  {
+   "gamePk": 824293,
+   "date": "2026-04-12",
+   "away": "MIA",
+   "home": "DET",
+   "final": "2-8",
+   "home_won": true,
+   "scored": 73,
+   "unscored": 0,
+   "bend_brier": 0.03298,
+   "mlb_brier": 0.03313,
+   "d_brier": -0.00015
+  },
+  {
+   "gamePk": 824532,
+   "date": "2026-04-15",
+   "away": "SF",
+   "home": "CIN",
+   "final": "3-8",
+   "home_won": true,
+   "scored": 75,
+   "unscored": 0,
+   "bend_brier": 0.02038,
+   "mlb_brier": 0.02608,
+   "d_brier": -0.00571
+  },
+  {
+   "gamePk": 824373,
+   "date": "2026-04-17",
+   "away": "LAD",
+   "home": "COL",
+   "final": "7-1",
+   "home_won": false,
+   "scored": 73,
+   "unscored": 0,
+   "bend_brier": 0.03457,
+   "mlb_brier": 0.04266,
+   "d_brier": -0.00809
+  },
+  {
+   "gamePk": 824693,
+   "date": "2026-04-17",
+   "away": "NYM",
+   "home": "CHC",
+   "final": "4-12",
+   "home_won": true,
+   "scored": 80,
+   "unscored": 0,
+   "bend_brier": 0.03019,
+   "mlb_brier": 0.0411,
+   "d_brier": -0.01091
+  },
+  {
+   "gamePk": 823069,
+   "date": "2026-04-24",
+   "away": "SEA",
+   "home": "STL",
+   "final": "3-2",
+   "home_won": false,
+   "scored": 71,
+   "unscored": 0,
+   "bend_brier": 0.14948,
+   "mlb_brier": 0.16213,
+   "d_brier": -0.01265
+  },
+  {
+   "gamePk": 824610,
+   "date": "2026-04-28",
+   "away": "LAA",
+   "home": "CWS",
+   "final": "2-5",
+   "home_won": true,
+   "scored": 78,
+   "unscored": 0,
+   "bend_brier": 0.09579,
+   "mlb_brier": 0.09203,
+   "d_brier": 0.00377
+  },
+  {
+   "gamePk": 823472,
+   "date": "2026-04-30",
+   "away": "SF",
+   "home": "PHI",
+   "final": "2-3",
+   "home_won": true,
+   "scored": 73,
+   "unscored": 0,
+   "bend_brier": 0.43913,
+   "mlb_brier": 0.4121,
+   "d_brier": 0.02703
+  },
+  {
+   "gamePk": 823389,
+   "date": "2026-05-01",
+   "away": "CIN",
+   "home": "PIT",
+   "final": "1-9",
+   "home_won": true,
+   "scored": 76,
+   "unscored": 0,
+   "bend_brier": 0.02929,
+   "mlb_brier": 0.04919,
+   "d_brier": -0.01989
+  },
+  {
+   "gamePk": 824685,
+   "date": "2026-05-02",
+   "away": "AZ",
+   "home": "CHC",
+   "final": "0-2",
+   "home_won": true,
+   "scored": 65,
+   "unscored": 0,
+   "bend_brier": 0.06767,
+   "mlb_brier": 0.1079,
+   "d_brier": -0.04023
+  },
+  {
+   "gamePk": 822984,
+   "date": "2026-05-04",
+   "away": "TOR",
+   "home": "TB",
+   "final": "1-5",
+   "home_won": true,
+   "scored": 72,
+   "unscored": 0,
+   "bend_brier": 0.0304,
+   "mlb_brier": 0.0501,
+   "d_brier": -0.0197
+  },
+  {
+   "gamePk": 823874,
+   "date": "2026-05-04",
+   "away": "PHI",
+   "home": "MIA",
+   "final": "1-0",
+   "home_won": false,
+   "scored": 68,
+   "unscored": 0,
+   "bend_brier": 0.21908,
+   "mlb_brier": 0.16305,
+   "d_brier": 0.05603
+  },
+  {
+   "gamePk": 824120,
+   "date": "2026-05-04",
+   "away": "CLE",
+   "home": "KC",
+   "final": "2-6",
+   "home_won": true,
+   "scored": 68,
+   "unscored": 0,
+   "bend_brier": 0.16239,
+   "mlb_brier": 0.16718,
+   "d_brier": -0.00479
+  },
+  {
+   "gamePk": 823550,
+   "date": "2026-05-06",
+   "away": "TEX",
+   "home": "NYY",
+   "final": "6-1",
+   "home_won": false,
+   "scored": 71,
+   "unscored": 0,
+   "bend_brier": 0.06501,
+   "mlb_brier": 0.05095,
+   "d_brier": 0.01406
+  },
+  {
+   "gamePk": 823304,
+   "date": "2026-05-09",
+   "away": "STL",
+   "home": "SD",
+   "final": "2-4",
+   "home_won": true,
+   "scored": 69,
+   "unscored": 0,
+   "bend_brier": 0.12629,
+   "mlb_brier": 0.16021,
+   "d_brier": -0.03392
+  },
+  {
+   "gamePk": 824517,
+   "date": "2026-05-14",
+   "away": "WSH",
+   "home": "CIN",
+   "final": "1-15",
+   "home_won": true,
+   "scored": 77,
+   "unscored": 0,
+   "bend_brier": 0.04592,
+   "mlb_brier": 0.04968,
+   "d_brier": -0.00376
+  },
+  {
+   "gamePk": 823627,
+   "date": "2026-05-16",
+   "away": "NYY",
+   "home": "NYM",
+   "final": "3-6",
+   "home_won": true,
+   "scored": 77,
+   "unscored": 0,
+   "bend_brier": 0.12978,
+   "mlb_brier": 0.13608,
+   "d_brier": -0.0063
+  },
+  {
+   "gamePk": 824038,
+   "date": "2026-05-16",
+   "away": "LAD",
+   "home": "LAA",
+   "final": "15-2",
+   "home_won": false,
+   "scored": 87,
+   "unscored": 0,
+   "bend_brier": 0.06863,
+   "mlb_brier": 0.08379,
+   "d_brier": -0.01516
+  },
+  {
+   "gamePk": 822735,
+   "date": "2026-05-20",
+   "away": "NYM",
+   "home": "WSH",
+   "final": "4-8",
+   "home_won": true,
+   "scored": 69,
+   "unscored": 0,
+   "bend_brier": 0.06264,
+   "mlb_brier": 0.04838,
+   "d_brier": 0.01426
+  },
+  {
+   "gamePk": 823787,
+   "date": "2026-05-23",
+   "away": "LAD",
+   "home": "MIL",
+   "final": "11-3",
+   "home_won": false,
+   "scored": 84,
+   "unscored": 0,
+   "bend_brier": 0.27757,
+   "mlb_brier": 0.25069,
+   "d_brier": 0.02687
+  },
+  {
+   "gamePk": 823783,
+   "date": "2026-05-27",
+   "away": "STL",
+   "home": "MIL",
+   "final": "1-2",
+   "home_won": true,
+   "scored": 65,
+   "unscored": 0,
+   "bend_brier": 0.24604,
+   "mlb_brier": 0.30674,
+   "d_brier": -0.0607
+  },
+  {
+   "gamePk": 824756,
+   "date": "2026-05-27",
+   "away": "ATL",
+   "home": "BOS",
+   "final": "0-8",
+   "home_won": true,
+   "scored": 76,
+   "unscored": 0,
+   "bend_brier": 0.11682,
+   "mlb_brier": 0.09968,
+   "d_brier": 0.01714
+  },
+  {
+   "gamePk": 822731,
+   "date": "2026-05-30",
+   "away": "SD",
+   "home": "WSH",
+   "final": "4-9",
+   "home_won": true,
+   "scored": 76,
+   "unscored": 0,
+   "bend_brier": 0.30442,
+   "mlb_brier": 0.27731,
+   "d_brier": 0.02712
+  },
+  {
+   "gamePk": 822975,
+   "date": "2026-05-30",
+   "away": "LAA",
+   "home": "TB",
+   "final": "14-3",
+   "home_won": false,
+   "scored": 87,
+   "unscored": 0,
+   "bend_brier": 0.03835,
+   "mlb_brier": 0.03385,
+   "d_brier": 0.0045
+  },
+  {
+   "gamePk": 823053,
+   "date": "2026-05-31",
+   "away": "CHC",
+   "home": "STL",
+   "final": "1-5",
+   "home_won": true,
+   "scored": 69,
+   "unscored": 0,
+   "bend_brier": 0.04466,
+   "mlb_brier": 0.04525,
+   "d_brier": -0.0006
+  },
+  {
+   "gamePk": 822892,
+   "date": "2026-06-05",
+   "away": "CLE",
+   "home": "TEX",
+   "final": "2-3",
+   "home_won": true,
+   "scored": 66,
+   "unscored": 0,
+   "bend_brier": 0.31146,
+   "mlb_brier": 0.30739,
+   "d_brier": 0.00407
+  },
+  {
+   "gamePk": 824268,
+   "date": "2026-06-07",
+   "away": "SEA",
+   "home": "DET",
+   "final": "4-5",
+   "home_won": true,
+   "scored": 79,
+   "unscored": 0,
+   "bend_brier": 0.4383,
+   "mlb_brier": 0.42779,
+   "d_brier": 0.01051
+  },
+  {
+   "gamePk": 824916,
+   "date": "2026-06-07",
+   "away": "PIT",
+   "home": "ATL",
+   "final": "2-3",
+   "home_won": true,
+   "scored": 68,
+   "unscored": 0,
+   "bend_brier": 0.34598,
+   "mlb_brier": 0.37224,
+   "d_brier": -0.02625
+  },
+  {
+   "gamePk": 824105,
+   "date": "2026-06-09",
+   "away": "TEX",
+   "home": "KC",
+   "final": "3-5",
+   "home_won": true,
+   "scored": 71,
+   "unscored": 0,
+   "bend_brier": 0.2625,
+   "mlb_brier": 0.25092,
+   "d_brier": 0.01157
+  },
+  {
+   "gamePk": 824348,
+   "date": "2026-06-10",
+   "away": "CHC",
+   "home": "COL",
+   "final": "2-3",
+   "home_won": true,
+   "scored": 71,
+   "unscored": 0,
+   "bend_brier": 0.38524,
+   "mlb_brier": 0.3167,
+   "d_brier": 0.06854
+  },
+  {
+   "gamePk": 824426,
+   "date": "2026-06-13",
+   "away": "DET",
+   "home": "CLE",
+   "final": "1-3",
+   "home_won": true,
+   "scored": 72,
+   "unscored": 0,
+   "bend_brier": 0.13841,
+   "mlb_brier": 0.13081,
+   "d_brier": 0.00759
+  },
+  {
+   "gamePk": 824991,
+   "date": "2026-06-16",
+   "away": "PIT",
+   "home": "ATH",
+   "final": "6-5",
+   "home_won": false,
+   "scored": 80,
+   "unscored": 0,
+   "bend_brier": 0.50933,
+   "mlb_brier": 0.51964,
+   "d_brier": -0.01032
+  },
+  {
+   "gamePk": 824746,
+   "date": "2026-06-17",
+   "away": "TOR",
+   "home": "BOS",
+   "final": "3-0",
+   "home_won": false,
+   "scored": 76,
+   "unscored": 0,
+   "bend_brier": 0.10108,
+   "mlb_brier": 0.10736,
+   "d_brier": -0.00628
+  },
+  {
+   "gamePk": 823852,
+   "date": "2026-06-21",
+   "away": "SF",
+   "home": "MIA",
+   "final": "1-2",
+   "home_won": true,
+   "scored": 63,
+   "unscored": 0,
+   "bend_brier": 0.1166,
+   "mlb_brier": 0.13519,
+   "d_brier": -0.01858
+  },
+  {
+   "gamePk": 825067,
+   "date": "2026-06-21",
+   "away": "MIN",
+   "home": "AZ",
+   "final": "4-2",
+   "home_won": false,
+   "scored": 76,
+   "unscored": 0,
+   "bend_brier": 0.40591,
+   "mlb_brier": 0.38662,
+   "d_brier": 0.01929
+  },
+  {
+   "gamePk": 822964,
+   "date": "2026-06-22",
+   "away": "KC",
+   "home": "TB",
+   "final": "2-1",
+   "home_won": false,
+   "scored": 67,
+   "unscored": 0,
+   "bend_brier": 0.18448,
+   "mlb_brier": 0.13939,
+   "d_brier": 0.04509
+  },
+  {
+   "gamePk": 823612,
+   "date": "2026-06-25",
+   "away": "CHC",
+   "home": "NYM",
+   "final": "4-3",
+   "home_won": false,
+   "scored": 85,
+   "unscored": 0,
+   "bend_brier": 0.25169,
+   "mlb_brier": 0.24012,
+   "d_brier": 0.01158
+  },
+  {
+   "gamePk": 823610,
+   "date": "2026-06-26",
+   "away": "PHI",
+   "home": "NYM",
+   "final": "2-1",
+   "home_won": false,
+   "scored": 69,
+   "unscored": 0,
+   "bend_brier": 0.15964,
+   "mlb_brier": 0.16609,
+   "d_brier": -0.00645
+  },
+  {
+   "gamePk": 823122,
+   "date": "2026-06-30",
+   "away": "LAA",
+   "home": "SEA",
+   "final": "3-8",
+   "home_won": true,
+   "scored": 75,
+   "unscored": 0,
+   "bend_brier": 0.10238,
+   "mlb_brier": 0.13297,
+   "d_brier": -0.03059
+  },
+  {
+   "gamePk": 823768,
+   "date": "2026-06-30",
+   "away": "CIN",
+   "home": "MIL",
+   "final": "2-7",
+   "home_won": true,
+   "scored": 73,
+   "unscored": 0,
+   "bend_brier": 0.08167,
+   "mlb_brier": 0.11379,
+   "d_brier": -0.03213
+  },
+  {
+   "gamePk": 824742,
+   "date": "2026-06-30",
+   "away": "WSH",
+   "home": "BOS",
+   "final": "8-1",
+   "home_won": false,
+   "scored": 72,
+   "unscored": 0,
+   "bend_brier": 0.26976,
+   "mlb_brier": 0.2243,
+   "d_brier": 0.04546
+  },
+  {
+   "gamePk": 822714,
+   "date": "2026-07-03",
+   "away": "PIT",
+   "home": "WSH",
+   "final": "5-9",
+   "home_won": true,
+   "scored": 82,
+   "unscored": 0,
+   "bend_brier": 0.03874,
+   "mlb_brier": 0.04432,
+   "d_brier": -0.00557
+  },
+  {
+   "gamePk": 825062,
+   "date": "2026-07-03",
+   "away": "MIL",
+   "home": "AZ",
+   "final": "7-4",
+   "home_won": false,
+   "scored": 95,
+   "unscored": 0,
+   "bend_brier": 0.18628,
+   "mlb_brier": 0.22308,
+   "d_brier": -0.0368
+  },
+  {
+   "gamePk": 824334,
+   "date": "2026-07-04",
+   "away": "SF",
+   "home": "COL",
+   "final": "6-4",
+   "home_won": false,
+   "scored": 82,
+   "unscored": 0,
+   "bend_brier": 0.03303,
+   "mlb_brier": 0.05072,
+   "d_brier": -0.01769
+  },
+  {
+   "gamePk": 824497,
+   "date": "2026-07-05",
+   "away": "BAL",
+   "home": "CIN",
+   "final": "2-3",
+   "home_won": true,
+   "scored": 68,
+   "unscored": 0,
+   "bend_brier": 0.13481,
+   "mlb_brier": 0.13151,
+   "d_brier": 0.0033
+  },
+  {
+   "gamePk": 823682,
+   "date": "2026-07-11",
+   "away": "LAA",
+   "home": "MIN",
+   "final": "3-5",
+   "home_won": true,
+   "scored": 75,
+   "unscored": 0,
+   "bend_brier": 0.07068,
+   "mlb_brier": 0.10009,
+   "d_brier": -0.0294
+  },
+  {
+   "gamePk": 824576,
+   "date": "2026-07-11",
+   "away": "ATH",
+   "home": "CWS",
+   "final": "0-1",
+   "home_won": true,
+   "scored": 66,
+   "unscored": 0,
+   "bend_brier": 0.12002,
+   "mlb_brier": 0.17447,
+   "d_brier": -0.05445
+  },
+  {
+   "gamePk": 823029,
+   "date": "2026-07-12",
+   "away": "ATL",
+   "home": "STL",
+   "final": "4-3",
+   "home_won": false,
+   "scored": 79,
+   "unscored": 0,
+   "bend_brier": 0.21992,
+   "mlb_brier": 0.2222,
+   "d_brier": -0.00228
+  },
+  {
+   "gamePk": 824088,
+   "date": "2026-07-18",
+   "away": "SD",
+   "home": "KC",
+   "final": "1-6",
+   "home_won": true,
+   "scored": 70,
+   "unscored": 0,
+   "bend_brier": 0.06247,
+   "mlb_brier": 0.06344,
+   "d_brier": -0.00097
+  },
+  {
+   "gamePk": 825059,
+   "date": "2026-07-18",
+   "away": "STL",
+   "home": "AZ",
+   "final": "3-5",
+   "home_won": true,
+   "scored": 73,
+   "unscored": 0,
+   "bend_brier": 0.05752,
+   "mlb_brier": 0.05938,
+   "d_brier": -0.00186
+  },
+  {
+   "gamePk": 824087,
+   "date": "2026-07-20",
+   "away": "SF",
+   "home": "KC",
+   "final": "3-4",
+   "home_won": true,
+   "scored": 73,
+   "unscored": 0,
+   "bend_brier": 0.12156,
+   "mlb_brier": 0.11602,
+   "d_brier": 0.00554
+  },
+  {
+   "gamePk": 824004,
+   "date": "2026-07-22",
+   "away": "STL",
+   "home": "LAA",
+   "final": "1-0",
+   "home_won": false,
+   "scored": 67,
+   "unscored": 0,
+   "bend_brier": 0.234,
+   "mlb_brier": 0.20052,
+   "d_brier": 0.03348
+  },
+  {
+   "gamePk": 824650,
+   "date": "2026-07-22",
+   "away": "DET",
+   "home": "CHC",
+   "final": "5-1",
+   "home_won": false,
+   "scored": 69,
+   "unscored": 0,
+   "bend_brier": 0.0901,
+   "mlb_brier": 0.1201,
+   "d_brier": -0.03
+  },
+  {
+   "gamePk": 822952,
+   "date": "2026-07-24",
+   "away": "CLE",
+   "home": "TB",
+   "final": "3-11",
+   "home_won": true,
+   "scored": 80,
+   "unscored": 0,
+   "bend_brier": 0.0385,
+   "mlb_brier": 0.05463,
+   "d_brier": -0.01613
+  },
+  {
+   "gamePk": 823923,
+   "date": "2026-07-28",
+   "away": "SEA",
+   "home": "LAD",
+   "final": "7-6",
+   "home_won": false,
+   "scored": 78,
+   "unscored": 0,
+   "bend_brier": 0.33357,
+   "mlb_brier": 0.26919,
+   "d_brier": 0.06438
+  },
+  {
+   "gamePk": 824243,
+   "date": "2026-07-28",
+   "away": "BAL",
+   "home": "DET",
+   "final": "0-14",
+   "home_won": true,
+   "scored": 76,
+   "unscored": 0,
+   "bend_brier": 0.0189,
+   "mlb_brier": 0.03163,
+   "d_brier": -0.01273
+  },
+  {
+   "gamePk": 823921,
+   "date": "2026-07-30",
+   "away": "SEA",
+   "home": "LAD",
+   "final": "2-6",
+   "home_won": true,
+   "scored": 75,
+   "unscored": 0,
+   "bend_brier": 0.04002,
+   "mlb_brier": 0.04367,
+   "d_brier": -0.00365
+  },
+  {
+   "gamePk": 823432,
+   "date": "2026-08-04",
+   "away": "WSH",
+   "home": "PHI",
+   "final": "0-5",
+   "home_won": true,
+   "scored": 69,
+   "unscored": 0,
+   "bend_brier": 0.03421,
+   "mlb_brier": 0.0545,
+   "d_brier": -0.02029
+  },
+  {
+   "gamePk": 824161,
+   "date": "2026-08-04",
+   "away": "TOR",
+   "home": "HOU",
+   "final": "2-7",
+   "home_won": true,
+   "scored": 71,
+   "unscored": 0,
+   "bend_brier": 0.13966,
+   "mlb_brier": 0.12189,
+   "d_brier": 0.01777
+  },
+  {
+   "gamePk": 825054,
+   "date": "2026-08-04",
+   "away": "SD",
+   "home": "AZ",
+   "final": "9-4",
+   "home_won": false,
+   "scored": 80,
+   "unscored": 0,
+   "bend_brier": 0.02568,
+   "mlb_brier": 0.01887,
+   "d_brier": 0.00681
+  },
+  {
+   "gamePk": 824082,
+   "date": "2026-08-05",
+   "away": "MIN",
+   "home": "KC",
+   "final": "1-2",
+   "home_won": true,
+   "scored": 60,
+   "unscored": 0,
+   "bend_brier": 0.19276,
+   "mlb_brier": 0.21003,
+   "d_brier": -0.01727
+  },
+  {
+   "gamePk": 825052,
+   "date": "2026-08-05",
+   "away": "SD",
+   "home": "AZ",
+   "final": "4-10",
+   "home_won": true,
+   "scored": 78,
+   "unscored": 0,
+   "bend_brier": 0.08374,
+   "mlb_brier": 0.07248,
+   "d_brier": 0.01126
+  },
+  {
+   "gamePk": 823834,
+   "date": "2026-08-08",
+   "away": "LAA",
+   "home": "MIA",
+   "final": "0-7",
+   "home_won": true,
+   "scored": 71,
+   "unscored": 0,
+   "bend_brier": 0.06747,
+   "mlb_brier": 0.07536,
+   "d_brier": -0.00789
+  },
+  {
+   "gamePk": 822700,
+   "date": "2026-08-09",
+   "away": "CIN",
+   "home": "WSH",
+   "final": "1-7",
+   "home_won": true,
+   "scored": 70,
+   "unscored": 0,
+   "bend_brier": 0.07151,
+   "mlb_brier": 0.08937,
+   "d_brier": -0.01786
+  },
+  {
+   "gamePk": 823918,
+   "date": "2026-08-10",
+   "away": "KC",
+   "home": "LAD",
+   "final": "5-6",
+   "home_won": true,
+   "scored": 71,
+   "unscored": 0,
+   "bend_brier": 0.2201,
+   "mlb_brier": 0.27737,
+   "d_brier": -0.05728
+  },
+  {
+   "gamePk": 824400,
+   "date": "2026-08-15",
+   "away": "SD",
+   "home": "CLE",
+   "final": "1-6",
+   "home_won": true,
+   "scored": 67,
+   "unscored": 0,
+   "bend_brier": 0.08858,
+   "mlb_brier": 0.09828,
+   "d_brier": -0.00969
+  },
+  {
+   "gamePk": 824480,
+   "date": "2026-08-15",
+   "away": "MIA",
+   "home": "CIN",
+   "final": "8-4",
+   "home_won": false,
+   "scored": 83,
+   "unscored": 0,
+   "bend_brier": 0.25104,
+   "mlb_brier": 0.27234,
+   "d_brier": -0.0213
+  },
+  {
+   "gamePk": 823344,
+   "date": "2026-08-16",
+   "away": "BOS",
+   "home": "PIT",
+   "final": "3-8",
+   "home_won": true,
+   "scored": 72,
+   "unscored": 0,
+   "bend_brier": 0.02955,
+   "mlb_brier": 0.03644,
+   "d_brier": -0.00689
+  },
+  {
+   "gamePk": 824236,
+   "date": "2026-08-16",
+   "away": "CWS",
+   "home": "DET",
+   "final": "7-5",
+   "home_won": false,
+   "scored": 80,
+   "unscored": 0,
+   "bend_brier": 0.36612,
+   "mlb_brier": 0.34314,
+   "d_brier": 0.02297
+  },
+  {
+   "gamePk": 824394,
+   "date": "2026-08-19",
+   "away": "SF",
+   "home": "CLE",
+   "final": "1-0",
+   "home_won": false,
+   "scored": 69,
+   "unscored": 0,
+   "bend_brier": 0.20038,
+   "mlb_brier": 0.16698,
+   "d_brier": 0.03341
+  },
+  {
+   "gamePk": 824153,
+   "date": "2026-08-20",
+   "away": "LAA",
+   "home": "HOU",
+   "final": "18-3",
+   "home_won": false,
+   "scored": 88,
+   "unscored": 0,
+   "bend_brier": 0.08797,
+   "mlb_brier": 0.06989,
+   "d_brier": 0.01808
+  },
+  {
+   "gamePk": 824233,
+   "date": "2026-08-25",
+   "away": "TB",
+   "home": "DET",
+   "final": "1-4",
+   "home_won": true,
+   "scored": 68,
+   "unscored": 0,
+   "bend_brier": 0.16957,
+   "mlb_brier": 0.17405,
+   "d_brier": -0.00448
+  },
+  {
+   "gamePk": 824230,
+   "date": "2026-08-29",
+   "away": "LAD",
+   "home": "DET",
+   "final": "1-2",
+   "home_won": true,
+   "scored": 73,
+   "unscored": 0,
+   "bend_brier": 0.16511,
+   "mlb_brier": 0.17612,
+   "d_brier": -0.01101
+  },
+  {
+   "gamePk": 824959,
+   "date": "2026-08-30",
+   "away": "BAL",
+   "home": "ATH",
+   "final": "8-5",
+   "home_won": false,
+   "scored": 74,
+   "unscored": 0,
+   "bend_brier": 0.23721,
+   "mlb_brier": 0.26748,
+   "d_brier": -0.03027
+  },
+  {
+   "gamePk": 823095,
+   "date": "2026-09-03",
+   "away": "ATH",
+   "home": "SEA",
+   "final": "7-4",
+   "home_won": false,
+   "scored": 88,
+   "unscored": 0,
+   "bend_brier": 0.30979,
+   "mlb_brier": 0.23168,
+   "d_brier": 0.07811
+  },
+  {
+   "gamePk": 823419,
+   "date": "2026-09-05",
+   "away": "ATL",
+   "home": "PHI",
+   "final": "2-4",
+   "home_won": true,
+   "scored": 71,
+   "unscored": 0,
+   "bend_brier": 0.0536,
+   "mlb_brier": 0.06218,
+   "d_brier": -0.00858
+  },
+  {
+   "gamePk": 824145,
+   "date": "2026-09-05",
+   "away": "AZ",
+   "home": "HOU",
+   "final": "4-3",
+   "home_won": false,
+   "scored": 81,
+   "unscored": 0,
+   "bend_brier": 0.40685,
+   "mlb_brier": 0.41125,
+   "d_brier": -0.0044
+  },
+  {
+   "gamePk": 824310,
+   "date": "2026-09-05",
+   "away": "STL",
+   "home": "COL",
+   "final": "7-10",
+   "home_won": true,
+   "scored": 80,
+   "unscored": 0,
+   "bend_brier": 0.22094,
+   "mlb_brier": 0.20739,
+   "d_brier": 0.01354
+  },
+  {
+   "gamePk": 823091,
+   "date": "2026-09-06",
+   "away": "ATH",
+   "home": "SEA",
+   "final": "0-2",
+   "home_won": true,
+   "scored": 62,
+   "unscored": 0,
+   "bend_brier": 0.06003,
+   "mlb_brier": 0.10329,
+   "d_brier": -0.04326
+  },
+  {
+   "gamePk": 824228,
+   "date": "2026-09-08",
+   "away": "MIN",
+   "home": "DET",
+   "final": "3-2",
+   "home_won": false,
+   "scored": 66,
+   "unscored": 0,
+   "bend_brier": 0.20468,
+   "mlb_brier": 0.15797,
+   "d_brier": 0.04671
+  },
+  {
+   "gamePk": 824792,
+   "date": "2026-09-08",
+   "away": "CLE",
+   "home": "BAL",
+   "final": "9-5",
+   "home_won": false,
+   "scored": 82,
+   "unscored": 0,
+   "bend_brier": 0.04116,
+   "mlb_brier": 0.04496,
+   "d_brier": -0.0038
+  },
+  {
+   "gamePk": 824957,
+   "date": "2026-09-08",
+   "away": "TOR",
+   "home": "ATH",
+   "final": "4-2",
+   "home_won": false,
+   "scored": 69,
+   "unscored": 0,
+   "bend_brier": 0.06236,
+   "mlb_brier": 0.09313,
+   "d_brier": -0.03076
+  },
+  {
+   "gamePk": 823009,
+   "date": "2026-09-12",
+   "away": "CWS",
+   "home": "STL",
+   "final": "6-5",
+   "home_won": false,
+   "scored": 83,
+   "unscored": 0,
+   "bend_brier": 0.44543,
+   "mlb_brier": 0.44957,
+   "d_brier": -0.00414
+  },
+  {
+   "gamePk": 823170,
+   "date": "2026-09-12",
+   "away": "SD",
+   "home": "SF",
+   "final": "7-6",
+   "home_won": false,
+   "scored": 81,
+   "unscored": 0,
+   "bend_brier": 0.15732,
+   "mlb_brier": 0.15897,
+   "d_brier": -0.00165
+  },
+  {
+   "gamePk": 824955,
+   "date": "2026-09-12",
+   "away": "SEA",
+   "home": "ATH",
+   "final": "19-1",
+   "home_won": false,
+   "scored": 91,
+   "unscored": 0,
+   "bend_brier": 0.01394,
+   "mlb_brier": 0.02311,
+   "d_brier": -0.00918
+  },
+  {
+   "gamePk": 824465,
+   "date": "2026-09-14",
+   "away": "LAD",
+   "home": "CIN",
+   "final": "4-1",
+   "home_won": false,
+   "scored": 66,
+   "unscored": 0,
+   "bend_brier": 0.0445,
+   "mlb_brier": 0.07848,
+   "d_brier": -0.03397
+  },
+  {
+   "gamePk": 822846,
+   "date": "2026-09-16",
+   "away": "BOS",
+   "home": "TEX",
+   "final": "3-7",
+   "home_won": true,
+   "scored": 74,
+   "unscored": 0,
+   "bend_brier": 0.27368,
+   "mlb_brier": 0.24097,
+   "d_brier": 0.03271
+  },
+  {
+   "gamePk": 824790,
+   "date": "2026-09-18",
+   "away": "MIL",
+   "home": "BAL",
+   "final": "6-5",
+   "home_won": false,
+   "scored": 92,
+   "unscored": 0,
+   "bend_brier": 0.2048,
+   "mlb_brier": 0.235,
+   "d_brier": -0.0302
+  },
+  {
+   "gamePk": 824304,
+   "date": "2026-09-19",
+   "away": "SEA",
+   "home": "COL",
+   "final": "3-5",
+   "home_won": true,
+   "scored": 73,
+   "unscored": 0,
+   "bend_brier": 0.47739,
+   "mlb_brier": 0.41285,
+   "d_brier": 0.06454
+  }
+ ]
+}

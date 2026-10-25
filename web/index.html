@@ -4,80 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Bend vs MLB — a proven scorebook, simulated 2^20 times a play</title>
-<meta name="description" content="An MLB win-probability engine written in Bend: one machine-proven scorebook, 2^20 Monte Carlo games per play forked across the GPU, scored play-by-play against MLB's official number (Brier 0.1245 vs 0.1543 over 871 plays).">
+<meta name="description" content="An MLB win-probability engine written in Bend: one machine-proven scorebook, 2^20 Monte Carlo games per play forked across the GPU, scored play-by-play against MLB's official number (Brier 0.1538 vs 0.1549 over 180,558 plays in every 2025 regular-season game).">
 <meta property="og:title" content="Bend vs MLB — a proven scorebook, simulated 2^20 times a play">
-<meta property="og:description" content="One proven Bend scorebook, 913M simulated games, Brier 0.1245 vs MLB's 0.1543 over 871 plays. Live scorecard, method, benchmark, reproduce commands.">
+<meta property="og:description" content="One proven Bend scorebook, 2^20 simulated games a play, Brier 0.1538 vs MLB's 0.1549 over every 2025 regular-season game (95% CI excludes zero). Live scorecard, method, benchmark, reproduce commands.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://bend-winprob.harlanljones.workers.dev/">
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#efe6d2">
 <link rel="preload" href="/fonts/ArchivoNarrow.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/Caveat.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/book.css">
 <style>
-  @font-face { font-family: "Archivo"; src: url(/fonts/Archivo.woff2) format("woff2"); font-weight: 400 600; font-display: swap; }
-  @font-face { font-family: "Archivo Narrow"; src: url(/fonts/ArchivoNarrow.woff2) format("woff2"); font-weight: 400 700; font-display: swap; }
-  @font-face { font-family: "Caveat"; src: url(/fonts/Caveat.woff2) format("woff2"); font-weight: 400 700; font-display: swap; }
+  :root { --cell-w: 72px; --cell-h: 66px; --name-w: 76px; }
 
-  :root {
-    --stock: #efe6d2;
-    --print: #275f55;
-    --print-tint: rgba(39, 95, 85, 0.09);
-    --print-rule: rgba(39, 95, 85, 0.55);
-    --graphite: #1d1d1b;
-    --graphite-soft: #55544c;
-    --red: #b3362b;
-    --narrow: "Archivo Narrow", "Arial Narrow", sans-serif;
-    --text: "Archivo", system-ui, sans-serif;
-    --hand: "Caveat", "Segoe Print", cursive;
-    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-    --cell-w: 72px;
-    --cell-h: 66px;
-    --name-w: 76px;   /* plus 12px padding */
-    color-scheme: light;
-  }
-
-  * { box-sizing: border-box; }
-  html { background: var(--stock); }
-  body {
-    margin: 0; color: var(--graphite); background: var(--stock);
-    font: 15px/1.5 var(--text); font-variant-numeric: tabular-nums;
-    -webkit-font-smoothing: antialiased;
-  }
-  ::selection { background: var(--print); color: var(--stock); }
-  :focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
-  a { color: var(--print); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
-  a:hover { color: var(--graphite); }
-  b, strong { font-weight: 600; }
-  sup { font-size: 0.72em; line-height: 0; }
-  code { font-family: var(--mono); font-size: 0.86em; }
-  pre {
-    margin: 10px 0 0; padding: 10px 14px; overflow-x: auto;
-    border: 1px solid var(--print-rule); border-left-width: 1px; background: var(--print-tint);
-    font: 12.5px/1.5 var(--mono); color: var(--graphite);
-    scrollbar-color: var(--print) var(--stock);
-  }
-  pre code { font-size: inherit; }
-  .hand { font-family: var(--hand); font-weight: 500; color: var(--graphite); }
-  .print-ink { color: var(--print); }
-  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-
-  .book { max-width: 1260px; margin: 0 auto; padding: 22px clamp(12px, 3vw, 32px) 56px; }
-
-  /* Masthead: the printed head of the card */
-  .mast { border-top: 3px solid var(--print); border-bottom: 1px solid var(--print); padding: 10px 0 8px; display: grid; grid-template-columns: 1fr auto; gap: 8px 24px; align-items: end; }
-  .mast h1 { margin: 0; font: 700 clamp(30px, 4.4vw, 46px)/1 var(--narrow); color: var(--print); letter-spacing: 0.02em; text-transform: uppercase; }
-  .mast .lede { margin: 8px 0 0; font: 400 15px/1.4 var(--text); color: var(--graphite); max-width: 72ch; }
-  .mast nav { display: flex; flex-wrap: wrap; gap: 4px 18px; font: 700 12.5px/1.6 var(--narrow); text-transform: uppercase; letter-spacing: 0.08em; }
-  .mast nav a { text-decoration: none; color: var(--print); border-bottom: 1px solid transparent; }
-  .mast nav a:hover, .mast nav a:focus-visible { border-bottom-color: var(--print); }
-
-  /* Fields: Date, Game, Scorer... printed labels, pencilled values */
-  .fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); border-bottom: 1px solid var(--print); }
-  .fields div { padding: 8px 10px 6px 0; border-right: 1px solid var(--print-rule); margin-right: 10px; min-width: 0; }
-  .fields div:last-child { border-right: 0; }
-  .fields dt { font: 700 11px/1.2 var(--narrow); text-transform: uppercase; letter-spacing: 0.1em; color: var(--print); }
-  .fields dd { margin: 2px 0 0; font: 500 21px/1.1 var(--hand); color: var(--graphite); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .fields dd.print { font: 400 14px/1.4 var(--text); }
   .fields dd.stale { color: var(--red); }
   .fields dd.dead { color: var(--red); text-decoration: line-through; text-decoration-thickness: 2px; }
 
@@ -181,18 +120,8 @@
   .now { font: 400 14px/1.5 var(--text); }
   .now .hand { font-size: 20px; }
   /* Figure 1: printed full width across the page, below the scorecard */
-  .figure { margin: 22px 0 0; border-top: 1px solid var(--print); padding-top: 8px; }
-  .figure h2 { margin: 0; font: 700 12px/1.4 var(--narrow); text-transform: uppercase; letter-spacing: 0.1em; color: var(--print); }
-  .figure figcaption { font: 400 12px/1.5 var(--text); color: var(--graphite-soft); margin-top: 4px; max-width: 90ch; }
   #chart { min-height: 260px; }
   #chart .pele-legend { display: none; }   /* replaced by the printed legend, which can show each line's stroke */
-  /* The printed legend: a drawn sample of each line, its name, and where its numbers come from */
-  .legend { display: flex; flex-wrap: wrap; gap: 4px 20px; margin: 6px 0 2px; padding: 0; list-style: none; }
-  .legend li { display: inline-flex; align-items: center; gap: 6px; font: 400 12px/1.4 var(--text); color: var(--graphite-soft); }
-  .legend b { font: 700 12px/1 var(--narrow); text-transform: uppercase; letter-spacing: 0.06em; color: var(--graphite); }
-  .legend svg { width: 30px; height: 10px; flex: none; overflow: visible; }
-  .legend svg line { stroke-width: 2; }
-  .legend svg circle { stroke: none; }
   /* Market reference lines: quieter strengths of the two inks, no point marks */
   #chart .pele-line:is([data-id="Kalshi"], [data-id="Polymarket"], [data-id="Polymarket US"]) path { stroke-width: 1.5; }
   #chart .pele-line:is([data-id="Kalshi"], [data-id="Polymarket"], [data-id="Polymarket US"]) circle { display: none; }
@@ -203,23 +132,6 @@
   .tally small.mkt a { color: var(--graphite-soft); }
   .tally small.mkt a:hover { color: var(--graphite); }
 
-  /* Pele, printed on the stock */
-  .pele {
-    --pele-bg: var(--stock); --pele-fg: var(--print); --pele-muted: var(--print); --pele-line: var(--print);
-    --pele-surface: var(--stock); --pele-surface-alt: var(--print-tint); --pele-border: var(--print);
-    --pele-accent: var(--graphite); --pele-critical: var(--red); --pele-error: var(--red);
-    --pele-font: var(--narrow); --pele-font-mono: var(--mono); --pele-radius: 0;
-    --pele-series-1: var(--graphite); --pele-series-2: var(--print);
-    --pele-title-weight: 700; --pele-heading-weight: 700;
-  }
-  .diagram { margin: 14px 0 0; }
-  .diagram figcaption { font: 400 12px/1.5 var(--text); color: var(--graphite-soft); margin-top: 4px; }
-
-  /* The back of the card: printed instructions */
-  section.back { margin-top: 44px; }
-  section.back > h2 { margin: 0; padding: 6px 0 4px; border-top: 2px solid var(--print); border-bottom: 1px solid var(--print-rule); font: 700 24px/1.2 var(--narrow); text-transform: uppercase; letter-spacing: 0.08em; color: var(--print); display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-  section.back > h2 .hand { font-size: 20px; text-transform: none; letter-spacing: 0; font-weight: 500; }
-  section.back > p { margin: 12px 0 0; max-width: 72ch; }
   .steps { margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 22px; counter-reset: step; }
   .steps li { display: grid; grid-template-columns: 28px minmax(0, 1fr); column-gap: 10px; counter-increment: step; }
   .steps li::before { content: counter(step) "."; font: 700 22px/1.1 var(--hand); color: var(--print); }
@@ -227,34 +139,12 @@
   .steps p { margin: 6px 0 0; max-width: 72ch; }
   .steps .body { min-width: 0; }
 
-  table.laws, table.bench { border-collapse: collapse; width: 100%; margin-top: 12px; }
-  table.laws th, table.laws td, table.bench th, table.bench td { border: 1px solid var(--print-rule); padding: 6px 10px; text-align: left; vertical-align: top; font-size: 14px; }
-  table.laws thead th, table.bench thead th { font: 700 11px/1.3 var(--narrow); text-transform: uppercase; letter-spacing: 0.1em; color: var(--print); background: var(--print-tint); }
-  table.laws td.law { font: 700 14px/1.4 var(--narrow); white-space: nowrap; }
-  table.laws td.law code, .laws td code { font-size: 12.5px; }
-  table.laws td.mark, table.bench td.num, table.bench th.num { text-align: right; white-space: nowrap; }
-  td.mark .hand { font-size: 21px; }
-  td.up { color: var(--print); } td.down { color: var(--graphite); font-weight: 600; }
-  table.bench caption { caption-side: top; text-align: left; padding: 0 0 6px; font: 400 13px/1.5 var(--text); color: var(--graphite-soft); }
-  .tablewrap { overflow-x: auto; scrollbar-color: var(--print) var(--stock); }
-  details { margin-top: 12px; }
-  summary { cursor: pointer; font: 700 13px/1.5 var(--narrow); text-transform: uppercase; letter-spacing: 0.08em; color: var(--print); }
-  summary:hover { color: var(--graphite); }
   .balance { display: grid; grid-template-columns: auto auto; gap: 2px 18px; margin: 12px 0 0; width: max-content; max-width: 100%; }
   .balance dt { font: 700 12px/1.6 var(--narrow); text-transform: uppercase; letter-spacing: 0.08em; color: var(--print); }
   .balance dd { margin: 0; font: 400 14px/1.6 var(--text); }
-  ul.notes { margin: 12px 0 0; padding-left: 18px; max-width: 72ch; }
-  ul.notes li { margin: 0 0 8px; }
-  ul.notes li::marker { color: var(--print); }
-
-  footer { margin-top: 44px; padding-top: 10px; border-top: 3px solid var(--print); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px 18px; font: 700 12px/1.6 var(--narrow); text-transform: uppercase; letter-spacing: 0.08em; color: var(--print); }
-  footer a { text-decoration: none; border-bottom: 1px solid var(--print); }
 
   @media (max-width: 720px) {
     :root { --name-w: 84px; }
-    .mast { grid-template-columns: 1fr; }
-    .fields dd { font-size: 19px; }
-    .fields dd.print { white-space: normal; overflow: visible; }
     .linescore th, .linescore td { padding: 3px 2px; font-size: 12px; }
     .linescore th.team { width: 84px; padding-left: 4px; font-size: 14px; }
     .linescore td { font-size: 17px; }
@@ -276,7 +166,7 @@
         <a href="#reproduce">Reproduce</a>
         <a href="#how">How it is kept</a>
         <a href="#proof">Proof of box score</a>
-        <a href="#season">Season</a>
+        <a href="/bench/">Benchmark</a>
         <a href="#notes">Notes</a>
         <a href="https://github.com/harlanljones/bend-winprob">Source</a>
       </nav>
@@ -386,12 +276,12 @@ def step(+s: State, p: Play) -&gt; State:
       <li>
         <div class="body">
           <h3>The harness replays real games.</h3>
-          <p><code>live.py</code> pulls the MLB Stats API feed: completed plays, the official <code>homeTeamWinProbability</code>, and each team's season batting line. It turns the batting line into seven cumulative thresholds out of 10,000 (K, O, W, S, D, T, H), encodes each play into four destination slots (<code>r3 r2 r1 batter</code>, chars <code>- X R 1 2 3</code>), and runs the compiled <code>wp</code> once per play. Results stream to <code>runs/&lt;gamePk&gt;.csv</code> and are POSTed to a Cloudflare Worker whose Durable Object this page polls every 5 s. No framework: one HTML file, one Worker, one binary.</p>
-<pre><code>"away": [2371, 6803, 7962, 9305, 9675, 9696, 10000]
-#   K 23.7%  O 44.3%  W 11.6%  S 13.4%  D 3.7%  T 0.2%  H 3.0%</code></pre>
+          <p><code>live.py</code> pulls the MLB Stats API feed: completed plays, the official <code>homeTeamWinProbability</code>, and each side's pitching through the day before the game, the team's blended with the probable starter's. It turns those rates into seven cumulative thresholds out of 10,000 (K, O, W, S, D, T, H) for the other side's batters, encodes each play into four destination slots (<code>r3 r2 r1 batter</code>, chars <code>- X R 1 2 3</code>), and runs the compiled <code>wp</code> once per play. Results stream to <code>runs/&lt;gamePk&gt;.csv</code> and are POSTed to a Cloudflare Worker whose Durable Object this page polls every 5 s. No framework: plain HTML pages, one Worker, one binary.</p>
+<pre><code>"away": [2947, 7277, 8167, 9414, 9710, 9735, 10000]
+#   K 29.5%  O 43.3%  W 8.9%  S 12.5%  D 3.0%  T 0.2%  H 2.6%</code></pre>
           <figure class="diagram">
             <div class="pele-src" data-diagram="pipeline"></div>
-            <figcaption>Figure 4. One play's path to this card, read left to right. <code>live.py</code> takes the play, its scoring, MLB's official win probability and the season rates from MLB's Stats API, and each market's price from Kalshi, Polymarket and Polymarket US (<code>markets.py</code>). It turns the rates into seven integer thresholds out of 10,000 and the play into four destinations (r3, r2, r1, batter), and runs <code>wp</code> (pencilled: Bend's <code>step</code>, then 2<sup>d</sup> simulated games). Each play becomes a row of <code>runs/&lt;gamePk&gt;.csv</code>, POSTed to the Worker; this page fetches it every 5 s.</figcaption>
+            <figcaption>Figure 4. One play's path to this card, read left to right. <code>live.py</code> takes the play, its scoring, MLB's official win probability and each team's rates to date from MLB's Stats API, and each market's price from Kalshi, Polymarket and Polymarket US (<code>markets.py</code>). It turns the rates into seven integer thresholds out of 10,000 and the play into four destinations (r3, r2, r1, batter), and runs <code>wp</code> (pencilled: Bend's <code>step</code>, then 2<sup>d</sup> simulated games). Each play becomes a row of <code>runs/&lt;gamePk&gt;.csv</code>, POSTed to the Worker; this page fetches it every 5 s.</figcaption>
           </figure>
         </div>
       </li>
@@ -412,47 +302,15 @@ def step(+s: State, p: Play) -&gt; State:
     </table>
     <dl class="balance">
       <dt>Checked by</dt><dd><code>bend PROOF.bend</code> → <code>ALL PROOFS CHECK</code>, required before any commit.</dd>
-      <dt>Rejected plays</dt><dd>A play the encoding cannot carry is refused and counted, never dropped: 29 of 871 in the benchmark, 0 in the bundled replay.</dd>
+      <dt>Rejected plays</dt><dd>A play the encoding cannot carry is refused and counted, never dropped: 47 rows in 2 of 2,424 scored 2025 games, none in the 2026 sample or the bundled replay; one 2025 game's feed could not be encoded at all.</dd>
     </dl>
   </section>
 
   <section class="back" id="season" aria-labelledby="season-h">
-    <h2 id="season-h">Season benchmark <span class="hand">12 games · 871 plays · 2<sup>20</sup> sims a play</span></h2>
-    <p><code>bench.py</code> replays finished games at depth 2<sup>20</sup> (1,048,576 sims per play) on the GPU and scores Bend against the true outcome and against MLB's official win probability for the same plays. Run of 2026-10-23: 12 games, 871 plays scored (859 carrying an MLB value), 0 failures.</p>
-    <div class="tablewrap">
-    <table class="bench">
-      <caption>Aggregate over the benchmark. Lower is better for every scored metric.</caption>
-      <thead><tr><th scope="col">Metric</th><th scope="col" class="num">Bend</th><th scope="col" class="num">MLB official</th><th scope="col" class="num">Bend better by</th></tr></thead>
-      <tbody>
-        <tr><td>Brier score</td><td class="num">0.1245</td><td class="num">0.1543</td><td class="num up">19.3%</td></tr>
-        <tr><td>Log loss</td><td class="num">0.3913</td><td class="num">0.4565</td><td class="num up">14.3%</td></tr>
-        <tr><td>Mean |error| vs outcome</td><td class="num">29.08 pp</td><td class="num">32.97 pp</td><td class="num up">11.8%</td></tr>
-        <tr><td>Scorebook mismatches</td><td class="num">29 / 871 plays (3.3%)</td><td class="num">—</td><td class="num">—</td></tr>
-        <tr><td>Time per play</td><td class="num">0.099 s</td><td class="num">—</td><td class="num">≈10.6M sims/s</td></tr>
-      </tbody>
-    </table>
-    </div>
-    <div class="tablewrap" style="margin-top:16px">
-    <table class="bench">
-      <caption>Per game. Δ is Bend's Brier minus MLB's; negative means Bend was closer.</caption>
-        <thead><tr><th scope="col">gamePk</th><th scope="col">Final</th><th scope="col" class="num">Plays</th><th scope="col" class="num">Bend Brier</th><th scope="col" class="num">MLB Brier</th><th scope="col" class="num">Δ</th><th scope="col" class="num">Mismatches</th></tr></thead>
-        <tbody>
-          <tr><td>823244</td><td>7-0</td><td class="num">75</td><td class="num">0.031</td><td class="num">0.048</td><td class="num up">−0.017</td><td class="num">0</td></tr>
-          <tr><td>822828</td><td>8-2</td><td class="num">80</td><td class="num">0.070</td><td class="num">0.064</td><td class="num down">+0.006</td><td class="num">0</td></tr>
-          <tr><td>822908</td><td>3-2</td><td class="num">73</td><td class="num">0.078</td><td class="num">0.122</td><td class="num up">−0.044</td><td class="num">0</td></tr>
-          <tr><td>824925</td><td>2-3</td><td class="num">71</td><td class="num">0.146</td><td class="num">0.139</td><td class="num down">+0.007</td><td class="num">5</td></tr>
-          <tr><td>824187</td><td>2-0</td><td class="num">64</td><td class="num">0.086</td><td class="num">0.136</td><td class="num up">−0.050</td><td class="num">0</td></tr>
-          <tr><td>825072</td><td>1-8</td><td class="num">73</td><td class="num">0.070</td><td class="num">0.079</td><td class="num up">−0.009</td><td class="num">0</td></tr>
-          <tr><td>822882</td><td>3-0</td><td class="num">69</td><td class="num">0.032</td><td class="num">0.045</td><td class="num up">−0.013</td><td class="num">0</td></tr>
-          <tr><td>824247</td><td>3-4</td><td class="num">77</td><td class="num">0.193</td><td class="num">0.277</td><td class="num up">−0.084</td><td class="num">0</td></tr>
-          <tr><td>825049</td><td>2-1</td><td class="num">76</td><td class="num">0.177</td><td class="num">0.264</td><td class="num up">−0.087</td><td class="num">8</td></tr>
-          <tr><td>823585</td><td>2-3</td><td class="num">76</td><td class="num">0.296</td><td class="num">0.210</td><td class="num down">+0.086</td><td class="num">7</td></tr>
-          <tr><td>824550</td><td>2-0</td><td class="num">65</td><td class="num">0.130</td><td class="num">0.153</td><td class="num up">−0.023</td><td class="num">0</td></tr>
-          <tr><td>823164</td><td>5-1</td><td class="num">72</td><td class="num">0.185</td><td class="num">0.313</td><td class="num up">−0.129</td><td class="num">9</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p>Bend's Brier is lower in 9 of the 12 games. A second run at depth 2<sup>16</sup> (65,536 sims per play, one game, 75 plays) gave Brier 0.031 against MLB's 0.048. On the bundled replay of World Series Game 1 the mean absolute difference to MLB is 2.19 pp over 69 plays, Bend's box score matches the official one exactly under OBR 9.03(c), and the scorebook check reports zero mismatches.</p>
+    <h2 id="season-h">Season benchmark <span class="hand" id="season-hand">its own page</span></h2>
+    <p id="season-2025">The benchmark has its own page.</p>
+    <p id="season-sum"></p>
+    <p><a href="/bench/?run=2025">Every 2025 game</a> · <a href="/bench/">the 100-game 2026 sample</a>: head to head with confidence intervals, calibration, where Bend wins, every game</p>
   </section>
 
   <section class="back" id="reproduce" aria-labelledby="reproduce-h">
@@ -461,17 +319,17 @@ def step(+s: State, p: Play) -&gt; State:
 <pre><code>git clone https://github.com/harlanljones/bend-winprob &amp;&amp; cd bend-winprob
 bend PROOF.bend                            # ALL PROOFS CHECK
 python3 sim_engine.py --pk 849805          # replay World Series Game 1, 65,536 sims/play
-python3 bench.py                           # the 12-game benchmark above (GPU, depth 20)
+python3 bench.py --web                     # the 100-game benchmark (GPU, depth 20)
 python3 -m unittest discover -s tests -v</code></pre>
-    <p>This page and its feed are one Cloudflare Worker with a single Durable Object (<code>cloudflare/</code>): <code>live.py --publish</code> POSTs each new CSV and the page polls it, falling back to the bundled replay when nothing is published. Open <code>?pk=&lt;gamePk&gt;</code> for another game. <code>bash run_live.sh</code> supervises a live game with backoff and logs every run.</p>
+    <p>This page and its feed are one Cloudflare Worker with a single Durable Object (<code>cloudflare/</code>): <code>live.py --publish</code> POSTs each new CSV and the page polls it. It opens World Series Game 2 (<code>849802</code>), published live; <code>?pk=&lt;gamePk&gt;</code> opens another game, and Game 1 (<code>?pk=849805</code>) falls back to the bundled replay when nothing is published. <code>bash run_live.sh</code> supervises a live game with backoff and logs every run.</p>
   </section>
 
   <section class="back" id="notes" aria-labelledby="notes-h">
     <h2 id="notes-h">Notes <span class="hand">what this card does not know</span></h2>
     <ul class="notes">
-      <li><b>Season-level team rates.</b> Plate appearances are i.i.d. draws from each team's season distribution: no batter, pitcher, platoon, park, umpire, weather, leverage or bullpen state.</li>
-      <li><b>A four-slot play encoding.</b> A play is four destinations (r3, r2, r1, batter). Pickoffs, caught stealings, wild pitches and passed balls do not fit and are refused: 29 of 871 plays in the benchmark, 0 in the bundled replay.</li>
-      <li><b>Small sample.</b> 12 games and 871 plays, with per-game Brier from 0.03 to 0.30. Treat the aggregate as suggestive, not settled.</li>
+      <li><b>Pitching to date.</b> Each side bats at the previous season's league rates against the other side's pitching through the day before the game: the team's, shrunk toward the league by 2,000 batters faced, blended with the probable starter's by the share of batters he is expected to face, with the previous season's home/away adjustment. Team batting to date did not predict results on the 2,315 development games, so it is left out. No lineup, platoon, park, umpire, weather or bullpen state.</li>
+      <li><b>A four-slot play encoding.</b> A play is four destinations (r3, r2, r1, batter); one the encoding cannot carry is refused and counted: 47 rows in 2 of 2,424 scored 2025 games, none in the 2026 sample. Bend places the regular season's automatic runner on second in extra innings itself.</li>
+      <li><b>Sample size.</b> Against MLB, every 2025 regular-season game; the markets only on the 100-game 2026 sample, where no comparison is settled. Intervals on the benchmark page say how settled each one is.</li>
       <li><b>A benchmark, not a claim of superiority.</b> MLB's win probability is a production model with far more information than this proof of concept uses.</li>
       <li><b>Not a betting tool.</b> It is a demonstration that a proven, parallel scorebook can track a production model on real data. Where a prediction market lists the game, its price is shown as a reference, not as ground truth.</li>
     </ul>
@@ -485,7 +343,8 @@ python3 -m unittest discover -s tests -v</code></pre>
 
 <script src="https://cdn.jsdelivr.net/npm/pele@1.9.0/dist/pele.global.js"></script>
 <script>
-const pk = new URLSearchParams(location.search).get("pk") || "849805";
+// World Series Game 2, published live by live.py; ?pk=849805 opens Game 1's bundled replay.
+const pk = new URLSearchParams(location.search).get("pk") || "849802";
 const SLOTS = 9;
 let meta = { away: "AWAY", home: "HOME" };
 let metaLoaded = false;
@@ -1003,7 +862,7 @@ const DIAGRAMS = {
   class ok,commit pencil`,
   pipeline: `flowchart LR
   accTitle: One play's path from the MLB feed to this card
-  api[MLB Stats API<br/>play · scoring · official WP · season rates] --> live[live.py]
+  api[MLB Stats API<br/>play · scoring · official WP · rates to date] --> live[live.py]
   mk[Kalshi · Polymarket · Polymarket US<br/>markets.py] --> live
   live --> enc["7 thresholds / 10,000<br/>play as r3 r2 r1 batter"] --> wp[wp<br/>step → tree 2^d]
   wp --> csv[("runs/&lt;gamePk&gt;.csv")]
@@ -1015,6 +874,25 @@ const DIAGRAMS = {
 for (const node of document.querySelectorAll(".pele-src")) {
   pele.mount(node, DIAGRAMS[node.dataset.diagram], { zoom: false, fontSize: 12.5 });
 }
+
+// The season benchmark's headlines, from the benchmark page's data.
+function loadSeason() {
+  const minus = x => (x < 0 ? "\u2212" : "+") + Math.abs(x).toFixed(4);
+  const words = { "clear win": "a clear win for Bend", "clear loss": "a clear loss for Bend",
+                  "no clear difference": "no clear difference" };
+  const against = m => `Against MLB's official win probability, Bend's Brier is ${m.bend_brier.toFixed(4)} vs ${m.other_brier.toFixed(4)} `
+    + `(Δ ${minus(m.d_brier)}, 95% CI ${minus(m.d_brier_ci[0])} to ${minus(m.d_brier_ci[1])}): ${words[m.verdict] || m.verdict}. `
+    + `Bend was closer to the result on ${m.plays_closer.toFixed(1)}% of plays and better in ${m.games_better.toLocaleString()} of ${m.games.toLocaleString()} games.`;
+  const load = file => fetch(file, { cache: "no-store" }).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); });
+  load("/bench/data-2025.json").then(d => {
+    $("season-hand").innerHTML = `${d.games.scored.toLocaleString()} games · ${d.scored_plays.toLocaleString()} plays · 2<sup>${esc(d.depth)}</sup> sims a play`;
+    $("season-2025").textContent = `Every Final game of the 2025 regular season, which no setting was chosen on: ${d.games.scored.toLocaleString()} of ${d.games.requested.toLocaleString()} replayed and scored. ` + against(d.paired.mlb);
+  }).catch(() => {});
+  load("/bench/data.json").then(d => {
+    $("season-sum").textContent = `Of ${d.games.requested} games drawn at random from the 2026 regular season, ${d.games.scored} replayed and scored. ` + against(d.paired.mlb);
+  }).catch(() => {});
+}
+loadSeason();
 
 render([]);
 tick();

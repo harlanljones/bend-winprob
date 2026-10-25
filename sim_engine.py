@@ -45,26 +45,29 @@ class ReplayEngine:
     """
 
     def __init__(self, pk, depth=16, mode="cpu", publisher=None, fetch=False,
-                 verbose=False):
+                 verbose=False, fixtures=None, with_markets=True):
         self.pk = pk
         self.depth = depth
         self.mode = mode
         self.publisher = publisher
         self.verbose = verbose
-        self.source = live.Source(pk, cache=True, allow_fetch=fetch)
+        self.source = live.Source(pk, cache=True, allow_fetch=fetch, root=fixtures)
         self.status = self.source.get("status")
         self.teams = live.teams_of(self.status)
         self.away_cum, self.home_cum = live.game_rates(self.source, self.teams)
+        self.ghost = live.automatic_runner(self.source)
         (live.ROOT / "runs").mkdir(exist_ok=True)
         (live.ROOT / "runs" / f"{pk}-rates.json").write_text(
-            json.dumps({"away": self.away_cum, "home": self.home_cum}))
+            json.dumps({"away": self.away_cum, "home": self.home_cum, "ghost": self.ghost}))
         self.plays = live.complete_plays(self.source.get("plays"))
-        self.codes = live.encode_plays(self.plays)
+        self.codes = live.encode_plays(self.plays, self.ghost)
         self.wp = live.wp_map(self.source.get("wp"))
-        # Batter names, notation and play times: optional, like the market recording.
-        self.scoring = self.source.optional("scoring") or {}
+        # Batter names, notation and play times: optional, like the market recording; both are
+        # skipped without markets (a benchmark scored against MLB alone).
+        self.scoring = (self.source.optional("scoring") or {}) if with_markets else {}
         self.notes = live.scorecard(self.scoring)
-        self.tape, self.listings, self.samples = markets.recorded(self.source, self.teams, self.scoring)
+        self.tape, self.listings, self.samples = (markets.recorded(self.source, self.teams, self.scoring)
+                                                  if with_markets else (markets.Tape(), [], {}))
         self.is_final = self.status["gameData"]["status"]["abstractGameState"] == "Final"
         self.reset()
 
@@ -77,14 +80,15 @@ class ReplayEngine:
         self._finalized = False
         self.book = live.Book(
             self.pk, self.teams["away"]["abbr"], self.teams["home"]["abbr"],
-            self.depth, self.mode, self.publisher, verbose=self.verbose, team_info=self.teams)
+            self.depth, self.mode, self.publisher, verbose=self.verbose, team_info=self.teams,
+            ghost=self.ghost)
         self.book.set_scoring(self.notes)
         self.book.set_markets(self.tape, self.samples, self.listings)
         return self
 
     def _bend(self, count):
         return live.run_bend(self.depth, live.seed_for(count), self.away_cum,
-                             self.home_cum, self.codes[:count], self.mode)
+                             self.home_cum, self.codes[:count], self.mode, self.ghost)
 
     def pregame(self):
         """Compute and return the pregame row (idempotent)."""
@@ -125,7 +129,8 @@ class ReplayEngine:
         b = self._bend(len(self.plays))
         self._last_bend = b
         self.book.final(b["home_runs"] > b["away_runs"])
-        self.box_ok = live.box_check(self.source.get("box"), self.source.get("linescore"), b)
+        self.box_ok = live.box_check(self.source.get("box"), self.source.get("linescore"), b,
+                                     live.automatic_runners(self.plays) if self.ghost else None)
         self._finalized = True
         return self.box_ok
 

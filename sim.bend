@@ -8,8 +8,10 @@ import ./game.bend as Game
 type Rates is Data:
   Rates{k: U32, o: U32, w: U32, s: U32, d: U32, t: U32, h: U32}
 
+# `ghost`: the regular-season rule that every half from the tenth inning on
+# starts with a runner on second.
 type Ctx is Data:
-  Ctx{start: Game.State, away: Rates, home: Rates, seed: U32}
+  Ctx{start: Game.State, away: Rates, home: Rates, seed: U32, ghost: Bool}
 
 type Outcome is Data:
   HomeWin{}
@@ -84,23 +86,81 @@ def occ(b: Bool, d: Game.Dest) -> Game.Dest:
     case False{}:
       Game.Absent{}
 
-# The play an outcome makes from the bases and outs it meets. An out in play
-# scores the runner from third with fewer than two outs (a sacrifice fly);
-# a walk moves forced runners only; hits move every runner that many bases.
-def play_for(bs: Game.Bases, e: Ev, +o: Nat) -> Game.Play:
+def pick(c: Bool, a: Game.Dest, b: Game.Dest) -> Game.Dest:
+  match c:
+    case True{}:
+      a
+    case False{}:
+      b
+
+# Runner advancement, chances out of 10000, measured on the play-by-play of
+# the development games (tune.py advancement); tune.py's exact model of this
+# simulator uses the same numbers.
+def adv_dp() -> U32:
+  2101
+
+def adv_o3() -> U32:
+  6108
+
+def adv_o2() -> U32:
+  4913
+
+def adv_o1() -> U32:
+  2082
+
+def adv_s2() -> U32:
+  6117
+
+def adv_s13() -> U32:
+  3541
+
+def adv_d1() -> U32:
+  3805
+
+def chance(+u: U32, t: U32) -> Bool:
+  ((u % 10000 : U32) < t : U32)
+
+# An out in play with a runner on first and fewer than two outs is a double
+# play (batter and that runner) with chance dp; with nobody out the runners
+# ahead move up a base. Otherwise, with fewer than two outs, the runner on
+# third scores, on second takes third, on first takes second, each with its
+# own chance and only into a free base.
+def out_play.go(dp: Bool, +b1: Bool, +b2: Bool, +b3: Bool, +o: Nat, +u2: U32, +u3: U32, +u4: U32) -> Game.Play:
+  match dp:
+    case True{}:
+      +go = Nat.is_lt(o, 1n)
+      Game.Play{occ(Bool.and(b3, go), Game.Run{}), occ(Bool.and(b2, go), Game.To3{}), Game.Out{}, Game.Out{}}
+    case False{}:
+      +two = Nat.is_lt(o, 2n)
+      +s3 = Bool.and(two, Bool.and(b3, chance(u2, adv_o3())))
+      +m2 = Bool.and(two, Bool.and(b2, Bool.and(chance(u3, adv_o2()), Bool.not(Bool.and(b3, Bool.not(s3))))))
+      +m1 = Bool.and(two, Bool.and(b1, Bool.and(chance(u4, adv_o1()), Bool.not(Bool.and(b2, Bool.not(m2))))))
+      Game.Play{occ(s3, Game.Run{}), occ(m2, Game.To3{}), occ(m1, Game.To2{}), Game.Out{}}
+
+def out_play(+b1: Bool, +b2: Bool, +b3: Bool, +o: Nat, +u1: U32, +u2: U32, +u3: U32, +u4: U32) -> Game.Play:
+  out_play.go(Bool.and(b1, Bool.and(Nat.is_lt(o, 2n), chance(u1, adv_dp()))), b1, b2, b3, o, u2, u3, u4)
+
+# The play an outcome makes from the bases and outs it meets. A walk moves
+# forced runners only; on a single the runner from second scores with chance
+# s2 and the runner from first takes a free third with chance s13; on a
+# double the runner from first scores with chance d1; triples and home runs
+# clear the bases.
+def play_for(bs: Game.Bases, e: Ev, +o: Nat, +u1: U32, +u2: U32, +u3: U32, +u4: U32) -> Game.Play:
   match bs:
     case Game.Bases{+b1, +b2, +b3}:
       match e:
         case EvK{}:
           Game.Play{Game.Absent{}, Game.Absent{}, Game.Absent{}, Game.Out{}}
         case EvO{}:
-          Game.Play{occ(Bool.and(b3, Nat.is_lt(o, 2n)), Game.Run{}), Game.Absent{}, Game.Absent{}, Game.Out{}}
+          out_play(b1, b2, b3, o, u1, u2, u3, u4)
         case EvW{}:
           Game.Play{occ(Bool.and(b1, Bool.and(b2, b3)), Game.Run{}), occ(Bool.and(b1, b2), Game.To3{}), occ(b1, Game.To2{}), Game.To1{}}
         case EvS{}:
-          Game.Play{occ(b3, Game.Run{}), occ(b2, Game.Run{}), occ(b1, Game.To2{}), Game.To1{}}
+          +sc2 = chance(u1, adv_s2())
+          +go3 = Bool.and(chance(u2, adv_s13()), Bool.not(Bool.and(b2, Bool.not(sc2))))
+          Game.Play{occ(b3, Game.Run{}), occ(b2, pick(sc2, Game.Run{}, Game.To3{})), occ(b1, pick(go3, Game.To3{}, Game.To2{})), Game.To1{}}
         case EvD{}:
-          Game.Play{occ(b3, Game.Run{}), occ(b2, Game.Run{}), occ(b1, Game.To3{}), Game.To2{}}
+          Game.Play{occ(b3, Game.Run{}), occ(b2, Game.Run{}), occ(b1, pick(chance(u1, adv_d1()), Game.Run{}, Game.To3{})), Game.To2{}}
         case EvT{}:
           Game.Play{occ(b3, Game.Run{}), occ(b2, Game.Run{}), occ(b1, Game.Run{}), Game.To3{}}
         case EvH{}:
@@ -110,22 +170,27 @@ def rates_for(top: Bool, c: Ctx) -> Rates:
   match top:
     case True{}:
       match c:
-        case Ctx{_, away, _, _}:
+        case Ctx{_, away, _, _, _}:
           away
     case False{}:
       match c:
-        case Ctx{_, _, home, _}:
+        case Ctx{_, _, home, _, _}:
           home
 
 def ctx_start(c: Ctx) -> Game.State:
   match c:
-    case Ctx{s, _, _, _}:
+    case Ctx{s, _, _, _, _}:
       s
 
 def ctx_seed(c: Ctx) -> U32:
   match c:
-    case Ctx{_, _, _, seed}:
+    case Ctx{_, _, _, seed, _}:
       seed
+
+def ctx_ghost(c: Ctx) -> Bool:
+  match c:
+    case Ctx{_, _, _, _, g}:
+      g
 
 # The game ends
 # -------------
@@ -171,6 +236,33 @@ def phase(+prev: Game.State, +s: Game.State) -> Phase:
       Bool.and(Game.is_top(s), Nat.is_le(10n, Game.inning(s)))),
     s)
 
+# The automatic runner: when `prev` stepped to `s` and the game goes on into
+# a new half of the tenth inning or later, a runner is placed on second (a
+# play whose batter goes to second, so the scorebook's box still balances).
+def flipped(a: Bool, b: Bool) -> Bool:
+  match a:
+    case True{}:
+      Bool.not(b)
+    case False{}:
+      b
+
+def ghost_play() -> Game.Play:
+  Game.Play{Game.Absent{}, Game.Absent{}, Game.Absent{}, Game.To2{}}
+
+def placed.go(new_half: Bool, +s: Game.State) -> Game.State:
+  match new_half:
+    case True{}:
+      Game.step(s, ghost_play())
+    case False{}:
+      s
+
+def placed(g: Bool, ph: Phase, +prev: Game.State, +s: Game.State) -> Game.State:
+  match ph:
+    case Ended{_}:
+      s
+    case Going{}:
+      placed.go(Bool.and(g, Bool.and(flipped(Game.is_top(prev), Game.is_top(s)), Nat.is_le(10n, Game.inning(s)))), s)
+
 # One game, at most `fuel` plate appearances.
 def play_game(fuel: Nat, ph: Phase, +s: Game.State, +x: U32, +c: Ctx) -> Outcome:
   match fuel:
@@ -183,8 +275,13 @@ def play_game(fuel: Nat, ph: Phase, +s: Game.State, +x: U32, +c: Ctx) -> Outcome
         case Going{}:
           +y = next(x)
           +ev = ev_of((y % 10000 : U32), rates_for(Game.is_top(s), c))
-          +s2 = Game.step(s, play_for(Game.bases(s), ev, Game.outs(s)))
-          play_game(f, phase(s, s2), s2, y, c)
+          +y2 = next(y)
+          +y3 = next(y2)
+          +y4 = next(y3)
+          +y5 = next(y4)
+          +s2 = Game.step(s, play_for(Game.bases(s), ev, Game.outs(s), y2, y3, y4, y5))
+          +ph2 = phase(s, s2)
+          play_game(f, ph2, placed(ctx_ghost(c), ph2, s, s2), y5, c)
 
 def one(+i: U32, +c: Ctx) -> Outcome:
   +s = ctx_start(c)

@@ -1,16 +1,18 @@
 # The program live.py calls once per play. One argument (the last on the
 # command line):
-#   depth|seed|awayCum|homeCum|plays|mode
+#   depth|seed|awayCum|homeCum|plays|mode|ghost
 # depth: 2^depth simulated games; seed: U32; awayCum/homeCum: 7 cumulative
 # thresholds out of 10000 (K,O,W,S,D,T,H; last 10000) for each side at bat;
 # plays: ';'-separated 4-char codes, slots r3 r2 r1 batter, chars - X R 1 2 3;
-# mode: cpu or gpu. Prints STATE, LINE and SIM lines, or one ERROR line.
+# mode: cpu or gpu; ghost: 1 when extra innings start with a runner on
+# second (regular season), else 0. Prints STATE, LINE and SIM lines, or one
+# ERROR line.
 import Base
 import ./game.bend as Game
 import ./sim.bend as Sim
 
 type Input is Data:
-  Input{depth: Nat, seed: U32, away: Sim.Rates, home: Sim.Rates, plays: List<&2, Game.Play>, gpu: Bool}
+  Input{depth: Nat, seed: U32, away: Sim.Rates, home: Sim.Rates, plays: List<&2, Game.Play>, gpu: Bool, ghost: Bool}
 
 # Parsing
 # -------
@@ -126,9 +128,18 @@ def mode(s: String) -> Result<&2, &2, String, Bool>:
     case _:
       Fail{"mode must be cpu or gpu"}
 
+def flag(s: String) -> Result<&2, &2, String, Bool>:
+  match s:
+    case "1":
+      Done{True{}}
+    case "0":
+      Done{False{}}
+    case _:
+      Fail{"ghost must be 1 or 0"}
+
 def sections(xs: List<&2, String>) -> Result<&2, &2, String, Input>:
   match xs:
-    case Con{sd, Con{ss, Con{sa, Con{sh, Con{sp, Con{sm, Nil{}}}}}}}:
+    case Con{sd, Con{ss, Con{sa, Con{sh, Con{sp, Con{sm, Con{sg, Nil{}}}}}}}}:
       do Result<&2, &2, String, Input>:
         d : Nat <- req(Nat, Nat.read(sd), "bad depth")
         seed : U32 <- u32(ss, "bad seed")
@@ -136,9 +147,10 @@ def sections(xs: List<&2, String>) -> Result<&2, &2, String, Input>:
         h : Sim.Rates <- rates(sh, "homeCum")
         ps : List<&2, Game.Play> <- plays(String.split(sp, ';'), 1n)
         g : Bool <- mode(String.trim(sm))
-        return Input{d, seed, a, h, ps, g}
+        gh : Bool <- flag(String.trim(sg))
+        return Input{d, seed, a, h, ps, g, gh}
     case _:
-      Fail{"need 6 '|'-separated sections"}
+      Fail{"need 7 '|'-separated sections"}
 
 def parse(arg: String) -> Result<&2, &2, String, Input>:
   sections(String.split(arg, '|'))
@@ -191,12 +203,22 @@ def tally(gpu: Bool, d: Nat, c: Sim.Ctx) -> Sim.Tally:
     case False{}:
       Sim.tree(d, 0, c)
 
+# The real game's plays, with the automatic runner placed where the
+# simulator places it.
+def replay_auto(ps: List<&2, Game.Play>, +g: Bool, +s: Game.State) -> Game.State:
+  match ps:
+    case Nil{}:
+      s
+    case p <> rest:
+      +s2 = Game.step(s, p)
+      replay_auto(rest, g, Sim.placed(g, Sim.phase(s, s2), s, s2))
+
 def run(inp: Input) -> String:
   match inp:
-    case Input{d, seed, away, home, ps, gpu}:
-      +st = Game.replay(Game.start(), ps)
+    case Input{d, seed, away, home, ps, gpu, +ghost}:
+      +st = replay_auto(ps, ghost, Game.start())
       state_line(st) ++ "\n" ++ line_line(st) ++ "\n"
-        ++ sim_line(tally(gpu, d, Sim.Ctx{st, away, home, seed}))
+        ++ sim_line(tally(gpu, d, Sim.Ctx{st, away, home, seed, ghost}))
 
 def report(r: Result<&2, &2, String, Input>) -> String:
   match r:

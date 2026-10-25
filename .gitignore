@@ -5,3 +5,5 @@
 __pycache__/
 /.env
 /cloudflare/.wrangler/
+/fixtures-bench/cache/
+/fixtures-bench/dev-cache/
