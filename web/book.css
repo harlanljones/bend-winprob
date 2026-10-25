@@ -69,7 +69,6 @@
   .legend b { font: 700 12px/1 var(--narrow); text-transform: uppercase; letter-spacing: 0.06em; color: var(--graphite); }
   .legend svg { width: 30px; height: 10px; flex: none; overflow: visible; }
   .legend svg line { stroke-width: 2; }
-  .legend svg circle { stroke: none; }
 
   /* Pele, printed on the stock */
   .pele {

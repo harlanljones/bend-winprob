@@ -122,12 +122,15 @@
   /* Figure 1: printed full width across the page, below the scorecard */
   #chart { min-height: 260px; }
   #chart .pele-legend { display: none; }   /* replaced by the printed legend, which can show each line's stroke */
-  /* Market reference lines: quieter strengths of the two inks, no point marks */
-  #chart .pele-line:is([data-id="Kalshi"], [data-id="Polymarket"], [data-id="Polymarket US"]) path { stroke-width: 1.5; }
+  /* Figure 1's lines, told apart by mark rather than hue (two inks only): Bend solid graphite with
+     filled points, MLB solid teal with open points, and each market venue its own stroke pattern,
+     1.5px, no points. Keep in step with SERIES / VENUES in the script, which draw the legend. */
+  #chart .pele-line[data-id="MLB"] circle { fill: var(--stock); stroke: var(--print); stroke-width: 1.5; }
+  #chart .pele-line:is([data-id="Kalshi"], [data-id="Polymarket"], [data-id="Polymarket US"]) path { stroke-width: 1.5; stroke-linecap: butt; }
   #chart .pele-line:is([data-id="Kalshi"], [data-id="Polymarket"], [data-id="Polymarket US"]) circle { display: none; }
-  #chart .pele-line[data-id="Kalshi"] path { stroke: var(--graphite-soft); stroke-dasharray: 6 4; }
-  #chart .pele-line[data-id="Polymarket"] path { stroke: var(--print-rule); stroke-dasharray: 6 4; }
-  #chart .pele-line[data-id="Polymarket US"] path { stroke: var(--graphite-soft); stroke-dasharray: 1.5 3.5; }
+  #chart .pele-line[data-id="Kalshi"] path { stroke: var(--graphite-soft); stroke-dasharray: 8 3; }
+  #chart .pele-line[data-id="Polymarket"] path { stroke: var(--print); stroke-dasharray: 8 3 1.5 3; }
+  #chart .pele-line[data-id="Polymarket US"] path { stroke: var(--graphite-soft); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 0 4; }
   .tally small.mkt[hidden] { display: none; }
   .tally small.mkt a { color: var(--graphite-soft); }
   .tally small.mkt a:hover { color: var(--graphite); }
@@ -396,12 +399,17 @@ const fmtDelta = v => (v === null ? "–" : (v >= 0 ? "+" : "−") + Math.abs(v)
 const halfArrow = h => (h === "T" ? "▲" : h === "B" ? "▼" : "");
 const teamName = side => meta[`${side}_name`] || meta[side];
 
+// Figure 1's line marks, mirrored by the #chart rules in the stylesheet: the legend draws from these.
+const SERIES = {
+  bend: { stroke: "var(--graphite)", dot: "filled" },
+  mlb: { stroke: "var(--print)", dot: "open" },
+};
 // Prediction-market reference prices: one optional CSV column per venue, in display order.
-// The chart line style for each lives in CSS under its series data-id (the venue name).
+// Each venue's chart line is keyed in CSS by its series data-id (the venue name).
 const VENUES = [
-  { key: "kalshi", name: "Kalshi", stroke: "var(--graphite-soft)", dash: "6 4" },
-  { key: "polymarket", name: "Polymarket", stroke: "var(--print-rule)", dash: "6 4" },
-  { key: "polymarket_us", name: "Polymarket US", stroke: "var(--graphite-soft)", dash: "1.5 3.5" },
+  { key: "kalshi", name: "Kalshi", stroke: "var(--graphite-soft)", dash: "8 3", width: 1.5 },
+  { key: "polymarket", name: "Polymarket", stroke: "var(--print)", dash: "8 3 1.5 3", width: 1.5 },
+  { key: "polymarket_us", name: "Polymarket US", stroke: "var(--graphite-soft)", dash: "0 4", width: 2, cap: "round" },
 ];
 const venueCol = v => `${v.key}_home_wp`;
 // Venues with at least one price in the feed; none when the columns are absent.
@@ -680,10 +688,13 @@ xychart
 }
 
 // The printed legend: a drawn sample of each line as the chart strokes it, its name, its source.
-function legendItem(name, note, stroke, dash, dot) {
+function legendItem(name, note, { stroke, dash, width, cap, dot }) {
+  const line = (width ? `stroke-width:${width};` : "") + (dash ? `stroke-dasharray:${dash};` : "") + (cap ? `stroke-linecap:${cap};` : "");
   return `<li><svg viewBox="0 0 30 10" aria-hidden="true"><line x1="1" y1="5" x2="29" y2="5" stroke="${stroke}"`
-    + (dash ? ` stroke-dasharray="${dash}" stroke-width="1.5"` : "") + `/>`
-    + (dot ? `<circle cx="15" cy="5" r="2.6" fill="${stroke}"/>` : "") + `</svg><b>${name}</b>${note}</li>`;
+    + (line ? ` style="${line}"` : "") + `/>`
+    + (dot === "filled" ? `<circle cx="15" cy="5" r="2.6" fill="${stroke}"/>` : "")
+    + (dot === "open" ? `<circle cx="15" cy="5" r="2.6" fill="var(--stock)" stroke="${stroke}" stroke-width="1.5"/>` : "")
+    + `</svg><b>${name}</b>${note}</li>`;
 }
 
 function renderChart(rows) {
@@ -692,9 +703,9 @@ function renderChart(rows) {
   if (chart) chart.update(src); else chart = pele.mount($("chart"), src, { zoom: false, fontSize: 11 });
   const sim = lastSim(rows);
   $("legend").innerHTML = legendItem("Bend", sim ? `${Number(sim.sims).toLocaleString()} simulated games a play` : "simulated games",
-      "var(--graphite)", "", true)
-    + legendItem("MLB", "official win probability", "var(--print)", "", true)
-    + drawn.map(d => legendItem(esc(d.v.name), "market price", d.v.stroke, d.v.dash, false)).join("");
+      SERIES.bend)
+    + legendItem("MLB", "official win probability", SERIES.mlb)
+    + drawn.map(d => legendItem(esc(d.v.name), "market price", d.v)).join("");
   const home = teamName("home"), away = teamName("away");
   const gaps = rows.map(r => num(r.delta)).filter(x => x !== null).map(Math.abs);
   $("chart-cap").textContent = `How likely the ${home} were to win, from 0 to 100%, after each of the ${n} completed plays, `
