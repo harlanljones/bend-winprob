@@ -371,8 +371,9 @@ class LiveFeed:
                     return
                 self.found[v.key] = listing
                 self.note(v, f"{listing['id']} {listing['url']}")
-            if now >= self.next_history[v.key]:
-                self.history[v.key] = v.history(listing, self.game["start"] - MARGIN, int(now))
+            t0 = self.game["start"] - MARGIN
+            if now >= self.next_history[v.key] and now > t0:  # no window yet: the venues reject t1 < t0
+                self.history[v.key] = v.history(listing, t0, int(now))
                 self.next_history[v.key] = now + REFRESH
             self.quotes[v.key].append((now, v.quote(listing)))
             self.tape.put(v.key, self.history[v.key] + self.quotes[v.key], now)

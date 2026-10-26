@@ -156,6 +156,27 @@ class FeedTest(unittest.TestCase):
         self.assertEqual([{"key": "good", "name": "Good", "url": "https://x", "id": "g"}], feed.listings())
         self.assertTrue(any("venue outage" in n for n in notes))
 
+    def test_quotes_more_than_an_hour_before_first_pitch(self):
+        now = time.time()
+
+        class Early:
+            key, name = "early", "Early"
+            find = staticmethod(lambda game: {"key": "early", "name": "Early", "url": "https://x", "id": "e"})
+            quote = staticmethod(lambda listing: 48.0)
+
+            @staticmethod
+            def history(listing, t0, t1):
+                if t1 < t0:  # the venues answer 400 Bad Request
+                    raise RuntimeError("empty window")
+                return []
+
+        notes = []
+        feed = markets.LiveFeed(dict(GAME, start=int(now) + 2 * 3600), venues=(Early(),), log=notes.append)
+        feed.poll()
+        feed.jobs["early"].result(timeout=5)
+        self.assertEqual(48.0, feed.tape.at("early", None))
+        self.assertFalse(any("failed" in n for n in notes), notes)
+
 
 class RecordedReplayTest(unittest.TestCase):
     def test_replay_without_recording_leaves_market_columns_empty(self):

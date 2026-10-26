@@ -6,8 +6,8 @@ import { SLOTS, SWING, num, halfArrow, venueCol, venuesIn, latest, lastSim, book
 import { chartSource } from "./chart.js";
 import { DIAGRAMS } from "./diagrams.js";
 
-// World Series Game 2, published live by live.py; ?pk=849805 opens Game 1's bundled replay.
-const pk = new URLSearchParams(location.search).get("pk") || "849802";
+// World Series Game 3, published live by live.py; ?pk=849805 opens Game 1's bundled replay.
+const pk = new URLSearchParams(location.search).get("pk") || "849804";
 let meta = { away: "AWAY", home: "HOME" };
 let metaLoaded = false;
 let lastRows = [];
